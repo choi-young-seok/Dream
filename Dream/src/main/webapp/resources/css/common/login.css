@@ -1,0 +1,12 @@
+.modal-header, h4, .close {
+      background-color: skyblue;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-footer {
+      background-color: skyblue;
+  }
+/*   .modal-content{
+  z-index:1;
+  } */
