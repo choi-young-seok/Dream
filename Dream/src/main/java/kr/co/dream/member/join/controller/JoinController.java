@@ -1,11 +1,11 @@
-package kr.co.dream.user.join.controller;
+package kr.co.dream.member.join.controller;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import kr.co.dream.user.join.service.JoinService;
+import kr.co.dream.member.join.service.JoinService;
 
 @Controller
 public class JoinController {
@@ -17,5 +17,10 @@ public class JoinController {
 	public String main(){
 		return "index";
 	}
-
+	
+	@RequestMapping("/memberJoinForm")
+	public String memberJoinForm(){
+		System.out.println("회원가입 화면 요청");
+		return "user/joinForm";
+	}
 }

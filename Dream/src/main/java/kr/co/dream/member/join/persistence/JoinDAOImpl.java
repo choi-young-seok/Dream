@@ -1,4 +1,4 @@
-package kr.co.dream.user.join.persistence;
+package kr.co.dream.member.join.persistence;
 
 import javax.inject.Inject;
 
