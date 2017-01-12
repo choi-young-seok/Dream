@@ -31,9 +31,11 @@
 
 <!-- header.js -->
 <script type="text/javascript" src="resources/js/header/header.js"></script>
+<!-- loginModal.js -->
+<script type="text/javascript" src="resources/js/header/loginModal.js"></script>
 
 <!-- join.js -->
-<script type="text/javascript" src="resources/js/member/join.js"></script>
+<!-- <script type="text/javascript" src="resources/js/member/join.js"></script> -->
 
 </head>
 <body>

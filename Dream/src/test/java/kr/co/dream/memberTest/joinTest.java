@@ -9,21 +9,37 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.co.dream.member.domain.MemberVO;
+import kr.co.dream.member.join.persistence.JoinDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/root-context.xml" })
 
 public class joinTest {
+	
+	@Inject
+	private JoinDAO dao;
 
 	MemberVO member = new MemberVO();
 	
-	@Test
+	//@Test
 	public void voToStringTest(){
-		member.setMember_email("rcn115@naver.com");
+		member.setMember_mail("rcn115@naver.com");
 		member.setMember_name("최용석");
 		member.setMember_stop_state("F");
 		
 		System.out.println(member.toStringStopMember());
 		
+	}
+	
+	@Test
+	public void joinTest(){
+		member.setMember_mail("rcn115@naver.com");
+		member.setMember_pass("000");
+		member.setMember_name("최용석");
+		member.setMember_birth("910602");
+		member.setMember_gender("M");
+		
+		dao.memberJoin(member);
+	
 	}
 }

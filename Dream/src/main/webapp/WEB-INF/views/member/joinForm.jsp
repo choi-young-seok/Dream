@@ -17,13 +17,15 @@
 		<!-- Custom CSS -->
 		<link href="resources/css/shop-homepage.css" rel="stylesheet">
 		
-		<!-- Dream Up Custom.css  -->
-		<link href="resources/css/custom/index.css" rel="stylesheet" type="text/css" />
-		
 		<!-- Dream Up memberJoin.css -->
 		<link rel="stylesheet" type="text/css" href="resources/css/member/memberJoin.css">
-		
+		<link rel="stylesheet" type="text/css" href="resources/css/member/joinForm.css">
+				
+		<!-- jQuery -->
+		<script src="resources/js/jquery.js"></script>
+		<script type="text/javascript" src="resources/js/member/join.js"></script>
 		<title>회원가입</title>
+		
 	</head>
 	<header>
 		<%@ include file="../mainView/header.jsp"%>
@@ -44,7 +46,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="email" class="form-control" name="member_email" id="member_email"  placeholder="이메일을 입력하세요"/>
+									<input type="text" class="form-control" name="member_mail" id="member_mail"  placeholder="이메일을 입력하세요">
 								</div>
 							</div>
 						</div>
@@ -54,7 +56,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="member_pwd" id="member_pwd"  placeholder="비밀번호를 입력하세요"/>
+									<input type="password" class="form-control" name="member_pass" id="member_pass"  placeholder="비밀번호를 입력하세요"/>
 								</div>
 							</div>
 						</div>
@@ -64,11 +66,10 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="member_pwd_check" id="member_pwd_check"  placeholder="비밀번호를 다시 입력하세요"/>
+									<input type="password" class="form-control" name="member_pass_check" id="member_pass_check"  placeholder="비밀번호를 다시 입력하세요"/>
 								</div>
 							</div>
 						</div>
-						
 						
 						<div class="form-group">
 							<label for="name" class="cols-sm-2 control-label">이름</label>
@@ -80,8 +81,6 @@
 							</div>
 						</div>
 
-					
-
 						<div class="form-group">
 							<label for="username" class="cols-sm-2 control-label">생년월일</label>
 							<div class="cols-sm-10">
@@ -91,9 +90,26 @@
 								</div>
 							</div>
 						</div>
+			
+						<div class="well well-sm text-center">
+					
+							<label for="password" class="cols-sm-2 control-label">성별 : </label>
+							<div class="btn-group" data-toggle="buttons">
+												
+								<label class="btn btn-default">남
+									<input type="radio" name="member_gender" id="member_gender" value="M">
+									<span class="glyphicon glyphicon-ok"></span>
+								</label>
 
-						
-						<div class="form-group ">
+								<label class="btn btn-default">여
+									<input type="radio" name="member_gender" id="member_gender" value="F">
+									<span class="glyphicon glyphicon-ok"></span>
+								</label>
+							
+							</div>
+					
+						</div>
+						<div class="form-group "> 	
 							<button type="button" id="joinBtn" class="btn btn-primary btn-lg btn-block login-button">회원가입</button>
 						</div>
 						

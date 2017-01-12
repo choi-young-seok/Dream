@@ -22,6 +22,7 @@
 	<!-- MyBatis를 DataSource에 연결(마이바티스 환경, sqlMapper등록) -->
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
 		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:/mybatis-config.xml" />
 		<property name="mapperLocations" value="classpath:mappers/*Mapper.xml"></property>
 	</bean>
 	

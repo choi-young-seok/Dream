@@ -1,0 +1,25 @@
+.btn-group{
+    border-radius: 40px;
+}
+
+.btn-group>.btn:first-child {
+    margin-right: 150px;
+}
+
+label.btn.btn-default.active {
+    background-color: blue;
+}
+
+label.btn.btn-default{
+	border-radius : 10px;
+}
+
+.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.btn-group>.btn:last-child:not(:first-child), .btn-group>.dropdown-toggle:not(:first-child) {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}

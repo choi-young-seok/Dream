@@ -5,8 +5,8 @@ import java.util.Date;
 public class MemberVO {
 
 	private int member_no; // 회원 번호
-	private String member_email; // 회원 이메일(아이디)
-	private String member_pwd; // 회원 비밀번호
+	private String member_mail; // 회원 이메일(아이디)
+	private String member_pass; // 회원 비밀번호
 	private String member_name; // 회원 이름
 	private String member_birth; // 회원 생년월일(yyyy-mm-dd)
 	private String member_gender; // 회원 성별
@@ -33,20 +33,20 @@ public class MemberVO {
 		this.member_no = member_no;
 	}
 
-	public String getMember_email() {
-		return member_email;
+	public String getMember_mail() {
+		return member_mail;
 	}
 
-	public void setMember_email(String member_email) {
-		this.member_email = member_email;
+	public void setMember_mail(String member_mail) {
+		this.member_mail = member_mail;
 	}
 
-	public String getMember_pwd() {
-		return member_pwd;
+	public String getMember_pass() {
+		return member_pass;
 	}
 
-	public void setMember_pwd(String member_pwd) {
-		this.member_pwd = member_pwd;
+	public void setMember_pass(String member_pass) {
+		this.member_pass = member_pass;
 	}
 
 	public String getMember_name() {
@@ -131,28 +131,28 @@ public class MemberVO {
 
 	//회원가입
 	public String toStringJoinMember() {
-		return "MemberVO [member_no=" + member_no + ", member_email=" + member_email + ", member_pwd=" + member_pwd
+		return "MemberVO [member_no=" + member_no + ", member_mail=" + member_mail + ", member_pass=" + member_pass
 				+ ", member_name=" + member_name + ", member_birth=" + member_birth + ", member_gender=" + member_gender
 				+ ", member_regdate=" + member_regdate + "]";
 	}
 
 	//정지 회원 
 	public String toStringStopMember() {
-		return "MemberVO [member_email=" + member_email + ", member_name=" + member_name + ", member_stop_state="
+		return "MemberVO [member_mail=" + member_mail + ", member_name=" + member_name + ", member_stop_state="
 				+ member_stop_state + "]";
 	}
 	
 	// 회원 통계 정보
 	public String toStringMemberStats() {
-		return "MemberVO [member_no=" + member_no + ", member_email=" + member_email + ", member_name=" + member_name
+		return "MemberVO [member_no=" + member_no + ", member_mail=" + member_mail + ", member_name=" + member_name
 				+ ", member_total_project_count=" + member_total_project_count + ", member_progressing_project_count="
 				+ member_progressing_project_count + ", member_supporting_count=" + member_supporting_count
 				+ ", member_total_supported_count=" + member_total_supported_count + "]";
 	}
 
 	//회원 전체 정보
-	public String toString() {
-		return "MemberVO [member_no=" + member_no + ", member_email=" + member_email + ", member_name=" + member_name
+	public String toStringAllInfo() {
+		return "MemberVO [member_no=" + member_no + ", member_mail=" + member_mail + ", member_name=" + member_name
 				+ ", member_birth=" + member_birth + ", member_gender=" + member_gender + ", member_regdate="
 				+ member_regdate + ", member_total_project_count=" + member_total_project_count
 				+ ", member_progressing_project_count=" + member_progressing_project_count
