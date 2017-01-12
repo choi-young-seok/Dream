@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import kr.co.dream.common.encryption.EncryptionPwd;
 import kr.co.dream.member.domain.LoginDTO;
 import kr.co.dream.member.domain.MemberVO;
 import kr.co.dream.member.join.persistence.JoinDAO;
@@ -14,10 +15,14 @@ public class JoinServiceImpl implements JoinService{
 
 	@Inject
 	private JoinDAO dao;
+	
+	@Inject
+	private EncryptionPwd encryptionPwd;
 
 	@Override
 	public void memberJoin(MemberVO member) {
 		System.out.println("JoinServiceImpl [memberJoin()] : "+member.toStringJoinMember());
+		member.setMember_pass(encryptionPwd.shaPwd(member.getMember_pass()));
 		dao.memberJoin(member);
 	}
 

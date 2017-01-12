@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	
+
 	<!-- DataSource and Connection Pool -->
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		id="dataSource">
@@ -18,22 +17,48 @@
 		<property name="username" value="scott" />
 		<property name="password" value="tiger" />
 	</bean>
-	
+
 	<!-- MyBatis를 DataSource에 연결(마이바티스 환경, sqlMapper등록) -->
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:/mybatis-config.xml" />
 		<property name="mapperLocations" value="classpath:mappers/*Mapper.xml"></property>
 	</bean>
-	
+
 	<!-- sqlSession등록 -->
 	<bean id='sqlSession' class="org.mybatis.spring.SqlSessionTemplate"
 		destroy-method="clearCache">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+
+	<!-- mailSender -->
+	<bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="mailingAuthTest@gmail.com" />
+		<property name="password" value="authtest" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.smtp.timeout">8500</prop>
+				<prop key="mail.smtp.debug">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- SimpleMailMessage -->
+	<bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
+		<property name="from" value="dreamupfunding@gmail.com" />
+		<property name="subject" value="Your order" />
+	</bean>
+
+	<!-- Encryption -->
+	<bean id="encryptionPwd" class="kr.co.dream.common.encryption.EncryptionPwd"/>
 	
 	<!-- DataBase access class -->
-	<context:component-scan base-package="kr.co.dream.member.join.service"/>
-	<context:component-scan base-package="kr.co.dream.member.join.persistence"/>
+	<context:component-scan base-package="kr.co.dream.member.join.service" />
+	<context:component-scan base-package="kr.co.dream.member.join.persistence" />
 
 </beans>

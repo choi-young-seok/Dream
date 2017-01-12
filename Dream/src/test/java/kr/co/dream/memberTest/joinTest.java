@@ -10,6 +10,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.co.dream.member.domain.MemberVO;
 import kr.co.dream.member.join.persistence.JoinDAO;
+import kr.co.dream.member.join.service.JoinService;
+import kr.co.dream.member.join.service.JoinServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/root-context.xml" })
@@ -18,6 +20,8 @@ public class joinTest {
 	
 	@Inject
 	private JoinDAO dao;
+	
+	@Inject JoinService service;
 
 	MemberVO member = new MemberVO();
 	
@@ -39,7 +43,7 @@ public class joinTest {
 		member.setMember_birth("910602");
 		member.setMember_gender("M");
 		
-		dao.memberJoin(member);
-	
+//		dao.memberJoin(member);
+		service.memberJoin(member);
 	}
 }
