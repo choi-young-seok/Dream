@@ -75,3 +75,18 @@ $(function() {
 
 });// ready
 
+$(function(){
+	$('#member_mail').click(function(){
+		$.ajax({
+			url : '/dream/authMail',
+			type : 'post',
+			data : {member_mail : $('#member_mail').val()},
+			success : function(result){
+				alert(result);
+			}//success
+			
+		});//ajax
+	});//member_mail click event
+	
+});//ready
+
