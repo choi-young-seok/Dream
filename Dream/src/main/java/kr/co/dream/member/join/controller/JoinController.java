@@ -15,12 +15,12 @@ public class JoinController {
 	
 	@RequestMapping("/")
 	public String main(){
-		return "index";
+		return "mainView/mainBody";
 	}
 	
 	@RequestMapping("/memberJoinForm")
 	public String memberJoinForm(){
 		System.out.println("회원가입 화면 요청");
-		return "user/joinForm";
+		return "member/joinForm";
 	}
 }
