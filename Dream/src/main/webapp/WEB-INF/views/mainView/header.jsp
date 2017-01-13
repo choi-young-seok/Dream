@@ -24,18 +24,13 @@
 <link href="resources/css/common/login.css" rel="stylesheet"type="text/css" />
 
 <!-- jQuery -->
-<script src="resources/js/jquery.js"></script>
+<script src="resources/js/common/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/common/bootstrap.min.js"></script>
 
 <!-- header.js -->
 <script type="text/javascript" src="resources/js/header/header.js"></script>
-<!-- loginModal.js -->
-<script type="text/javascript" src="resources/js/header/loginModal.js"></script>
-
-<!-- join.js -->
-<!-- <script type="text/javascript" src="resources/js/member/join.js"></script> -->
 
 </head>
 <body>
@@ -110,17 +105,17 @@
 							class="glyphicon glyphicon-log-in"></span>로그인</a></li>
 				</c:if>
 			</ul>
-		<!-- /.navbar-collapse -->
-		</div>
-	<!-- /.container --> 
-	</div>
+		
+		</div><!-- /.navbar-collapse -->
+	
+	</div><!-- /.container --> 
 
 	<!-- nav -->
 	</nav> 
 	
 	<div class="container">
 		<div class="row">
-						<!-- Login Modal -->
+			<!-- Login Modal -->
 			<div class="modal fade" id="loginModal" role="dialog">
 				<div class="modal-dialog">
 
@@ -146,7 +141,7 @@
 								</div>
 						
 								<a href="#" class="btn btn-info btn-block" role="button">로그인</a>
-								<hr><div class="text-muted center-block">or?</div>
+								<hr><div class="text-muted center-block" style="text-align: center;"><h2>or</h2></div>
 								<a href="#" class="btn btn-info btn-block" role="button">facebook</a>
 								<a href="memberJoinForm" class="btn btn-info btn-block" role="button">회원가입</a>
 								<a href="companyJoinForm" class="btn btn-info btn-block" role="button">기업 회원가입</a>
@@ -167,7 +162,6 @@
 
 				</div>
 			</div>
-		</div>
-		</div>
+		</div><!-- /.container --> 
 	</div>
 	</body>

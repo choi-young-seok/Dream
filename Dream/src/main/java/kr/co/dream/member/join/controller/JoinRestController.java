@@ -18,7 +18,7 @@ public class JoinRestController {
 	
 	@RequestMapping(value = "/memberJoin", method = RequestMethod.POST)
 	public String memberJoin(@RequestBody MemberVO member){
-		System.out.println("JoinRestController [memberJoin()] 회원가입 : " + member.toStringJoinMember());
+		System.out.println("JoinRestController [memberJoin() 회원가입 ] : " + member.toStringJoinMember());
 		service.memberJoin(member);
 		return "success";
 	}

@@ -50,8 +50,7 @@
 
 	<!-- SimpleMailMessage -->
 	<bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
-		<property name="from" value="dreamupfunding@gmail.com" />
-		<property name="subject" value="Your order" />
+		<property name="subject" value="DreamUp 회원가입 인증 메일입니다." />
 	</bean>
 
 	<!-- Encryption -->
