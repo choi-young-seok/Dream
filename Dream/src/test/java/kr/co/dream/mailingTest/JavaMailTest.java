@@ -1,31 +1,26 @@
 package kr.co.dream.mailingTest;
 
 import javax.inject.Inject;
-import javax.mail.Address;
 import javax.mail.Message.RecipientType;
 import javax.mail.MessagingException;
-import javax.mail.Session;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import kr.co.dream.member.join.persistence.JoinDAO;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 // @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/root-context.xml" })
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" })
 public class JavaMailTest {
 
-	//@Autowired
+	@Inject
 	private JavaMailSender mailSender;
 	
 	private String from = "dreamupfunding@gmail.com";
