@@ -9,15 +9,15 @@ import kr.co.dream.member.domain.LoginDTO;
 import kr.co.dream.member.domain.MemberVO;
 
 @Repository
-public class JoinDAOImpl implements JoinDAO{
+public class MemberDAOImpl implements MemberDAO {
 
 	@Inject
 	private SqlSession sqlSession;
 
 	@Override
 	public void memberJoin(MemberVO member) {
-		System.out.println("JoinDaoImpl [memberJoin()] : "+member.toStringJoinMember());
-		sqlSession.insert("member.memberJoin",member);
+		System.out.println("JoinDaoImpl [memberJoin()] : " + member.toStringJoinMember());
+		sqlSession.insert("member.memberJoin", member);
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class JoinDAOImpl implements JoinDAO{
 	@Override
 	public void memberEdit(MemberVO member) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -43,5 +43,4 @@ public class JoinDAOImpl implements JoinDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 }

@@ -7,14 +7,13 @@ import org.springframework.stereotype.Service;
 import kr.co.dream.common.encryption.EncryptionPwd;
 import kr.co.dream.member.domain.LoginDTO;
 import kr.co.dream.member.domain.MemberVO;
-import kr.co.dream.member.persistence.JoinDAO;
-
+import kr.co.dream.member.persistence.MemberDAO;
 
 @Service
-public class JoinServiceImpl implements JoinService{
-
+public class MemberServiceImpl implements MemberService{
+	
 	@Inject
-	private JoinDAO dao;
+	private MemberDAO dao;
 	
 	@Inject
 	private EncryptionPwd encryptionPwd;
@@ -55,5 +54,5 @@ public class JoinServiceImpl implements JoinService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 }

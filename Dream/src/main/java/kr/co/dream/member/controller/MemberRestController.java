@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.dream.member.domain.MemberVO;
-import kr.co.dream.member.service.JoinService;
+import kr.co.dream.member.service.MemberService;
 
 @RestController
-public class JoinRestController {
-	
+public class MemberRestController {
+
 	@Inject
-	private JoinService service;
+	private MemberService service;
 	
 	@RequestMapping(value = "/memberJoin", method = RequestMethod.POST)
 	public String memberJoin(@RequestBody MemberVO member){
@@ -22,5 +22,5 @@ public class JoinRestController {
 		service.memberJoin(member);
 		return "success";
 	}
+	
 }
- 
