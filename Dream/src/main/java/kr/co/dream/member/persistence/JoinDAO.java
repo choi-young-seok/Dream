@@ -1,4 +1,4 @@
-package kr.co.dream.member.join.persistence;
+package kr.co.dream.member.persistence;
 
 import kr.co.dream.member.domain.LoginDTO;
 import kr.co.dream.member.domain.MemberVO;

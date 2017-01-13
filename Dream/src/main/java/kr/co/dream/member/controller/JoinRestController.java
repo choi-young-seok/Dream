@@ -1,4 +1,4 @@
-package kr.co.dream.member.join.controller;
+package kr.co.dream.member.controller;
 
 import javax.inject.Inject;
 
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.dream.member.domain.MemberVO;
-import kr.co.dream.member.join.service.JoinService;
+import kr.co.dream.member.service.JoinService;
 
 @RestController
 public class JoinRestController {

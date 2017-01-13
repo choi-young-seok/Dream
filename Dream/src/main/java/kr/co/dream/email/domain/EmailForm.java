@@ -1,4 +1,4 @@
-package kr.co.dream.member.email.domain;
+package kr.co.dream.email.domain;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package kr.co.dream.member.join.controller;
+package kr.co.dream.member.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.support.HttpRequestHandlerServlet;
 import org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter;
 
-import kr.co.dream.member.join.service.JoinService;
+import kr.co.dream.member.service.JoinService;
 
 @Controller
 public class JoinController {

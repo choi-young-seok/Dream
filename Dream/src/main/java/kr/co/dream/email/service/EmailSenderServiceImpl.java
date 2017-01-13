@@ -1,4 +1,4 @@
-package kr.co.dream.member.email.service;
+package kr.co.dream.email.service;
 
 import java.util.Random;
 
@@ -15,7 +15,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import kr.co.dream.member.email.domain.EmailForm;
+import kr.co.dream.email.domain.EmailForm;
 
 @Service
 public class EmailSenderServiceImpl implements EmailSenderService {

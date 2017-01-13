@@ -1,4 +1,4 @@
-package kr.co.dream.member.join.service;
+package kr.co.dream.member.service;
 
 import kr.co.dream.member.domain.LoginDTO;
 import kr.co.dream.member.domain.MemberVO;

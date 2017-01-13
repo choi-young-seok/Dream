@@ -1,4 +1,4 @@
-package kr.co.dream.member.join.service;
+package kr.co.dream.member.service;
 
 import javax.inject.Inject;
 
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import kr.co.dream.common.encryption.EncryptionPwd;
 import kr.co.dream.member.domain.LoginDTO;
 import kr.co.dream.member.domain.MemberVO;
-import kr.co.dream.member.join.persistence.JoinDAO;
+import kr.co.dream.member.persistence.JoinDAO;
 
 
 @Service

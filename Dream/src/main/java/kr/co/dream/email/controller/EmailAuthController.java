@@ -1,4 +1,4 @@
-package kr.co.dream.member.email.controller;
+package kr.co.dream.email.controller;
 
 import javax.inject.Inject;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.co.dream.member.email.domain.EmailForm;
-import kr.co.dream.member.email.service.EmailSenderService;
+import kr.co.dream.email.domain.EmailForm;
+import kr.co.dream.email.service.EmailSenderService;
 
 @RestController
 public class EmailAuthController {
