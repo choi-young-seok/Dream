@@ -23,3 +23,12 @@ label.btn.btn-default{
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
+
+.success{
+	color : green;
+}
+
+.fail{
+	color: red;
+
+	}

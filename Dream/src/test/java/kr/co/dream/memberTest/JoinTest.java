@@ -34,7 +34,7 @@ public class JoinTest {
 
 	}
 
-	@Test
+	//@Test
 	public void joinTest() {
 		member.setMember_mail("rcn115@naver.com");
 		member.setMember_pass("000");
@@ -44,5 +44,11 @@ public class JoinTest {
 
 		// dao.memberJoin(member);
 		service.memberJoin(member);
+	}
+	
+	//@Test
+	public void idDuplicationCheck(){
+		String member_authMail = "rcn115@naver.co";
+		System.out.println(dao.idDuplicationCheck(member_authMail));
 	}
 }

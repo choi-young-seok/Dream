@@ -23,11 +23,24 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
+	public boolean idDuplicationCheck(String member_authMail) {
+		System.out.println("[memberDAOImpl idDuplicationCheck() input value] : " + member_authMail);
+		//일치하는 아이디가 DB에 없을시 
+		if((Integer)sqlSession.selectOne("member.idDuplicationCheck", member_authMail) == 0){
+			return true;	
+		}
+		//일치하는 아이디가 존재할시
+		else{
+			return false;
+		}
+	}
+
+	@Override
 	public MemberVO login(LoginDTO loginDTO) {
-		System.out.println("[memberDAOImpl login() input value] : " +loginDTO.toString());
+		System.out.println("[memberDAOImpl login() input value] : " + loginDTO.toString());
 		MemberVO member = sqlSession.selectOne("member.login", loginDTO);
-		System.out.println("[memberDAOImpl login() output value] : " +member.toStringLogin());
-		//return sqlSession.selectOne("member.login", loginDTO);
+		System.out.println("[memberDAOImpl login() output value] : " + member.toStringLogin());
+		// return sqlSession.selectOne("member.login", loginDTO);
 		return member;
 	}
 

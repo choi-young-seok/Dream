@@ -9,7 +9,7 @@ public interface MemberService {
 
 	//회원가입 관련부
 	public void memberJoin(MemberVO member);
-	public String authEmail(String member_mail);
+	public boolean idDuplicationCheck(String member_authMail);
 	
 	//로그인 관련부
 	public MemberVO login(LoginDTO loginDTO);

@@ -60,6 +60,7 @@
 								class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
 								type="text" class="form-control" name="member_mail"
 								id="member_mail" placeholder="이메일을 입력하세요">
+
 						</div>
 					</div>
 				</div>
@@ -163,6 +164,8 @@
 								<label for="member_authMail"><span class="glyphicon glyphicon-user"></span> 이메일</label> 
 									<input type="email" class="form-control" id="member_authMail" placeholder="이메일을 입력하세요">
 							</div>
+							
+							<div id="idDuplicationCheck"></div>
 
 							<a id="mailAuthNumBtn" class="btn btn-info btn-block" role="button">인증번호 발송</a>
 

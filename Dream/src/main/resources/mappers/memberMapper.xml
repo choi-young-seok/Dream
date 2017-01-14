@@ -8,6 +8,12 @@
 		(dream_member_seq.nextval, #{member_mail}, #{member_pass}, #{member_name}, #{member_birth}, #{member_gender})
 	</insert>
 	
+	<select id="idDuplicationCheck" parameterType="String" resultType="Integer">
+		select count(*) 
+		from dream_member
+		where member_mail=#{member_authMail}
+	</select>
+	
 	<select id="login" resultType="MemberVO">
 		select member_mail, member_name
 		from dream_member

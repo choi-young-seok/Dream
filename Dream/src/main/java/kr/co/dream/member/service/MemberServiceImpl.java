@@ -28,9 +28,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String authEmail(String member_mail) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean idDuplicationCheck(String member_authMail) {
+		System.out.println("JoinServiceImpl [idDuplicationCheck()] input value: " + member_authMail);
+		return dao.idDuplicationCheck(member_authMail);
 	}
 
 	@Override
@@ -76,5 +76,6 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

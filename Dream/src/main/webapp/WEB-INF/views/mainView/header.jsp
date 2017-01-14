@@ -81,8 +81,9 @@
 				<!-- 로그인 버튼 및 로그인 완료시 사용자 드롭다운 메뉴 -->
 				<c:if test="${session.member_name != '' || session.member_name ne null}">
 					<li class="dropdown">
-						<%-- <c:if test="${session.mail }"> --%> <a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">${session.member_name }<span class="caret"></span></a>
+					<c:if test="${session.member_name ne null}">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">${session.member_name }<span class="caret"></span></a>
+					</c:if>
 						<ul class="dropdown-menu">
 							<li><a href="#">마이페이지</a></li>
 							<li class="divider"></li>

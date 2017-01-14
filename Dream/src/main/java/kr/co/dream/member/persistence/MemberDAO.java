@@ -7,10 +7,14 @@ import kr.co.dream.member.domain.MemberVO;
 
 public interface MemberDAO {
 
+	// 회원가입 관련부
 	public void memberJoin(MemberVO member);
 
+	public boolean idDuplicationCheck(String member_authMail);
+
+	// 로그인 관련부
 	public MemberVO login(LoginDTO loginDTO);
-	
+
 	public String selectPwd(LoginDTO loginDTO);
 
 	// 자동 로그인선택시 sessionId와 next(만료기간)을 특정 id에 갱신저장
@@ -20,6 +24,7 @@ public interface MemberDAO {
 	// String value = sessionId
 	public MemberVO checkUserWithSessionKey(String value);
 
+	// 회원정보 관련부
 	// dto형태로 변경 가능한지 확인 할것
 	public void memberEdit(MemberVO member); // 회원정보 수정 + 비밀번호 변경
 

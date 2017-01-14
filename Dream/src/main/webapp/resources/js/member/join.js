@@ -1,7 +1,40 @@
 $(function() {
+	$("#mailAuthNumBtn").hide();
+	// - 아이디 중복 체크 이벤트
+	$('#member_authMail').keyup(function() {		
+		var member_authMail = $('#member_authMail').val();
+		$.ajax({
+			url : '/dream/idDuplicationCheck',
+			type : 'post',
+// headers : {
+// "Content-Type" : "application/json",
+// "X-HTTP-Method-Override" : "POST"
+// },// headers
+			dataType : 'text',
+// data : JSON.stringify({
+// member_authMail : member_authMail,
+// }),// data
+			data : {
+				member_authMail : member_authMail,
+			},// data
+			success : function(result) {
+				if(result == 'noResult'){
+					$('#idDuplicationCheck').html('');
+					$("#mailAuthNumBtn").hide();
+				}
+			else if (result == 'success') {
+					$('#idDuplicationCheck').html("<span class='success'>사용가능한 아이디입니다</span>");
+					$("#mailAuthNumBtn").show();
+				} else {
+					$('#idDuplicationCheck').html("<span class='fail'>이미 존재하는 아이디 입니다</span>");
+					$("#mailAuthNumBtn").hide();
+				}
+			}// success
+		});// ajax
+	});// member_mail keypress event
+
 	// - 회원가입 버튼 클릭 이벤트
 	$('#joinBtn').click(function() {
-		// alert("join.js import확인");
 
 		// - 중복검사 여부 확인부
 		// - if(중복검사x){중복검사 요청 호출부}
@@ -14,18 +47,17 @@ $(function() {
 		var member_name = $('#member_name').val();
 		var member_birth = $('#member_birth').val();
 		var member_gender = $("#member_gender").is(":checked");
-		if(member_gender){
+		if (member_gender) {
 			var member_gender = 'M';
-		}else{
+		} else {
 			var member_gender = 'F';
 		}
-//
-//		$('#member_gender').checkOn(function(){
-//			var member_gender = $('#member_gender').val();
-//		});
+		//
+		// $('#member_gender').checkOn(function(){
+		// var member_gender = $('#member_gender').val();
+		// });
 		alert(member_gender);
-		//var member_gender = $('#member_gender').val();
-
+		// var member_gender = $('#member_gender').val();
 
 		// - 유효성 검사 호출부
 
@@ -45,10 +77,10 @@ $(function() {
 				member_gender : member_gender
 			}), // data
 			success : function(result) {
-				if(result =="success"){
+				if (result == "success") {
 					alert("가입이 완료 되었습니다.")
-					location.href="/dream";
-				}else{
+					location.href = "/dream";
+				} else {
 					alert("회원가입에 실패하였습니다.")
 				}
 			}// success
@@ -62,13 +94,11 @@ $(function() {
 	// - 회원가입 취소 버튼 클릭 이벤트
 	$('#cancelBtn').click(function() {
 		var check = confirm("입력된 내용은 저장되지 않습니다. 취소하시겠습니까?");
-		//'예' 클릭시 (check == true) mainBody.jsp로 이동
+		// '예' 클릭시 (check == true) mainBody.jsp로 이동
 		if (check) {
 			location.href = "/dream"
 		}
-	});//cancelBtn click event
-
+	});// cancelBtn click event
 
 });// ready
-
 
