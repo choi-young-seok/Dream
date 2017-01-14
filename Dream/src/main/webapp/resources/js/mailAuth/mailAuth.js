@@ -1,18 +1,17 @@
 $(function() {
 	var ranAuthNum;
-
 	$("#member_mail").click(function() {
-		//backdrop 옵션 : 뒷배경 처리
-		//backdrop : true 뒷배경 클릭시 modal off처리 + 뒷배경 static 처리
-		//backdrop : false 뒷배경 클릭시 modal on처리 + 뒷배경 nonstatic 처리
-		//backdrop : true 뒷배경 클릭시 modal on처리 + 뒷배경 static 처리
- 		$("#mailAuthModal").modal({backdrop: "static"});
+		// backdrop 옵션 : 뒷배경 처리
+		// backdrop : true 뒷배경 클릭시 modal off처리 + 뒷배경 static 처리
+		// backdrop : false 뒷배경 클릭시 modal on처리 + 뒷배경 nonstatic 처리
+		// backdrop : true 뒷배경 클릭시 modal on처리 + 뒷배경 static 처리
+		$("#mailAuthModal").modal({backdrop : "static"});
 
 	});// click event
 
 	$('#mailAuthNumBtn').click(function() {
-		if(confirm($('#member_authMail').val()+"로 인증번호를 보내시겠습니까?")){
-		
+		if (confirm($('#member_authMail').val() + "로 인증번호를 보내시겠습니까?")) {
+
 			var member_authMail = $('#member_authMail').val();
 			var member_name = $('#member_name').val();
 
@@ -38,13 +37,13 @@ $(function() {
 							alert("메일전송이 완료되었습니다.");
 						} else {
 							alert("메일전송이 실패하였습니다.")
-						}//mailsend fail else
+						}// mailsend fail else
 					}// success
 
 				});// ajax
-			}//ajax else
-		}//confirm if
-		else{
+			}// ajax else
+		}// confirm if
+		else {
 			alert("메일 전송을 취소합니다.")
 		}
 	});// member_mail click event
@@ -64,7 +63,7 @@ $(function() {
 				alert("인증에 성공하였습니다.")
 				$('#authCheck').val("success");
 				$('#member_mail').val($('#member_authMail').val());
-				$('#member_mail').attr('readonly','readonly');
+				$('#member_mail').attr('readonly', 'readonly');
 				$("#mailAuthModal").modal('hide');
 
 				// 인증번호 일치시 컨트롤러에 인증성공여부를 전달하려고 구상하였지만
@@ -93,14 +92,14 @@ $(function() {
 			}// inner esle
 		}// outer else
 	});// authNum click event
-	
-	$('#authCancel').click(function(){
+
+	$('#authCancel').click(function() {
 		ranAuthNum = 0;
 		alert(ranAuthNum);
-		
+
 		$('#member_authMail').val('');
 		$('#authNum').val('');
 		$('#authCheck').val("fail");
 		$("#mailAuthModal").modal('hide');
-	});//authCancel click event
+	});// authCancel click event
 });// ready

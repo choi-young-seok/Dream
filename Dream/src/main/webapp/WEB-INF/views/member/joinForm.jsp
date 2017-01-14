@@ -30,8 +30,6 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="resources/js/common/bootstrap.min.js"></script>
 
-
-
 <!-- custom javascript -->
 <script type="text/javascript" src="resources/js/member/join.js"></script>
 <script type="text/javascript" src="resources/js/mailAuth/mailAuth.js"></script>

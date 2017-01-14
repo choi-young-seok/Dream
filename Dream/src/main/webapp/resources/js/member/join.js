@@ -68,10 +68,6 @@ $(function() {
 		}
 	});//cancelBtn click event
 
-	// - eamil입력창 클릭 이벤트
-	$('#member_mail').click(function() {
-		// email 인증 화면 출력
-	}); //member_mail click event
 
 });// ready
 

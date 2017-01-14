@@ -1,5 +1,7 @@
 package kr.co.dream.member.persistence;
 
+import java.util.Date;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -21,7 +23,27 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public LoginDTO login(LoginDTO loginDTO) {
+	public MemberVO login(LoginDTO loginDTO) {
+		System.out.println("[memberDAOImpl login() input value] : " +loginDTO.toString());
+		MemberVO member = sqlSession.selectOne("member.login", loginDTO);
+		System.out.println("[memberDAOImpl login() output value] : " +member.toStringLogin());
+		//return sqlSession.selectOne("member.login", loginDTO);
+		return member;
+	}
+
+	@Override
+	public String selectPwd(LoginDTO loginDTO) {
+		return sqlSession.selectOne("member.selectPwd", loginDTO);
+	}
+
+	@Override
+	public void keepLogin(String id, String sessionId, Date next) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public MemberVO checkUserWithSessionKey(String value) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -43,4 +65,5 @@ public class MemberDAOImpl implements MemberDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

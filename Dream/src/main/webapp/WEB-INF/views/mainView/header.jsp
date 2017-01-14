@@ -31,6 +31,8 @@
 
 <!-- header.js -->
 <script type="text/javascript" src="resources/js/header/header.js"></script>
+<!-- login.js -->
+<script type="text/javascript" src="resources/js/login/login.js"></script>
 
 </head>
 <body>
@@ -53,7 +55,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="#">카테고리별 프로젝트</a></li>
 	
-				<c:if test="${session.email ne null || session.email ==''}">
+				<c:if test="${session.member_mail ne null || session.member_mail ==''}">
 					<li><a href="#">프로젝트 등록</a></li>
 				</c:if>
 	
@@ -77,33 +79,34 @@
 					</form>  -->
 	
 				<!-- 로그인 버튼 및 로그인 완료시 사용자 드롭다운 메뉴 -->
-				<li class="dropdown">
-					<%-- <c:if test="${session.email != '' || session.email ne null}"> --%>
-					<%-- <c:if test="${session.email }"> --%> <a class="dropdown-toggle"
-					data-toggle="dropdown" href="#">최용석<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">마이페이지</a></li>
-						<li class="divider"></li>
-	
-						<%-- <c:if test="${session.Total_Project_Count > 0}"> --%>
-						<li><a href="#">마이 프로젝트</a></li>
-						<%-- </c:if> --%>
-	
-						<%-- <c:if test="${session.Supporting_Count > 0 }"> --%>
-						<li><a href="#">후원 프로젝트</a></li>
-						<li><a href="#">결제 내역</a></li>
-						<%-- </c:if> --%>
-	
-						<li><a href="#">내 정보 수정</a></li>
-	
-						<li class="divider"></li>
-						<li><a href="#">로그아웃</a></li>
-					</ul> <%-- </c:if> --%>
-				</li>
-				<c:if test="${session.eamil =='' || session.eamil eq null}">
+				<c:if test="${session.member_name != '' || session.member_name ne null}">
+					<li class="dropdown">
+						<%-- <c:if test="${session.mail }"> --%> <a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">${session.member_name }<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">마이페이지</a></li>
+							<li class="divider"></li>
+		
+							<%-- <c:if test="${session.Total_Project_Count > 0}"> --%>
+							<li><a href="#">마이 프로젝트</a></li>
+							<%-- </c:if> --%>
+		
+							<%-- <c:if test="${session.Supporting_Count > 0 }"> --%>
+							<li><a href="#">후원 프로젝트</a></li>
+							<li><a href="#">결제 내역</a></li>
+							<%-- </c:if> --%>
+		
+							<li><a href="#">내 정보 수정</a></li>
+		
+							<li class="divider"></li>
+							<li><a id="logout">로그아웃</a></li>
+						</ul>
+					</li>
+				</c:if>
+				<c:if test="${session.member_mail =='' || session.member_mail eq null}">
 					<li id="loginBtn"><a href="#"><span
 							class="glyphicon glyphicon-log-in"></span>로그인</a></li>
-				</c:if>
+				</c:if> 
 			</ul>
 		
 		</div><!-- /.navbar-collapse -->
@@ -131,16 +134,16 @@
 							<form role="form">
 								<div class="form-group">
 									<label for="usrname"><span class="glyphicon glyphicon-user"></span> 이메일</label>
-										<input type="email" class="form-control" id="member_email" placeholder="이메일을 입력하세요">
+										<input type="email" class="form-control" id="login_mail" placeholder="이메일을 입력하세요">
 								</div>
 								
 								<div class="form-group">
 									<label for="psw"><span class="glyphicon glyphicon-eye-open"></span> 비밀번호</label>
-									 <input type="text" class="form-control" id="member_pwd"
+									 <input type="password" class="form-control" id="login_pass"
 										placeholder="비밀번호를 입력하세요">
 								</div>
 						
-								<a href="#" class="btn btn-info btn-block" role="button">로그인</a>
+								<a id="login" class="btn btn-info btn-block" role="button">로그인</a>
 								<hr><div class="text-muted center-block" style="text-align: center;"><h2>or</h2></div>
 								<a href="#" class="btn btn-info btn-block" role="button">facebook</a>
 								<a href="memberJoinForm" class="btn btn-info btn-block" role="button">회원가입</a>

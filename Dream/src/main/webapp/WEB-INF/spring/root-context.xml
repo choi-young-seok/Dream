@@ -57,7 +57,8 @@
 	<bean id="encryptionPwd" class="kr.co.dream.common.encryption.EncryptionPwd"/>
 	
 	<!-- DataBase access class -->
-	<context:component-scan base-package="kr.co.dream.member.join.service" />
+	<context:component-scan base-package="kr.co.dream"/>
+	<!-- <context:component-scan base-package="kr.co.dream.member.join.service" />
 	<context:component-scan base-package="kr.co.dream.member.join.persistence" />
-
+ -->
 </beans>

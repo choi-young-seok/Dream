@@ -20,7 +20,7 @@ public class JoinTest {
 	private MemberDAO dao;
 
 	@Inject
-	MemberService service;
+	private MemberService service;
 
 	MemberVO member = new MemberVO();
 
