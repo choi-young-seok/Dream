@@ -11,3 +11,8 @@
 	padding-top: 10%;
 	/* position: fixed; */
 } 
+
+.myList{
+	position: fixed;
+	width: 10%;
+}

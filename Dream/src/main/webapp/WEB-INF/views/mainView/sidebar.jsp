@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="col-md-3 sidebar">
-	<div style="position: fixed;">
+	<div class="myList">
 		<p class="lead">Shop Name</p>
 		<div class="list-group">
 			<a href="#" class="list-group-item">마이 페이지</a>
