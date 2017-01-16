@@ -16,12 +16,14 @@ public class MemberDAOImpl implements MemberDAO {
 	@Inject
 	private SqlSession sqlSession;
 
+	//회원가입
 	@Override
 	public void memberJoin(MemberVO member) {
 		System.out.println("JoinDaoImpl [memberJoin()] : " + member.toStringJoinMember());
 		sqlSession.insert("member.memberJoin", member);
 	}
 
+	//아이디 중복확인
 	@Override
 	public boolean idDuplicationCheck(String member_authMail) {
 		System.out.println("[memberDAOImpl idDuplicationCheck() input value] : " + member_authMail);
@@ -35,6 +37,7 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 	}
 
+	//로그인
 	@Override
 	public MemberVO login(LoginDTO loginDTO) {
 		System.out.println("[memberDAOImpl login() input value] : " + loginDTO.toString());
@@ -44,39 +47,55 @@ public class MemberDAOImpl implements MemberDAO {
 		return member;
 	}
 
+	//비밀번호 일치여부 확인
 	@Override
 	public String selectPwd(LoginDTO loginDTO) {
 		return sqlSession.selectOne("member.selectPwd", loginDTO);
 	}
 
+	//자동로그인 체크
 	@Override
 	public void keepLogin(String id, String sessionId, Date next) {
 		// TODO Auto-generated method stub
 
 	}
 
+	//세션확인
 	@Override
 	public MemberVO checkUserWithSessionKey(String value) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	//회원정보 조회 
+	@Override
+	public MemberVO memberInfo(String session_mail) {
+		System.out.println("[memberDAOImpl memberInfo() input value] : " + session_mail);
+		 MemberVO member = sqlSession.selectOne("member.memberInfo", session_mail);
+		System.out.println("[memberDAOImpl memberInfo() output value] : " + member.toStringJoinMember());
+		return member;
+	}
+	
+	//회원정보 수정
 	@Override
 	public void memberEdit(MemberVO member) {
 		// TODO Auto-generated method stub
 
 	}
 
+	//아이디 찾기
 	@Override
 	public String findId(MemberVO member) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	//비밀번호 찾기(메일인증+재설정)
 	@Override
 	public String findPwd(MemberVO member) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

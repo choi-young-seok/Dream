@@ -36,12 +36,19 @@
 	
 	<!-- intercepter class -->
 	<beans:bean id="loginIntercepter" class="kr.co.dream.common.intercepter.LoginIntercepter"/>
+	<beans:bean id="testIntercepter" class="kr.co.dream.common.intercepter.InterTestIntercepter"/>
 	
 	<!-- intercepter -->	
 	<interceptors>
 		<interceptor>
-			<mapping path="/dream/login"/>
+			<mapping path="/login"/>
+			<mapping path="/logout"/>
 			<beans:ref bean="loginIntercepter"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/doA"/>
+			<mapping path="/doB"/>
+			<beans:ref bean="testIntercepter"/>
 		</interceptor>
 	</interceptors>
 	

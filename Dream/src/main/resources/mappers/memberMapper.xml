@@ -25,4 +25,11 @@
 		from dream_member
 		where member_mail=#{login_mail}
 	</select>
+	
+	<select id="memberInfo" parameterType="String" resultType="MemberVO">
+		select member_birth, member_regdate
+		from dream_member
+		where member_mail =#{login_mail}
+	</select>
+	<!-- to_date(member_regdate,'yyyy-mm-dd') as member_regdate -->
 </mapper>

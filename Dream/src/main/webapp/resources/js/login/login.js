@@ -3,7 +3,6 @@ $(function() {
 		var login_mail = $('#login_mail').val();
 		var login_pass = $('#login_pass').val();
 
-		alert(login_mail + " / " + login_pass)
 		if (login_mail == '') {
 			alert("이메일을 입력하세요");
 			return;
@@ -13,7 +12,7 @@ $(function() {
 		} else {
 			$.ajax({
 				url : '/dream/login',
-				type : 'post',
+				type : 'POST',
 				headers : {
 					"Content-Type" : "application/json",
 					"X-HTTP-Method-Override" : "POST"
@@ -26,7 +25,9 @@ $(function() {
 				success : function(result) {
 					// ajax를 이용한 login 처리시 결과 화면에 세션값을 찍기위해
 					// 화면 깜박임(reload)를 추가
-					location.reload();
+					// location.reload();
+					// self.location = "/sboard/list";
+					location.href = "/dream"
 					$('#loginModal').modal('hide');
 				}// success
 			});// ajax

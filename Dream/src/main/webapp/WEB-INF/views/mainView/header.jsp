@@ -33,6 +33,8 @@
 <script type="text/javascript" src="resources/js/header/header.js"></script>
 <!-- login.js -->
 <script type="text/javascript" src="resources/js/login/login.js"></script>
+<!-- memberInfo.js -->
+<script type="text/javascript" src="resources/js/member/memberInfo.js"></script>
 
 </head>
 <body>
@@ -83,9 +85,10 @@
 					<li class="dropdown">
 					<c:if test="${session.member_name ne null}">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">${session.member_name }<span class="caret"></span></a>
+					<input id="session_mail" type="hidden" value="${session.member_mail }">
 					</c:if>
 						<ul class="dropdown-menu">
-							<li><a href="#">마이페이지</a></li>
+							<li><a id="memberInfoView">마이페이지</a></li>
 							<li class="divider"></li>
 		
 							<%-- <c:if test="${session.Total_Project_Count > 0}"> --%>
@@ -105,8 +108,10 @@
 					</li>
 				</c:if>
 				<c:if test="${session.member_mail =='' || session.member_mail eq null}">
-					<li id="loginBtn"><a href="#"><span
+ 					<li id="loginBtn"><a href="#"><span
 							class="glyphicon glyphicon-log-in"></span>로그인</a></li>
+<!-- 				<li><button id="loginBtn"><span
+							class="glyphicon glyphicon-log-in"></span>로그인</button></li> -->
 				</c:if> 
 			</ul>
 		

@@ -4,7 +4,7 @@
 		-- ex2) Member_Total_Project_Count       INTEGER, 							(O)
 	
 	-- 2.default에 숫자가 아닌 문자일경우 ''안에 default값 설정
-		-- ex)  Member_Stop_State                VARCHAR2(10)       DEFAULT F, 		(X) : (기본값에 해당하는 자료형이 문자일경우 ''로 지정)
+		-- ex)  Member_Stop_State                VARCHAR2(10)       DEFAULT F, 		(X) : (기본값에 해당하는 값의 자료형이 문자일경우 ''로 지정)
 		-- ex2) Member_Stop_State                VARCHAR2(10)       DEFAULT 'F',	(O)
 	
 	-- 3.칼럼명은 30글자가 넘지 않을것
@@ -34,7 +34,7 @@ CREATE TABLE Dream_Member (
 	Member_Gender                    VARCHAR2(6)   NOT NULL, -- 회원 성별
 	Member_Regdate                   DATE               DEFAULT sysdate, -- 회원 가입 일자
 		    --회원가입시 입력 받는 컬럼 (INSERT)
-	Member_Total_Project_Count       INTEGER       ,     -- 등록 프로젝트 수
+	Member_Total_Project_Count       INTEGER       		DEFAULT 0,     -- 등록 프로젝트 수
 	Member_Ongoing_Project_Count INTEGER            	DEFAULT 0, -- 진행중인 프로젝트 수
 	Member_Supporting_Count          INTEGER            DEFAULT 0, -- 해당 회원이 후원하는 프로젝트 수
 	Member_Total_Supported_Count     INTEGER            DEFAULT 0, -- 해당 회원의 전체 프로젝트 후원 수 합계
@@ -148,4 +148,6 @@ create sequence dream_member_seq
    increment by 1
    nocycle
    nocache;
+   
+   select * from dream_member;
    

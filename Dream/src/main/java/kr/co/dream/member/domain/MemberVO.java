@@ -14,7 +14,7 @@ public class MemberVO {
 
 	private Date member_regdate; // 회원 가입일 (default sysdate)
 	private int member_total_project_count; // 등록 프로젝트 수 (default 0)
-	private int member_progressing_project_count; // 진행중인 프로젝트 수 (default 0)
+	private int member_ongoing_project_count; // 진행중인 프로젝트 수 (default 0)
 	private int member_supporting_count; // 해당 회원이 후원하는 프로젝트 수 (default 0)
 	private int member_total_supported_count; // 해당 회원의 전체 후원 수 (default 0)
 
@@ -89,12 +89,12 @@ public class MemberVO {
 		this.member_total_project_count = member_total_project_count;
 	}
 
-	public int getMember_progressing_project_count() {
-		return member_progressing_project_count;
+	public int getmember_ongoing_project_count() {
+		return member_ongoing_project_count;
 	}
 
-	public void setMember_progressing_project_count(int member_progressing_project_count) {
-		this.member_progressing_project_count = member_progressing_project_count;
+	public void setmember_ongoing_project_count(int member_ongoing_project_count) {
+		this.member_ongoing_project_count = member_ongoing_project_count;
 	}
 
 	public int getMember_supporting_count() {
@@ -131,8 +131,7 @@ public class MemberVO {
 
 	// 로그인 회원 정보
 	public String toStringLogin() {
-		return "MemberVO [member_mail=" + member_mail
-				+ ", member_name=" + member_name + "]";
+		return "MemberVO [member_mail=" + member_mail + ", member_name=" + member_name + "]";
 	}
 
 	// 회원가입 정보
@@ -151,8 +150,8 @@ public class MemberVO {
 	// 회원 통계 정보
 	public String toStringMemberStats() {
 		return "MemberVO [member_no=" + member_no + ", member_mail=" + member_mail + ", member_name=" + member_name
-				+ ", member_total_project_count=" + member_total_project_count + ", member_progressing_project_count="
-				+ member_progressing_project_count + ", member_supporting_count=" + member_supporting_count
+				+ ", member_total_project_count=" + member_total_project_count + ", member_ongoing_project_count="
+				+ member_ongoing_project_count + ", member_supporting_count=" + member_supporting_count
 				+ ", member_total_supported_count=" + member_total_supported_count + "]";
 	}
 
@@ -161,7 +160,7 @@ public class MemberVO {
 		return "MemberVO [member_no=" + member_no + ", member_mail=" + member_mail + ", member_name=" + member_name
 				+ ", member_birth=" + member_birth + ", member_gender=" + member_gender + ", member_regdate="
 				+ member_regdate + ", member_total_project_count=" + member_total_project_count
-				+ ", member_progressing_project_count=" + member_progressing_project_count
+				+ ", member_ongoing_project_count=" + member_ongoing_project_count
 				+ ", member_supporting_count=" + member_supporting_count + ", member_total_supported_count="
 				+ member_total_supported_count + ", member_stop_state=" + member_stop_state + ", member_withdraw_state="
 				+ member_withdraw_state + "]";

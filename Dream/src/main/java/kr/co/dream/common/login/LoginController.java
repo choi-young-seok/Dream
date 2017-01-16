@@ -38,7 +38,7 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
-	public void logout(HttpSession session) {
-		session.invalidate();
+	public void logout() {
+		//인터셉터를 통한 session제거
 	}
 }

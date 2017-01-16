@@ -60,6 +60,12 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public MemberVO memberInfo(String session_mail) {
+		System.out.println("MemberServiceImpl [memberInfo() input value] : " + session_mail);
+		return dao.memberInfo(session_mail);
+	}
+
+	@Override
 	public void memberEdit(MemberVO member) {
 		// TODO Auto-generated method stub
 
@@ -76,6 +82,5 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }
