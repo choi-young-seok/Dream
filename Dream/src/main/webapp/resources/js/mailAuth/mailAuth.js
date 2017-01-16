@@ -5,7 +5,9 @@ $(function() {
 		// backdrop : true 뒷배경 클릭시 modal off처리 + 뒷배경 static 처리
 		// backdrop : false 뒷배경 클릭시 modal on처리 + 뒷배경 nonstatic 처리
 		// backdrop : true 뒷배경 클릭시 modal on처리 + 뒷배경 static 처리
-		$("#mailAuthModal").modal({backdrop : "static"});
+		$("#mailAuthModal").modal({
+			backdrop : "static"
+		});
 
 	});// click event
 
@@ -65,6 +67,11 @@ $(function() {
 				$('#member_mail').val($('#member_authMail').val());
 				$('#member_mail').attr('readonly', 'readonly');
 				$("#mailAuthModal").modal('hide');
+				$('#member_pass').removeAttr('readonly', 'readonly')
+				$('#member_pass_check').removeAttr('readonly', 'readonly')
+				$('#member_name').removeAttr('readonly', 'readonly')
+				$('#member_birth').removeAttr('readonly', 'readonly')
+				$('#joinBtn').show();
 
 				// 인증번호 일치시 컨트롤러에 인증성공여부를 전달하려고 구상하였지만
 				// 인증성공여부가 어떤 로직을 동반해야 하거나, 어떤 처리를 동반해야하거나,

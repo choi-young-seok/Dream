@@ -20,6 +20,8 @@ public class LoginIntercepter extends HandlerInterceptorAdapter {
 		if (session.getAttribute("session") != null) {
 			session.removeAttribute("session");
 			System.out.println("--- LoginIntercepter [preHandle() 기존 로그인 정보 삭제]");
+			
+//			response.sendRedirect(request.getContextPath());
 		}
 		return super.preHandle(request, response, handler);
 	}

@@ -49,7 +49,8 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/dream">DreamUp</a>
+			<!-- <a class="navbar-brand" href="/dream">DreamUp</a> -->
+				<a class="navbar-brand" href="/dream"><img src="resources/img/logo.png" width="100"></a> 
 		</div>
 	
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -88,7 +89,7 @@
 					<input id="session_mail" type="hidden" value="${session.member_mail }">
 					</c:if>
 						<ul class="dropdown-menu">
-							<li><a id="memberInfoView">마이페이지</a></li>
+							<li><a>마이페이지</a></li>
 							<li class="divider"></li>
 		
 							<%-- <c:if test="${session.Total_Project_Count > 0}"> --%>
@@ -100,7 +101,7 @@
 							<li><a href="#">결제 내역</a></li>
 							<%-- </c:if> --%>
 		
-							<li><a href="#">내 정보 수정</a></li>
+							<li><a id="memberInfoView">내 정보 수정</a></li>
 		
 							<li class="divider"></li>
 							<li><a id="logout">로그아웃</a></li>

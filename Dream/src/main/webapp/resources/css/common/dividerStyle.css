@@ -1,0 +1,13 @@
+.success{
+	color : green;
+}
+
+.fail{
+	color: red;
+
+	}
+
+.col-md-3.sidebar{
+	padding-top: 10%;
+	/* position: fixed; */
+} 

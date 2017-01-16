@@ -20,9 +20,10 @@
 <!-- Custom CSS -->
 <link href="resources/css/shop-homepage.css" rel="stylesheet">
 
-<!-- Dream Up memberJoin.css -->
+<!-- Dream Up memberJoin.css and custom Style-->
 <link rel="stylesheet" type="text/css" href="resources/css/member/memberJoin.css">
 <link rel="stylesheet" type="text/css" href="resources/css/member/joinForm.css">
+<link rel="stylesheet" type="text/css" href="resources/css/common/dividerStyle.css">
 
 <!-- jQuery -->
 <script src="resources/js/common/jquery.js"></script>
@@ -33,6 +34,7 @@
 <!-- custom javascript -->
 <script type="text/javascript" src="resources/js/member/join.js"></script>
 <script type="text/javascript" src="resources/js/mailAuth/mailAuth.js"></script>
+<script type="text/javascript" src="resources/js/common/validityCheck.js"></script>
 
 <title>회원가입</title>
 
@@ -89,6 +91,7 @@
 						</div>
 					</div>
 				</div>
+				<div id="pass_check"></div>
 
 				<div class="form-group">
 					<label for="name" class="cols-sm-2 control-label">이름</label>

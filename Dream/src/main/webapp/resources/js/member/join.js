@@ -1,4 +1,12 @@
 $(function() {
+	if($('#authCheck').val() == 'fail'){
+		$('#member_pass').attr('readonly','readonly')
+		$('#member_pass_check').attr('readonly','readonly')
+		$('#member_name').attr('readonly','readonly')
+		$('#member_birth').attr('readonly','readonly')
+		$('#joinBtn').hide();
+	}
+	
 	$("#mailAuthNumBtn").hide();
 	// - 아이디 중복 체크 이벤트
 	$('#member_authMail').keyup(function() {		
@@ -6,14 +14,14 @@ $(function() {
 		$.ajax({
 			url : '/dream/idDuplicationCheck',
 			type : 'post',
-// headers : {
-// "Content-Type" : "application/json",
-// "X-HTTP-Method-Override" : "POST"
-// },// headers
-			dataType : 'text',
-// data : JSON.stringify({
-// member_authMail : member_authMail,
-// }),// data
+			// headers : {
+			// "Content-Type" : "application/json",
+			// "X-HTTP-Method-Override" : "POST"
+			// },// headers
+						dataType : 'text',
+			// data : JSON.stringify({
+			// member_authMail : member_authMail,
+			// }),// data
 			data : {
 				member_authMail : member_authMail,
 			},// data
@@ -32,6 +40,17 @@ $(function() {
 			}// success
 		});// ajax
 	});// member_mail keypress event
+	
+	//실시간 비밀번호 일치성 검사 이벤트
+	$('#member_pass').keyup(function(){
+		//pass_Check함수 위치 : resouces/js/common/validityCheck.js
+		pass_Check();
+	});// member_pass keyup event
+
+	$('#member_pass_check').keyup(function(){
+		//pass_Check함수 위치 : resouces/js/common/validityCheck.js
+		pass_Check();
+	});// member_pass_check keyup event
 
 	// - 회원가입 버튼 클릭 이벤트
 	$('#joinBtn').click(function() {
@@ -56,7 +75,6 @@ $(function() {
 		// $('#member_gender').checkOn(function(){
 		// var member_gender = $('#member_gender').val();
 		// });
-		alert(member_gender);
 		// var member_gender = $('#member_gender').val();
 
 		// - 유효성 검사 호출부

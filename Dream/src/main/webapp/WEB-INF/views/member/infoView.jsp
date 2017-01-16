@@ -7,6 +7,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<!-- Custom CSS -->
+<link rel="stylesheet" type="text/css" href="resources/css/common/dividerStyle.css">
+
+<!-- jquey -->
+<script type="text/javascript" src="resources/js/common/jquery.js"></script>
+
+<!-- custom javascript -->
+<script type="text/javascript" src="resources/js/member/memberInfoEdit.js"></script>
+<script type="text/javascript" src="resources/js/common/validityCheck.js"></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -14,6 +24,12 @@
 	<%@include file="../mainView/header.jsp" %>
 </header>
 <body>
+    <div class="container">
+        <div class="row">
+        <aside>
+			<%@include file="../mainView/sidebar.jsp" %>
+		</aside>
+     <div class="col-md-9">        
 	<div class="container" style="padding-top: 60px;">
 		<h1 class="page-header">회원 정보</h1>
 		<div class="row">
@@ -32,7 +48,7 @@
 					<a class="panel-close close" data-dismiss="alert">X</a> <i
 						class="fa fa-coffee"></i>회원수정 정보 <strong>유효성 </strong>알림 
 				</div>
-				<h3>Personal info</h3>
+				<h3>회원 정보</h3>
 				<form class="form-horizontal" role="form">
 					<div class="form-group">
 						<label class="col-lg-3 control-label">이름 :</label>
@@ -90,19 +106,20 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label">비밀번호 :</label>
 						<div class="col-md-8">
-							<input class="form-control" value="" type="password">
+							<input class="form-control" value="" type="password" id="member_pass">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 control-label">비밀번호 확인 :</label>
 						<div class="col-md-8">
-							<input class="form-control" value="" type="password">
+							<input class="form-control" value="" type="password" id="member_pass_check">
 						</div>
 					</div>
+					<span id="pass_check" ></span>
 					<div class="form-group">
 						<label class="col-md-3 control-label"></label>
 						<div class="col-md-8">
-							<input class="btn btn-primary" value="변경사항 저장" type="button">
+							<input id="memberInfoEdit" class="btn btn-primary" value="변경사항 저장" type="button">
 							<span></span> 
 							<input class="btn btn-default" value="취소" type="reset">
 						</div>
@@ -110,6 +127,9 @@
 				</form>
 			</div>
 		</div>
+	</div>
+	</div>
+	</div>
 	</div>
 </body>
 </html>
