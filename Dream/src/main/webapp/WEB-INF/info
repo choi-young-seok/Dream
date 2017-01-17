@@ -1,0 +1,40 @@
+Development Environment 
+
+1. Environment O/S
+ - windows 7
+ - windows 8.1
+ - windows 10
+
+2. Environment tools
+ - Eclipse : EE_neon
+   - Project : Spring Legacy Project
+ - WAS : apache tomcat 8.0
+ 
+3. Environment Framework
+ - Spring Framework : 4.3.3.RELEASE
+ - MyBatis : 3.2.8
+
+4. Environment Language
+ - logic : java(JDK : jdk1.8.0_91), xml
+ - View :  jsp(2.1 / servlet : 3.1.0), css, javaScript, jQuery
+
+5. DBMS
+ - oracle 11g express edition
+
+6. Library
+  - ojdbc6.jar
+  - jstl-1.2.jar
+  - cos.jar
+  
+ 7. Sub Development tools
+ - eXERD : ER-diagram
+ - DB develop : oracle sql developer
+ - JUnit : 4.12 / Testing
+ - Maven : 1.2.1 / 
+ 
+ 8. Run Enviroment
+ - Chrome
+ - IE9 ~
+ 
+ 9.Collaboration Tool
+  - GitHub

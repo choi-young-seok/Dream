@@ -1,3 +1,36 @@
+-- 후원 임시테이블
+
+-- 새 테이블4
+ALTER TABLE Dream_Support
+	DROP FOREIGN KEY FK_Dream_Member_TO_Dream_Support; -- 회원 -> 새 테이블4
+
+-- 새 테이블4
+ALTER TABLE Dream_Support
+	DROP FOREIGN KEY FK_Dream_Project_TO_Dream_Support; -- user -> 새 테이블4
+
+-- 새 테이블4
+DROP TABLE Dream_Support;
+
+-- 새 테이블4
+CREATE TABLE Dream_Support (
+	Support_No    INTEGER      primary key, -- 후원 번호
+	Member_Mail   VARCHAR2(40) NOT NULL REFERENCES Dream_Member(Member_Mail), -- 회원 이메일
+	Project_No    INTEGER      NOT NULL REFERENCES Dream_Project(Project_No), -- 프로젝트 번호
+	Support_Money INTEGER      DEFAULT 0, -- 후원 금액
+	Support_Date  DATE         DEFAULT sysdate -- 후원 일자
+);
+	-- Member_Name   VARCHAR2(18) NOT NULL REFERENCES Dream_Member(Member_Name), -- 후원자 성명
+	
+	
+drop sequence support_seq;
+create sequence support_seq
+	start with 1
+	increment by 1
+	nocycle
+	nocache; 
+--여기까지
+
+
 drop table support;
 create table support(
 	Su_No			integer			primary key, --후원번호

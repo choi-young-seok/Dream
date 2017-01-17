@@ -31,5 +31,5 @@ public interface MemberDAO {
 
 	public String findId(MemberVO member);
 
-	public String findPwd(MemberVO member);
+	public int findPass(MemberVO member);
 }

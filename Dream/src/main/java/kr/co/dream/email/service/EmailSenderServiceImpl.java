@@ -36,11 +36,10 @@ public class EmailSenderServiceImpl implements EmailSenderService {
 			this.mailSender.send(message);
 			return emailForm.getAuthNum();
 		} catch (MailException e) {
-			// TODO Auto-generated catch block
+			System.out.println("EamilSenderServiceImpl [emailSender() 메일발송 실패] : 올바르지 않은 주소값");
 			e.printStackTrace();
+			return 0;
 		}
-		return 0;
-
 	}
 
 }

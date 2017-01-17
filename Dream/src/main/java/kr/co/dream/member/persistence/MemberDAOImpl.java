@@ -50,7 +50,10 @@ public class MemberDAOImpl implements MemberDAO {
 	//비밀번호 일치여부 확인
 	@Override
 	public String selectPwd(LoginDTO loginDTO) {
-		return sqlSession.selectOne("member.selectPwd", loginDTO);
+		System.out.println("[memberDAOImpl selectPwd() input value] : " + loginDTO.toString());
+		String dbPwd = sqlSession.selectOne("member.selectPwd", loginDTO);
+		System.out.println("[memberDAOImpl selectPwd() output value] : " + dbPwd);
+		return dbPwd;
 	}
 
 	//자동로그인 체크
@@ -92,9 +95,9 @@ public class MemberDAOImpl implements MemberDAO {
 
 	//비밀번호 찾기(메일인증+재설정)
 	@Override
-	public String findPwd(MemberVO member) {
-		// TODO Auto-generated method stub
-		return null;
+	public int findPass(MemberVO member) {
+		System.out.println("[memberDAOImpl memberInfo() input value] : " + member.toStringLogin());
+		return sqlSession.update("member.findPass", member);
 	}
 
 

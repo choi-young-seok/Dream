@@ -131,7 +131,8 @@ public class MemberVO {
 
 	// 로그인 회원 정보
 	public String toStringLogin() {
-		return "MemberVO [member_mail=" + member_mail + ", member_name=" + member_name + "]";
+		return "MemberVO [member_mail=" + member_mail + ", member_pass=" + member_pass + ", member_name=" + member_name
+				+ "]";
 	}
 
 	// 회원가입 정보
@@ -155,15 +156,6 @@ public class MemberVO {
 				+ ", member_total_supported_count=" + member_total_supported_count + "]";
 	}
 
-	// 회원 전체 정보
-	public String toString() {
-		return "MemberVO [member_no=" + member_no + ", member_mail=" + member_mail + ", member_name=" + member_name
-				+ ", member_birth=" + member_birth + ", member_gender=" + member_gender + ", member_regdate="
-				+ member_regdate + ", member_total_project_count=" + member_total_project_count
-				+ ", member_ongoing_project_count=" + member_ongoing_project_count
-				+ ", member_supporting_count=" + member_supporting_count + ", member_total_supported_count="
-				+ member_total_supported_count + ", member_stop_state=" + member_stop_state + ", member_withdraw_state="
-				+ member_withdraw_state + "]";
-	}
+
 
 }

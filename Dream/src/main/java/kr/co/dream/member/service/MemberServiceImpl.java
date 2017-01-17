@@ -78,9 +78,10 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String findPwd(MemberVO member) {
-		// TODO Auto-generated method stub
-		return null;
+	public int findPass(MemberVO member) {
+		System.out.println("MemberServiceImpl [findPass() input value] : " + member.toStringLogin());
+		member.setMember_pass(encryptionPwd.bCryptPwd(encryptionPwd.shaPwd(member.getMember_pass())));
+		return dao.findPass(member);
 	}
 
 }

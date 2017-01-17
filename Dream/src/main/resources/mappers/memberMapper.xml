@@ -31,5 +31,9 @@
 		from dream_member
 		where member_mail =#{login_mail}
 	</select>
-	<!-- to_date(member_regdate,'yyyy-mm-dd') as member_regdate -->
+	
+	<update id="findPass" parameterType="MemberVO">
+		update dream_member set member_pass = #{member_pass} where member_mail = #{member_mail}
+	</update>
+	
 </mapper>

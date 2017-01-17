@@ -1,3 +1,66 @@
+-- 후원을 위한 프로젝트 임시테이블 
+
+-- user
+DROP TABLE Dream_Project;
+
+-- user
+CREATE TABLE Dream_Project (
+	Project_No             INTEGER       primary key, -- 프로젝트 번호
+	Project_Thumbnail      VARCHAR2(300) NOT NULL, -- 프로젝트 썸네일
+	Project_Title          VARCHAR2(50)  NOT NULL, -- 프로젝트 타이틀
+	Project_Content        LONG          NOT NULL, -- 프로젝트 내용
+	Project_Video          VARCHAR2(300) NOT NULL, -- 프로젝트 영상
+	Project_Catagory       VARCHAR2(30)  NOT NULL, -- 프로젝트 카테고리
+	Project_GoalAmount     INTEGER       NOT NULL, -- 프로젝트 목표금액
+	Project_EndDate        DATE          NOT NULL, -- 프로젝트 종료일자
+	Project_StartDate      DATE          DEFAULT sysdate, -- 프로젝트 시작일자
+	Now_Amount             INTEGER       DEFAULT 0, -- 현재 후원총액
+	Supporting_Count       INTEGER       DEFAULT 0, -- 현재 후원수
+	Project_Register_State VARCHAR2(10)  DEFAULT 'F', -- 프로젝트 등록여부
+	Project_Success_State  VARCHAR2(10)  DEFAULT 'F' -- 프로젝트 성공여부
+);
+
+select * from dream_project
+-- users
+ALTER TABLE Dream_Project
+	ADD CONSTRAINT Project_Register_State -- 프로젝트 등록여부
+		CHECK (Project_Register_State in ('T' ,'F'));
+
+-- user
+ALTER TABLE Dream_Project
+	ADD CONSTRAINT Project_Success_State -- 프로젝트 성공여부
+		CHECK (Project_Success_State in ('T' ,'F'));
+	
+drop sequence dream_project_seq;
+create sequence dream_project_seq
+	start with 1
+	increment by 1
+	nocycle
+	nocache;
+
+		--요기까지 복붙
+-- 더미데이터
+	insert into Dream_Project (Project_No,Project_Thumbnail,Project_Title,Project_Content,Project_Video,
+	Project_Catagory,Project_GoalAmount,Project_StartDate,Project_EndDate) 
+	values(dream_project_seq.nextval,'resources/img/ThumnailSample.jpg','하우스 칵테일 저널',
+	'데이터 스트림 마이닝 기술은 실시간으로 발생하는 데이터를 분석하여 유용한 정보를 얻는 기술이다. 데이터 스트림 마이닝 기술 중에서 빈발항목 마이닝은 전송되는 데이터들 중에서 어떤 항목이 빈발한지 찾는 기술이며, 찾은 빈발 항목들은 다양한 분야에서 패턴분석이나 마케팅의 목적으로 사용된다. 기존에 제안된 데이터 스트림 빈발항목 마이닝은 악의적인 공격자가 전송되는 데이터를 스니핑할 경우 데이터 제공자의 실시간 정보가 노출되는 문제점을 가지고 있다. 이러한 문제는 전송되는 데이터에서 원본 데이터를 구별 못하게 하는 더미 데이터 삽입 기법을 통해 해결가능하다. 본 논문에서는 더미 데이터 삽입 기법을 이용한 프라이버시 보존 데이터 스트림 빈발항목 마이닝 기법을 제안한다. 또한, 제안하는 기법은 암호화 기법이나 다른 수학적 연산이 요구되지 않아 연산량 측면에서 효과적이다.',
+	'영상주소','컴퓨터 공학',1000000,sysdate,sysdate+50);
+	
+	insert into Dream_Project (Project_No,Project_Thumbnail,Project_Title,Project_Content,Project_Video,
+	Project_Catagory,Project_GoalAmount,Project_StartDate,Project_EndDate) 
+	values(dream_project_seq.nextval,'resources/img/ThumnailSample2.jpg','디스코팡팡 레코드팡팡',
+	'데이터 스트림 마이닝 기술은 실시간으로 발생하는 데이터를 분석하여 유용한 정보를 얻는 기술이다. 데이터 스트림 마이닝 기술 중에서 빈발항목 마이닝은 전송되는 데이터들 중에서 어떤 항목이 빈발한지 찾는 기술이며, 찾은 빈발 항목들은 다양한 분야에서 패턴분석이나 마케팅의 목적으로 사용된다. 기존에 제안된 데이터 스트림 빈발항목 마이닝은 악의적인 공격자가 전송되는 데이터를 스니핑할 경우 데이터 제공자의 실시간 정보가 노출되는 문제점을 가지고 있다. 이러한 문제는 전송되는 데이터에서 원본 데이터를 구별 못하게 하는 더미 데이터 삽입 기법을 통해 해결가능하다. 본 논문에서는 더미 데이터 삽입 기법을 이용한 프라이버시 보존 데이터 스트림 빈발항목 마이닝 기법을 제안한다. 또한, 제안하는 기법은 암호화 기법이나 다른 수학적 연산이 요구되지 않아 연산량 측면에서 효과적이다.',
+	'영상주소','음악',2000000,sysdate,sysdate+40);
+	
+	insert into Dream_Project (Project_No,Project_Thumbnail,Project_Title,Project_Content,Project_Video,
+	Project_Catagory,Project_GoalAmount,Project_StartDate,Project_EndDate) 
+	values(dream_project_seq.nextval,'resources/img/ThumnailSample3.jpg','A LITTLE LESS DESPERATION',
+	'데이터 스트림 마이닝 기술은 실시간으로 발생하는 데이터를 분석하여 유용한 정보를 얻는 기술이다. 데이터 스트림 마이닝 기술 중에서 빈발항목 마이닝은 전송되는 데이터들 중에서 어떤 항목이 빈발한지 찾는 기술이며, 찾은 빈발 항목들은 다양한 분야에서 패턴분석이나 마케팅의 목적으로 사용된다. 기존에 제안된 데이터 스트림 빈발항목 마이닝은 악의적인 공격자가 전송되는 데이터를 스니핑할 경우 데이터 제공자의 실시간 정보가 노출되는 문제점을 가지고 있다. 이러한 문제는 전송되는 데이터에서 원본 데이터를 구별 못하게 하는 더미 데이터 삽입 기법을 통해 해결가능하다. 본 논문에서는 더미 데이터 삽입 기법을 이용한 프라이버시 보존 데이터 스트림 빈발항목 마이닝 기법을 제안한다. 또한, 제안하는 기법은 암호화 기법이나 다른 수학적 연산이 요구되지 않아 연산량 측면에서 효과적이다.',
+	'영상주소','게임',3000000,sysdate,sysdate+30);
+
+--더미데이터
+
+
 drop table project;
 create table project(
 	Pro_No			integer		primary key,		

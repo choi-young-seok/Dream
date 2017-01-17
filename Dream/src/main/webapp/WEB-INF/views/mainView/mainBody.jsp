@@ -12,6 +12,12 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
+<!-- jquery -->
+<script type="text/javascript" src="resources/js/common/jquery.js"></script>
+
+<!-- custom javascript -->
+<script type="text/javascript" src="resources/js/mainBody/mainList.js"></script>
+
 <title>Dream Up</title>
 
 </head>
@@ -59,10 +65,17 @@
 					</div>
 
 				</div>
-				<!-- Main Projcet List -->
+				Main Projcet List
 				<div class="row">
+				<div id="mainResultView"></div>
+				
+				
+				<!-- grid Test -->
 
-					<div class="col-sm-4 col-lg-4 col-md-4">
+
+				
+				<!--  end grid Test -->
+					<!-- <div class="col-sm-4 col-lg-4 col-md-4">
 						<div class="thumbnail">
 							<img src="http://placehold.it/320x150" alt="">
 							<div class="progress">
@@ -492,7 +505,7 @@
 									</p>
 								</div>
 							</div>
-						</div>
+						</div> -->
 				</div>
 
 			</div>

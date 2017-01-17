@@ -23,12 +23,19 @@ $(function() {
 					login_pass : login_pass
 				}),// data
 				success : function(result) {
-					// ajax를 이용한 login 처리시 결과 화면에 세션값을 찍기위해
-					// 화면 깜박임(reload)를 추가
-					// location.reload();
-					// self.location = "/sboard/list";
-					location.href = "/dream"
-					$('#loginModal').modal('hide');
+					if(result == 'success'){
+						// ajax를 이용한 login 처리시 결과 화면에 세션값을 찍기위해
+						// 화면 깜박임(reload)를 추가
+						location.reload();
+						// self.location = "/sboard/list";
+						//location.href = "/dream"
+						$('#loginModal').modal('hide');
+					}else{
+						alert("로그인에 실패하였습니다. \n 로그인 정보를 확인하세요")
+						$('#login_mail').val('');
+						$('#login_pass').val('');
+						return;
+					}
 				}// success
 			});// ajax
 		}// else

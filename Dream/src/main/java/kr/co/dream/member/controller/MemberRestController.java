@@ -22,15 +22,17 @@ public class MemberRestController {
 
 	@RequestMapping(value = "/memberJoin", method = RequestMethod.POST)
 	public ResponseEntity<String> memberJoin(@RequestBody MemberVO member) {
-		System.out.println("JoinRestController [memberJoin() 회원가입 ] : " + member.toStringJoinMember());
+		System.out.println("MemberRestController [memberJoin() 회원가입 ] : " + member.toStringJoinMember());
 
 		ResponseEntity<String> entity = null;
 
 		try {
 			service.memberJoin(member);
+			System.err.println("MemberRestController [mebmerJoin()] : 회원가입 완료");
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.err.println("MemberRestController [memberJoin()] : 회원가입 실패");
 			entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
 		}
 		return entity;
@@ -38,22 +40,57 @@ public class MemberRestController {
 
 	@RequestMapping(value = "/idDuplicationCheck", method = RequestMethod.POST)
 	public ResponseEntity<String> idDuplicationCheck(String member_authMail) {
-		System.out.println("Controller idDuplicationCheck() input value : " + member_authMail);
+		System.out.println("MemberRestController [idDuplicationCheck() input value] : " + member_authMail);
 		ResponseEntity<String> entity = null;
 		
 		if (member_authMail.equals("")) {
 			entity = new ResponseEntity<String>("noResult", HttpStatus.OK);
 			return entity;
 		} else if (service.idDuplicationCheck(member_authMail)) {
-			System.out.println("Controller [idDuplicationCheck()] : 사용 가능");
+			System.err.println("MemberRestController [idDuplicationCheck()] : 사용 가능");
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 			return entity;
 		} else {
-			System.out.println("Controller [idDuplicationCheck()] : 사용 불가능");
+			System.err.println("MemberRestController [idDuplicationCheck()] : 사용 불가능");
 			entity = new ResponseEntity<String>("fail", HttpStatus.OK);
 			return entity;
 		}
 	}
 	
+	@RequestMapping("/checkMemberMail")
+	public ResponseEntity<String> checkMemberMail(String member_mail){
+		ResponseEntity<String> entity = null;
+		System.out.println("Controller checkMemberMail() input value : " + member_mail);
+		if (member_mail.equals("")) {
+			entity = new ResponseEntity<String>("noResult", HttpStatus.OK);
+			return entity;
+		} else if (service.idDuplicationCheck(member_mail)) {
+			System.err.println("MemberRestController [checkMemberMail()] : 아이디 불일치");
+			entity = new ResponseEntity<String>("fail", HttpStatus.OK);
+			return entity;
+		} else {
+			System.err.println("MemberRestController [checkMemberMail()] : 아이디 일치");
+			entity = new ResponseEntity<String>("success", HttpStatus.OK);
+			return entity;
+		}
+		
+	}
+	
+	@RequestMapping("/findPass")
+	public ResponseEntity<String> findPass(@RequestBody MemberVO member){
+		System.out.println("MemberRestController findPass() input value : " + member.toStringLogin());
+		ResponseEntity<String> entity = null;
+		
+		if(service.findPass(member) > 0){
+			System.err.println("MemberRestController [findPass()] : 비밀번호 변경 완료");
+			entity = new ResponseEntity<String>("success", HttpStatus.OK);
+			return entity;
+		}else{
+			System.err.println("MemberRestController [checkMemberMail()] : 비밀번호 변경 실패");
+			entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);			
+		}
+		
+		return entity;
+	}
 	
 }

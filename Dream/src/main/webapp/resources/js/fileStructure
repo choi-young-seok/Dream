@@ -1,0 +1,40 @@
+common : bttostrap & jquery libary
+  - bootstrap.js
+  - bootstrap.min.js
+  - jquery.js
+  - jquery-3.0.0.js
+   
+header : 헤더파일 항목 이벤트
+  - header.js
+    - 로그인 모달창 출력 이벤트
+    
+login
+ - login.js
+   - 로그인 이벤트
+   - 로그아웃 이벤트
+ 
+mailAuth
+ - mailAuth.js
+   - 인증번호 메일전송 이벤트
+   - 인증번호 일치성 검사 이벤트
+   - 취소 버튼 클릭시 입력값 삭제 이벤트
+ 
+mainBody
+ - mainList.js
+   - 카테고리별 프로젝트 목록 출력 이벤트
+ 
+member
+ - findLoginInfo.js
+   - 아이디 / 비밀번호 찾기(메일인증 + 재설정) 이벤트 
+ - join.js
+   - 회원가입 이벤트
+ - memberInfo.js 
+   - 회원정보 조회 이벤트
+ - memberInfoEdit.js
+   - 회원정보 수정 이벤트
+
+validityCheck
+ - regularExpression.js
+   - 회원가입 정규표현식 함수 부
+ - validityCheck.js
+   - 공통항목 데이터 유효성 검사 함수 부

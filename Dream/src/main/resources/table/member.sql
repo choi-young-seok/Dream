@@ -26,20 +26,20 @@ DROP TABLE Dream_Member;
 
 -- 회원
 CREATE TABLE Dream_Member (
-	Member_No                        INTEGER       NOT NULL, -- 회원 번호
-	Member_Mail                     VARCHAR2(40)  NOT NULL, -- 회원 이메일
-	Member_Pass                       VARCHAR2(100) NOT NULL, -- 회원 비밀번호
-	Member_Name                      VARCHAR2(18)  NOT NULL, -- 회원 이름
-	Member_Birth                     VARCHAR2(16)  NOT NULL, -- 회원 생년월일
-	Member_Gender                    VARCHAR2(6)   NOT NULL, -- 회원 성별
-	Member_Regdate                   DATE               DEFAULT sysdate, -- 회원 가입 일자
+	Member_No                       INTEGER       		NOT NULL, -- 회원 번호
+	Member_Mail                     VARCHAR2(40)  		primary key, -- 회원 이메일
+	Member_Pass                     VARCHAR2(100) 		NOT NULL, -- 회원 비밀번호
+	Member_Name                     VARCHAR2(18)  		NOT NULL, -- 회원 이름
+	Member_Birth                    VARCHAR2(16)  		NOT NULL, -- 회원 생년월일
+	Member_Gender                   VARCHAR2(6)   		NOT NULL, -- 회원 성별
+	Member_Regdate                  DATE            	DEFAULT sysdate, -- 회원 가입 일자
 		    --회원가입시 입력 받는 컬럼 (INSERT)
-	Member_Total_Project_Count       INTEGER       		DEFAULT 0,     -- 등록 프로젝트 수
-	Member_Ongoing_Project_Count INTEGER            	DEFAULT 0, -- 진행중인 프로젝트 수
-	Member_Supporting_Count          INTEGER            DEFAULT 0, -- 해당 회원이 후원하는 프로젝트 수
-	Member_Total_Supported_Count     INTEGER            DEFAULT 0, -- 해당 회원의 전체 프로젝트 후원 수 합계
-	Member_Stop_State                VARCHAR2(10)       DEFAULT 'F', -- 회원 정지 여부
-	Member_Withdraw_State            VARCHAR2(10)       DEFAULT 'F' -- 회원 탈퇴 여부
+	Member_Total_Project_Count      INTEGER       		DEFAULT 0,     -- 등록 프로젝트 수
+	Member_Ongoing_Project_Count 	INTEGER            	DEFAULT 0, -- 진행중인 프로젝트 수
+	Member_Supporting_Count         INTEGER            	DEFAULT 0, -- 해당 회원이 후원하는 프로젝트 수
+	Member_Total_Supported_Count    INTEGER            	DEFAULT 0, -- 해당 회원의 전체 프로젝트 후원 수 합계
+	Member_Stop_State               VARCHAR2(10)       	DEFAULT 'F', -- 회원 정지 여부
+	Member_Withdraw_State           VARCHAR2(10)       	DEFAULT 'F' -- 회원 탈퇴 여부
 		-- 회원가입시 default 처리 되는 컬럼
 );
 

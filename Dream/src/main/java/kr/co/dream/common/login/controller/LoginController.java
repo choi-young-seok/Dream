@@ -1,4 +1,4 @@
-package kr.co.dream.common.login;
+package kr.co.dream.common.login.controller;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -23,22 +23,29 @@ public class LoginController {
 	private MemberService service;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public void login(@RequestBody LoginDTO loginDto, Model model, HttpSession session, HttpServletRequest request) {
+	public ResponseEntity<String> login(@RequestBody LoginDTO loginDto, Model model, HttpSession session,
+			HttpServletRequest request) {
 		System.out.println("LoginController [login()] : " + loginDto.toString());
 		System.out.println("LoginController [login() 사용자 요청 URI] : " + request.getRequestURI());
 
 		MemberVO member = service.login(loginDto);
-		System.out.println("session / member.toString " + member.toStringLogin());
+		ResponseEntity<String> entity = null;
 
-		if (member == null) {
-			return;
+		if (member == null ){
+			System.out.println("비밀번호 불일치로 인한 로그인 실패");
+			entity = new ResponseEntity<String>("fail", HttpStatus.OK);
+			return entity;
+		} else {
+			model.addAttribute(member);
+			System.out.println("session / member.toString " + member.toStringLogin());
+			session.setAttribute("session", member);
+			entity = new ResponseEntity<String>("success", HttpStatus.OK);
+			return entity;
 		}
-		model.addAttribute(member);
-		session.setAttribute("session", member);
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
 	public void logout() {
-		//인터셉터를 통한 session제거
+		// 인터셉터를 통한 session제거
 	}
 }

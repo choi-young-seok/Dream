@@ -1,4 +1,4 @@
-package kr.co.dream.common.login;
+package kr.co.dream.common.login.controller;
 
 import javax.servlet.http.HttpServletRequest;
 

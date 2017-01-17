@@ -7,10 +7,13 @@ $(function() {
 		$('#joinBtn').hide();
 	}
 	
-	$("#mailAuthNumBtn").hide();
+
 	// - 아이디 중복 체크 이벤트
 	$('#member_authMail').keyup(function() {		
 		var member_authMail = $('#member_authMail').val();
+		if(!mailFormCheck(member_authMail)){
+			return;
+		}
 		$.ajax({
 			url : '/dream/idDuplicationCheck',
 			type : 'post',
@@ -54,7 +57,7 @@ $(function() {
 
 	// - 회원가입 버튼 클릭 이벤트
 	$('#joinBtn').click(function() {
-
+		
 		// - 중복검사 여부 확인부
 		// - if(중복검사x){중복검사 요청 호출부}
 		// - else{중복검사 요청 일치 호출부}
@@ -66,6 +69,22 @@ $(function() {
 		var member_name = $('#member_name').val();
 		var member_birth = $('#member_birth').val();
 		var member_gender = $("#member_gender").is(":checked");
+		var passCheck = $("#passCheck").val();
+		
+		if(passCheck =="fail"){
+			alert('비밀번호를 다시 확인하세요')
+			return;
+		}else if(member_name ==''){
+			alert("이름을 입력하세요")
+			return;
+		}else if(member_birth ==''){
+			alert("생년월일을 입력하세요")
+			return;
+		}else if($('#member_gender').val() !='M' && $('#member_gender').val() !='F'){
+			alert('성별을 선택하세요');
+			return;
+		}
+		
 		if (member_gender) {
 			var member_gender = 'M';
 		} else {

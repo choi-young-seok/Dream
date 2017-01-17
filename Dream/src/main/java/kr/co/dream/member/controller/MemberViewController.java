@@ -32,5 +32,10 @@ public class MemberViewController {
 		model.addAttribute("member",service.memberInfo(member_mail));
 		return "member/infoView";
 	}
+	
+	@RequestMapping("/findLoginInfo")
+	public String findLoginInfo(){
+		return "member/findView";
+	}
 
 }

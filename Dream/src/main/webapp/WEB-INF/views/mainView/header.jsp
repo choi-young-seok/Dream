@@ -19,6 +19,7 @@
 
 <!-- Dream Up Custom.css  -->
 <link href="resources/css/custom/index.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="resources/css/member/findView.css">
 
 <!-- Dream Up Login.css -->
 <link href="resources/css/common/login.css" rel="stylesheet"type="text/css" />
@@ -28,6 +29,9 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="resources/js/common/bootstrap.min.js"></script>
+
+<!-- Naver Login API -->
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
 
 <!-- header.js -->
 <script type="text/javascript" src="resources/js/header/header.js"></script>
@@ -151,14 +155,27 @@
 								</div>
 						
 								<a id="login" class="btn btn-info btn-block" role="button">로그인</a>
-								<hr><div class="text-muted center-block" style="text-align: center;"><h2>or</h2></div>
-								<a href="#" class="btn btn-info btn-block" role="button">facebook</a>
-								<a href="memberJoinForm" class="btn btn-info btn-block" role="button">회원가입</a>
-								<a href="companyJoinForm" class="btn btn-info btn-block" role="button">기업 회원가입</a>
-		 
+								<br>
+								<div class="social-login">
+									<ul>
+										<li><a href=""><i class="fa fa-facebook"></i> Facebook</a></li>
+										<li><a href=""><i class="fa fa-google-plus"></i>Google+</a></li>
+										<li><a href=""><i class="fa fa-twitter"></i> Twitter</a></li>
+									</ul>
+								</div>
+
+								<br>
+								<hr>
+								<!-- <div class="text-muted center-block" style="text-align: center;"><h2>or</h2></div> -->
+						
+								<a href="memberJoinForm" class="btn btn-success btn-block" role="button">회원가입</a>
+								<a href="companyJoinForm" class="btn btn-success btn-block" role="button">기업 회원가입</a>
+		 						
+		 				
+							
 								<div class="checkbox">
 									<label class="pull-left"><input type="checkbox" value="" checked>자동 로그인</label>
-									<label class="pull-right"><a href="#">아이디 / 비밀번호 찾기</a></label>
+									<label class="pull-right"><a href="/dream/findLoginInfo">아이디 / 비밀번호 찾기</a></label>
 								</div>
 							</form>
 						</div>

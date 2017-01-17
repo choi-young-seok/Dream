@@ -22,6 +22,6 @@ public interface MemberService {
 	public MemberVO memberInfo(String session_mail);
 	public void memberEdit(MemberVO member); //회원정보 수정 + 비밀번호 변경
 	public String findId(MemberVO member);
-	public String findPwd(MemberVO member);
+	public int findPass(MemberVO member);
 	
 }

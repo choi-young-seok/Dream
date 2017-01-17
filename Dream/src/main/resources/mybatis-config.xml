@@ -3,5 +3,6 @@
 <configuration>
 	<typeAliases>
 		<package name="kr.co.dream.member.domain"/>
+		<package name="kr.co.dream.project.domain"/>
 	</typeAliases>
 </configuration>
