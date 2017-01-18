@@ -1,9 +1,11 @@
 package kr.co.dream.member.persistence;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -88,15 +90,15 @@ public class MemberDAOImpl implements MemberDAO {
 
 	//아이디 찾기
 	@Override
-	public String findId(MemberVO member) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<MemberVO> findMail(MemberVO member) {
+		System.out.println("[memberDAOImpl memberInfo() input value] : " + member.toStringFindInfo());
+		return sqlSession.selectList("member.findMail", member);
 	}
 
 	//비밀번호 찾기(메일인증+재설정)
 	@Override
 	public int findPass(MemberVO member) {
-		System.out.println("[memberDAOImpl memberInfo() input value] : " + member.toStringLogin());
+		System.out.println("[memberDAOImpl memberInfo() input value] : " + member.toStringFindInfo());
 		return sqlSession.update("member.findPass", member);
 	}
 

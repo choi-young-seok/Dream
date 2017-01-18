@@ -134,6 +134,12 @@ public class MemberVO {
 		return "MemberVO [member_mail=" + member_mail + ", member_pass=" + member_pass + ", member_name=" + member_name
 				+ "]";
 	}
+	
+	//아이디 찾기
+	public String toStringFindInfo() {
+		return "MemberVO [member_mail(비밀번호 변경 / 찾은 아이디)=" + member_mail +", member_regdate=" +member_regdate +", member_name(아이디 찾기)=" + member_name + ", member_birth(아이디 찾기)=" + member_birth
+				+ "]";
+	}
 
 	// 회원가입 정보
 	public String toStringJoinMember() {
@@ -156,6 +162,15 @@ public class MemberVO {
 				+ ", member_total_supported_count=" + member_total_supported_count + "]";
 	}
 
-
+	//toString Override Method
+	@Override
+	public String toString() {
+		return "MemberVO [member_no=" + member_no + ", member_mail=" + member_mail + ", member_pass=" + member_pass
+				+ ", member_name=" + member_name + ", member_birth=" + member_birth + ", member_gender=" + member_gender
+				+ ", member_regdate=" + member_regdate + ", member_total_project_count=" + member_total_project_count
+				+ ", member_ongoing_project_count=" + member_ongoing_project_count + ", member_supporting_count="
+				+ member_supporting_count + ", member_total_supported_count=" + member_total_supported_count
+				+ ", member_stop_state=" + member_stop_state + ", member_withdraw_state=" + member_withdraw_state + "]";
+	}
 
 }

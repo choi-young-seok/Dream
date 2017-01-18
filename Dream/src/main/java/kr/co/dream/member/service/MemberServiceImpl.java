@@ -1,6 +1,7 @@
 package kr.co.dream.member.service;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -72,9 +73,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String findId(MemberVO member) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<MemberVO> findMail(MemberVO member) {
+		System.out.println("MemberServiceImpl [findMail() input value] : " + member.toStringLogin());
+		return dao.findMail(member);
 	}
 
 	@Override

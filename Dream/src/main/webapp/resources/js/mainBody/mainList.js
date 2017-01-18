@@ -9,14 +9,14 @@ $(function(){
 //				mainList = "<div>"+this.project_thumbnail+"</div>";
 				mainList += "<div class='col-sm-4 col-lg-4 col-md-4'>"+
 								"<div class='thumbnail'>"+
-									"<a href='#'><img src='"+this.project_thumbnail+"'></a>"+
+									"<a href='/dream/projectInfoView'><img src='"+this.project_thumbnail+"'></a>"+
 									"<div class='progress'>"+
 										"<div class='progress-bar' role='progressbar' aria-valuenow='70' aria-valuemin='0' aria-valuemax='100' style='width: 70%'>70%</div>"+
 									"</div>"+
 									"<div class='caption'>"+
 										"<!-- <h4 class='pull-right'>$24.99</h4> -->"+
 										"<h4>"+
-											"<a href=''>"+this.project_title+"</a>"+
+											"<a href='/dream/projectInfoView'>"+this.project_title+"</a>"+
 										"</h4>"+
 										"<p>See more snippets like this online store item at <a target='_blank' href='http://www.bootsnipp.com'>Bootsnipp - http:// bootsnipp.com</a>"+
 										"</p>"+

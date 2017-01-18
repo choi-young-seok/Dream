@@ -1,6 +1,7 @@
 package kr.co.dream.member.persistence;
 
 import java.util.Date;
+import java.util.List;
 
 import kr.co.dream.member.domain.LoginDTO;
 import kr.co.dream.member.domain.MemberVO;
@@ -29,7 +30,7 @@ public interface MemberDAO {
 	public MemberVO memberInfo(String session_mail);
 	public void memberEdit(MemberVO member); // 회원정보 수정 + 비밀번호 변경
 
-	public String findId(MemberVO member);
+	public List<MemberVO> findMail(MemberVO member);
 
 	public int findPass(MemberVO member);
 }

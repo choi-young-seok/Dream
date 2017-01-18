@@ -1,5 +1,7 @@
 package kr.co.dream.member.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.dream.member.domain.MemberVO;
 import kr.co.dream.member.service.MemberService;
+import kr.co.dream.project.domain.ProjectVO;
 
 @RestController
 public class MemberRestController {
@@ -20,6 +23,7 @@ public class MemberRestController {
 	@Inject
 	private MemberService service;
 
+	//회원가입 처리 
 	@RequestMapping(value = "/memberJoin", method = RequestMethod.POST)
 	public ResponseEntity<String> memberJoin(@RequestBody MemberVO member) {
 		System.out.println("MemberRestController [memberJoin() 회원가입 ] : " + member.toStringJoinMember());
@@ -38,6 +42,7 @@ public class MemberRestController {
 		return entity;
 	}
 
+	//아이디 중복검사 : 회원가입시 중복아이디 검사
 	@RequestMapping(value = "/idDuplicationCheck", method = RequestMethod.POST)
 	public ResponseEntity<String> idDuplicationCheck(String member_authMail) {
 		System.out.println("MemberRestController [idDuplicationCheck() input value] : " + member_authMail);
@@ -57,6 +62,7 @@ public class MemberRestController {
 		}
 	}
 	
+	//아이디 중복검사 : 비밀번호 변경시 아이디 일치 검사
 	@RequestMapping("/checkMemberMail")
 	public ResponseEntity<String> checkMemberMail(String member_mail){
 		ResponseEntity<String> entity = null;
@@ -76,9 +82,10 @@ public class MemberRestController {
 		
 	}
 	
+	//비밀번호 변경
 	@RequestMapping("/findPass")
 	public ResponseEntity<String> findPass(@RequestBody MemberVO member){
-		System.out.println("MemberRestController findPass() input value : " + member.toStringLogin());
+		System.out.println("MemberRestController findPass() input value : " + member.toStringFindInfo());
 		ResponseEntity<String> entity = null;
 		
 		if(service.findPass(member) > 0){
@@ -89,6 +96,30 @@ public class MemberRestController {
 			System.err.println("MemberRestController [checkMemberMail()] : 비밀번호 변경 실패");
 			entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);			
 		}
+		
+		return entity;
+	}
+	
+	//아이디 찾기
+	@RequestMapping("/findMail")
+	public ResponseEntity<List<MemberVO>> findMail(@RequestBody MemberVO member){
+		System.out.println("MemberRestController findMail() input value : " + member.toStringFindInfo());
+		ResponseEntity<List<MemberVO>> entity = null;
+		entity = new ResponseEntity<List<MemberVO>>(service.findMail(member), HttpStatus.OK);
+		
+		for (int i = 0; i < entity.getBody().size(); i++) {
+			MemberVO memberList = entity.getBody().get(i);
+			System.out.println("MemberRestController findMail() output value] : "+memberList);
+		}
+		
+//		if(service.findMail(member) == null){
+//			System.out.println("MemberRestController findMail()] : 일치하는 아이디 없음");
+//			entity = new ResponseEntity<MemberVO>(HttpStatus.OK);
+//		}else{
+//			System.out.println("MemberRestController findMail()] : 아이디 찾기 성공");			
+//			entity = new ResponseEntity<MemberVO>(HttpStatus.OK);
+//		}
+//		
 		
 		return entity;
 	}

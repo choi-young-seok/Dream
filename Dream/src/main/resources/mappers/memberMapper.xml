@@ -36,4 +36,11 @@
 		update dream_member set member_pass = #{member_pass} where member_mail = #{member_mail}
 	</update>
 	
+	<select id="findMail" parameterType="MemberVO" resultType="MemberVO">
+		select member_mail, to_date(member_regdate,'yyyy-mm-dd') as member_regdate
+		from dream_member 
+		where member_name = #{member_name} and member_birth = #{member_birth} 
+		order by member_regdate desc
+	</select>
+	
 </mapper>

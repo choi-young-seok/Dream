@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,13 +14,13 @@
 
 <!-- custom javascript -->
 <script type="text/javascript" src="resources/js/validityCheck/validityCheck.js"></script>
-<script type="text/javascript" src="resources/js/member/findLoginInfo.js"></script>
 <script type="text/javascript" src="resources/js/mailAuth/mailAuth.js"></script>
+<script type="text/javascript" src="resources/js/member/findLoginInfo.js"></script>
 
 <!-- Dream Up custom Style-->
 <link rel="stylesheet" type="text/css" href="resources/css/common/dividerStyle.css">
 
-<title>Insert title here</title>
+<title>아이디 / 비밀번호 찾기</title>
 <style type="text/css">
 
 </style>
@@ -46,8 +48,11 @@
 							<div class="innter-form">
 								<form class="sa-innate-form" method="post">
 									<label>이름</label> <input type="text" id="member_name">
-									<label>생년월일</label> <input type="password" name="password">
-									<a href=#>확인</a>
+									<div id="mail_check"></div>
+									<label>생년월일</label> <input type="text" id="member_birth">
+									<div id="birth_check"></div>
+									<div id="findMailInfo"></div>
+									<a id="findMailBtn">확인</a>
 								</form>
 							</div>
 							<div class="clearfix"></div>
