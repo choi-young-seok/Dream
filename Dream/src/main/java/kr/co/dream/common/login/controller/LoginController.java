@@ -37,7 +37,7 @@ public class LoginController {
 			return entity;
 		} else {
 			model.addAttribute(member);
-			System.out.println("session / member.toString " + member.toStringLogin());
+			System.out.println("LoginController [login() session] : " + member.toStringLogin());
 			session.setAttribute("session", member);
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 			return entity;

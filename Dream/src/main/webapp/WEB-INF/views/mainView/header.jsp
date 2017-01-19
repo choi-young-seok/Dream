@@ -39,7 +39,23 @@
 <script type="text/javascript" src="resources/js/login/login.js"></script>
 <!-- memberInfo.js -->
 <script type="text/javascript" src="resources/js/member/memberInfo.js"></script>
+<script type="text/javascript">
+$(function(){
+	var needLoginSession = '${needLoginSession}';
 
+	if(needLoginSession =='needLoginSession'){
+		var loginConfirm = confirm("로그인이 필요한 서비스 입니다. 로그인하시겠습까?");
+		if(loginConfirm){
+			$('#loginModal').modal({backdrop : "static"});	
+			$('#loginCancelBtn').click(function(){
+				location.href = "/dream"
+			});//loginCancelBtn click event
+		}else{
+			location.href = "/dream"
+		}
+	}
+});//ready
+</script>
 </head>
 <body>
 <!-- Navigation --> 
@@ -68,6 +84,8 @@
 	
 				<%-- <c:if test="${session.Progressing_Project_Count > 0}"> --%>
 				<li><a href="#">마이 프로젝트</a></li>
+				
+				<input type="hidden" id="needLoginSession" value="${needLoginSession}">
 				<%-- </c:if> --%>
 			</ul>
 	
@@ -182,7 +200,7 @@
 						</div>
 						<div class="modal-footer">
 							<!-- <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"> -->
-							<button type="submit" class="btn btn-danger btn-block" data-dismiss="modal">
+							<button id="loginCancelBtn" type="submit" class="btn btn-danger btn-block" data-dismiss="modal">
 								<span class="glyphicon glyphicon-remove"></span> 취소
 							</button>
 						</div>

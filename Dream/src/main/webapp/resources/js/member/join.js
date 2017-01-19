@@ -17,14 +17,6 @@ $(function() {
 		$.ajax({
 			url : '/dream/idDuplicationCheck',
 			type : 'post',
-			// headers : {
-			// "Content-Type" : "application/json",
-			// "X-HTTP-Method-Override" : "POST"
-			// },// headers
-						dataType : 'text',
-			// data : JSON.stringify({
-			// member_authMail : member_authMail,
-			// }),// data
 			data : {
 				member_authMail : member_authMail,
 			},// data
@@ -90,13 +82,6 @@ $(function() {
 		} else {
 			var member_gender = 'F';
 		}
-		//
-		// $('#member_gender').checkOn(function(){
-		// var member_gender = $('#member_gender').val();
-		// });
-		// var member_gender = $('#member_gender').val();
-
-		// - 유효성 검사 호출부
 
 		$.ajax({
 			type : 'post',

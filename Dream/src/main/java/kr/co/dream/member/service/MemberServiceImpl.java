@@ -75,7 +75,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<MemberVO> findMail(MemberVO member) {
 		System.out.println("MemberServiceImpl [findMail() input value] : " + member.toStringLogin());
-		return dao.findMail(member);
+		List<MemberVO> memberList = dao.findMail(member);
+		for (int i = 0; i < memberList.size(); i++) {
+			MemberVO editMemberInfo = memberList.get(i);
+//			member.setMember_mail(member.getMember_mail().);
+		}
+		return memberList;
 	}
 
 	@Override
