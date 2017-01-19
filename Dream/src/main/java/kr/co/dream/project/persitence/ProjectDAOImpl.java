@@ -18,6 +18,4 @@ public class ProjectDAOImpl implements ProjectDAO{
 	public ProjectDTO testSelectOne() {
 		return sqlSession.selectOne("projcet.testSelectOne");
 	}
-
-	
 }

@@ -73,6 +73,7 @@
 	
 			<!--navbar 우측 정렬 -->
 			<ul class="nav navbar-nav navbar-right">
+				<li><a href=" /dream/qna">고객 센터</a></li>
 				<!-- search bar  -->
 				<!-- <form class="navbar-form navbar-left">
 						<div class="input-group">
