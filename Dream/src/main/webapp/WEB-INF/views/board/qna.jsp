@@ -4,39 +4,33 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- aside 고정 -->
+<link rel="stylesheet" type="text/css" href="resources/css/common/dividerStyle.css">
+
 <title>Insert title here</title>
 </head>
+
+<!-- header -->
 <header> 
-<%-- 	<%@include file="../views/mainView/header.jsp" %> --%>
 	<%@include file="../mainView/header.jsp" %>
 </header>
+
 <body>
-<div class="container">
-  <div class="row content">
-    <div class="col-sm-3 sidenav" style="background-color: white">
-      <h4>고객센터</h4>
-      <ul class="nav nav-pills nav-stacked" >
-        <li class="active"><a href="#section1">공지사항</a></li>
-        <li><a href="#section2">자주 묻는 질문 (FAQ)</a></li>
-        <li><a href="#section3">문의 사항 (QNA)</a></li>
-      </ul><br>
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="검색어를 입력하세요">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </span>
-      </div>
-    </div>
-
-	<div class='box col-sm-9'>
+	<div class="container">
+	 	<div class="row content">
+			<!-- aside -->
+			<aside>
+				<%@include file="../mainView/boardSidebar.jsp" %>
+			</aside>
+		
+			<div class='box col-sm-9' style="padding-top: 60px;">
+			
 				<div class="box-header with-border">
-					<h3 class="box-title">Board List</h3>
+					<h3 class="box-title">문의 사항</h3>
 				</div>
-
 				<div class='box-body'>
-
+		
 					<select name="searchType">
 						<option value="n"
 							<c:out value="${cri.searchType == null?'selected':''}"/>>
@@ -60,6 +54,7 @@
 							<c:out value="${cri.searchType eq 'tcw'?'selected':''}"/>>
 							Title OR Content OR Writer</option>
 					</select> 
+					
 					<input type="text" name='keyword' id="keywordInput" value='${cri.keyword }'>
 					<button id='searchBtn'>Search</button>
 					<!-- select 태그의 option태그가 3항 연산자인 이유 -->
@@ -80,75 +75,85 @@
 					<!-- <c:out value="${cri.searchType eq 't'?'selected':''}"/>> 해당 3항연산자에 걸리게 되어  -->
 					<!-- select option 태그의 값이 title인 항목에 selected속성이 적용되므로 'title'의 값을 가짐 -->
 					<button id='newBtn'>New Board</button>
-
-				</div>
-			</div>
-			
-    <div class="col-sm-9 box" style="background-color: white">
-				<div class="box-header with-border">
-					<h3 class="box-title">LIST PAGING</h3>
-				</div>
-				<div class="box-body">
-					<table class="table table-bordered">
-						<tr>
-							<th style="width: 10px">BNO</th>
-							<th>TITLE</th>
-							<th>WRITER</th>
-							<th>REGDATE</th>
-							<th style="width: 40px">VIEWCNT</th>
-						</tr>
-
-						<c:forEach items="${list}" var="boardVO">
-
-							<tr>
-								<td>${boardVO.bno}</td>
-								<td><a
-									href='/sboard/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}'>
-										${boardVO.title} <strong>[ ${boardVO.replycnt} ]</strong></a></td>
-								<td>${boardVO.writer}</td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-										value="${boardVO.regdate}" /></td>
-								<td><span class="badge bg-red">${boardVO.viewcnt }</span></td>
-							</tr>
-
-						</c:forEach>
-
-					</table>
+		
+					
+		    		<div class="col box">
+		<!-- 				<div class="box-header with-border">
+							<h3 class="box-title">LIST PAGING</h3>
+						</div>
+						 -->
+						<div class="box-body" style="margin-top: 30px;">
+							<table class="table">
+							<thead>
+								<tr>
+									<th style="width: 10px">BNO</th>
+									<th>제목</th>
+									<th>작성자</th>
+									<th>작성일</th>
+									<th>조회수</th>
+								</tr>
+							</thead>
+		
+								<c:forEach items="${list}" var="boardVO">
+		
+									<tr>
+										<td>${boardVO.bno}</td>
+										<td><a
+											href='/sboard/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}'>
+												${boardVO.title} <strong>[ ${boardVO.replycnt} ]</strong></a></td>
+										<td>${boardVO.writer}</td>
+										<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
+												value="${boardVO.regdate}" /></td>
+										<td><span class="badge bg-red">${boardVO.viewcnt }</span></td>
+									</tr>
+		
+								</c:forEach>
+		
+							</table>
+						</div>
+						<!-- /.box-body -->
+		
+						<div class="box-footer">
+		
+							<div class="text-center">
+								<ul class="pagination">
+		
+									<c:if test="${pageMaker.prev}">
+										<li><a
+											href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
+									</c:if>
+		
+									<c:forEach begin="${pageMaker.startPage }"
+										end="${pageMaker.endPage }" var="idx">
+										<li
+											<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
+											<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+										</li>
+									</c:forEach>
+		
+									<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+										<li><a
+											href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
+									</c:if>
+		
+								</ul>
+							</div>
+							<!-- /.text-center -->
+						</div>
+						<!-- /.box-footer-->
+					</div>
+					<!-- /.col-sm-9 body -->
 				</div>
 				<!-- /.box-body -->
-
-
-				<div class="box-footer">
-
-					<div class="text-center">
-						<ul class="pagination">
-
-							<c:if test="${pageMaker.prev}">
-								<li><a
-									href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
-							</c:if>
-
-							<c:forEach begin="${pageMaker.startPage }"
-								end="${pageMaker.endPage }" var="idx">
-								<li
-									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
-								</li>
-							</c:forEach>
-
-							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-								<li><a
-									href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
-							</c:if>
-
-						</ul>
-					</div>
-
-				</div>
-				<!-- /.box-footer-->
 			</div>
-  </div>
-</div>
+			<!-- /.	box col-sm-9 -->
+	 	</div>
+	 	<!-- /. row content -->
+	</div>
+	<!-- /.container -->
+	
 </body>
+<!-- footer -->
 <footer><%@include file="../mainView/footer.jsp" %></footer>
+
 </html>

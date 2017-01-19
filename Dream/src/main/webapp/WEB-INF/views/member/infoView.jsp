@@ -24,13 +24,14 @@
 	<%@include file="../mainView/header.jsp" %>
 </header>
 <body>
+<div class="col-md-12">
     <div class="container">
         <div class="row">
         <aside>
 			<%@include file="../mainView/sidebar.jsp" %>
 		</aside>
-     <div class="col-md-9">        
-	<div class="container" style="padding-top: 60px;">
+     <div class="col-md-9" style="padding-top: 60px;">        
+<!-- 	<div class="container" > -->
 		<h1 class="page-header">회원 정보</h1>
 		<div class="row">
 			<!-- left column -->
@@ -44,10 +45,10 @@
 			</div>
 			<!-- edit form column -->
 			<div class="col-md-8 col-sm-6 col-xs-12 personal-info">
-				<div class="alert alert-info alert-dismissable">
+<!-- 				<div class="alert alert-info alert-dismissable">
 					<a class="panel-close close" data-dismiss="alert">X</a> <i
 						class="fa fa-coffee"></i>회원수정 정보 <strong>유효성 </strong>알림 
-				</div>
+				</div> -->
 				<h3>회원 정보</h3>
 				<form class="form-horizontal" role="form">
 					<div class="form-group">

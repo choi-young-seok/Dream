@@ -4,33 +4,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- aside 고정 -->
+<link rel="stylesheet" type="text/css" href="resources/css/common/dividerStyle.css">
 <title>Insert title here</title>
 </head>
+
+<!-- header -->
 <header> 
-<%-- 	<%@include file="../views/mainView/header.jsp" %> --%>
 	<%@include file="../mainView/header.jsp" %>
 </header>
+
 <body>
 <div class="container">
   <div class="row content">
-    <div class="col-sm-3 sidenav">
-      <h4>고객센터</h4>
-      <ul class="nav nav-pills nav-stacked" >
-        <li class="active"><a href="#section1">공지사항</a></li>
-        <li><a href="#section2">자주 묻는 질문 (FAQ)</a></li>
-        <li><a href="#section3">문의 사항 (QNA)</a></li>
-      </ul><br>
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="검색어를 입력하세요">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </span>
-      </div>
-    </div>
-
-    <div class="col-sm-9" style="background-color: white">
+  		<!-- aside -->
+        <aside>
+			<%@include file="../mainView/boardSidebar.jsp" %>
+		</aside>
+		
+    <div class="col-sm-9" style="padding-top: 60px;">
       <h4><small>탭위치</small></h4>
       <hr>
       <h2>I Love Food</h2>
