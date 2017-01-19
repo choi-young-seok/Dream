@@ -4,7 +4,6 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import kr.co.dream.project.domain.ProjectDTO;
 import kr.co.dream.project.domain.ProjectVO;
 import kr.co.dream.project.persitence.ProjectDAO;
 
@@ -15,7 +14,7 @@ public class ProjectServiceImpl implements ProjectService{
 	private ProjectDAO dao;
 
 	@Override
-	public ProjectDTO testSelectOne() {
+	public ProjectVO testSelectOne() {
 		return dao.testSelectOne();
 	}
 	

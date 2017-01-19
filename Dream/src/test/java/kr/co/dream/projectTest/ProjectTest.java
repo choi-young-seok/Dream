@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import kr.co.dream.project.domain.ProjectDTO;
+import kr.co.dream.project.domain.ProjectVO;
 import kr.co.dream.project.persitence.ProjectDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -23,7 +23,7 @@ public class ProjectTest {
 	
 	@Test
 	public void TestSelectOne(){
-		ProjectDTO project = dao.testSelectOne();
+		ProjectVO project = dao.testSelectOne();
 		System.out.println(project.toString());
 	}
 
