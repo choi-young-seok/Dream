@@ -36,7 +36,7 @@
 	
 	<!-- intercepter class -->
 	<beans:bean id="loginIntercepter" class="kr.co.dream.common.intercepter.LoginIntercepter"/>
-	<beans:bean id="testIntercepter" class="kr.co.dream.common.intercepter.InterTestIntercepter"/>
+	<beans:bean id="AuthIntercepter" class="kr.co.dream.common.intercepter.SessionAuthIntercepter"/>
 	
 	<!-- intercepter -->	
 	<interceptors>
@@ -45,10 +45,11 @@
 			<mapping path="/logout"/>
 			<beans:ref bean="loginIntercepter"/>
 		</interceptor>
-		<interceptor>
-			<mapping path="/doA"/>
-			<mapping path="/doB"/>
-			<beans:ref bean="testIntercepter"/>
+		
+		<interceptor>		
+			<mapping path="/qnaRegister"/>
+			<mapping path="/memberInfoView"/>
+			<beans:ref bean="AuthIntercepter"/>
 		</interceptor>
 	</interceptors>
 	
