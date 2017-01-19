@@ -10,4 +10,9 @@ public class QNAViewController {
 	public String qna(){
 		return "board/qna";
 	}
+	
+	@RequestMapping("qnaRegister")
+	public String register(){
+		return "board/qnaRegisterView";
+	}
 }

@@ -8,7 +8,18 @@
 <!-- aside 고정 -->
 <link rel="stylesheet" type="text/css" href="resources/css/common/dividerStyle.css">
 
+<!-- jquey -->
+<script type="text/javascript" src="resources/js/common/jquery.js"></script>
+
 <title>Insert title here</title>
+
+<script type="text/javascript">
+$(function(){
+	$('#registerBtn').click(function(){
+		location.href = "/dream/qnaRegister"
+	});//
+});//
+</script>
 </head>
 
 <!-- header -->
@@ -30,33 +41,9 @@
 					<h3 class="box-title">문의 사항</h3>
 				</div>
 				<div class='box-body'>
-		
-					<select name="searchType">
-						<option value="n"
-							<c:out value="${cri.searchType == null?'selected':''}"/>>
-							---</option>
-						<option value="t"
-							<c:out value="${cri.searchType eq 't'?'selected':''}"/>>
-							Title</option>
-						<option value="c"
-							<c:out value="${cri.searchType eq 'c'?'selected':''}"/>>
-							Content</option>
-						<option value="w"
-							<c:out value="${cri.searchType eq 'w'?'selected':''}"/>>
-							Writer</option>
-						<option value="tc"
-							<c:out value="${cri.searchType eq 'tc'?'selected':''}"/>>
-							Title OR Content</option>
-						<option value="cw"
-							<c:out value="${cri.searchType eq 'cw'?'selected':''}"/>>
-							Content OR Writer</option>
-						<option value="tcw"
-							<c:out value="${cri.searchType eq 'tcw'?'selected':''}"/>>
-							Title OR Content OR Writer</option>
-					</select> 
 					
-					<input type="text" name='keyword' id="keywordInput" value='${cri.keyword }'>
-					<button id='searchBtn'>Search</button>
+					<input type="text" name='keyword' id="keywordInput">
+					<button id='searchBtn'>검색</button>
 					<!-- select 태그의 option태그가 3항 연산자인 이유 -->
 					<!-- 검색 후 상세조회 페이지에 들어갈때 searchType를 물고 들어가며 -->
 					<!-- 상세조회 페이지에서 다시 목록 페이지를 요청할때  -->
@@ -74,19 +61,15 @@
 					<!-- 상세조회 화면에서 다시 목록 페이지를 요청시 물고 들어간 searchType을 검사하게 되며, -->
 					<!-- <c:out value="${cri.searchType eq 't'?'selected':''}"/>> 해당 3항연산자에 걸리게 되어  -->
 					<!-- select option 태그의 값이 title인 항목에 selected속성이 적용되므로 'title'의 값을 가짐 -->
-					<button id='newBtn'>New Board</button>
-		
+					<button id='registerBtn'>글쓰기</button>
 					
 		    		<div class="col box">
-		<!-- 				<div class="box-header with-border">
-							<h3 class="box-title">LIST PAGING</h3>
-						</div>
-						 -->
+
 						<div class="box-body" style="margin-top: 30px;">
 							<table class="table">
 							<thead>
 								<tr>
-									<th style="width: 10px">BNO</th>
+									<th style="width: 50px">번호</th>
 									<th>제목</th>
 									<th>작성자</th>
 									<th>작성일</th>
