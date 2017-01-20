@@ -23,14 +23,14 @@ public class MemberInfoTest {
 	@Inject
 	private MemberService service;
 	
-	//@Test
+	@Test
 	public void MemberInfoTestDao(){
-		System.out.println(dao.memberInfo("rcn115@naver.com").toStringJoinMember());
+		System.out.println(dao.memberInfo(1).toStringLogin());
 	}
 	
 	//@Test
 	public void MemberInfoTestService(){
-		System.out.println(service.memberInfo("rcn115@naver.com"));
+		System.out.println(service.memberInfo(1));
 	}
 	
 }

@@ -10,8 +10,10 @@ public class QnaVO {
 	private String member_name;
 	private String qna_title;
 	private String qna_content;
+	
 	private Date qna_regdate;
 	private String qna_check;
+	
 	public int getQna_no() {
 		return qna_no;
 	}

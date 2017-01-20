@@ -15,7 +15,7 @@
 	</select>
 	
 	<select id="login" resultType="MemberVO">
-		select member_mail, member_name
+		select member_no, member_mail, member_name
 		from dream_member
 		where member_mail=#{login_mail}
 	</select>
@@ -26,10 +26,10 @@
 		where member_mail=#{login_mail}
 	</select>
 	
-	<select id="memberInfo" parameterType="String" resultType="MemberVO">
+	<select id="memberInfo" parameterType="Int" resultType="MemberVO">
 		select member_birth, member_regdate
 		from dream_member
-		where member_mail =#{login_mail}
+		where member_no = #{member_no}
 	</select>
 	
 	<update id="findPass" parameterType="MemberVO">

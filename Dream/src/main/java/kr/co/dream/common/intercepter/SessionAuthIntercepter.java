@@ -14,11 +14,14 @@ public class SessionAuthIntercepter extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		
+		System.err.println("SessionAuthIntercepter \tpreHandle() \t\t[사용자 세션 검사]");
 		if (request.getSession().getAttribute("session") == null) {
+			System.out.println("SessionAuthIntercepter \tpreHandle() \t\t[비로그인 사용자]");
 			request.getSession().setAttribute("needLoginSession","needLoginSession");
+			System.out.println("SessionAuthIntercepter \tpreHandle() \t\t[임시세션 발급] : "+request.getSession().getAttribute("needLoginSession"));
 			return true;
 		}
+		System.err.println("SessionAuthIntercepter \tpreHandle() \t\t[로그인 사용자]");
 		
 		return true;
 	}
@@ -30,10 +33,13 @@ public class SessionAuthIntercepter extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 		String sessionValue =(String) session.getAttribute("needLoginSession");
 
-		System.out.println("SessionAuthIntercepter [ afterCompletion() session value ] : " + session.getAttribute("needLoginSession"));
-		if(sessionValue.equals("needLoginSession")){
+//		if(sessionValue.equals("needLoginSession")){
+		if(sessionValue == "needLoginSession"){
+			System.err.println("SessionAuthIntercepter \tafterCompletion() \t[임시 발급세션  확인] : " + session.getAttribute("needLoginSession"));
 			session.invalidate();
-			System.out.println("SessionAuthIntercepter [ afterCompletion() ] 로그인을 위한 임시 세션 삭제");
+			System.out.println("SessionAuthIntercepter \tafterCompletion() \t[로그인을 위한 임시 세션 삭제]");
+		}else{
+			System.err.println("SessionAuthIntercepter \tafterCompletion() \t[임시 발급세션 없음]");
 		}
 	
 		super.afterCompletion(request, response, handler, ex);

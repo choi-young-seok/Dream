@@ -34,6 +34,13 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- file upload / download : MultipartResolver -->
+		<!-- 52428800/1024/1024 = 50 파일 업로드 최대 크기 지정 = 50mb -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="52428800"></beans:property>
+	</beans:bean>
+	
 	<!-- intercepter class -->
 	<beans:bean id="loginIntercepter" class="kr.co.dream.common.intercepter.LoginIntercepter"/>
 	<beans:bean id="AuthIntercepter" class="kr.co.dream.common.intercepter.SessionAuthIntercepter"/>
@@ -47,7 +54,7 @@
 		</interceptor>
 		
 		<interceptor>		
-			<mapping path="/qnaRegister"/>
+			<mapping path="/qnaRegisterView"/>
 			<mapping path="/memberInfoView"/>
 			<beans:ref bean="AuthIntercepter"/>
 		</interceptor>

@@ -16,6 +16,7 @@
 <!-- custom javascript -->
 <script type="text/javascript" src="resources/js/member/memberInfoEdit.js"></script>
 <script type="text/javascript" src="resources/js/validityCheck/validityCheck.js"></script>
+<script type="text/javascript" src="resources/js/member/ProfileImage.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -37,10 +38,10 @@
 			<!-- left column -->
 			<div class="col-md-4 col-sm-6 col-xs-12">
 				<div class="text-center">
-					<img src="resources/img/profileSample.jpg"
-						class="avatar img-circle img-thumbnail" alt="avatar">
+					<img src="${member.member_profile}"
+						class="avatar img-circle img-thumbnail" alt="프로필 사진을 등록하세요">
 					<h6>프로필 사진을 등록하세요</h6>
-					<input type="file" class="text-center center-block well well-sm">
+					<input id="profileImg" type="file" class="text-center center-block well well-sm">
 				</div>
 			</div>
 			<!-- edit form column -->

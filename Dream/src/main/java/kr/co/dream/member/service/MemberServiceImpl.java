@@ -23,24 +23,24 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void memberJoin(MemberVO member) {
-		System.out.println("JoinServiceImpl [memberJoin()] : " + member.toStringJoinMember());
+		System.err.println("MemberServiceImpl \tmemberJoin() \t\t[input value] : " + member.toStringJoinMember());
 		member.setMember_pass(encryptionPwd.bCryptPwd(encryptionPwd.shaPwd(member.getMember_pass())));
 		dao.memberJoin(member);
 	}
 
 	@Override
 	public boolean idDuplicationCheck(String member_authMail) {
-		System.out.println("JoinServiceImpl [idDuplicationCheck()] input value: " + member_authMail);
+		System.err.println("MemberServiceImpl \tidDuplicationCheck() \t[input value] : " + member_authMail);
 		return dao.idDuplicationCheck(member_authMail);
 	}
 
 	@Override
 	public MemberVO login(LoginDTO loginDTO) {
-		System.out.println("MemberServiceImpl [login() input value] : " + loginDTO.toString());
+		System.err.println("MemberServiceImpl \tlogin() \t\t[input value] : " + loginDTO.toString());
 		if (encryptionPwd.checkPwd(loginDTO.getLogin_pass(), dao.selectPwd(loginDTO))) {
 			MemberVO member = dao.login(loginDTO);
 			// return sqlSession.selectOne("member.login", loginDTO);
-			System.out.println("MemberServiceImpl [login() output value] : " + member.toStringLogin());
+			System.out.println("MemberServiceImpl \tlogin() \t\t[output value] : " + member.toStringLogin());
 			// return dao.login(loginDTO);
 			return member;
 		} else {
@@ -61,9 +61,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberVO memberInfo(String session_mail) {
-		System.out.println("MemberServiceImpl [memberInfo() input value] : " + session_mail);
-		return dao.memberInfo(session_mail);
+	public MemberVO memberInfo(int member_no) {
+		System.err.println("MemberServiceImpl \tmemberInfo() \t\t[input value] : " + member_no);
+		return dao.memberInfo(member_no);
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<MemberVO> findMail(MemberVO member) {
-		System.out.println("MemberServiceImpl [findMail() input value] : " + member.toStringLogin());
+		System.err.println("MemberServiceImpl \tfindMail() \t\t[input value] : " + member.toStringLogin());
 		List<MemberVO> memberList = dao.findMail(member);
 		for (int i = 0; i < memberList.size(); i++) {
 			MemberVO editMemberInfo = memberList.get(i);
@@ -85,7 +85,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int findPass(MemberVO member) {
-		System.out.println("MemberServiceImpl [findPass() input value] : " + member.toStringLogin());
+		System.err.println("MemberServiceImpl \tfindPass() \t\t[input value] : " + member.toStringLogin());
 		member.setMember_pass(encryptionPwd.bCryptPwd(encryptionPwd.shaPwd(member.getMember_pass())));
 		return dao.findPass(member);
 	}

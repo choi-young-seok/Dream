@@ -20,7 +20,7 @@ public interface MemberService {
 	
 	//회원정보 관련부
 	//dto형태로 변경 가능한지 확인 할것 
-	public MemberVO memberInfo(String session_mail);
+	public MemberVO memberInfo(int member_no);
 	public void memberEdit(MemberVO member); //회원정보 수정 + 비밀번호 변경
 	public List<MemberVO> findMail(MemberVO member);
 	public int findPass(MemberVO member);

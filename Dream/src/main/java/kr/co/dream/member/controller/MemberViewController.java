@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.co.dream.member.domain.MemberVO;
 import kr.co.dream.member.service.MemberService;
 
 @Controller
@@ -21,20 +22,21 @@ public class MemberViewController {
 	
 	@RequestMapping("/memberJoinForm")
 	public String memberJoinForm(){
-		System.out.println("MemberViewController [memberJoinForm() 회원가입 화면 요청 ] ");
+		System.err.println("MemberViewController \tmemberJoinForm() \t[회원가입 화면 요청] ");
 		return "member/joinForm";
 	}
 	
 	@RequestMapping("/memberInfoView")
-	public String memberInfoView(String member_mail,Model model){
-		System.out.println("MemberViewController [memberJoinForm() 사용자 정보 화면 요청 ] ");
-		System.out.println("MemberViewController [memberJoinForm() input value ] : " +member_mail);
-		model.addAttribute("member",service.memberInfo(member_mail));
+	public String memberInfoView(int member_no,Model model){
+		System.err.println("MemberViewController \tmemberInfoView() \t[사용자 정보 화면 요청] ");
+		System.out.println("MemberViewController \tmemberInfoView() \t[input value] : " +member_no);
+		model.addAttribute("member",service.memberInfo(member_no));
 		return "member/infoView";
 	}
 	
 	@RequestMapping("/findLoginInfo")
 	public String findLoginInfo(){
+		System.err.println("MemberViewController \tmemberJoinForm() \t[아이디 / 비밀번호 찾기 화면 요청] ");
 		return "member/findView";
 	}
 

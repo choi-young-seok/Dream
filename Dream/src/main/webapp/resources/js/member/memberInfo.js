@@ -1,7 +1,7 @@
 $(function() {
-	var member_mail = $('#session_mail').val();
+	var member_no = $('#session_no').val();
 	$('#memberInfoView').click(function() {
-		location.href="/dream/memberInfoView?member_mail="+member_mail;
+		location.href="/dream/memberInfoView?member_no="+member_no;
 //		$.ajax({
 //			url : '/dream/memberInfoView',
 //			type : 'post',

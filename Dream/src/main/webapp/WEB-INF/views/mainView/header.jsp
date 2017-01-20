@@ -40,7 +40,12 @@
 <!-- memberInfo.js -->
 <script type="text/javascript" src="resources/js/member/memberInfo.js"></script>
 <script type="text/javascript">
-$(function(){
+// 세션검사 함수부
+$(function(){ 
+	// 해당 요청이 세션을 필요로 하는 요청일 경우 
+	//1. interCepter에서 세션 검사 후 세션이 널인 경우(비로그인 요청일 경우)
+	//2. preHandle에서 임시 세션 needLoginSession 발급
+	//3. 이후 발급된 임시 세션 needLoginSession의 값을 가지고 컨트롤러에서 
 	var needLoginSession = '${needLoginSession}';
 
 	if(needLoginSession =='needLoginSession'){
@@ -110,6 +115,7 @@ $(function(){
 					<c:if test="${session.member_name ne null}">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">${session.member_name }<span class="caret"></span></a>
 					<input id="session_mail" type="hidden" value="${session.member_mail }">
+					<input id="session_no" type="hidden" value="${session.member_no }">
 					</c:if>
 						<ul class="dropdown-menu">
 							<li><a>마이페이지</a></li>
@@ -124,7 +130,7 @@ $(function(){
 							<li><a href="#">결제 내역</a></li>
 							<%-- </c:if> --%>
 		
-							<li><a id="memberInfoView">내 정보 수정</a></li>
+							<li><a id="memberInfoView">내 정보 보기</a></li>
 		
 							<li class="divider"></li>
 							<li><a id="logout">로그아웃</a></li>

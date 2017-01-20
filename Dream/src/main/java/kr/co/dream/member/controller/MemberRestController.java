@@ -23,105 +23,105 @@ public class MemberRestController {
 	@Inject
 	private MemberService service;
 
-	//회원가입 처리 
+	// 회원가입 처리
 	@RequestMapping(value = "/memberJoin", method = RequestMethod.POST)
 	public ResponseEntity<String> memberJoin(@RequestBody MemberVO member) {
-		System.out.println("MemberRestController [memberJoin() 회원가입 ] : " + member.toStringJoinMember());
+		System.err
+				.println("MemberRestController \tmemberJoin() \t\t[회원가입 input value] : " + member.toStringJoinMember());
 
 		ResponseEntity<String> entity = null;
 
 		try {
 			service.memberJoin(member);
-			System.err.println("MemberRestController [mebmerJoin()] : 회원가입 완료");
+			System.out.println("MemberRestController \tmebmerJoin() \t\t[회원가입 완료]");
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.err.println("MemberRestController [memberJoin()] : 회원가입 실패");
+			System.out.println("MemberRestController \tmemberJoin() \t\t[회원가입 실패]");
 			entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}
 
-	//아이디 중복검사 : 회원가입시 중복아이디 검사
+	// 아이디 중복검사 : 회원가입시 중복아이디 검사
 	@RequestMapping(value = "/idDuplicationCheck", method = RequestMethod.POST)
 	public ResponseEntity<String> idDuplicationCheck(String member_authMail) {
-		System.out.println("MemberRestController [idDuplicationCheck() input value] : " + member_authMail);
+		System.err.println("MemberRestController \tidDuplicationCheck() \t[input value] : " + member_authMail);
 		ResponseEntity<String> entity = null;
-		
+
 		if (member_authMail.equals("")) {
 			entity = new ResponseEntity<String>("noResult", HttpStatus.OK);
 			return entity;
 		} else if (service.idDuplicationCheck(member_authMail)) {
-			System.err.println("MemberRestController [idDuplicationCheck()] : 사용 가능");
+			System.out.println("MemberRestController \tidDuplicationCheck() \t[사용 가능]");
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 			return entity;
 		} else {
-			System.err.println("MemberRestController [idDuplicationCheck()] : 사용 불가능");
+			System.out.println("MemberRestController \tidDuplicationCheck() \t[사용 불가능]");
 			entity = new ResponseEntity<String>("fail", HttpStatus.OK);
 			return entity;
 		}
 	}
-	
-	//아이디 중복검사 : 비밀번호 변경시 아이디 일치 검사
+
+	// 아이디 중복검사 : 비밀번호 변경시 아이디 일치 검사
 	@RequestMapping("/checkMemberMail")
-	public ResponseEntity<String> checkMemberMail(String member_mail){
+	public ResponseEntity<String> checkMemberMail(String member_mail) {
 		ResponseEntity<String> entity = null;
-		System.out.println("Controller checkMemberMail() input value : " + member_mail);
+		System.err.println("MemberRestController \tcheckMemberMail() \t[input value] : " + member_mail);
 		if (member_mail.equals("")) {
 			entity = new ResponseEntity<String>("noResult", HttpStatus.OK);
 			return entity;
 		} else if (service.idDuplicationCheck(member_mail)) {
-			System.err.println("MemberRestController [checkMemberMail()] : 아이디 불일치");
+			System.out.println("MemberRestController \tcheckMemberMail()] \t[아이디 불일치]");
 			entity = new ResponseEntity<String>("fail", HttpStatus.OK);
 			return entity;
 		} else {
-			System.err.println("MemberRestController [checkMemberMail()] : 아이디 일치");
+			System.out.println("MemberRestController \tcheckMemberMail() \t[아이디 일치]");
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 			return entity;
 		}
-		
+
 	}
-	
-	//비밀번호 변경
+
+	// 비밀번호 변경
 	@RequestMapping("/findPass")
-	public ResponseEntity<String> findPass(@RequestBody MemberVO member){
-		System.out.println("MemberRestController findPass() input value : " + member.toStringFindInfo());
+	public ResponseEntity<String> findPass(@RequestBody MemberVO member) {
+		System.err.println("MemberRestController \tfindPass() \t\t[input value] : " + member.toStringFindInfo());
 		ResponseEntity<String> entity = null;
-		
-		if(service.findPass(member) > 0){
-			System.err.println("MemberRestController [findPass()] : 비밀번호 변경 완료");
+
+		if (service.findPass(member) > 0) {
+			System.err.println("MemberRestController \tfindPass() \t\t[비밀번호 변경 완료]");
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 			return entity;
-		}else{
-			System.err.println("MemberRestController [checkMemberMail()] : 비밀번호 변경 실패");
-			entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);			
+		} else {
+			System.err.println("MemberRestController \tcheckMemberMail() \t\t[비밀번호 변경 실패]");
+			entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
 		}
-		
+
 		return entity;
 	}
-	
-	//아이디 찾기
+
+	// 아이디 찾기
 	@RequestMapping("/findMail")
-	public ResponseEntity<List<MemberVO>> findMail(@RequestBody MemberVO member){
-		System.out.println("MemberRestController findMail() input value : " + member.toStringFindInfo());
+	public ResponseEntity<List<MemberVO>> findMail(@RequestBody MemberVO member) {
+		System.err.println("MemberRestController \tfindMail() \t\t[input value] : " + member.toStringFindInfo());
 		ResponseEntity<List<MemberVO>> entity = null;
 		entity = new ResponseEntity<List<MemberVO>>(service.findMail(member), HttpStatus.OK);
-		
+
 		for (int i = 0; i < entity.getBody().size(); i++) {
 			MemberVO memberList = entity.getBody().get(i);
-			System.out.println("MemberRestController findMail() output value] : "+memberList);
+			System.out.println("MemberRestController \tfindMail() \t\t[output value] : " + memberList);
 		}
-		
-//		if(service.findMail(member) == null){
-//			System.out.println("MemberRestController findMail()] : 일치하는 아이디 없음");
-//			entity = new ResponseEntity<MemberVO>(HttpStatus.OK);
-//		}else{
-//			System.out.println("MemberRestController findMail()] : 아이디 찾기 성공");			
-//			entity = new ResponseEntity<MemberVO>(HttpStatus.OK);
-//		}
-//		
-		
+
 		return entity;
 	}
-	
+
+	@RequestMapping("/memberProfileUpload")
+	public ResponseEntity<String> memberProfileUpload(MemberVO memberProfileInfo) {
+		System.out.println("MemberRestController \tmemberProfileUpload \t[input value] : "+memberProfileInfo.toStringProfile());
+		ResponseEntity<String> entity = null;	
+
+		return entity;
+	}
+
 }

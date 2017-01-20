@@ -16,7 +16,7 @@
 <script type="text/javascript">
 $(function(){
 	$('#registerBtn').click(function(){
-		location.href = "/dream/qnaRegister"
+		location.href = "/dream/qnaRegisterView"
 	});//
 });//
 </script>
