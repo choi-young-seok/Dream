@@ -32,11 +32,11 @@ public class EmailSenderServiceImpl implements EmailSenderService {
 		try {
 			message.setTo(emailForm.getMember_authMail());
 			message.setText(emailForm.mailContent(emailForm.getMember_name()));
-			System.out.println("EamilSenderServiceImpl [emailSender() authNum] : " + emailForm.getAuthNum());
+			System.err.println("EamilSenderServiceImpl \temailSender() \t\t[발급 인증번호] : " + emailForm.getAuthNum());
 			this.mailSender.send(message);
 			return emailForm.getAuthNum();
 		} catch (MailException e) {
-			System.out.println("EamilSenderServiceImpl [emailSender() 메일발송 실패] : 올바르지 않은 주소값");
+			System.err.println("EamilSenderServiceImpl \temailSender() \t\t[메일발송 실패] : 올바르지 않은 주소값");
 			e.printStackTrace();
 			return 0;
 		}

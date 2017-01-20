@@ -19,7 +19,6 @@ public class MainListDAOImpl implements MainListDAO{
 	@Override
 	public List<ProjectVO> mainList() {
 		List<ProjectVO> mainList = sqlSession.selectList("mainList.mainList", null, new RowBounds(0, 10));
-		System.out.println("MainListDAOImpl [mainList()] : " + mainList.toString());
 		return mainList;
 	}
 	

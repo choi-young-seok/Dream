@@ -25,19 +25,21 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ResponseEntity<String> login(@RequestBody LoginDTO loginDto, Model model, HttpSession session,
 			HttpServletRequest request) {
-		System.out.println("LoginController [login()] : " + loginDto.toString());
-		System.out.println("LoginController [login() 사용자 요청 URI] : " + request.getRequestURI());
+		System.err.println("LoginController \tlogout() \t\t[로그인 요청]");
+		System.out.println("LoginController \tlogin() \t\t[사용자 정보] : " + loginDto.toString());
+		System.out.println("LoginController \tlogin() \t\t[사용자 요청 URI] : " + request.getRequestURI());
 
 		MemberVO member = service.login(loginDto);
 		ResponseEntity<String> entity = null;
 
 		if (member == null ){
-			System.out.println("비밀번호 불일치로 인한 로그인 실패");
+			System.out.println("LoginController \tlogin() \t\t[로그인 실패]");
 			entity = new ResponseEntity<String>("fail", HttpStatus.OK);
 			return entity;
 		} else {
+			System.out.println("LoginController \tlogin() \t\t[로그인 성공]");
 			model.addAttribute(member);
-			System.out.println("LoginController [login() session] : " + member.toStringLogin());
+			System.out.println("LoginController \tlogin() \t\t[발급 세션 정보] : " + member.toStringLogin());
 			session.setAttribute("session", member);
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 			return entity;
@@ -46,6 +48,7 @@ public class LoginController {
 
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
 	public void logout() {
+		System.out.println("LoginController \tlogout() \t\t[로그아웃 요청]");
 		// 인터셉터를 통한 session제거
 	}
 }

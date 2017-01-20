@@ -21,12 +21,12 @@ public class MainListController {
 	
 	@RequestMapping(value ="/mainList" , method = RequestMethod.POST)
 	public ResponseEntity<List<ProjectVO>> mainList(){
+		System.err.println("MainListController \tmainList() \t\t[메인화면 요청]");
 		ResponseEntity<List<ProjectVO>> entity = null;
 		entity = new ResponseEntity<List<ProjectVO>>(service.mainList(), HttpStatus.OK);
 		
 		for (int i = 0; i < entity.getBody().size(); i++) {
 			ProjectVO project = entity.getBody().get(i);
-			System.out.println("MainListController mainList() output value] : "+project);
 		}
 		return entity;
 	}

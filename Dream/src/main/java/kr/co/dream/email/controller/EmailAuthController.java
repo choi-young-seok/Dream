@@ -21,7 +21,7 @@ public class EmailAuthController {
 
 	@RequestMapping("/authMailSender")
 	public int authMailSender(@RequestBody EmailForm emailForm) {
-		System.out.println("EmailSenderController authMail() : " + emailForm.toString());
+		System.err.println("EmailSenderController \tauthMail() \t\t[input value] : " + emailForm.toString());
 		int authNum = service.emailSender(emailForm);
 		if (authNum != 0) {
 			return authNum;

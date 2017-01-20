@@ -11,8 +11,9 @@ public class QNAViewController {
 		return "board/qna";
 	}
 	
-	@RequestMapping("qnaRegister")
-	public String register(){
+	@RequestMapping("qnaRegisterView")
+	public String qnaRegister(){
+		System.err.println("QNAViewCntroller \tqnaRegisterView() \t[문의하기 작성 화면 요청]");
 		return "board/qnaRegisterView";
 	}
 }

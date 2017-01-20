@@ -17,7 +17,6 @@ public class MainListServiceImpl implements MainListService{
 	
 	@Override
 	public List<ProjectVO> mainList() {
-		
 		return dao.mainList();
 	}
 }

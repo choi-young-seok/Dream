@@ -2,8 +2,6 @@ package kr.co.dream.board.controller;
 
 import javax.inject.Inject;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,7 +25,7 @@ public class QNARestController {
 	@RequestMapping(value = "qnaRegitster", method = RequestMethod.POST)
 	public String qnaRegitster(@RequestBody QnaVO memberQna){
 		System.out.println("??");
-		System.out.println("QNARestController [qnaRegitster() input value ] : "+memberQna.toString());
+		System.out.println("QNARestController \tqnaRegitster() \t\t[input value] : "+memberQna.toString());
 
 		return "success";
 	}

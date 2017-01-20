@@ -14,14 +14,13 @@ public class LoginIntercepter extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 
-		System.out.println(" --- LoginIntercepter [preHandle() 사용자 세션검사 및 세션설정]");
-		System.out.println(" --- LoginIntercepter [preHandle() 사용자 요청 url ] : " +request.getContextPath());
+		System.err.println("LoginIntercepter \tpreHandle() \t\t[사용자 세션검사]");
+		System.out.println("LoginIntercepter \tpreHandle() \t\t[사용자 요청 url ] : " +request.getContextPath());
 		HttpSession session = request.getSession();
+		
 		if (session.getAttribute("session") != null) {
+			System.out.println("LoginIntercepter \tpreHandle() \t\t[로그아웃 성공]");
 			session.removeAttribute("session");
-			System.out.println("--- LoginIntercepter [preHandle() 기존 로그인 정보 삭제]");
-			
-//			response.sendRedirect(request.getContextPath());
 		}
 		return super.preHandle(request, response, handler);
 	}
@@ -29,7 +28,7 @@ public class LoginIntercepter extends HandlerInterceptorAdapter {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		System.out.println(" --- LoginIntercepter [postHandle() 이것은 무엇을 위한 handler인가..]");
+		System.err.println("LoginIntercepter \tpostHandle() \t\t[이것은 무엇을 위한 handler인가..]");
 		super.postHandle(request, response, handler, modelAndView);
 	}
 
