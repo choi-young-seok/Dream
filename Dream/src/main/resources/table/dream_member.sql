@@ -39,8 +39,10 @@ CREATE TABLE Dream_Member (
 	Member_Supporting_Count         INTEGER            	DEFAULT 0, -- 해당 회원이 후원하는 프로젝트 수
 	Member_Total_Supported_Count    INTEGER            	DEFAULT 0, -- 해당 회원의 전체 프로젝트 후원 수 합계
 	Member_Stop_State               VARCHAR2(10)       	DEFAULT 'F', -- 회원 정지 여부
-	Member_Withdraw_State           VARCHAR2(10)       	DEFAULT 'F' -- 회원 탈퇴 여부
+	Member_Withdraw_State           VARCHAR2(10)       	DEFAULT 'F', -- 회원 탈퇴 여부
 		-- 회원가입시 default 처리 되는 컬럼
+	Member_Profile					VARCHAR2(150)					-- 회원 프로필 사진
+		-- 회원가입시 null 처리 되는 컬럼
 );
 
 -- 회원
@@ -66,6 +68,7 @@ create SEQUENCE dream_member_seq
    nocycle
    nocache;
 
+  
 -- 여기까지 복붙
 
 -- ↓↓ 2017/01/04 이후 회원 DB 스키마    
