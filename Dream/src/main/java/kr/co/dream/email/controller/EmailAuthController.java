@@ -1,13 +1,10 @@
 package kr.co.dream.email.controller;
 
 import javax.inject.Inject;
+import javax.mail.MessagingException;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.dream.email.domain.EmailForm;
@@ -20,7 +17,7 @@ public class EmailAuthController {
 	private EmailSenderService service;
 
 	@RequestMapping("/authMailSender")
-	public int authMailSender(@RequestBody EmailForm emailForm) {
+	public int authMailSender(@RequestBody EmailForm emailForm) throws MessagingException {
 		System.err.println("EmailSenderController \tauthMail() \t\t[input value] : " + emailForm.toString());
 		int authNum = service.emailSender(emailForm);
 		if (authNum != 0) {
