@@ -14,12 +14,19 @@
 <script type="text/javascript" src="resources/js/common/jquery.js"></script>
 
 <!-- custom javascript -->
-<script type="text/javascript" src="resources/js/member/memberInfoEdit.js"></script>
 <script type="text/javascript" src="resources/js/validityCheck/validityCheck.js"></script>
-<script type="text/javascript" src="resources/js/member/ProfileImage.js"></script>
+<script type="text/javascript" src="resources/js/upload/dragDrop.js"></script>
+<script type="text/javascript" src="resources/js/upload/upload.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+#imageZone {
+	width: 100%;
+	height: 210px;
+	border: dashed ;
+}
+</style>
 </head>
 <header> 
 	<%@include file="../mainView/header.jsp" %>
@@ -38,10 +45,17 @@
 			<!-- left column -->
 			<div class="col-md-4 col-sm-6 col-xs-12">
 				<div class="text-center">
-					<img src="${member.member_profile}"
-						class="avatar img-circle img-thumbnail" alt="프로필 사진을 등록하세요">
-					<h6>프로필 사진을 등록하세요</h6>
-					<input id="profileImg" type="file" class="text-center center-block well well-sm">
+				<div id="profileArea">
+					<div id="imageZone"></div>
+					<h6>점선영역에 프로필 사진을 드래그하세요</h6>
+				</div>
+				<div id="proFileZone">
+					<div >
+						<img src="displayFile?fileName=${member.member_profile}" class="avatar img-circle img-thumbnail" alt="drag your profile Image">
+						<input id="member_profile_value" type="hidden" value="${member.member_profile }">
+					</div>
+					<a id="profileEdit" class="btn btn-success">수정</a>
+				</div>
 				</div>
 			</div>
 			<!-- edit form column -->

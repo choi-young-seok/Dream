@@ -27,10 +27,17 @@
 	</select>
 	
 	<select id="memberInfo" parameterType="Int" resultType="MemberVO">
-		select member_birth, member_regdate
+		select member_birth, member_regdate, member_profile
 		from dream_member
 		where member_no = #{member_no}
 	</select>
+	
+	<!-- 동적 sql을 이용해서 service단에서 검사한 member_profile이 널이면 -->
+	<!-- member_profile을 제외한 나머지 정보만 입력 수정 진행 -->
+	<!-- member_pass항목 역시 널검사를 통해 제외 여부 결정후 수정 진행 -->
+	<update id="memberInfoEdit" parameterType="MemberVO">
+		update dream_member set member_profile = #{member_profile} where member_no =#{member_no}
+	</update>
 	
 	<update id="findPass" parameterType="MemberVO">
 		update dream_member set member_pass = #{member_pass} where member_mail = #{member_mail}

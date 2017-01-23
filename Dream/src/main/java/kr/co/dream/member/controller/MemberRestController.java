@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sun.mail.iap.Response;
+
 import kr.co.dream.member.domain.MemberVO;
 import kr.co.dream.member.service.MemberService;
 import kr.co.dream.project.domain.ProjectVO;
@@ -118,10 +120,18 @@ public class MemberRestController {
 
 	@RequestMapping("/memberProfileUpload")
 	public ResponseEntity<String> memberProfileUpload(MemberVO memberProfileInfo) {
-		System.out.println("MemberRestController \tmemberProfileUpload \t[input value] : "+memberProfileInfo.toStringProfile());
-		ResponseEntity<String> entity = null;	
+		System.out.println(
+				"MemberRestController \tmemberProfileUpload \t[input value] : " + memberProfileInfo.toStringProfile());
+		ResponseEntity<String> entity = null;
 
 		return entity;
 	}
 
+	@RequestMapping(value = "/memberInfoEdit", method=RequestMethod.POST)
+	public ResponseEntity<String> memberInfoEdit(@RequestBody MemberVO member) {
+		ResponseEntity<String> entity = null;
+		System.out.println(member.toStringProfile());
+		service.memberInfoEdit(member);
+		return entity;
+	}
 }

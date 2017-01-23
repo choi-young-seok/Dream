@@ -41,7 +41,7 @@ CREATE TABLE Dream_Member (
 	Member_Stop_State               VARCHAR2(10)       	DEFAULT 'F', -- 회원 정지 여부
 	Member_Withdraw_State           VARCHAR2(10)       	DEFAULT 'F', -- 회원 탈퇴 여부
 		-- 회원가입시 default 처리 되는 컬럼
-	Member_Profile					VARCHAR2(150)					-- 회원 프로필 사진
+	Member_Profile               VARCHAR2(255)      DEFAULT 'NO PROFILE' -- 회원 프로필 사진 파일 이름
 		-- 회원가입시 null 처리 되는 컬럼
 );
 

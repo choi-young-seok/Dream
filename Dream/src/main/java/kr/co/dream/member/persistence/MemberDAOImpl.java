@@ -83,9 +83,8 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	//회원정보 수정
 	@Override
-	public void memberEdit(MemberVO member) {
-		// TODO Auto-generated method stub
-
+	public int memberInfoEdit(MemberVO member) {
+		return sqlSession.update("member.memberInfoEdit",member);
 	}
 
 	//아이디 찾기

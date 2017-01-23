@@ -23,7 +23,8 @@ public class MemberVO {
 	private String member_stop_state; // 회원 정지 여부
 	private String member_withdraw_state; // 회원 탈퇴 여부
 
-	private MultipartFile member_profile;
+	private MultipartFile member_profile_image;
+	private String member_profile;
 
 	public MemberVO() {
 		// TODO Auto-generated constructor stub
@@ -133,11 +134,19 @@ public class MemberVO {
 		this.member_withdraw_state = member_withdraw_state;
 	}
 
-	public MultipartFile getMember_profile() {
+	public MultipartFile getMember_profile_image() {
+		return member_profile_image;
+	}
+
+	public void setMember_profile_image(MultipartFile member_profile_image) {
+		this.member_profile_image = member_profile_image;
+	}
+
+	public String getMember_profile() {
 		return member_profile;
 	}
 
-	public void setMember_profile(MultipartFile member_profile) {
+	public void setMember_profile(String member_profile) {
 		this.member_profile = member_profile;
 	}
 
@@ -159,13 +168,12 @@ public class MemberVO {
 		return "MemberVO [member_no=" + member_no + ", member_mail=" + member_mail + ", member_name=" + member_name
 				+ "]";
 	}
-	
-	//회원 프로필 사진 정보
+
+	// 회원 프로필 사진 정보
 	public String toStringProfile() {
 		return "MemberVO [member_no=" + member_no + ", member_mail=" + member_mail + ", member_name=" + member_name
-				+"member_profile=" + member_profile+ "]";
+				+ ", member_profile=" + member_profile + "]";
 	}
-
 
 	// 정지 회원 정보
 	public String toStringStopMember() {

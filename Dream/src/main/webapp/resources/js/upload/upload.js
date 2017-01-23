@@ -13,18 +13,18 @@ function getFileInfo(fullName){
 	var fileLink;
 	
 	if(checkImageType(fullName)){
-		imgsrc = "/upload2/displayFile?fileName="+fullName;
+		imgsrc = "/dream/displayFile?fileName="+fullName;
 		fileLink = fullName.substr(14);
 		
 		var front = fullName.substr(0,12); // /2015/07/01/ 
 		var end = fullName.substr(14);
 		
-		getLink = "/upload2/displayFile?fileName="+front + end;
+		getLink = "/dream/displayFile?fileName="+front + end;
 		
 	}else{
 		imgsrc ="/resources/dist/img/file.png";
 		fileLink = fullName.substr(12);
-		getLink = "/upload2/displayFile?fileName="+fullName;
+		getLink = "/dream/displayFile?fileName="+fullName;
 	}
 	fileName = fileLink.substr(fileLink.indexOf("_")+1);
 	
