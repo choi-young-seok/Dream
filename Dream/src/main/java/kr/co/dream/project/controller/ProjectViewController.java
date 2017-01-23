@@ -19,4 +19,10 @@ public class ProjectViewController {
 //		model.addAttribute("project", service.testSelectOne());
 		return "project/projectInfoView";
 	}
+	
+	@RequestMapping(value = "/projectStoryView")
+	public String projectStoryView(){
+		System.out.println("??");
+		return "project/register/projectStoryView";
+	}
 }

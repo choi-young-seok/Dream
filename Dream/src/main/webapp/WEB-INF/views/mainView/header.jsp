@@ -84,7 +84,7 @@ $(function(){
 				<li><a href="#">카테고리별 프로젝트</a></li>
 	
 				<c:if test="${session.member_mail ne null || session.member_mail ==''}">
-					<li><a href="#">프로젝트 등록</a></li>
+					<li><a href="/dream/projectStoryView">프로젝트 등록</a></li>
 				</c:if>
 	
 				<%-- <c:if test="${session.Progressing_Project_Count > 0}"> --%>
