@@ -41,7 +41,7 @@
 				if(!!oNavigator.safari && oNavigator.version <= 5){
 					bSupportDragAndDropAPI = false;
 				}else{
-					bSupportDragAndDropAPI = true;
+					bSupportDragAndDropAPI = false;
 				}
 			} else {
 				bSupportDragAndDropAPI = false;
@@ -50,6 +50,7 @@
 			bSupportDragAndDropAPI = false;
 		}
 	}
+	
 	
 	//--------------- html5 미지원 브라우저에서 (IE9 이하) ---------------
 	/** 
@@ -334,7 +335,7 @@
     	var tempFile,
     		sUploadURL;
     	
-    	sUploadURL= '/multiplePhotoUpload'; 	//upload URL
+    	sUploadURL= '/dream/multiplePhotoUpload'; 	//upload URL
     	
     	//파일을 하나씩 보내고, 결과를 받음.
     	for(var j=0, k=0; j < nImageInfoCnt; j++) {
@@ -478,7 +479,7 @@
  	 */
  	function callFileUploader (){
  		oFileUploader = new jindo.FileUploader(jindo.$("uploadInputBox"),{
- 			sUrl  : '/photoUpload',	//샘플 URL입니다.
+ 			sUrl  : '/dream/photoUpload',	//샘플 URL입니다.
  	        sCallback :'/resources/smarteditor/photo_uploader/popup/callback.html',	//업로드 이후에 iframe이 redirect될 콜백페이지의 주소
  	    	sFiletype : "*.jpg;*.png;*.bmp;*.gif",						//허용할 파일의 형식. ex) "*", "*.*", "*.jpg", 구분자(;)	
  	    	sMsgNotAllowedExt : 'JPG, GIF, PNG, BMP 확장자만 가능합니다',	//허용할 파일의 형식이 아닌경우에 띄워주는 경고창의 문구

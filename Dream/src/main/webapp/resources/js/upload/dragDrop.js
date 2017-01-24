@@ -33,7 +33,7 @@ $(function(){
 	
 				formData.append("file", file);
 				//formData.append('file',file); : key='file', value=업로드 파일객체
-	
+				//컨트롤러에 formData(file객체)전달
 				$.ajax({
 					url : '/dream/uploadAjax',
 					data : formData,
