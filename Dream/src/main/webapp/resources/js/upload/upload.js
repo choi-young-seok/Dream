@@ -1,6 +1,6 @@
 function checkImageType(fileName){
 	
-	var pattern = /jpg|gif|png|jpeg/i;
+	var pattern = /jpg|gif|png|jpeg|avi/i;
 	
 	return fileName.match(pattern);
 

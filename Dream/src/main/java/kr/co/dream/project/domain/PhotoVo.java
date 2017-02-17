@@ -7,7 +7,7 @@ public class PhotoVo {
 	private MultipartFile Filedata;
     //callback URL
     private String callback;
-    //콜백함수??
+    //콜백함수
     private String callback_func;
     
 	public MultipartFile getFiledata() {

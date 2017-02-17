@@ -26,8 +26,8 @@ DROP TABLE Dream_Member;
 
 -- 회원
 CREATE TABLE Dream_Member (
-	Member_No                       INTEGER       		NOT NULL, -- 회원 번호
-	Member_Mail                     VARCHAR2(40)  		primary key, -- 회원 이메일
+	Member_No                       INTEGER       		primary key, -- 회원 번호
+	Member_Mail                     VARCHAR2(40)  		NOT NULL, -- 회원 이메일
 	Member_Pass                     VARCHAR2(100) 		NOT NULL, -- 회원 비밀번호
 	Member_Name                     VARCHAR2(18)  		NOT NULL, -- 회원 이름
 	Member_Birth                    VARCHAR2(16)  		NOT NULL, -- 회원 생년월일

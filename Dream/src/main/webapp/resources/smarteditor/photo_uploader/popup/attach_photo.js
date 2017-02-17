@@ -41,6 +41,7 @@
 				if(!!oNavigator.safari && oNavigator.version <= 5){
 					bSupportDragAndDropAPI = false;
 				}else{
+					//true로 전환시 IE10이상에서 Drap and Drop View
 					bSupportDragAndDropAPI = false;
 				}
 			} else {
@@ -50,7 +51,6 @@
 			bSupportDragAndDropAPI = false;
 		}
 	}
-	
 	
 	//--------------- html5 미지원 브라우저에서 (IE9 이하) ---------------
 	/** 

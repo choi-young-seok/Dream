@@ -9,16 +9,17 @@ $(function(){
 //				mainList = "<div>"+this.project_thumbnail+"</div>";
 				mainList += "<div class='col-sm-4 col-lg-4 col-md-4'>"+
 								"<div class='thumbnail'>"+
-									"<a href='/dream/projectInfoView'><img src='"+this.project_thumbnail+"'></a>"+
+									"<input type='hidden' value='"+this.project_no+"'>"+
+									"<a href='/dream/projectInfoView?project_no="+this.project_no+"'><img src='resources/member/thumbnail"+this.project_thumbnail+"'></a>"+
 									"<div class='progress'>"+
 										"<div class='progress-bar' role='progressbar' aria-valuenow='70' aria-valuemin='0' aria-valuemax='100' style='width: 70%'>70%</div>"+
 									"</div>"+
 									"<div class='caption'>"+
 										"<!-- <h4 class='pull-right'>$24.99</h4> -->"+
 										"<h4>"+
-											"<a href='/dream/projectInfoView'>"+this.project_title+"</a>"+
+											"<a href='/dream/projectInfoView?project_no="+this.project_no+"'>"+this.project_title+"</a>"+
 										"</h4>"+
-										"<p>See more snippets like this online store item at <a target='_blank' href='http://www.bootsnipp.com'>Bootsnipp - http:// bootsnipp.com</a>"+
+										"<p>"+this.project_summary+
 										"</p>"+
 									"</div>"+
 									"<div>"+
@@ -30,7 +31,7 @@ $(function(){
 							             "<p>"+
 							             "<div class='col-md-4'><b>14일</b><br/><small>잔여기간</small></div>"+
 							             "<div class='col-md-4'><b>3명</b><br/><small>후원수</small></div>"+
-							             "<div class='col-md-4'><b>3명</b><br/><small>후원수</small></div>"+
+							             "<div class='col-md-4'><b>"+this.project_viewcnt+"</b><br/><small>조회수</small></div>"+
 							             "</p>"+
 									"</div>"+
 									"<div class='ratings'>"+

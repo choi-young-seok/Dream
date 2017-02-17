@@ -41,8 +41,8 @@ $(function() {
 	});//memberInfoEdit click event
 	
 	var member_profile_value = $("#member_profile_value").val();
-
-	if(member_profile_value =='' || member_profile_value == null){
+	if(member_profile_value =='NO PROFILE'){
+		
 		$('#profileArea').show();
 		$('#proFileZone').hide();		
 	}else{

@@ -56,6 +56,7 @@
 		<interceptor>		
 			<mapping path="/qnaRegisterView"/>
 			<mapping path="/memberInfoView"/>
+			<mapping path="/projectRegiterView"/>
 			<beans:ref bean="AuthIntercepter"/>
 		</interceptor>
 	</interceptors>

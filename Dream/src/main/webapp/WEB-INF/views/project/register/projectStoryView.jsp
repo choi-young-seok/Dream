@@ -4,10 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript"
-	src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript"
-	src="/dream/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<!-- <script type="text/javascript"
+	src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+	<script type="text/javascript" src="resources/js/common/jquery.js"></script>
+<script type="text/javascript" src="/dream/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="resources/js/project/projectRegister.js"></script>
+<script type="text/javascript" src="resources/js/upload/dragDrop.js"></script>
+<script type="text/javascript" src="resources/js/upload/upload.js"></script>
 
 <script type="text/javascript">
 	$(function() {
@@ -37,21 +40,44 @@
 		})
 	})
 </script>
-<title>Insert title here</title>
+<title>스토리 정보 등록</title>
 </head>
-<%@include file="../../mainView/header.jsp"%> </header>
+<header> 
+	<%@include file="../../mainView/header.jsp" %>
+</header>
+<article>
+	<%@include file="projectTabList.jsp" %>
+</article>
 <body>
 	<div class="col-md-12">
 		<div class="container">
-			<div class="col col-md-2"></div>
-			<div class="col col-md-10">
-				<form action="/dream/projectStoryRegit" method="post" id="frm">
-					<textarea name="editor" id="editor" rows="10" cols="100"
-						style="width: 766px; height: 412px;"></textarea>
-					<input type="button" id="savebutton" value="다음" />
-				</form>
-			</div>
+			<div class="row">
+				<div class="col col-md-2"></div>				
+				<div class="col col-md-10">
+					<div class="boxSpace" style="width: 766px;">
+						<span><h4>프로젝트 소개영상</h4>
+							<input type="radio" id="video_upload" name="project_video_type">직업 업로드
+							<input type="radio" id="youtube" name="project_video_type">유투브 주소
+							
+						</span>
+					</div>
+				
+					<form action="/dream/projectProfileView" method="post" id="frm">
+						<input type="hidden" value="${project.project_no }" name="project_no">
+						<span><div class="thumbnailImage" name="project_video" title="project_video" id="imageZone" style="width: 760px;"></div></span>
+						<div id="youtube_address"></div>
+						<textarea name="project_content" id="editor" rows="10" cols="100"
+							style="width: 766px; height: 412px;"></textarea>
+						<input type="button" id="savebutton" value="다음" />
+					</form>
+					
+
+				</div>
+		</div>
 		</div>
 	</div>
 </body>
+<footer> 
+	<%@include file="../../mainView/footer.jsp" %>
+</footer>
 </html>

@@ -166,7 +166,7 @@ public class MemberVO {
 	// 로그인 회원정보
 	public String toStringLogin() {
 		return "MemberVO [member_no=" + member_no + ", member_mail=" + member_mail + ", member_name=" + member_name
-				+ "]";
+				+ ", member_ongoing_project_count=" + member_ongoing_project_count +"]";
 	}
 
 	// 회원 프로필 사진 정보

@@ -26,15 +26,17 @@ Development Environment
   - jstl-1.2.jar
   - cos.jar
   
- 7. Sub Development tools
+ 7. Sub Development Tools
  - eXERD : ER-diagram
  - DB develop : oracle sql developer
- - JUnit : 4.12 / Testing
  - Maven : 1.2.1 / 
  
- 8. Run Enviroment
+ 8. Test Tools
+  - JUnit : 4.12 / Testing
+  
+ 9. Run Enviroment
  - Chrome
  - IE9 ~
  
- 9.Collaboration Tool
+ 10.Collaboration Tools
   - GitHub

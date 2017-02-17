@@ -35,9 +35,11 @@
 <div class="col-md-12">
     <div class="container">
         <div class="row">
-        <aside>
-			<%@include file="../mainView/sidebar.jsp" %>
-		</aside>
+        	<!-- <div class="col-md-3"> -->
+		        <aside>
+					<%@include file="../mainView/sidebar.jsp" %>
+				</aside>
+			<!-- </div> -->
      <div class="col-md-9" style="padding-top: 60px;">        
 <!-- 	<div class="container" > -->
 		<h1 class="page-header">회원 정보</h1>
@@ -45,17 +47,20 @@
 			<!-- left column -->
 			<div class="col-md-4 col-sm-6 col-xs-12">
 				<div class="text-center">
-				<div id="profileArea">
-					<div id="imageZone"></div>
-					<h6>점선영역에 프로필 사진을 드래그하세요</h6>
-				</div>
-				<div id="proFileZone">
-					<div >
-						<img src="displayFile?fileName=${member.member_profile}" class="avatar img-circle img-thumbnail" alt="drag your profile Image">
-						<input id="member_profile_value" type="hidden" value="${member.member_profile }">
+					<div id="profileArea">
+						<div id="imageZone" class="member_profile" title="member_profile"></div>
+						<h6>점선영역에 프로필 사진을 드래그하세요</h6>
 					</div>
-					<a id="profileEdit" class="btn btn-success">수정</a>
-				</div>
+									<input id="member_profile_value" type="text" value="${member.member_profile }">
+					<c:if test="${member.member_profile != 'NO PROFILE'}">
+						<div id="proFileZone">
+								<div>
+									<img src="displayFile?fileName=${member.member_profile}" class="avatar img-circle img-thumbnail" alt="drag your profile Image">
+									<input id="member_profile_value" type="text" value="${member.member_profile }">
+								</div>
+							<a id="profileEdit" class="btn btn-success">수정</a>
+						</div>
+					</c:if>
 				</div>
 			</div>
 			<!-- edit form column -->

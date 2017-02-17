@@ -15,7 +15,7 @@
 	</select>
 	
 	<select id="login" resultType="MemberVO">
-		select member_no, member_mail, member_name
+		select member_no, member_mail, member_name, member_ongoing_project_count
 		from dream_member
 		where member_mail=#{login_mail}
 	</select>

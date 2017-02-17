@@ -118,6 +118,7 @@ public class MemberRestController {
 		return entity;
 	}
 
+	// 회원 프로필 사진 등록
 	@RequestMapping("/memberProfileUpload")
 	public ResponseEntity<String> memberProfileUpload(MemberVO memberProfileInfo) {
 		System.out.println(
@@ -127,6 +128,7 @@ public class MemberRestController {
 		return entity;
 	}
 
+	// 회원정보 수정
 	@RequestMapping(value = "/memberInfoEdit", method=RequestMethod.POST)
 	public ResponseEntity<String> memberInfoEdit(@RequestBody MemberVO member) {
 		ResponseEntity<String> entity = null;

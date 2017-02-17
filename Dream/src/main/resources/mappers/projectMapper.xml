@@ -1,4 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="project">
+<insert id="projectBasicInfo" parameterType="ProjectVO">
+	<selectKey keyProperty="project_no" resultType="int" order="BEFORE">
+		select dream_project_seq.nextval from dual
+	</selectKey>
+	insert into dream_project
+	(project_no, member_no, project_thumbnail, project_title, project_summary, 
+	project_category, project_end_date, project_goal_amount)
+	values
+	(#{project_no}, #{member_no}, #{project_thumbnail}, #{project_title}, #{project_summary}, 
+	#{project_category}, #{project_end_date}, #{project_goal_amount})
+</insert>
+
+<select id="getProjectNo">
+	select project_no from dream_project where member_no = #{member_no}
+</select>
+
+<update id="projectStoryInfo">
+	update dream_project 
+	set project_video = #{project_video}, project_content = #{project_content} 
+	where project_no = #{project_no}
+</update>
+
+<update id="projectProfileInfo">
+	update dream_project 
+	set register_profile = #{register_profile}, register_name = #{register_name}, 
+	register_intro = #{register_intro}, register_sns = #{register_sns} 
+	where project_no = #{project_no}
+</update>
+
+<update id="projectAccountInfo">
+	update dream_project
+	set register_address = #{register_address}, project_account = #{project_account}, 
+	access_terms_agree = #{access_terms_agree}
+	where project_no = #{project_no}
+</update>
+
+<select id="projectPreview" resultType="ProjectVO">
+	select * from dream_project where project_no = #{project_no}
+</select>
+
+<update id="projectRegister">
+	update dream_project set project_register_state = 'T' where project_no = #{project_no}
+</update>
+
+<select id="projectInfoView">
+	select * from dream_project where project_no = #{project_no} and project_register_state ='T'
+</select>
+
+<select id="processing_project_list" resultType="ProjectVO">
+	select project_no, project_thumbnail, project_title, project_category,
+	project_end_date, project_goal_amount, now_amount, project_viewcnt, 
+	supporting_count
+	from dream_project
+	where member_no = #{member_no}
+</select>
+<!-- <![CDATA[dto따서 달성률 : now_amount / project_gaol 처리 할것]]> -->
+
+<select id="end_project_list" resultType="ProjectVO">
+	select project_no, project_thumbnail, project_title, project_category,
+	project_end_date, project_goal_amount, now_amount, project_viewcnt, 
+	supporting_count
+	from dream_project
+	where member_no = #{member_no}
+	and (project_end_date - project_start_date) = 0
+</select>
+<!-- <![CDATA[dto 프로젝트 잔여기간 연산 할것 : project_end_date - project_start_date]]> -->
+
 </mapper>

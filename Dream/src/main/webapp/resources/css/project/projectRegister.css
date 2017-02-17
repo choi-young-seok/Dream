@@ -1,0 +1,11 @@
+.thumbnailImage {
+	width: 100%;
+	height: 400px;
+	border: dashed;
+}
+
+.boxSpace{
+	margin-top: 5%;
+	margin-bottom: 5%;
+	border: solid;
+}

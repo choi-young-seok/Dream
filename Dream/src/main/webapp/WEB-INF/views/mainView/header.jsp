@@ -83,12 +83,12 @@ $(function(){
 			<ul class="nav navbar-nav">
 				<li><a href="#">카테고리별 프로젝트</a></li>
 	
-				<c:if test="${session.member_mail ne null || session.member_mail ==''}">
-					<li><a href="/dream/projectStoryView">프로젝트 등록</a></li>
-				</c:if>
+					<li><a id="projectRegiterView" href="/dream/projectRegiterView">프로젝트 등록</a></li>
 	
-				<%-- <c:if test="${session.Progressing_Project_Count > 0}"> --%>
-				<li><a href="#">마이 프로젝트</a></li>
+				<%-- <c:if test="${session.member_mail ne null || session.member_mail ==''}"> --%>
+				<c:if test="${session.member_ongoing_project_count > 0}">
+					<li><a href="#">마이 프로젝트</a></li>
+				</c:if>
 				
 				<input type="hidden" id="needLoginSession" value="${needLoginSession}">
 				<%-- </c:if> --%>

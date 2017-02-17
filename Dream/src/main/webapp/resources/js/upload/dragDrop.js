@@ -11,6 +11,9 @@ $(function(){
 	
 	$("#imageZone").on("drop",function(event) {
 		//imageZone 영역에 drop 이벤트 발생시
+
+				var requestName = event.target.title;
+				alert(requestName)
 				event.preventDefault();
 				//event.preventDefault(); = 브라우저의 동작 방지
 				
@@ -42,7 +45,7 @@ $(function(){
 					contentType : false,
 					type : 'POST',
 					success : function(data) {
-	
+						alert("upload 파일"+data)
 						var str = "";
 	
 						if (checkImageType(data)) {
@@ -52,16 +55,22 @@ $(function(){
 							// displayFile()요청부
 							+ "<img src='displayFile?fileName=" + data + "'/>"
 							// +"</a>"
-							+ "<small data-src=" + data + ">X</small>" + "</div>"
-							+"<input id='member_profile' type='hidden' value="+data+">";
-							
+							+ "<small data-src=" + data + ">X</small>" + "</div>";
+							if(requestName == 'project_thumbnail'){
+								str += "<input id='project_thumbnail' type='text' value="+data+">";
+							}else if(requestName == 'member_profile'){
+								str += "<input id='member_profile' type='text' value="+data+">";								
+							}else if(requestName == 'register_profile'){
+								str += "<input id='register_profile' type='text' name='project_video' value="+data+">";								
+							}else{
+								alert("div태그 title 정보 없음 : "+requestName)
+							}
 						} else {
 							str = "<div><a href='displayFile?fileName=" + data
 									+ "'>" + getOriginalName(data) + "</a>"
 									+ "<small data-src=" + data
 									+ ">X</small></div></div>"
-									+"<input type='text' value='fileName'>"
-									+"<input type='text' value='fullName'>";
+									+"<input type='text' name='project_video' value='"+data+"'>"
 						}
 	
 						$("#imageZone").append(str);

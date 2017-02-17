@@ -9,7 +9,7 @@
 <script type="text/javascript" src="resources/js/upload/dragDrop.js"></script>
 <script type="text/javascript" src="resources/js/upload/upload.js"></script>
 
-<title>프로젝트 기본 정보 등록</title>
+<title>프로젝트 계좌 정보 등록</title>
 <header> 
 	<%@include file="../../mainView/header.jsp" %>
 </header>
@@ -23,25 +23,24 @@
 		<div class="col col-md-12">
 			<div class="col col-md-1"></div>
 			<div class="col col-md-10">
-				<h1>프로젝트 기본 정보 등록</h1>
+				<h1>프로젝트 계좌 정보 등록</h1>
 				
 				<div class="boxSpace">
-					<span><h4>썸네일 사진</h4></span> <span><div id="imageZone" class="thumbnailImage" title="project_thumbnail"></div></span>
+					<span><h4 align="center">이용약관 동의</h4></span> <span><div id="imageZone" class="thumbnailImage" title="project_thumbnail">이용 약관 소개</div></span>
+					<div class="pull-right">
+						<input type="radio" id="access_terms_agree" name="access_terms_agree" value="T">동의
+						<input type="radio" id="access_terms_agree" name="access_terms_agree" value="F">동의 않함
+					</div>
 				</div>
 				
 				<div class="boxSpace">
-					<span><h4>프로젝트 타이틀</h4></span>
-					<span><input type="text" id="project_title"></span>
+					<span><h4 align="center">등록자 주소</h4></span>
+					<span><input type="text" id="register_address"></span>
 				</div>
-				
+
 				<div class="boxSpace">
-					<span><h4>프로젝트 소개문구</h4></span>
-					<span><textarea rows="10" cols="" id="project_summary"></textarea></span>
-				</div>
-				
-				<div class="boxSpace">
-					<span><h4>프로젝트 카테고리</h4></span>
-					<span><select id="project_category">
+					<span><h4 align="center">은행</h4></span>
+					<span><select id="account_bank_list">
 						<option>----</option>
 						<option>영상</option>
 						<option>과학</option>
@@ -49,25 +48,12 @@
 						<option>뷰티</option>
 						<option>패션</option>
 						<option>음식</option>
-					</select></span>					
+					</select></span>	  				
+					<span><h4 align="center">프로젝트 계좌번호</h4></span>
+					<span><input type="text" id="project_account"></span>
 				</div>
-				
-				<div class="boxSpace">
-					<span><h4>후원기간</h4></span>
-					<div>
-						<span>
-								<input type="radio" id="project_end_date_input" value="기간">기간
-								<input type="radio" id="project_end_date_select" value="마감일">마감일
-								<div id="dateArea"></div>
-						</span>
-					</div>
-				</div>
-				
-				<div class="boxSpace">
-					<span><h4>목표 금액</h4></span>
-					<span><input type="text" id="project_goal_amount"></span>
-				</div>
-				 <button type="button" id="basicInfoRegister" class="btn btn-primary pull-right">저장하고 다음으로</button>
+
+				 <button type="button" id="accountInfoRegister" class="btn btn-primary pull-right">저장하고 다음으로</button>
 			</div>
 
 			<div class="col col-md-1"></div>
