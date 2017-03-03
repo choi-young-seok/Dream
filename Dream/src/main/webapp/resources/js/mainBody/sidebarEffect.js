@@ -24,20 +24,6 @@ $(function(){
 		$("#pay_info_toggle_item").slideToggle();
 	});//member_info_toggle_title click event
 	
-	$("#processing_project_list").click(function(){
-		var member_no = $('#session_no').val();
-		alert("session_no"+member_no);
-		$.ajax({
-			url : '/dream/processing_project_list',
-			type: 'post',
-			data: {
-				member_no : member_no
-			},
-			dataType : 'text',
-			success : function(result){
-				alert(result)
-			}
-		});//ajax
-	});//processing_project_list click event
+	
 	
 });//ready

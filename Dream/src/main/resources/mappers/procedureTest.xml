@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="mainList">
-	<select id="mainList" resultType="ProjectVO">
-		select * from dream_project where project_register_state = 'T'
-	</select>
+<mapper namespace="procedure">
+
+	<insert id="insertTest">
+		{ CALL
+	</insert>
 </mapper>

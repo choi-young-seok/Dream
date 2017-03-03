@@ -1,0 +1,1 @@
+select * from DREAM_PROJECT where project_register_state = 'T'

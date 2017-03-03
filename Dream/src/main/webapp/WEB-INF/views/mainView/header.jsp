@@ -4,20 +4,14 @@
 <!-- jstl core libary -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 <head>
 <!-- Bootstrap Core CSS -->
 <link href="resources/css/bootstrap.min.css" rel="stylesheet">
 
+<!-- --------------------------- Custom CSS --------------------------- -->
 <!-- Custom CSS -->
 <link href="resources/css/shop-homepage.css" rel="stylesheet">
 
-<!-- Dream Up Custom.css  -->
 <link href="resources/css/custom/index.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="resources/css/member/findView.css">
 
@@ -33,12 +27,19 @@
 <!-- Naver Login API -->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
 
+<!-- --------------------------- Custom javascript --------------------------- -->
 <!-- header.js -->
 <script type="text/javascript" src="resources/js/header/header.js"></script>
 <!-- login.js -->
 <script type="text/javascript" src="resources/js/login/login.js"></script>
-<!-- memberInfo.js -->
-<script type="text/javascript" src="resources/js/member/memberInfo.js"></script>
+
+<!-- mypage.js -->
+<script type="text/javascript" src="resources/js/mypage/delivery.js"></script>
+<script type="text/javascript" src="resources/js/mypage/member.js"></script>
+<script type="text/javascript" src="resources/js/mypage/pay.js"></script>
+<script type="text/javascript" src="resources/js/mypage/project.js"></script>
+<script type="text/javascript" src="resources/js/mypage/support.js"></script>
+
 <script type="text/javascript">
 // 세션검사 함수부
 $(function(){ 
@@ -118,7 +119,7 @@ $(function(){
 					<input id="session_no" type="hidden" value="${session.member_no }">
 					</c:if>
 						<ul class="dropdown-menu">
-							<li><a>마이페이지</a></li>
+							<li><a id="mypage_Main">마이페이지</a></li>
 							<li class="divider"></li>
 		
 							<%-- <c:if test="${session.Total_Project_Count > 0}"> --%>
@@ -130,7 +131,7 @@ $(function(){
 							<li><a href="#">결제 내역</a></li>
 							<%-- </c:if> --%>
 		
-							<li><a id="memberInfoView">내 정보 보기</a></li>
+							<li><a id="member_Info">내 정보 보기</a></li>
 		
 							<li class="divider"></li>
 							<li><a id="logout">로그아웃</a></li>

@@ -36,6 +36,7 @@ CREATE TABLE Dream_Project (
 	Supporting_Count       	INTEGER       DEFAULT 0, -- 현재 후원 수
 	Project_Register_State 	VARCHAR2(10)  DEFAULT 'F', -- 프로젝트 등록여부 (T = 등록완료, F = 등록중)
 	Project_Success_State  	VARCHAR2(10)  DEFAULT 'F' -- 프로젝트 성공여부 (T = 후원완료, T = 후원실패)
+	-- 기간 이내 달성 여부 컬럼과 기간 만료후 최종 달성여부 칼람이 독립적으로 존재해야할듯
 );
 -- alter table dream_project add Projcet_ViewCnt INTEGER DEFAULT 0 (추가완료)
 -- alter table dream_project add Register_Profile VARCHAR2(300) DEFAULT 'NO VALUE' (추가완료)

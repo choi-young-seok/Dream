@@ -53,10 +53,22 @@
 			<beans:ref bean="loginIntercepter"/>
 		</interceptor>
 		
-		<interceptor>		
+		<interceptor>
+			<!-- notice's session check -->		
 			<mapping path="/qnaRegisterView"/>
-			<mapping path="/memberInfoView"/>
+			
+			<!-- projectRegister session check -->
 			<mapping path="/projectRegiterView"/>
+			
+			<!-- mypage session check -->
+			<mapping path="/mypageMain"/>
+			<!-- mypage : member session check  -->
+			<mapping path="/memberInfoView"/>
+			<mapping path="/password_Info_Edit_View"/>
+			
+			<!-- mypage : project session check -->
+			<mapping path="/processing_project_View"/>
+			
 			<beans:ref bean="AuthIntercepter"/>
 		</interceptor>
 	</interceptors>

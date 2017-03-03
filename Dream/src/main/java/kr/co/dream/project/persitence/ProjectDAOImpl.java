@@ -65,9 +65,11 @@ public class ProjectDAOImpl implements ProjectDAO {
 		sqlSession.selectOne("project.projectInfoView",project_no);
 	}
 
+	//마이 페이지 프로젝트 리스트
 	@Override
 	public List<ProjectVO> processing_project_list(int member_no) {
-		return sqlSession.selectList("project.processing_project_list",member_no);
+		System.out.println("daoImpl : " +member_no);
+		return sqlSession.selectList("mypageProject.processing_project_list",member_no);
 	}
 
 	@Override

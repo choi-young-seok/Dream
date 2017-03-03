@@ -1,9 +1,7 @@
 Development Environment 
 
 1. Environment O/S
- - windows 7
  - windows 8.1
- - windows 10
 
 2. Environment tools
  - Eclipse : EE_neon
@@ -24,7 +22,10 @@ Development Environment
 6. Library
   - ojdbc6.jar
   - jstl-1.2.jar
-  - cos.jar
+  - jstl-1.2.jar
+  - mail-1.4.7.jar
+  - imgscalr-lib-4.2.jar
+  - junit-4.12.jar
   
  7. Sub Development Tools
  - eXERD : ER-diagram

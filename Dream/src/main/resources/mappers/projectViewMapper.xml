@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="projectView">
+<select id="processing_project_list" resultType="ProjectVO">
+	select project_no, project_thumbnail, project_title, project_category,
+	project_end_date, project_goal_amount, now_amount, project_viewcnt, 
+	supporting_count
+	from dream_project
+	where member_no = #{member_no}
+</select>
+<!-- <![CDATA[dto따서 달성률 : now_amount / project_gaol 처리 할것]]> -->
+
+<select id="end_project_list" resultType="ProjectVO">
+	select project_no, project_thumbnail, project_title, project_category,
+	project_end_date, project_goal_amount, now_amount, project_viewcnt, 
+	supporting_count
+	from dream_project
+	where member_no = #{member_no}
+	and (project_end_date - project_start_date) = 0
+</select>
+<!-- <![CDATA[dto 프로젝트 잔여기간 연산 할것 : project_end_date - project_start_date]]> -->
+</mapper>

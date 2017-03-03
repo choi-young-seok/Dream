@@ -4,5 +4,6 @@
 	<typeAliases>
 		<package name="kr.co.dream.member.domain"/>
 		<package name="kr.co.dream.project.domain"/>
+		<package name="kr.co.dream.reward.domain"/>
 	</typeAliases>
 </configuration>

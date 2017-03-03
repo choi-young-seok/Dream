@@ -57,6 +57,7 @@ public class ProjectServiceImpl implements ProjectService{
 		
 	}
 
+	//마이페이지 프로젝트 
 	@Override
 	public List<ProjectVO> processing_project_list(int member_no) {
 		return dao.processing_project_list(member_no);

@@ -35,6 +35,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.dream.project.domain.PhotoVo;
 import kr.co.dream.project.domain.ProjectVO;
 import kr.co.dream.project.service.ProjectService;
+import kr.co.dream.reward.domain.RewardVO;
 
 @Controller
 public class ProjectRegisterViewController {
@@ -45,29 +46,30 @@ public class ProjectRegisterViewController {
 	// 프로젝트 기본 정보 입력 화면 요청
 	@RequestMapping(value = "/projectRegiterView")
 	public String projectRegiterView(Model model) {
-		System.out.println("ProjectViewController \tprojectBasicInfoView() [프로젝트 기본 정보 입력 화면 요청]");
+		System.out.println("ProjectRegisterViewController \tprojectBasicInfoView() [프로젝트 기본 정보 입력 화면 요청]");
 		return "project/register/projectBasicInfoView";
 	}
 
 	// 프로젝트 리워즈 입력 화면 요청
 	@RequestMapping(value = "/projectRewardView")
 	public String projectRewardView() {
-		System.out.println("ProjectViewController \tprojectRewardView() [프로젝트 리워드 정보 입력 화면 요청]");
+		System.out.println("ProjectRegisterViewController \tprojectRewardView() [프로젝트 리워드 정보 입력 화면 요청]");
 
 		return "project/register/projectRewardView";
 	}
 
 	// 프로젝트 스토리 정보 입력 화면 요청
 	@RequestMapping(value = "/projectStoryView")
-	public String projectStoryView() {
-		System.out.println("ProjectViewController \tprojectStoryView() [프로젝트 스토리 정보 입력 화면 요청]");
+	public String projectStoryView(RewardVO reward[], HttpServletRequest request) {
+		System.out.println("ProjectRegisterViewController \tprojectStoryView() [프로젝트 스토리 정보 입력 화면 요청]");
+		System.out.println(reward.toString());
 		return "project/register/projectStoryView";
 	}
 
 	// 프로젝트 프로필 정보 입력 화면 요청
 	@RequestMapping(value = "/projectProfileView", method = RequestMethod.POST)
 	public String projectProfileView(ProjectVO projectStoryInfo, HttpServletRequest request) {
-		System.out.println("ProjectViewController \tprojectProfileView() [프로젝트 등록자 프로필 정보 입력 화면 요청]");
+		System.out.println("ProjectRegisterViewController \tprojectProfileView() [프로젝트 등록자 프로필 정보 입력 화면 요청]");
 		System.out.println("project_content : " + projectStoryInfo.toStringProjectStoryInfo());
 		service.projectStoryInfo(projectStoryInfo);
 
@@ -77,13 +79,13 @@ public class ProjectRegisterViewController {
 	// 프로젝트 계좌 정보입력 화면 요청
 	@RequestMapping(value = "/projectAccountView")
 	public String projectAccountView() {
-		System.out.println("ProjectViewController \tprojectAccountView() [프로젝트 계좌 정보 입력 화면 요청]");
+		System.out.println("ProjectRegisterViewController \tprojectAccountView() [프로젝트 계좌 정보 입력 화면 요청]");
 		return "project/register/projectAccountView";
 	}
 
 	@RequestMapping(value = "/projectInfoView")
 	public String projectAccountView(Model model, int project_no) {
-		System.out.println("ProjectViewController \tprojectAccountView() [프로젝트 계좌 정보 입력 화면 요청] : " + project_no);
+		System.out.println("ProjectRegisterViewController \tprojectAccountView() [프로젝트 계좌 정보 입력 화면 요청] : " + project_no);
 		model.addAttribute("project", service.projectPreview(project_no));
 		System.out.println(service.projectPreview(project_no).toString());
 		return "project/projectInfoView";

@@ -23,21 +23,12 @@ public class MemberViewController {
 	@RequestMapping("/memberJoinForm")
 	public String memberJoinForm(){
 		System.err.println("MemberViewController \tmemberJoinForm() \t[회원가입 화면 요청] ");
-		return "member/joinForm";
+		return "mypage/member/joinForm";
 	}
-	
-	@RequestMapping("/memberInfoView")
-	public String memberInfoView(int member_no,Model model){
-		System.err.println("MemberViewController \tmemberInfoView() \t[사용자 정보 화면 요청] ");
-		System.out.println("MemberViewController \tmemberInfoView() \t[input value] : " +member_no);
-		model.addAttribute("member",service.memberInfo(member_no));
-		return "member/infoView";
-	}
-	
+
 	@RequestMapping("/findLoginInfo")
 	public String findLoginInfo(){
 		System.err.println("MemberViewController \tmemberJoinForm() \t[아이디 / 비밀번호 찾기 화면 요청] ");
-		return "member/findView";
+		return "mypage/member/findView";
 	}
-
 }
