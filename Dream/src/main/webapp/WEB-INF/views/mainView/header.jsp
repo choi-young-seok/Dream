@@ -11,6 +11,7 @@
 <!-- --------------------------- Custom CSS --------------------------- -->
 <!-- Custom CSS -->
 <link href="resources/css/shop-homepage.css" rel="stylesheet">
+<link href="resources/css/common/commonStyle.css" rel="stylesheet">
 
 <link href="resources/css/custom/index.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="resources/css/member/findView.css">
@@ -26,6 +27,7 @@
 
 <!-- Naver Login API -->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
+
 
 <!-- --------------------------- Custom javascript --------------------------- -->
 <!-- header.js -->
@@ -50,7 +52,7 @@ $(function(){
 	var needLoginSession = '${needLoginSession}';
 
 	if(needLoginSession =='needLoginSession'){
-		var loginConfirm = confirm("로그인이 필요한 서비스 입니다. 로그인하시겠습까?");
+		var loginConfirm = confirm("로그인이 필요한 서비스 입니다. 로그인하시겠습까용??");
 		if(loginConfirm){
 			$('#loginModal').modal({backdrop : "static"});	
 			$('#loginCancelBtn').click(function(){
@@ -59,7 +61,7 @@ $(function(){
 		}else{
 			location.href = "/dream"
 		}
-	}
+	}// if end
 });//ready
 </script>
 </head>
@@ -117,6 +119,7 @@ $(function(){
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">${session.member_name }<span class="caret"></span></a>
 					<input id="session_mail" type="hidden" value="${session.member_mail }">
 					<input id="session_no" type="hidden" value="${session.member_no }">
+					<input id="session_name" type="hidden" value="${session.member_name }">
 					</c:if>
 						<ul class="dropdown-menu">
 							<li><a id="mypage_Main">마이페이지</a></li>

@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.co.dream.project.domain.ProjectInfoDto;
 import kr.co.dream.project.domain.ProjectVO;
 import kr.co.dream.project.persitence.ProjectDAO;
 
@@ -33,13 +34,17 @@ public class ProjectServiceImpl implements ProjectService{
 
 	@Override
 	public void projectAccountInfo(ProjectVO projectAccountInfo) {
-		System.out.println("222"+projectAccountInfo.toStringAccountInfo());
+		System.out.println("ProjectServiceImpl \tprojectAccountInfo \t"+projectAccountInfo.toStringAccountInfo());
 		dao.projectAccountInfo(projectAccountInfo);
 	}
 
 	@Override
 	public ProjectVO projectPreview(int project_no) {
-		return dao.projectPreview(project_no);
+		System.out.println("ProjectServiceImpl \tprojectPreview \t" + project_no);
+		ProjectVO projectVO = dao.projectPreview(project_no);
+		ProjectInfoDto infoDto = dao.get_project_dto_info(project_no);
+		projectVO.setInfoDto(infoDto);
+		return projectVO;
 	}
 
 	@Transactional

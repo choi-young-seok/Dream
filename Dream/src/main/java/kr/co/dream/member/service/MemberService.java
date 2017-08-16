@@ -24,5 +24,5 @@ public interface MemberService {
 	public int memberInfoEdit(MemberVO member); //회원정보 수정 + 비밀번호 변경
 	public List<MemberVO> findMail(MemberVO member);
 	public int findPass(MemberVO member);
-	
+	public void aoptest22();
 }

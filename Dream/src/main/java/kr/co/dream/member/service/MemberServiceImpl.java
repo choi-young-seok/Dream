@@ -75,12 +75,13 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<MemberVO> findMail(MemberVO member) {
 		System.err.println("MemberServiceImpl \tfindMail() \t\t[input value] : " + member.toStringLogin());
-		List<MemberVO> memberList = dao.findMail(member);
-		for (int i = 0; i < memberList.size(); i++) {
-			MemberVO editMemberInfo = memberList.get(i);
-//			member.setMember_mail(member.getMember_mail().);
-		}
-		return memberList;
+//		List<MemberVO> memberList = 
+		return dao.findMail(member);
+//		for (int i = 0; i < memberList.size(); i++) {
+//			MemberVO editMemberInfo = memberList.get(i);
+////			member.setMember_mail(member.getMember_mail().);
+//		}
+//		return memberList;
 	}
 
 	@Override
@@ -88,6 +89,10 @@ public class MemberServiceImpl implements MemberService {
 		System.err.println("MemberServiceImpl \tfindPass() \t\t[input value] : " + member.toStringLogin());
 		member.setMember_pass(encryptionPwd.bCryptPwd(encryptionPwd.shaPwd(member.getMember_pass())));
 		return dao.findPass(member);
+	}
+	
+	public void aoptest22(){
+		System.out.println("서비스진입");
 	}
 
 }

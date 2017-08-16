@@ -9,7 +9,7 @@ $(function() {
 	
 
 	// - 아이디 중복 체크 이벤트
-	$('#member_authMail').keyup(function() {		
+	$('#member_authMail').keyup(function() {	
 		var member_authMail = $('#member_authMail').val();
 		if(!mailFormCheck(member_authMail)){
 			return;
@@ -92,8 +92,9 @@ $(function() {
 			},// headers
 			dataType : 'text',
 			data : JSON.stringify({
-				member_mail : member_mail,
-				member_pass : member_pass,
+				//json데이터의 key값은 문자열이던 변수형이던 상관없음
+				'member_mail' : member_mail,
+				'member_pass' : member_pass,
 				member_name : member_name,
 				member_birth : member_birth,
 				member_gender : member_gender

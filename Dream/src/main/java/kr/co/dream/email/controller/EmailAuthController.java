@@ -27,17 +27,4 @@ public class EmailAuthController {
 		}
 	}// authMailSender
 	
-	//사용하지 않음
-//	@RequestMapping(value = "authMailSuccess/{authOk}", method = RequestMethod.POST)
-//	public ResponseEntity<String> authMailSuccess(@PathVariable("authOk") String authOk ){
-//		
-//		ResponseEntity<String> entity = null;
-//		if(!authOk.equals("OK")){
-//			entity = new ResponseEntity<>("OK",HttpStatus.OK);
-//			return entity;
-//		}else{
-//			entity = new ResponseEntity<>("OK",HttpStatus.BAD_REQUEST);
-//			return entity;
-//		}
-//	}
 }

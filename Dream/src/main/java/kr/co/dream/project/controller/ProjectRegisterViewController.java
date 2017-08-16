@@ -28,20 +28,25 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.dream.project.domain.PhotoVo;
 import kr.co.dream.project.domain.ProjectVO;
+import kr.co.dream.project.reward.domain.RewardVO;
+import kr.co.dream.project.reward.service.RewardService;
 import kr.co.dream.project.service.ProjectService;
-import kr.co.dream.reward.domain.RewardVO;
 
 @Controller
 public class ProjectRegisterViewController {
 
 	@Inject
 	private ProjectService service;
+	
+	@Inject
+	private RewardService rewardService;
 
 	// 프로젝트 기본 정보 입력 화면 요청
 	@RequestMapping(value = "/projectRegiterView")
@@ -50,44 +55,56 @@ public class ProjectRegisterViewController {
 		return "project/register/projectBasicInfoView";
 	}
 
-	// 프로젝트 리워즈 입력 화면 요청
-	@RequestMapping(value = "/projectRewardView")
-	public String projectRewardView() {
-		System.out.println("ProjectRegisterViewController \tprojectRewardView() [프로젝트 리워드 정보 입력 화면 요청]");
-
-		return "project/register/projectRewardView";
-	}
 
 	// 프로젝트 스토리 정보 입력 화면 요청
 	@RequestMapping(value = "/projectStoryView")
-	public String projectStoryView(RewardVO reward[], HttpServletRequest request) {
+	public String projectStoryView(@RequestParam int project_no, Model model) {
 		System.out.println("ProjectRegisterViewController \tprojectStoryView() [프로젝트 스토리 정보 입력 화면 요청]");
-		System.out.println(reward.toString());
+		System.out.println("프로젝트 번호 : " +project_no);
+		model.addAttribute("project_no",project_no);
+//		System.out.println(reward.toString());
 		return "project/register/projectStoryView";
 	}
 
 	// 프로젝트 프로필 정보 입력 화면 요청
 	@RequestMapping(value = "/projectProfileView", method = RequestMethod.POST)
-	public String projectProfileView(ProjectVO projectStoryInfo, HttpServletRequest request) {
-		System.out.println("ProjectRegisterViewController \tprojectProfileView() [프로젝트 등록자 프로필 정보 입력 화면 요청]");
+	public String projectProfileView(ProjectVO projectStoryInfo, Model model) {
+		System.out.println("ProjectRegisterViewController \tprojectProfileView() [프로젝트 스토리 정보 입력 요청]");
+		
 		System.out.println("project_content : " + projectStoryInfo.toStringProjectStoryInfo());
 		service.projectStoryInfo(projectStoryInfo);
+		
+		model.addAttribute("project_no",projectStoryInfo.getProject_no());
+
+		System.out.println("ProjectRegisterViewController \tprojectProfileView() [프로젝트 등록자 프로필 정보 입력 화면 요청]");
 
 		return "project/register/projectProfileView";
 	}
 
 	// 프로젝트 계좌 정보입력 화면 요청
 	@RequestMapping(value = "/projectAccountView")
-	public String projectAccountView() {
+	public String projectAccountView(@RequestParam int project_no, Model model) {
 		System.out.println("ProjectRegisterViewController \tprojectAccountView() [프로젝트 계좌 정보 입력 화면 요청]");
+		System.out.println("프로젝트 번호 : " +project_no);
+		model.addAttribute("project_no",project_no);
 		return "project/register/projectAccountView";
 	}
 
+	//프로젝트 미리보기 화면 요청
 	@RequestMapping(value = "/projectInfoView")
-	public String projectAccountView(Model model, int project_no) {
-		System.out.println("ProjectRegisterViewController \tprojectAccountView() [프로젝트 계좌 정보 입력 화면 요청] : " + project_no);
-		model.addAttribute("project", service.projectPreview(project_no));
-		System.out.println(service.projectPreview(project_no).toString());
+	public String projectInfoView(Model model, @RequestParam int project_no) {
+		System.out.println("ProjectRegisterViewController \tprojectInfoView() [프로젝트 미리보기 화면 요청] : " + project_no);
+		try {
+			model.addAttribute("project_no",project_no);
+			ProjectVO projectVO = service.projectPreview(project_no);
+			model.addAttribute("project", projectVO);
+			model.addAttribute("project_dto",projectVO.getInfoDto());
+			model.addAttribute("rewards", rewardService.rewardList(project_no));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		System.out.println(service.projectPreview(project_no).toString());
 		return "project/projectInfoView";
 	}
 

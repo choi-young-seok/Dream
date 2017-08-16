@@ -41,7 +41,7 @@
 		<beans:property name="maxUploadSize" value="52428800"></beans:property>
 	</beans:bean>
 	
-	<!-- intercepter class -->
+	<!-- interceptor : tor이맞음 ter아님 class -->
 	<beans:bean id="loginIntercepter" class="kr.co.dream.common.intercepter.LoginIntercepter"/>
 	<beans:bean id="AuthIntercepter" class="kr.co.dream.common.intercepter.SessionAuthIntercepter"/>
 	
@@ -62,12 +62,17 @@
 			
 			<!-- mypage session check -->
 			<mapping path="/mypageMain"/>
+			
 			<!-- mypage : member session check  -->
 			<mapping path="/memberInfoView"/>
 			<mapping path="/password_Info_Edit_View"/>
 			
 			<!-- mypage : project session check -->
 			<mapping path="/processing_project_View"/>
+			
+			<!-- supportRegister session check -->
+			<mapping path="/supportForm"/>
+			<mapping path="/pay_info_registForm"/>
 			
 			<beans:ref bean="AuthIntercepter"/>
 		</interceptor>

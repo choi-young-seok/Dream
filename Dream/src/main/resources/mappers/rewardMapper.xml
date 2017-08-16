@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="reward">
+	<insert id="rewardRegister">
+		insert into dream_reward
+		(total_reward_no,member_no, project_no, reward_no, reward_title,
+		reward_items, reward_delivery_date,reward_limited_count,reward_amount)
+		values
+		(dream_reward_seq.nextval, #{member_no}, #{project_no}, #{reward_no}, #{reward_title},
+		#{reward_items}, #{reward_delivery_date}, #{reward_limited_count},
+		#{reward_amount})
+	</insert>
+		
+	<select id="getReward" resultType="RewardVO">
+		select * from dream_reward
+		where total_reward_no = #{reward_no}
+	</select>
+	
+	<select id="rewardList" resultType="RewardVO">
+		select * from dream_reward 
+		where project_no = #{project_no}
+		order by total_reward_no
+	</select>
+</mapper>

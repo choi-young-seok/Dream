@@ -53,11 +53,12 @@
 	update dream_project set project_register_state = 'T' where project_no = #{project_no}
 </update>
 
-<!-- 프로젝트 상세보기 -->
-<select id="projectInfoView">
-	select * from dream_project where project_no = #{project_no} and project_register_state ='T'
+<select id="get_project_dto_info" resultType="ProjectInfoDto">
+	select 
+		floor((project_end_date-sysdate)) as project_d_day, 
+		floor((now_amount/project_goal_amount)*100) as percentage 
+	from dream_project 
+	where project_no =#{project_no}
 </select>
-
-
 
 </mapper>

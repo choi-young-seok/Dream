@@ -4,7 +4,8 @@ import java.util.Date;
 
 public class ProjectVO {
 	private int member_no;
-	private Integer project_no;
+//	private Integer project_no;
+	private int project_no;
 	private String project_thumbnail;
 	private String project_title;
 	private String project_summary;
@@ -13,6 +14,19 @@ public class ProjectVO {
 	private Date project_start_date;
 	private int project_goal_amount;
 	// 프로젝트 기본 정보
+	
+	private ProjectInfoDto infoDto;
+	//연산 결과 DTO
+	
+	public ProjectInfoDto getInfoDto() {
+		return infoDto;
+	}
+
+	public void setInfoDto(ProjectInfoDto infoDto) {
+		this.infoDto = infoDto;
+	}
+	
+	
 
 	public String toStringProjectBasicInfo() {
 		return "ProjectVO [member_no =" + member_no + ", project_no=" + project_no + ", project_thumbnail="
@@ -32,14 +46,15 @@ public class ProjectVO {
 
 	private String register_profile;
 	private String register_name;
+	private String register_phone;
 	private String register_intro;
 	private String register_sns;
 	// 등록자 프로필 정보
 
 	public String toStringProjectProfileInfo() {
-		return "ProjectVO [member_no=" + member_no + ", project_no=" + project_no + ", register_profile="
-				+ register_profile + ", register_name=" + register_name + ", register_intro=" + register_intro
-				+ ", register_sns=" + register_sns + "]";
+		return "ProjectVO [register_profile=" + register_profile + ", register_name=" + register_name
+				+ ", register_phone=" + register_phone + ", register_intro=" + register_intro + ", register_sns="
+				+ register_sns + "]";
 	}
 
 	private String register_address;
@@ -65,6 +80,10 @@ public class ProjectVO {
 				+ now_amount + ", supporting_count=" + supporting_count + ", project_register_state="
 				+ project_register_state + ", project_success_state=" + project_success_state + "]";
 	}
+
+
+
+
 
 	public int getMember_no() {
 		return member_no;
@@ -170,6 +189,14 @@ public class ProjectVO {
 		this.register_name = register_name;
 	}
 
+	public String getRegister_phone() {
+		return register_phone;
+	}
+
+	public void setRegister_phone(String register_phone) {
+		this.register_phone = register_phone;
+	}
+
 	public String getRegister_intro() {
 		return register_intro;
 	}
@@ -257,14 +284,12 @@ public class ProjectVO {
 				+ ", project_category=" + project_category + ", project_end_date=" + project_end_date
 				+ ", project_start_date=" + project_start_date + ", project_goal_amount=" + project_goal_amount
 				+ ", project_video=" + project_video + ", project_content=" + project_content + ", register_profile="
-				+ register_profile + ", register_name=" + register_name + ", register_intro=" + register_intro
-				+ ", register_sns=" + register_sns + ", register_address=" + register_address + ", project_account="
-				+ project_account + ", access_terms_agree=" + access_terms_agree + ", project_viewcnt="
-				+ project_viewcnt + ", now_amount=" + now_amount + ", supporting_count=" + supporting_count
-				+ ", project_register_state=" + project_register_state + ", project_success_state="
-				+ project_success_state + "]";
+				+ register_profile + ", register_name=" + register_name + ", register_phone=" + register_phone
+				+ ", register_intro=" + register_intro + ", register_sns=" + register_sns + ", register_address="
+				+ register_address + ", project_account=" + project_account + ", access_terms_agree="
+				+ access_terms_agree + ", project_viewcnt=" + project_viewcnt + ", now_amount=" + now_amount
+				+ ", supporting_count=" + supporting_count + ", project_register_state=" + project_register_state
+				+ ", project_success_state=" + project_success_state + "]";
 	}
-	
-	
 
 }

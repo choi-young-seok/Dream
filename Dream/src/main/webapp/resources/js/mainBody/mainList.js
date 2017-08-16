@@ -10,7 +10,7 @@ $(function(){
 				mainList += "<div class='col-sm-4 col-lg-4 col-md-4'>"+
 								"<div class='thumbnail'>"+
 									"<input type='hidden' value='"+this.project_no+"'>"+
-									"<a href='/dream/projectInfoView?project_no="+this.project_no+"'><img src='resources/member/thumbnail"+this.project_thumbnail+"'></a>"+
+									"<a href='/dream/projectInfoView?project_no="+this.project_no+"'><img src='resources/member/thumbnail"+this.project_thumbnail+"' style='height: 350px'></a>"+
 									"<div class='progress'>"+
 										"<div class='progress-bar' role='progressbar' aria-valuenow='70' aria-valuemin='0' aria-valuemax='100' style='width: 70%'>70%</div>"+
 									"</div>"+

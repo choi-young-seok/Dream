@@ -2,6 +2,7 @@ package kr.co.dream.project.persitence;
 
 import java.util.List;
 
+import kr.co.dream.project.domain.ProjectInfoDto;
 import kr.co.dream.project.domain.ProjectVO;
 
 public interface ProjectDAO {
@@ -12,7 +13,7 @@ public interface ProjectDAO {
 	public void projectAccountInfo(ProjectVO projectAccountInfo);
 	
 	public ProjectVO projectPreview(int project_no);
-//	public void projectPreviewEdit(ProjectVO project);
+	public ProjectInfoDto get_project_dto_info(int project_no);
 	public void projectRegister(int project_no);
 	
 	public void projectInfoView(int project_no);

@@ -1,13 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+
+"http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- jQuery -->
 <script src="resources/js/common/jquery.js"></script>
+<!-- 리워드 추가/삭제 이벤트 -->
+<!-- <script src="resources/js/reward/rewardAddDelete.js"></script> -->
+<!-- 리워드 유효성 검사 이벤트 -->
+<script src="resources/js/reward/rewardValidityCheck.js"></script> 
+<!-- fldnjem 등록 이벤트 -->
 <script src="resources/js/reward/rewardRegister.js"></script>
+
 
 <title>리워드 정보 등록</title>
 <script type="text/javascript">
@@ -43,35 +51,75 @@ $(function() {
 	var deleteList = [];
 	
 	function addItem() {
-		
 		reward_count++;
 		$("#reward_count").val(reward_count);
 		
 		var newDiv = document.createElement("div"); //<div></div>
 		newDiv.setAttribute('id', 'item_' + reward_count); //<div id="item_1"></div>
-
-		newDiv.innerHTML = '<center>'
-
-		/* 		+ '<h1>리워즈</h1>' */
-				+ '<fieldset>'
-
-				+ '<label for="name">제목:</label>'
-				+ '<input type="text" id="reward_title'+reward_count+'" value="title'+reward_count+'"><br>'
-				/* + '<label for="name">아이템:</label>'
-				+ '<input type="text" id="reward_items" name="item'+reward_count+'"><br>'
-				+ '<label for="name">배송예정일:</label>'
-				+ '<input type="date" id="reward_delivery_date" name="duedate'+reward_count+'"><br>'
+ 
+		newDiv.innerHTML = //'<center>'
+				'<div class="boxSpace rewardBox">'
+				+ '<table>'
+				+ '<tr>'
+		 		+ '<h1 id="reward_head_title'+reward_count+'">리워즈'+reward_count+'</h1>'
+				+ '<th>'
+		 		+ '<label for="name">제목:</label>'
+		 		+ '</th>'
+		 		+ '<td>'
+				+ '<input type="text" id="reward_title'+reward_count+'"><br>'
+		 		+ '</td>'
+		 		+ '</tr>'
+		 		
+				+ '<tr>'
+				+ '<th>'
+				+ '<label for="name">아이템:</label>'
+				+ '</th>'
+				+ '<td>'
+				+ '<input type="text" id="reward_items'+reward_count+'"><br>'
+				+ '</td>'
+				+ '</tr>'
+				
+				+ '<tr>'
+				+ '<th>'
 				+ '<label for="name">한정수량:</label>'
-				+ '<input type="text" id="reward_limited_count" name="amount'+reward_count+'"><br>'
-				+ '<label for="name">서약금액:</label>'
-				+ '<input type="text" id="reward_amount" name="re_money'+reward_count+'"><br>' */
-				+ '<label for="name">리워드 번호:</label>'
-				+ '<input type="text" id="reward_no'+reward_count+'" value="'+reward_count+'"><br>'
-				+ '<button type="button" onclick="removeItem(' + reward_count
-				+ ')" style="right:200px; width: 100px; onclick=removeItem('
-				+ reward_count + ')">삭제</button></fieldset>'
+				+ '</th>'
+				+ '<td>'
+				+ '<input type="text" id="reward_limited_count'+reward_count+'"><br>'
+				+ '</td>'
+				+ '</tr>'
 
-				+ '</center>';
+				+ '<tr>'
+				+ '<th>'
+				+ '<label for="name">서약금액:</label>'
+				+ '</th>'
+				+ '<td>'
+				+ '<input type="text" id="reward_amount'+reward_count+'"><br>'
+				+ '</td>'
+				+ '</tr>'
+				
+				+ '<tr>'
+				+ '<th>'
+				+ '<label for="name">배송예정일:</label>'
+				+ '</th>'
+				+ '<td>'
+				+ '<input type="date" id="reward_delivery_date'+reward_count+'"><br>'
+				+ '</td>'
+				+ '</tr>'
+				
+				+ '<tr>'
+				+ '<th>'
+				+ '<label for="name">리워드 번호:</label>'
+				+ '</th>'
+				+ '<td>'
+				+ '<input type="text" id="reward_no'+reward_count+'" value="'+reward_count+'"><br>'
+				+ '<button type="button" class="btn btn-danger pull-right" id="removeBtn'+reward_count+'" onclick="removeItem(' + reward_count+')" >삭제</button>';
+				+ '</td>'
+				+ '</tr>'
+				
+				+ '</table>'
+				//+ '</center>'
+				+ '</div>';
+				
 
 		var itemList = document.getElementById('itemList');
 		itemList.appendChild(newDiv);
@@ -81,35 +129,65 @@ $(function() {
 
 	}
 	function removeItem(reward_no) {
+		//alert("현재 선택된 reward번호 : "+reward_no)
 		var delDiv = document.getElementById('item_' + reward_no);
+		
+		if(reward_no == 1){
+			alter("리워드 후원은 리워드가 1개 이상 입력되어야 합니다.")
+			return;
+		}
+		
 		delDiv.parentNode.removeChild(delDiv);
 
 		var reward_box_count = $("#reward_count").val();
-
-		reward_count = reward_box_count-1;
-		$("#reward_count").val(reward_count);
 		
-		
-		//deleteList[i] = reward_no;
-		//i++;
-		
-		//중간 
 //			var reward_title = $("#reward_title").val()
-			alert("현재 리워드 번호 : "+reward_no)
-			alert("총 리워드 갯수 : "+reward_count)
+			//alert("현재 리워드 번호 : "+reward_no)
+			//alert("총 리워드 갯수 : "+reward_count)
 			var next_reward_no = reward_no+1;
-			alert("다음 리워드 번호 : "+next_reward_no)
-			alert("땡길 번호: "+next_reward_no-1)
-			alert("땡길 번호2: "+next_reward_no-2)
-			alert("땡길 번호2: "+next_reward_no-3)
-		for(var i = next_reward_no ; i <=reward_count ; i++){
-		    $("#reward_title"+i).attr("id", "reward_title"+);
-		    $("#reward_no"+i).val(reward_count-1)
-		    $("#reward_no"+i).attr("id","reward_no"+i-1);
+			//alert("다음 리워드 번호 : "+next_reward_no)
+			
+			if(reward_no === reward_count){
+				//alert("마지막 리워드 박스 삭제!!")
+				reward_count = reward_box_count-1;
+				$("#reward_count").val(reward_count);
+				return;
+			}else{
+				//alert(reward_no+"번째 리워드 박스 삭제!!");				
+			}
+			
+		for(var i = next_reward_no ; i <=reward_count ; i++){	
+			//alert("변경되는 item 번호 : item_"+i);
+			$("#item_"+i).attr("id","item_"+(i-1));
+			
+			$("reward_head_title"+i).attr("id", "reward_head_title"+(i-1));
+			//$("reward_head_title"+(i-1)).text("리워드"+(i-1))
+			 
+		    $("#reward_title"+i).attr("id", "reward_title"+(i-1));
+		    //$("#reward_title"+(i-1)).val("title"+(i-1))
+
+		    $("#reward_items"+i).attr("id", "reward_items"+(i-1));
+		    //$("#reward_items"+(i-1)).val("reward_items"+(i-1))
+
+		    $("#reward_delivery_date"+i).attr("id", "reward_delivery_date"+(i-1));
+		    //$("#reward_delivery_date"+(i-1)).val("reward_delivery_date"+(i-1))
+
+		    $("#reward_limited_count"+i).attr("id", "reward_limited_count"+(i-1));
+		    //$("#reward_limited_count"+(i-1)).val("reward_limited_count"+(i-1))
+
+		    $("#reward_amount"+i).attr("id", "reward_amount"+(i-1));
+		    //$("#reward_amount"+(i-1)).val("reward_amount"+(i-1))
+
+		    $("#reward_no"+i).attr("id","reward_no"+(i-1));
+		    $("#reward_no"+(i-1)).val(i-1) 
+		    
+		    $("#removeBtn"+i).attr("id","removeBtn"+(i-1))
+		    $("#removeBtn"+(i-1)).attr("onclick","removeItem("+(i-1)+")")
+		    //alert("변경된 reward_no : "+$("#reward_no"+(i-1)).val())
 		}
-		//부모노드.removeChild(삭제할 자식노드);
-		//var itemList = document.getElementById('itemList');
-		// itemList.removeChild(delNode);
+			
+			reward_count = reward_box_count-1;
+			$("#reward_count").val(reward_count);
 	}
 	function nextStep() {
 
@@ -131,7 +209,7 @@ $(function() {
 </head>
 <body>
 	<div class="container">
-		<div class="col col-md-12">
+		<div class="col col-md-12 panel panel-default"">
 			<div class="col col-md-2"></div>
 			<div class="col col-md-8">
 				<h1>프로젝트 리워드 정보 등록</h1>
@@ -139,13 +217,9 @@ $(function() {
 				<form name="reward" method="post">
 					<div id="itemList"></div>
 					<br><br>
-					<input type="button" value="추가" onclick="addItem()"> 
-					생성된 리워드 총 갯수 : <input type="text" id="reward_count" name="reward_count"> 
-					<input type="hidden" value="" name="deleteList"> 
+					<input type="button" class="btn btn-success"  value="추가" onclick="addItem()"> 
+					<br>생성된 리워드 총 갯수 : <input type="text" id="reward_count" name="reward_count">  
 				</form>
-				<center>
-					<input id="re_Array" type="button" value="확인">
-				</center>
 				<div id="rewardArea"></div>
 			<!-- 	<a id="addRewardBox">추가</button> -->
 				<button type="button" id="rewardInfoRegister" class="btn btn-primary pull-right">저장하고 다음으로</button>

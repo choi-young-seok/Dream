@@ -38,7 +38,7 @@ $(function(){
 				//formData.append('file',file); : key='file', value=업로드 파일객체
 				//컨트롤러에 formData(file객체)전달
 				$.ajax({
-					url : '/dream/uploadAjax',
+					url : '/dream/uploadAjax/'+requestName, 
 					data : formData,
 					dataType : 'text',
 					processData : false,
@@ -70,7 +70,7 @@ $(function(){
 									+ "'>" + getOriginalName(data) + "</a>"
 									+ "<small data-src=" + data
 									+ ">X</small></div></div>"
-									+"<input type='text' name='project_video' value='"+data+"'>"
+									+"<input type='text' id='project_video' name='project_video' value='"+data+"'>"
 						}
 	
 						$("#imageZone").append(str);
@@ -81,7 +81,8 @@ $(function(){
 	$("#imageZone").on("click", "small", function(event) {
 		//뿌려진 이미지 데이터에 대한 click이벤트
 		var that = $(this);
-	
+		var requestName = event.target.title;
+		alert("requestName ??: "+requestName )
 		//해당 파일 삭제 요청
 		$.ajax({
 			url : "/dream/deleteFile",
@@ -94,6 +95,9 @@ $(function(){
 				if (result == 'deleted') {
 					that.parent("div").remove();
 					//해당 파일 삭제
+					$("#project_thumbnail").remove();
+					$("#project_video").remove();
+					
 				}
 			}
 		});

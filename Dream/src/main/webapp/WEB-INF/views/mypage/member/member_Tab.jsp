@@ -10,7 +10,7 @@
 </head>
 <body>
 		<ul class="nav nav-tabs">
-				<li><a id="member_Info_Edit_Tab">회원 정보 수정</a></li>
+				<li class="active"><a id="member_Info_Edit_Tab">회원 정보 수정</a></li>
 				<li><a id="password_Info_Edit_Tab">비밀번호 수정</a></li>
 				<li><a >배송정보 수정</a></li>
 				<li><a >회원 탈퇴</a></li>

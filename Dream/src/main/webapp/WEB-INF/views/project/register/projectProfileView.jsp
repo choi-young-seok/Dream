@@ -32,6 +32,11 @@
 				</div>
 				
 				<div class="boxSpace">
+					<span><h4>연착처</h4></span>
+					<span><input type="text" id="register_phone"></span>
+				</div>
+				
+				<div class="boxSpace">
 					<span><h4>소개문구</h4></span>
 					<span><textarea rows="10" cols="" id="register_intro"></textarea></span>
 				</div>

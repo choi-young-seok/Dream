@@ -1,4 +1,4 @@
-$(function() {
+$(function() {	
 	$('#login').click(function() {
 		var login_mail = $('#login_mail').val();
 		var login_pass = $('#login_pass').val();

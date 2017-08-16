@@ -5,7 +5,7 @@ DROP TABLE Dream_Project;
 
 -- user
 CREATE TABLE Dream_Project (
-	Member_No				INTEGER  references dream_member(Member_No), -- 등록자 메일
+	Member_No				INTEGER  	  references dream_member(Member_No), -- 등록자 번호
 	Project_No             	INTEGER       primary key, -- 프로젝트 번호
 	Project_Thumbnail       VARCHAR2(300) NOT NULL, -- 프로젝트 썸네일 
 	Project_Title           VARCHAR2(60)  NOT NULL, -- 프로젝트 타이틀	 (한글/영문 : 20/30)	

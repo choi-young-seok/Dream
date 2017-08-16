@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="address">
+
+	<select id="findAddress" resultType="FindResultAddressVO">
+		select zip_code, address
+		from post_table
+ 		where address like '%'||#{keyword}||'%'
+		<!-- <include refid="search"></include> -->
+		order by address
+	</select>
+	
+	<select id="listSearchCount" resultType="integer">
+			select count(*) from post_table
+			<include refid="search"></include>
+	</select>
+	
+	<sql id="search" >
+		<if test="keyword != null">
+			where address like '%'||#{keyword}||'%'
+		</if>
+	</sql>
+	
+
+</mapper>

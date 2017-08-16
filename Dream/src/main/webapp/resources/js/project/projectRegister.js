@@ -1,7 +1,8 @@
 $(function(){
+	//------------------------------------------------------------- 이벤트 기본 설정
 	// 프로젝트 기본 정보 등록 radio button 이벤트 : 프로젝트 종료 기간 선택
 	$('#project_end_date_input').click(function(){
-		$('#dateArea').html('<input type="text" id="project_end_date">');
+		$('#dateArea').html('<input type="text" class="form-control" id="project_end_date">');
 	});//project_end_date_input click event
 	
 	$('#project_end_date_select').click(function(){
@@ -18,7 +19,9 @@ $(function(){
 		$('#imageZone').hide();
 		$('#youtube_address').html('<input type="text" name="project_video">');
 	});//youtube_address click event
-
+	//------------------------------------------------------------- 이벤트 기본 설정
+	
+	
 	//프로젝트 기본 정보 등록 요청
 	$('#basicInfoRegister').click(function(){
 		var project_thumbnail = $('#project_thumbnail').val();
@@ -29,8 +32,8 @@ $(function(){
 		var project_goal_amount = $('#project_goal_amount').val();
 		var member_mail = $('#session_mail').val();
 		var member_no = $('#session_no').val();
-		alert(member_mail);
-		alert(member_no);
+		alert("member_mail : "  +member_mail);
+		alert("member_no : "+member_no);
 		
 		$.ajax({ 
 			url : '/dream/basicInfoRegister',
@@ -50,19 +53,21 @@ $(function(){
 				member_no : member_no
 			}),//data
 			success : function(result){
-				alert(result)
-				if(result == "success"){
-					location.href="/dream/projectRewardView";					
-				}else{
+				alert("result : "+result)
+				if(result == "fail"){
 					alert("입력 정보를 다시 확인하세요")
+				}else{
+					alert("프로젝트 번호 : " +result)
+					location.href="/dream/projectRewardView?project_no="+result;					
 					return;
 				}
 			}//success
 		});//ajax
 	});//basicInfoRegister click event
 	
-		$('#rewardInfoRegister').click(function(){
-			location.href="/dream/projectStoryView";
+		//$('#rewardInfoRegister').click(function(){
+			//alert("클릭~!")
+			//location.href="/dream/projectStoryView";
 //		$.ajax({			
 //			url: '/dream/projectStoryView',
 //			type : 'post',
@@ -70,7 +75,7 @@ $(function(){
 //				$('#projectStoryView').html(result)
 //			}//success
 //		})//ajax
-	});//basicInfoRegister click event
+	//});//basicInfoRegister click event
 
 //		$('#savebutton').click(function(){
 //			var project_content = $('#editor').val();
@@ -97,18 +102,21 @@ $(function(){
 //		location.href="/dream/projectRewardView";
 //	});//basicInfoRegister click event
 	
-	$('#projectRewardRegister').click(function(){
-		location.href="/dream/projectStoryView";
-	});//basicInfoRegister click event
+//	$('#projectRewardRegister').click(function(){
+//		location.href="/dream/projectStoryView";
+//	});//basicInfoRegister click event
 	
+	
+	//프로젝트 등록자 프로필 정보 입력 요청
 	$('#profileInfoRegister').click(function(){
 		var project_no = $('#project_no').val();
 		var register_profile = $('#register_profile').val();
 		var register_name = $('#register_name').val();
+		var register_phone = $('#register_phone').val();
 		var register_intro = $('#register_intro').val();
 		var register_sns = $('#register_sns').val();
 
-		
+		alert("프로젝트 번호 ? : " +project_no)
 		alert("프로젝트 번호 : "+project_no+"프로필사진 : "+register_profile+"이름 : "+register_name+"소개문구 : "+register_intro+"sns : "+register_sns)
 	
 		$.ajax({
@@ -123,13 +131,14 @@ $(function(){
 				project_no : project_no,
 				register_profile : register_profile,
 				register_name : register_name,
+				register_phone : register_phone,
 				register_intro : register_intro,
 				register_sns : register_sns
 			}),//data
 			success : function(result){
 				if(result == "success"){
 					alert("성공")
-					location.href="/dream/projectAccountView";
+					location.href="/dream/projectAccountView?project_no="+project_no;
 				}else{
 					alert("실패")
 				}
@@ -138,6 +147,7 @@ $(function(){
 		
 	});//basicInfoRegister click event
 	
+	//프로젝트 계좌 정보 등록 요청
 	$('#accountInfoRegister').click(function(){
 		var project_no = $('#project_no').val();
 		var access_terms_agree = $("#access_terms_agree").is(":checked");
@@ -183,6 +193,7 @@ $(function(){
 //		location.href="/dream";
 	});//basicInfoRegister click event
 	
+	//프로젝트 미리보기 -> 최종등록 요청
 	$('#project_register').click(function(){
 		
 		var project_no = $('#project_no').val();

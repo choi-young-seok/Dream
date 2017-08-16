@@ -1,17 +1,19 @@
-package kr.co.dream.reward.domain;
+package kr.co.dream.project.reward.domain;
 
 import java.sql.Date;
+import java.util.List;
 
 public class RewardVO {
 
-	private int member_no; //회원 번호
-	private int project_no; //프로젝트 번호
-	private int reward_no; //리워드 번호
-	private String reward_title; //리워드 제목
-	private String reward_items; //리워드 품목
-	private Date delivert_date; //배송 예정일
-	private int reward_limited_count; //한정 수량
-	private int reward_amount; //서약(리워드) 금액
+	private int member_no; // 회원 번호
+	private int project_no; // 프로젝트 번호
+	private int total_reward_no; // 전체 리워드 번호
+	private int reward_no; // 리워드 번호
+	private String reward_title; // 리워드 제목
+	private String reward_items; // 리워드 품목
+	private Date reward_delivery_date; // 배송 예정일
+	private int reward_limited_count; // 한정 수량
+	private int reward_amount; // 서약(리워드) 금액
 	private int reward_count;
 
 	public int getReward_no() {
@@ -38,6 +40,14 @@ public class RewardVO {
 		this.project_no = project_no;
 	}
 
+	public int getTotal_reward_no() {
+		return total_reward_no;
+	}
+
+	public void setTotal_reward_no(int total_reward_no) {
+		this.total_reward_no = total_reward_no;
+	}
+
 	public String getReward_title() {
 		return reward_title;
 	}
@@ -54,12 +64,12 @@ public class RewardVO {
 		this.reward_items = reward_items;
 	}
 
-	public Date getDelivert_date() {
-		return delivert_date;
+	public Date getReward_delivery_date() {
+		return reward_delivery_date;
 	}
 
-	public void setDelivert_date(Date delivert_date) {
-		this.delivert_date = delivert_date;
+	public void setReward_delivery_date(Date reward_delivery_date) {
+		this.reward_delivery_date = reward_delivery_date;
 	}
 
 	public int getReward_limited_count() {
@@ -77,7 +87,7 @@ public class RewardVO {
 	public void setReward_amount(int reward_amount) {
 		this.reward_amount = reward_amount;
 	}
-	
+
 	public int getReward_count() {
 		return reward_count;
 	}
@@ -89,9 +99,9 @@ public class RewardVO {
 	@Override
 	public String toString() {
 		return "RewardVO [reward_no=" + reward_no + ", member_no=" + member_no + ", project_no=" + project_no
-				+ ", reward_title=" + reward_title + ", reward_items=" + reward_items + ", delivert_date="
-				+ delivert_date + ", reward_limited_count=" + reward_limited_count + ", reward_amount=" + reward_amount
-				+ "]";
+				+ ", reward_title=" + reward_title + ", reward_items=" + reward_items + ", reward_delivery_date="
+				+ reward_delivery_date + ", reward_limited_count=" + reward_limited_count + ", reward_amount="
+				+ reward_amount + "]";
 	}
 
 }

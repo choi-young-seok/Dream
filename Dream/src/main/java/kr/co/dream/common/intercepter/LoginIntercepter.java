@@ -19,8 +19,8 @@ public class LoginIntercepter extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 		
 		if (session.getAttribute("session") != null) {
-			System.out.println("LoginIntercepter \tpreHandle() \t\t[로그아웃 성공]");
 			session.removeAttribute("session");
+			System.out.println("LoginIntercepter \tpreHandle() \t\t[로그아웃 성공]");
 		}
 		return super.preHandle(request, response, handler);
 	}

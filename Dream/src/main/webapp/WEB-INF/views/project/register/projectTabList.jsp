@@ -9,6 +9,7 @@
 <!-- projcetTabList style -->
 <link href="resources/css/project/projectTabList.css" rel="stylesheet">
 <link href="resources/css/project/projectRegister.css" rel="stylesheet">
+<link href="resources/css/common/commonStyle.css" rel="stylesheet">
 
 <!-- jQuery -->
 <script src="resources/js/common/jquery.js"></script>
@@ -19,7 +20,7 @@
 <script type="text/javascript" src="resources/js/project/projectRegister.js"></script>
 
 </head>
-<header><%@include file="../../mainView/header.jsp"%>
+	<header><%@include file="../../mainView/header.jsp"%></header>
 <body>
 <div class="container">
 	<div class="row">
@@ -29,7 +30,7 @@
                 <div class="connecting-line"></div>
                 <ul class="nav nav-tabs" role="tablist">
 
-					<input type="text" value="${project.project_no }" id="project_no" name="project_no">
+					<%-- <input type="text" value="${project_no}" id="project_no" name="project_no"> --%>
                     <li role="presentation" class="active">
                         <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="기본정보">
                             <span class="round-tab">
@@ -71,6 +72,7 @@
                     </li>
                 </ul>
             </div>
+            <input type="text" id="project_no" value="${project_no }">
 
                 <!-- <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step1">

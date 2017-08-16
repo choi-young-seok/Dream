@@ -129,7 +129,7 @@ public class MemberRestController {
 	}
 
 	// 회원정보 수정
-	@RequestMapping(value = "/memberInfoEdit", method=RequestMethod.POST)
+	@RequestMapping(value = "/memberInfoEdit", method = RequestMethod.POST)
 	public ResponseEntity<String> memberInfoEdit(@RequestBody MemberVO member) {
 		ResponseEntity<String> entity = null;
 		System.out.println(member.toStringProfile());

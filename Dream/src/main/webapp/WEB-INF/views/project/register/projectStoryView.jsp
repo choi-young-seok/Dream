@@ -63,7 +63,7 @@
 					</div>
 				
 					<form action="/dream/projectProfileView" method="post" id="frm">
-						<input type="hidden" value="${project.project_no }" name="project_no">
+						1111<input type="text" value="${project_no}" name="project_no">1111+${project_no}
 						<span><div class="thumbnailImage" name="project_video" title="project_video" id="imageZone" style="width: 760px;"></div></span>
 						<div id="youtube_address"></div>
 						<textarea name="project_content" id="editor" rows="10" cols="100"
