@@ -2,11 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="mainList">
 	<select id="mainList" resultType="ProjectVO" >
-		select * from dream_project 
-		where project_register_state = 'T'
+		SELECT 
+		  	PROJECT_NO, PROJECT_THUMBNAIL, PROJECT_TITLE, PROJECT_CATEGORY, 
+			PROJECT_END_DATE, PROJECT_START_DATE, PROJECT_SUMMARY,
+		  	PROJECT_GOAL_AMOUNT, NOW_AMOUNT, 
+		  	PROJECT_VIDEO, PROJECT_CONTENT, REGISTER_PROFILE, REGISTER_NAME, 
+		  	REGISTER_INTRO, REGISTER_SNS, REGISTER_ADDRESS, PROJECT_ACCOUNT, 
+		  	ACCESS_TERMS_AGREE, PROJECT_VIEWCNT,  SUPPORTING_COUNT, 
+		  	PROJECT_REGISTER_STATE, REGISTER_PHONE
+		FROM 
+		  	DREAM_PROJECT
+	 	WHERE
+		  	PROJECT_REGISTER_STATE = 'T'
+	  	ORDER BY
+	  		PROJECT_NO
 	</select>
+<!-- 	<select id="mainList" resultType="ProjectVO" >
+		SELECT 
+		  	PROJECT_NO, PROJECT_THUMBNAIL, PROJECT_TITLE, PROJECT_CATEGORY, 
+		  	To_Date(PROJECT_END_DATE), To_Date(PROJECT_START_DATE), 
+		  	PROJECT_GOAL_AMOUNT, NOW_AMOUNT, 
+		  	PROJECT_VIDEO, PROJECT_CONTENT, REGISTER_PROFILE, REGISTER_NAME, 
+		  	REGISTER_INTRO, REGISTER_SNS, REGISTER_ADDRESS, PROJECT_ACCOUNT, 
+		  	ACCESS_TERMS_AGREE, PROJECT_VIEWCNT,  SUPPORTING_COUNT, 
+		  	PROJECT_REGISTER_STATE, REGISTER_PHONE
+		FROM 
+		  	DREAM_PROJECT
+	 	WHERE
+		  	PROJECT_REGISTER_STATE = 'T'
+	  	ORDER BY
+	  		PROJECT_NO
+	</select> -->
 	
-<!-- 	<select id="mainList" resultType="ProjectVO">
+<!-- 	이밑은 안쓰는 거임 
+
+<select id="mainList" resultType="ProjectVO">
 	 	SELECT 
 		  	PROJECT_NO, PROJECT_THUMBNAIL, PROJECT_TITLE, PROJECT_CATEGORY, 
 		  	PROJECT_END_DATE, PROJECT_GOAL_AMOUNT, NOW_AMOUNT, 
@@ -33,24 +63,23 @@
 	</resultMap>
 	
 	<resultMap id="ProjectDTO2" type="ProjectVO" autoMapping="true">
-	<id property="project_no" column="project_no"/>
-		<association property="project_no" column="project_no" javaType="ProjectInfoDto" select="getDTO">
+		<id property="project_no" column="project_no"/>
+		<association property="project_no" column="project_no"  javaType="ProjectInfoDto" select="getDTO">
 			<result property="project_d_day" column="project_d_day"/>
 			<result property="project_percentage" column="project_percentage"/>
 		</association>
 	</resultMap>
 	
- 	<select id="mainList2" resultMap="ProjectDTO2">
+	<select id="mainList2" resultMap="ProjectDTO">
 	 	SELECT 
-		  	project_no, PROJECT_THUMBNAIL, PROJECT_TITLE, PROJECT_CATEGORY, 
+		  	project_no , PROJECT_THUMBNAIL, PROJECT_TITLE, PROJECT_CATEGORY, 
 		  	PROJECT_START_DATE, PROJECT_START_DATE, PROJECT_GOAL_AMOUNT, 
 		  	PROJECT_VIDEO, PROJECT_CONTENT, REGISTER_PROFILE, REGISTER_NAME, 
 		  	REGISTER_INTRO, REGISTER_SNS, REGISTER_ADDRESS, PROJECT_ACCOUNT, 
 		  	ACCESS_TERMS_AGREE, PROJECT_VIEWCNT, NOW_AMOUNT, SUPPORTING_COUNT, 
 		  	PROJECT_REGISTER_STATE, REGISTER_PHONE,
-		  	floor((project_end_date-sysdate)) as project_d_day, 
-		  	floor((now_amount/project_goal_amount)*100) as project_percentage
-		  	 
+			floor((project_end_date-sysdate)) as project_d_day, 
+			floor((now_amount/project_goal_amount)*100) as project_percentage
 		FROM 
 		  	DREAM_PROJECT
 	 	WHERE
@@ -58,7 +87,6 @@
 	  	ORDER BY
 	  		project_no
 	</select>
-
 	
 	<select id="getDTO" resultType="ProjectInfoDto">
 		SELECT

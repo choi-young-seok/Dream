@@ -25,7 +25,7 @@ public class SupportServiceImpl implements SupportService {
 	
 	@Transactional
 	public ShippingItemsVO supportRegister(SupportVO supportVO) {
-		logger.info("-------------------------------------------------");
+		logger.info("-------------------------------------------------input value");
 		logger.info("\n"+supportVO.toString());
 		
 
@@ -91,7 +91,9 @@ public class SupportServiceImpl implements SupportService {
 		RewardVO rewardVO = supportDAO.get_support_items(supportVO.getTotal_reward_no());
 
 		supportVO.setAddressVO(addressVO);
+		System.out.println(addressVO.toString());
 		supportVO.setRewardVO(rewardVO);
+		System.out.println(rewardVO.toString());
 		
 		
 		//가공된 ShippingAddressVO값을 insert한 후 반환되는 shipping_address_no를 dream_shipping_items테이블에 입력
@@ -108,7 +110,7 @@ public class SupportServiceImpl implements SupportService {
 	public SupportVO get_supportInfo(int support_no, int shipping_address_no) {
 		
 		SupportVO supportVO = supportDAO.get_support_info(support_no);
-		if(supportVO.getRewardVO()==null){
+		if(supportVO.getTotal_reward_no()==0){
 			return supportVO;
 		}
 		RewardVO rewardVO = supportDAO.get_support_items(supportVO.getTotal_reward_no());

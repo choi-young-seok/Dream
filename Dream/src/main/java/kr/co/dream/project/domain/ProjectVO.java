@@ -1,10 +1,9 @@
 package kr.co.dream.project.domain;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class ProjectVO {
 	private int member_no;
-//	private Integer project_no;
 	private int project_no;
 	private String project_thumbnail;
 	private String project_title;
@@ -14,19 +13,26 @@ public class ProjectVO {
 	private Date project_start_date;
 	private int project_goal_amount;
 	// 프로젝트 기본 정보
-	
+
 	private ProjectInfoDto infoDto;
-	//연산 결과 DTO
-	
+	// 연산 결과 DTO
+
+
 	public ProjectInfoDto getInfoDto() {
 		return infoDto;
+	}
+
+	public int getProject_no() {
+		return project_no;
+	}
+
+	public void setProject_no(int project_no) {
+		this.project_no = project_no;
 	}
 
 	public void setInfoDto(ProjectInfoDto infoDto) {
 		this.infoDto = infoDto;
 	}
-	
-	
 
 	public String toStringProjectBasicInfo() {
 		return "ProjectVO [member_no =" + member_no + ", project_no=" + project_no + ", project_thumbnail="
@@ -81,10 +87,6 @@ public class ProjectVO {
 				+ project_register_state + ", project_success_state=" + project_success_state + "]";
 	}
 
-
-
-
-
 	public int getMember_no() {
 		return member_no;
 	}
@@ -92,14 +94,8 @@ public class ProjectVO {
 	public void setMember_no(int member_no) {
 		this.member_no = member_no;
 	}
-
-	public Integer getProject_no() {
-		return project_no;
-	}
-
-	public void setProject_no(Integer project_no) {
-		this.project_no = project_no;
-	}
+	
+	
 
 	public String getProject_thumbnail() {
 		return project_thumbnail;

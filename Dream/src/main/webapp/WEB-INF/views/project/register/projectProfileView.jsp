@@ -9,9 +9,7 @@
 <script type="text/javascript" src="resources/js/upload/upload.js"></script>
 <title>프로젝트 기본 정보 등록</title>
 </head>
-<header> 
-	<%@include file="../../mainView/header.jsp" %>
-</header>
+
 <article>
 	<%@include file="projectTabList.jsp" %>
 </article>
@@ -22,7 +20,7 @@
 			<div class="col col-md-8">
 				<h1>프로젝트 기본 정보 등록</h1>
 				
-				<div class="boxSpace">
+				<div class="boxSpace" align="center">
 					<span><h4>프로필 사진</h4></span> <span><div id="imageZone" title="register_profile" class="thumbnailImage"></div></span>
 				</div>
 				

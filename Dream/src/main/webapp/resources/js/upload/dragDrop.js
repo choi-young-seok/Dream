@@ -13,7 +13,7 @@ $(function(){
 		//imageZone 영역에 drop 이벤트 발생시
 
 				var requestName = event.target.title;
-				alert(requestName)
+//				alert(requestName)
 				event.preventDefault();
 				//event.preventDefault(); = 브라우저의 동작 방지
 				
@@ -45,7 +45,7 @@ $(function(){
 					contentType : false,
 					type : 'POST',
 					success : function(data) {
-						alert("upload 파일"+data)
+//						alert("upload 파일"+data)
 						var str = "";
 	
 						if (checkImageType(data)) {
@@ -57,22 +57,27 @@ $(function(){
 							// +"</a>"
 							+ "<small data-src=" + data + ">X</small>" + "</div>";
 							if(requestName == 'project_thumbnail'){
-								str += "<input id='project_thumbnail' type='text' value="+data+">";
+								str += "<input id='project_thumbnail' type='hidden' value="+data+">";
 							}else if(requestName == 'member_profile'){
-								str += "<input id='member_profile' type='text' value="+data+">";								
+								str += "<input id='member_profile' type='hidden' value="+data+">";								
 							}else if(requestName == 'register_profile'){
-								str += "<input id='register_profile' type='text' name='project_video' value="+data+">";								
+								str += "<input id='register_profile' type='hidden' name='project_video' value="+data+">";								
 							}else{
 								alert("div태그 title 정보 없음 : "+requestName)
 							}
 						} else {
-							str = "<div><a href='displayFile?fileName=" + data
-									+ "'>" + getOriginalName(data) + "</a>"
-									+ "<small data-src=" + data
-									+ ">X</small></div></div>"
-									+"<input type='text' id='project_video' name='project_video' value='"+data+"'>"
+							str = "<div>" 
+									+ "<a href='displayFile?fileName=" + data +"'>" + getOriginalName(data) + "</a>"
+									+ "<small data-src=" + data + ">X</small>"
+									+ "<video width='485' heigth='480' controls>"
+									+'<source src="displayFile?fileName='+data+'" type="video/ogg">'
+									+ "</video>"
+									+ "</div>"
+									+"<input type='hidden' id='project_video' name='project_video' value='"+data+"'>";
 						}
-	
+						/*	+ "<video width='485' heigth='480' controls>"
+						+'<source src="displayFile?fileName='+data+'" type="video/ogg">'
+						+ "</video>"*/
 						$("#imageZone").append(str);
 					}
 				});
@@ -82,7 +87,7 @@ $(function(){
 		//뿌려진 이미지 데이터에 대한 click이벤트
 		var that = $(this);
 		var requestName = event.target.title;
-		alert("requestName ??: "+requestName )
+//		alert("requestName ??: "+requestName )
 		//해당 파일 삭제 요청
 		$.ajax({
 			url : "/dream/deleteFile",

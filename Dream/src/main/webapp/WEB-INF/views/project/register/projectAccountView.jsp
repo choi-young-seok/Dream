@@ -10,9 +10,7 @@
 <script type="text/javascript" src="resources/js/upload/upload.js"></script>
 
 <title>프로젝트 계좌 정보 등록</title>
-<header> 
-	<%@include file="../../mainView/header.jsp" %>
-</header>
+
 <article>
 	<%@include file="projectTabList.jsp" %>
 </article>
@@ -42,12 +40,12 @@
 					<span><h4 align="center">은행</h4></span>
 					<span><select id="account_bank_list">
 						<option>----</option>
-						<option>영상</option>
-						<option>과학</option>
-						<option>교육</option>
-						<option>뷰티</option>
-						<option>패션</option>
-						<option>음식</option>
+						<option>신한</option>
+						<option>농협</option>
+						<option>우체국</option>
+						<option>국민</option>
+						<option>새마을</option>
+						<option>기업</option>
 					</select></span>	  				
 					<span><h4 align="center">프로젝트 계좌번호</h4></span>
 					<span><input type="text" id="project_account"></span>

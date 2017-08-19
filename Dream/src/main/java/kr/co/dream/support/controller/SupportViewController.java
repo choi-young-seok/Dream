@@ -56,17 +56,24 @@ public class SupportViewController {
 	@RequestMapping(value = "supportCompleteView", method = RequestMethod.GET)
 	public String support_register(@RequestParam int support_no, String shipping_address_no, Model model) {
 		System.out.println("요청진입");
+		System.out.println(shipping_address_no);
 
 		if (shipping_address_no.equals("noReward")) {
 			shipping_address_no = "0";
 			SupportVO supportVO = service.get_supportInfo(support_no, Integer.parseInt(shipping_address_no));
+			
+			System.out.println(supportVO.toString());
 			model.addAttribute("supportVO", supportVO);
 			if (supportVO.getRewardVO() == null) {
 				return "/support/supportCompleteView";
 			}
+		}
+			SupportVO supportVO = service.get_supportInfo(support_no, Integer.parseInt(shipping_address_no));
+			model.addAttribute("supportVO", supportVO);
 			model.addAttribute("addressVO", supportVO.getAddressVO());
 			model.addAttribute("itemsVO", supportVO.getRewardVO());
-		}
+			System.out.println(supportVO.getAddressVO().toString());
+			System.out.println(supportVO.getRewardVO().toString());
 		// logger.info(supportVO.toString());
 		// logger.info(supportVO.getAddressVO().toString());
 		// logger.info(supportVO.getRewardVO().toString());

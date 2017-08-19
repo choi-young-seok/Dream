@@ -78,7 +78,9 @@ public class ProjectDAOImpl implements ProjectDAO {
 
 	@Override
 	public ProjectInfoDto get_project_dto_info(int project_no) {
-		return sqlSession.selectOne("project.get_project_dto_info",project_no);
+		ProjectInfoDto dto =sqlSession.selectOne("project.get_project_dto_info",project_no);
+		System.out.println(dto.toString());
+		return dto;
 	}
 
 

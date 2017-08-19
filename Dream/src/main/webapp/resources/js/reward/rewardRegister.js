@@ -25,13 +25,13 @@
 
 $(function(){
 	$("#rewardInfoRegister").click(function(){
-		alert("리워드 입력")
-		alert("프로젝트 번호:"+$("#project_no").val())
+//		alert("리워드 입력")
+//		alert("프로젝트 번호:"+$("#project_no").val())
 		
 		//array in json for multiple-row insert to rewards
 		var rewardsList = [];
 		var listSize = $( "#reward_count").val();
-		alert("리워드 개수"+listSize)
+//		alert("리워드 개수"+listSize)
 		   for(var nRow = 1; nRow <= listSize; nRow++) {
 			   rewardsList.push({
 				   reward_title : $("#reward_title"+nRow).val(),
@@ -46,7 +46,7 @@ $(function(){
 		   }
 		
 		//배열전송을 위한 ajax 설정 변경
-		alert(JSON.stringify(rewardsList))
+//		alert(JSON.stringify(rewardsList))
 		$.ajaxSettings.traditional = true;
 		
 	   $.ajax({
@@ -65,7 +65,7 @@ $(function(){
 				if(result == "fail"){
 					alert("입력값을 다시 확인해 주세요")
 				}else{
-					alert("프로젝트 번호 : " +result)
+//					alert("프로젝트 번호 : " +result)
 					location.href="/dream/projectStoryView?project_no="+result;
 				}
 			}// success

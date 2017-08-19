@@ -62,13 +62,13 @@
 								<div id="imageZone" class="member_profile" title="member_profile"></div>
 								<h6>점선영역에 프로필 사진을 드래그하세요</h6>
 							</div>
-							<input id="member_profile_value" type="text" value="${member.member_profile }">
+							<input id="member_profile_value" type="hidden" value="${member.member_profile }">
 					
 							<c:if test="${member.member_profile != 'NO PROFILE'}">
 								<div id="proFileZone">
 									<div>
 										<img src="displayFile?fileName=${member.member_profile}" class="avatar img-circle img-thumbnail" alt="drag your profile Image">
-										<input id="member_profile_value" type="text" value="${member.member_profile }">
+										<input id="member_profile_value" type="hidden" value="${member.member_profile }">
 									</div>
 									<a id="profileEdit" class="btn btn-success">수정</a>
 								</div>

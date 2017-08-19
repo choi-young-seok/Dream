@@ -59,65 +59,58 @@ $(function() {
  
 		newDiv.innerHTML = //'<center>'
 				'<div class="boxSpace rewardBox">'
-				+ '<table>'
-				+ '<tr>'
-		 		+ '<h1 id="reward_head_title'+reward_count+'">리워즈'+reward_count+'</h1>'
-				+ '<th>'
-		 		+ '<label for="name">제목:</label>'
-		 		+ '</th>'
-		 		+ '<td>'
-				+ '<input type="text" id="reward_title'+reward_count+'"><br>'
-		 		+ '</td>'
-		 		+ '</tr>'
-		 		
-				+ '<tr>'
-				+ '<th>'
-				+ '<label for="name">아이템:</label>'
-				+ '</th>'
-				+ '<td>'
-				+ '<input type="text" id="reward_items'+reward_count+'"><br>'
-				+ '</td>'
-				+ '</tr>'
-				
-				+ '<tr>'
-				+ '<th>'
-				+ '<label for="name">한정수량:</label>'
-				+ '</th>'
-				+ '<td>'
-				+ '<input type="text" id="reward_limited_count'+reward_count+'"><br>'
-				+ '</td>'
-				+ '</tr>'
-
-				+ '<tr>'
-				+ '<th>'
-				+ '<label for="name">서약금액:</label>'
-				+ '</th>'
-				+ '<td>'
-				+ '<input type="text" id="reward_amount'+reward_count+'"><br>'
-				+ '</td>'
-				+ '</tr>'
-				
-				+ '<tr>'
-				+ '<th>'
-				+ '<label for="name">배송예정일:</label>'
-				+ '</th>'
-				+ '<td>'
-				+ '<input type="date" id="reward_delivery_date'+reward_count+'"><br>'
-				+ '</td>'
-				+ '</tr>'
-				
-				+ '<tr>'
-				+ '<th>'
-				+ '<label for="name">리워드 번호:</label>'
-				+ '</th>'
-				+ '<td>'
-				+ '<input type="text" id="reward_no'+reward_count+'" value="'+reward_count+'"><br>'
-				+ '<button type="button" class="btn btn-danger pull-right" id="removeBtn'+reward_count+'" onclick="removeItem(' + reward_count+')" >삭제</button>';
-				+ '</td>'
-				+ '</tr>'
-				
-				+ '</table>'
-				//+ '</center>'
+					+'<div class="row">'
+						+'<div class="col-md-10 col-md-offset-1">'
+							+'<form class="form-horizontal" role="form">'
+							
+								+'<legend id="reward_head_title'+reward_count+'">리워드'+reward_count+'</legend>'
+								
+								+'<div class="form-group">'
+								+'<label class="col-sm-3 control-label" for="textinput">제목 : </label>'	
+								+'<div class="col-sm-9">'
+								+'<input type="text" id="reward_title'+reward_count+'" placeholder="리워드 제목을 입력하세요" class="form-control">'
+								+'</div>'
+								+'</div>'
+								
+								+'<div class="form-group">'
+								+'<label class="col-sm-3 control-label" for="textinput">아이템 : </label>'	
+								+'<div class="col-sm-9">'
+								+'<input type="text" id="reward_items'+reward_count+'" placeholder="리워드 품목 입력하세요" class="form-control">'
+								+'</div>'
+								+'</div>'
+								
+								+'<div class="form-group">'
+								+'<label class="col-sm-3 control-label" for="textinput">한정 수량 : </label>'	
+								+'<div class="col-sm-9">'
+								+'<input type="text" id="reward_limited_count'+reward_count+'" placeholder="한정 수량을 입력하세요" class="form-control">'
+								+'</div>'
+								+'</div>'
+								
+								+'<div class="form-group">'
+								+'<label class="col-sm-3 control-label" for="textinput">금액 : </label>'	
+								+'<div class="col-sm-9">'
+								+'<input type="text" id="reward_amount'+reward_count+'" placeholder="리워드 가격을 입력하세요" class="form-control">'
+								+'</div>'
+								+'</div>'
+								
+								+'<div class="form-group">'
+								+'<label class="col-sm-3 control-label" for="textinput">배송예정일 : </label>'	
+								+'<div class="col-sm-9">'
+								+'<input type="date" id="reward_delivery_date'+reward_count+'" class="form-control">'
+								+'</div>'
+								+'</div>'
+								
+								+'<div class="form-group">'
+								+'<label class="col-sm-3 control-label" for="textinput">리워드 번호</label>'	
+								+'<div class="col-sm-9">'
+								+'<input type="text" id="reward_no'+reward_count+'" value="'+reward_count+'" class="form-control" readonly="readonly">'
+								+'</div>'
+								+'</div>'
+							
+							+'</from>'  
+						+'</div>'
+					+ '<button type="button" class="btn btn-danger pull-right" id="removeBtn'+reward_count+'" onclick="removeItem(' + reward_count+')" >삭제</button>';
+					+ '</div>'
 				+ '</div>';
 				
 
@@ -133,7 +126,7 @@ $(function() {
 		var delDiv = document.getElementById('item_' + reward_no);
 		
 		if(reward_no == 1){
-			alter("리워드 후원은 리워드가 1개 이상 입력되어야 합니다.")
+			alert("리워드 후원은 리워드가 1개 이상 입력되어야 합니다.")
 			return;
 		}
 		

@@ -20,18 +20,23 @@ public class MainListDAOImpl implements MainListDAO{
 	@Override
 	public List<ProjectVO> mainList() {
 		List<ProjectVO> mainList = sqlSession.selectList("mainList.mainList", null, new RowBounds(0, 10));
-		return mainList;
-	}
-
-	@Override
-	public List<ProjectVO> mainList2() {
-		List<ProjectVO> mainList = sqlSession.selectList("mainList.mainList2", null, new RowBounds(0, 10));
+		for (int i = 0; i < mainList.size(); i++) {
+			ProjectVO projectVO = mainList.get(i);
+			System.out.println("end date : "+projectVO.getProject_end_date()+"\tstart date : "+projectVO.getProject_start_date());
+		}
 		return mainList;
 	}
 	
 	@Override
 	public ProjectInfoDto getDTO(int project_no){
-		return sqlSession.selectOne("mainList.getDTO", project_no);
+		ProjectInfoDto dto = sqlSession.selectOne("mainList.getDTO", project_no);
+		System.out.println(dto.toString());
+		return dto;
+	}
+
+	@Override
+	public List<ProjectVO> mainList2() {
+		return sqlSession.selectList("mainList.mainList2", null, new RowBounds(0, 10));
 	}
 	
 }

@@ -26,21 +26,21 @@ public class MainListTest {
 	}
 
 //	@Test
-	public void mainListTest2(){
-		List<ProjectVO> mainList = dao.mainList2();
-		for (int i = 0; i < mainList.size(); i++) {
-			ProjectVO project = mainList.get(i);
-			project.setInfoDto(dao.getDTO(project.getProject_no()));
-			System.out.println(project.getInfoDto().toString());
-		}
-	}
-	
-//	@Test
-	public void getDTOTest(){
-		ProjectInfoDto dto = dao.getDTO(59);
-		System.out.println(dto.toString());
-	}
-	
+//	public void mainListTest2(){
+//		List<ProjectVO> mainList = dao.mainList2();
+//		for (int i = 0; i < mainList.size(); i++) {
+//			ProjectVO project = mainList.get(i);
+////			project.setProjectInfoDto(dao.getDTO(project.getProject_no()));
+////			System.out.println(project.getProjectInfoDto().toString());
+//		}
+//	}
+//	
+////	@Test
+//	public void getDTOTest(){
+//		ProjectInfoDto dto = dao.getDTO(59);
+//		System.out.println(dto.toString());
+//	}
+//	
 	@Test
 	public void nestedSeleteTest(){
 		List<ProjectVO> mainList = dao.mainList2();
@@ -49,5 +49,10 @@ public class MainListTest {
 			System.out.println(project.getInfoDto().toString());
 		}
 	}
+//	
+////	@Test
+//	public void nestedSeleteTest2(){
+//		ProjectVO mainList = dao.mainList3(57);
+//	}
 
 }

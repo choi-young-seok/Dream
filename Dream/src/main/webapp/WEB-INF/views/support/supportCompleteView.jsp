@@ -12,6 +12,7 @@
 	
 	<div class="container">
 		<div class="col col-md-12">
+		<%-- <c:if test="${addressVO.shipping_address_no}"> --%>
 			<div class="col col-md-6">
 				<div id="reward_List" class="boxSpace">
 					<div class="row">
@@ -70,6 +71,7 @@
 					</div><!-- /.row --> 
 				</div><!-- boxSpace -->
 			</div><!-- col col-md-6 -->	
+		<%-- </c:if> --%>
 				
 			<div class="col col-md-6">
 				<div id="reward_List" class="boxSpace">
@@ -83,10 +85,12 @@
 					      		<label class="col-sm-5 control-label" for="textinput">결제 번호 : </label>
 					      		<label class="col-sm-3 control-label" for="textinput">${supportVO.support_no}</label>
 						    </div>
-						    <div class="form-group">
-					      		<label class="col-sm-5 control-label" for="textinput">결제 품목 : </label>
-					      		<label class="col-sm-3 control-label" for="textinput">${itemsVO.reward_items}</label>
-						    </div>
+						    <%-- <c:if test="${itemsVO.reward_items}">	 --%>					    
+							    <div class="form-group">
+						      		<label class="col-sm-5 control-label" for="textinput">결제 품목 : </label>
+						      		<label class="col-sm-3 control-label" for="textinput">${itemsVO.reward_items}</label>
+							    </div>
+						    <%-- </c:if> --%>
 						    <div class="form-group">
 					      		<label class="col-sm-5 control-label" for="textinput">결제 가격 : </label>
 					      		<label class="col-sm-3 control-label" for="textinput">${supportVO.support_amount}</label>

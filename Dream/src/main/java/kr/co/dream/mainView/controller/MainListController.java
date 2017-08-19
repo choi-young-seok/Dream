@@ -25,9 +25,10 @@ public class MainListController {
 		ResponseEntity<List<ProjectVO>> entity = null;
 		entity = new ResponseEntity<List<ProjectVO>>(service.mainList(), HttpStatus.OK);
 
-		for (int i = 0; i < entity.getBody().size(); i++) {
-			ProjectVO project = entity.getBody().get(i);
-		}
+//		for (int i = 0; i < entity.getBody().size(); i++) {
+//			ProjectVO project = entity.getBody().get(i);
+//			System.out.println(project.toString());
+//		}
 		return entity;
 	}
 }

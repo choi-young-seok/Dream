@@ -5,4 +5,8 @@
 		select * from dream_project where project_register_state = 'T' and project_success_state = 'F' and member_no = #{member_no}
 		<!-- 현재 진행중 프로젝트 목록 : 잔여일(연산후 dto에 저장)이 0 보다 크고 project_register_state = 'T'이면서 oreder by 여러개 추가할것(등록일순, 후원총액 순, 후원자 순, 달성완료/미완료) -->
 	</select>
+	
+
+
+
 </mapper>

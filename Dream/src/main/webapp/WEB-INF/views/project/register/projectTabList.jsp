@@ -72,7 +72,7 @@
                     </li>
                 </ul>
             </div>
-            <input type="text" id="project_no" value="${project_no }">
+            <input type="hidden" id="project_no" value="${project_no }">
 
                 <!-- <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step1">

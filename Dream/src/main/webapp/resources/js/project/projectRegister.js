@@ -1,11 +1,11 @@
 $(function(){
 	//------------------------------------------------------------- 이벤트 기본 설정
 	// 프로젝트 기본 정보 등록 radio button 이벤트 : 프로젝트 종료 기간 선택
-	$('#project_end_date_input').click(function(){
+	$('#radio5').click(function(){
 		$('#dateArea').html('<input type="text" class="form-control" id="project_end_date">');
 	});//project_end_date_input click event
 	
-	$('#project_end_date_select').click(function(){
+	$('#radio6').click(function(){
 		$('#dateArea').html('<input type="date" id="project_end_date">');
 	});//project_end_date_input click event
 	
@@ -32,8 +32,8 @@ $(function(){
 		var project_goal_amount = $('#project_goal_amount').val();
 		var member_mail = $('#session_mail').val();
 		var member_no = $('#session_no').val();
-		alert("member_mail : "  +member_mail);
-		alert("member_no : "+member_no);
+//		alert("member_mail : "  +member_mail);
+//		alert("member_no : "+member_no);
 		
 		$.ajax({ 
 			url : '/dream/basicInfoRegister',
@@ -53,11 +53,11 @@ $(function(){
 				member_no : member_no
 			}),//data
 			success : function(result){
-				alert("result : "+result)
+//				alert("result : "+result)
 				if(result == "fail"){
 					alert("입력 정보를 다시 확인하세요")
 				}else{
-					alert("프로젝트 번호 : " +result)
+//					alert("프로젝트 번호 : " +result)
 					location.href="/dream/projectRewardView?project_no="+result;					
 					return;
 				}
@@ -116,8 +116,8 @@ $(function(){
 		var register_intro = $('#register_intro').val();
 		var register_sns = $('#register_sns').val();
 
-		alert("프로젝트 번호 ? : " +project_no)
-		alert("프로젝트 번호 : "+project_no+"프로필사진 : "+register_profile+"이름 : "+register_name+"소개문구 : "+register_intro+"sns : "+register_sns)
+//		alert("프로젝트 번호 ? : " +project_no)
+//		alert("프로젝트 번호 : "+project_no+"프로필사진 : "+register_profile+"이름 : "+register_name+"소개문구 : "+register_intro+"sns : "+register_sns)
 	
 		$.ajax({
 			url : '/dream/projectProfileRegister',
@@ -137,7 +137,7 @@ $(function(){
 			}),//data
 			success : function(result){
 				if(result == "success"){
-					alert("성공")
+//					alert("성공")
 					location.href="/dream/projectAccountView?project_no="+project_no;
 				}else{
 					alert("실패")
@@ -163,7 +163,7 @@ $(function(){
 		}else{
 			access_terms_agree = 'T';
 		}
-		alert("요기")
+//		alert("요기")
 			
 		$.ajax({
 			url : '/dream/projectAccountRegister',
@@ -182,7 +182,7 @@ $(function(){
 			}),//data
 			success : function(result){
 				if(result == "success"){
-					alert("성공")
+//					alert("성공")
 					location.href="/dream/projectInfoView?project_no="+project_no;
 				}else{
 					alert("실패")

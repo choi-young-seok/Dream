@@ -59,9 +59,9 @@ $(function() {
 			var pay_user_name = $("#pay_cash_area :text:eq(0)").val();
 			var pay_account_number = $("#pay_cash_area :text:eq(1)").val();
 			var length = $("#pay_cash_area  *:text").length;
-			alert("----- 무통장 입금 정보 -----"+
+/*			alert("----- 무통장 입금 정보 -----"+
 					"\npay_user_name : "+pay_user_name+
-					"\npay_account_number : "+pay_account_number);
+					"\npay_account_number : "+pay_account_number);*/
 
 			if(pay_user_name.length == 0){
 				alert("입금자명을 입력하세요");
@@ -143,7 +143,7 @@ $(function() {
 				}
 			}//receiver phone_num if end
 			
-			alert("----- 리워드 후원 결제 정보 -----"+
+/*			alert("----- 리워드 후원 결제 정보 -----"+
 				"\nmember_no :  "+member_no+
 				"\nproject_no : " +project_no+
 				"\nreward_no : "+reward_no+
@@ -161,7 +161,7 @@ $(function() {
 				"\npost_num : "+ post_num +
 				"\nreceiver_address : " +receiver_address+
 				"\ndetail_address : "+ detail_address +
-				"\receiver_phone : "+ receiver_phone);
+				"\receiver_phone : "+ receiver_phone);*/
 			
 			$.ajax({
 				url : '/dream/supportRegister',
@@ -192,7 +192,7 @@ $(function() {
 					var itemsVO = JSON.parse(result);
 					var support_no = itemsVO.support_no;
 					var shipping_address_no = itemsVO.shipping_address_no;
-					alert(support_no+", "+shipping_address_no)
+//					alert(support_no+", "+shipping_address_no)
 					
 					location.href="/dream/supportCompleteView?support_no="+support_no+"&&shipping_address_no="+shipping_address_no;
 					//후원이 완료되었습니다
@@ -204,7 +204,7 @@ $(function() {
 		}else{
 			var support_amount = $("#support_amount_noReward").val();
 
-			alert("----- 리워드 없는 후원 결제 정보 -----"+
+/*			alert("----- 리워드 없는 후원 결제 정보 -----"+
 					"\nproject_no : " +project_no+
 					"\nreward_no : "+reward_no+
 					"\nmember_name : " + member_name+
@@ -216,7 +216,7 @@ $(function() {
 					"\npay_bank : "+pay_bank+
 					"\n----- 환불정보 -----" +
 					"\npay_back_bank : " +pay_back_bank+
-					"\npay_back_account : "+pay_back_account);
+					"\npay_back_account : "+pay_back_account);*/
 			
 			$.ajax({
 				url : '/dream/supportRegister',

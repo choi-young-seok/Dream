@@ -14,10 +14,10 @@
 </head>
 <header> <%-- 	<%@include file="../views/mainView/header.jsp" %> --%>
 <%@include file="../mainView/header.jsp"%> </header>
-회원 번호 : ${session.member_no }<br>
+<%-- 회원 번호 : ${session.member_no }<br>
 등록자 번호 : ${project.member_no }<br>
-프로젝트 번호 : ${project.project_no }<br>
-<input type="text" id="project_no" value="${project.project_no }">
+프로젝트 번호 : ${project.project_no }<br> --%>
+<input type="hidden" id="project_no" value="${project.project_no }">
 
 
 <c:if test="${project.project_register_state eq 'F'}">
@@ -40,16 +40,18 @@
 				<!-- <video width="320" height="240" poster="/images/w3html5.gif" controls> -->
 				<!-- 다음 url의 코드를 이용하여 clickToPlay 구현할것 -->
 				<!--https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_video_js_prop  -->
-					<source src="resources/member/thumbnail${project.project_video }" type="video/mp4">
-					<source src="resources/member/thumbnail${project.project_video }" type="video/ogg">
+					<source src="resources${project.project_video }" type="video/mp4">
+					<source src="resources${project.project_video }" type="video/ogg">
+					<%-- <source src="resources/member/thumbnail${project.project_video }" type="video/mp4">
+					<source src="resources/member/thumbnail${project.project_video }" type="video/ogg"> --%>
  				</video>
 					<!-- showstatusbar="1" autoplay="false" hidden="false" -->
 					</div>
 					
 					
-				<div class="col col-md-2" style="background-color: gray;">
+				<div class="col col-md-2">
 					공백</div>
-				<div class="col-6 col-md-4" style="background-color : white">
+				<div class="col-6 col-md-4">
 					<center>
 						<font size="5px"><b>${project.supporting_count}명</b></font><br>현재 후원수<br>
 						<br> <font size="5px"><b>${project.now_amount }원</b></font><br>
@@ -74,22 +76,24 @@
 				</div>
 			</div>
 			<div class="row" style="margin-bottom: 200px;">
-				<div class="col-md-4" style="background-color : gray;">
+				<div class="col-md-4">
 					<figure>		
-					<img src="resources/member/thumbnail/${project.register_profile }" width="150" height="200">
+					<%-- <source src="resources/uploadFile${session_member_name }/project_video${project.project_video }" type="video/ogg"> --%>
+					<img src="resources${project.register_profile }" width="150" height="200">
+<%-- 					<img src="resources/member/thumbnail/${project.register_profile }" width="150" height="200"> --%>
 				</figure></div>
-				<div class="col-md-4" style="background-color : fuchsia;">
+				<div class="col-md-4">
 					${project.register_name }<br>
 					${project.register_sns}<br>
 					</div>
-				<div class="col-md-4" style="background-color : silver;">
+				<div class="col-md-4">
 					${project.project_summary}</div>
 			</div>
 			
 			<div class="row">
 				<div class="col-md-7" style="background-color : white">
 					${project.project_content }</div>
-				<div class="col-sm-1" style="background-color: gray;">
+				<div class="col-sm-1">
 					공백</div>
 				<div class="col-md-4" style="background-color : white">
 					리워즈 정보 위치

@@ -467,14 +467,14 @@
 		</div>
 	</div>
 
-	프로젝트 번호 :
-	<input type="text" id="project_no" value="${project.project_no }">
-	리워드 번호 :
-	<input type="text" id="reward_no" value="${reward_no}"> 
-	후원 금액 :
-	<input type="text" id="support_amount_noReward" value="${support_amount}">원
-	사용자 이름 :
-	<input type="text" id="나중에이거지워라" value="${session.member_name}">
+
+	<input type="hidden" id="project_no" value="${project.project_no }">
+
+	<input type="hidden" id="reward_no" value="${reward_no}"> 
+
+	<input type="hidden" id="support_amount_noReward" value="${support_amount}">
+
+	<input type="hidden" id="나중에이거지워라" value="${session.member_name}">
 </body>
 <footer> <%@include file="../mainView/footer.jsp"%>
 </footer>

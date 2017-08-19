@@ -28,14 +28,11 @@ public class ProjectRestController {
 	public ResponseEntity<String> basicInfoRegister(@RequestBody ProjectVO projectBasicInfo, HttpSession session){
 		System.out.println("ProjectRestController \tbasicInfoRegister \tinput value : "+projectBasicInfo.toStringProjectBasicInfo());
 		ResponseEntity<String> entity = null;
-//		projectBasicInfo.setMember_mail();
+
 		try {
 			int project_no = service.projectBasicInfo(projectBasicInfo);
 			System.out.println("입력한 프로젝트 번호 : "+project_no);
 			projectBasicInfo.setProject_no(project_no);
-//			ProjectVO project = new ProjectVO();
-//			project.setProject_no(project_no);
-//			session.setAttribute("project",project);
 			entity = new ResponseEntity<>(""+project_no, HttpStatus.OK);
 		} catch (Exception e) {			
 			entity = new ResponseEntity<>("fail", HttpStatus.BAD_REQUEST);

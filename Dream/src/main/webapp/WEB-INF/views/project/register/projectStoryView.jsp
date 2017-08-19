@@ -42,9 +42,7 @@
 </script>
 <title>스토리 정보 등록</title>
 </head>
-<header> 
-	<%@include file="../../mainView/header.jsp" %>
-</header>
+
 <article>
 	<%@include file="projectTabList.jsp" %>
 </article>
@@ -56,14 +54,14 @@
 				<div class="col col-md-10">
 					<div class="boxSpace" style="width: 766px;">
 						<span><h4>프로젝트 소개영상</h4>
-							<input type="radio" id="video_upload" name="project_video_type">직업 업로드
-							<input type="radio" id="youtube" name="project_video_type">유투브 주소
+	<!-- 						<input type="radio" id="video_upload" name="project_video_type">직업 업로드
+							<input type="radio" id="youtube" name="project_video_type">유투브 주소 -->
 							
 						</span>
 					</div>
 				
 					<form action="/dream/projectProfileView" method="post" id="frm">
-						1111<input type="text" value="${project_no}" name="project_no">1111+${project_no}
+						<input type="hidden" value="${project_no}" name="project_no">
 						<span><div class="thumbnailImage" name="project_video" title="project_video" id="imageZone" style="width: 760px;"></div></span>
 						<div id="youtube_address"></div>
 						<textarea name="project_content" id="editor" rows="10" cols="100"
