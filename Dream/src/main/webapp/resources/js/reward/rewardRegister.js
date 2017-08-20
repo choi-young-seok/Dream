@@ -1,46 +1,55 @@
-/*$(function(){
-	$("#re_Array").click(function(){
-		
-		for(var i =1 ; i<=reward_count ; i++){ //rewardBox의 갯수만큼 for문을 돌면서
-			var reward_title = $("#reward_title"+i).val();
-//			var reward_title = $("#reward_title"+i).val();
-//			var reward_title = $("#reward_title"+i).val();
-//			var reward_title = $("#reward_title"+i).val();
-//			var reward_title = $("#reward_title"+i).val();
-			alert(reward_title);
-		}
-		
-		
-
-		var reward_json ={
-				reward1 : vlaue,
-				reward2 : vlaue,
-				reward3 : vlaue,
-				reward4 : vlaue,
-				reward5 : vlaue
-		};
-	});//re_Array click event
-});//ready*/
-
-
 $(function(){
 	$("#rewardInfoRegister").click(function(){
-//		alert("리워드 입력")
-//		alert("프로젝트 번호:"+$("#project_no").val())
 		
 		//array in json for multiple-row insert to rewards
 		var rewardsList = [];
 		var listSize = $( "#reward_count").val();
-//		alert("리워드 개수"+listSize)
 		   for(var nRow = 1; nRow <= listSize; nRow++) {
+			   
+			   var reward_title = $("#reward_title"+nRow).val();
+			   var reward_items = $("#reward_items"+nRow).val();
+			   var reward_delivery_date = $("#reward_delivery_date"+nRow).val();
+			   var reward_limited_count = $("#reward_limited_count"+nRow).val();
+			   var reward_amount = $("#reward_amount"+nRow).val();
+			   var reward_no  = $("#reward_no"+nRow).val();
+			   var project_no = $("#project_no").val();
+//			   var member_no = $('#session_no').val();
+			   
+			   	if(reward_title==""){
+			   		alert("리워드 타이틀을 입력하세요");
+			   		$("#reward_title"+nRow).focus();
+			   		return;
+			   	}
+			   	
+			   	if(reward_items ==""){
+			   		alert("리워드 품목을 입력하세요");
+			   		$("#reward_items"+nRow).focus();
+			   		return;
+			   	}
+			   	if( reward_limited_count==""){
+			   		alert("리워드 한정수량을 입력하세요");
+			   		$("#reward_limited_count"+nRow).focus();
+			   		return;
+			   	}
+			   	if(reward_amount ==""){
+			   		alert("리워드 금액을 입력하세요");
+			   		$("#reward_amount"+nRow).focus();
+			   		return;
+			   	}
+			   	if(reward_delivery_date ==""){
+			   		alert("리워드 베송예정일을 입력하세요");
+			   		$("#reward_delivery_date"+nRow).focus();
+			   		return;
+			   	}
+				   
 			   rewardsList.push({
-				   reward_title : $("#reward_title"+nRow).val(),
-				   reward_items : $("#reward_items"+nRow).val(),
-				   reward_delivery_date : $("#reward_delivery_date"+nRow).val(),
-				   reward_limited_count : $("#reward_limited_count"+nRow).val(),
-				   reward_amount : $("#reward_amount"+nRow).val(),
-				   reward_no : $("#reward_no"+nRow).val(),
-				   project_no : $("#project_no").val(),
+				   reward_title : reward_title,
+				   reward_items : reward_items,
+				   reward_delivery_date : reward_delivery_date,
+				   reward_limited_count : reward_limited_count,
+				   reward_amount : reward_amount,
+				   reward_no : reward_no,
+				   project_no : project_no,
 				   member_no : $('#session_no').val()
 			   });
 		   }

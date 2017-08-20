@@ -9,7 +9,7 @@
 <script src="resources/js/common/jquery.js"></script>
 <script src="resources/js/support/supportView.js"></script>
 
-<title>Project Title</title>
+<title>${project.project_title }</title>
 <!-- jQuery -->
 </head>
 <header> <%-- 	<%@include file="../views/mainView/header.jsp" %> --%>
@@ -50,7 +50,7 @@
 					
 					
 				<div class="col col-md-2">
-					공백</div>
+				</div>
 				<div class="col-6 col-md-4">
 					<center>
 						<font size="5px"><b>${project.supporting_count}명</b></font><br>현재 후원수<br>
@@ -94,7 +94,7 @@
 				<div class="col-md-7" style="background-color : white">
 					${project.project_content }</div>
 				<div class="col-sm-1">
-					공백</div>
+					</div>
 				<div class="col-md-4" style="background-color : white">
 					리워즈 정보 위치
 					<br><br>

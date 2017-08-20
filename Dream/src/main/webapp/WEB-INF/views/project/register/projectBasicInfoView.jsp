@@ -30,6 +30,7 @@
 					<span><h4>썸네일 사진</h4></span> 
 					<span>
 						<div align="center" id="imageZone" class="thumbnailImage" title="project_thumbnail"></div>
+						<input type="hidden" id="project_thumbnail">
 					</span>
 				</div>
 
@@ -60,6 +61,10 @@
 						class="form-control" type="text" id="project_goal_amount"></span>
 				</div>
 				<div>
+					<span><h4>후원 기간</h4></span> <span><input
+						class="form-control" type="date" id="project_end_date"></span>
+				</div>
+				<!--  <div>
 					<span><h4>후원기간</h4></span>
 					<div class="col-md-10 col-md-offset-1">
 						<form class="form-horizontal" role="form">
@@ -77,7 +82,7 @@
 						</form>
 					</div>
 					<div class="btn-group" data-toggle="buttons">
-						<span> <!-- 						<label class="btn btn-success active">
+						<span> 						<label class="btn btn-success active">
 								기간 : <input type="radio" name="project_term" id="project_end_date_input" autocomplete="off" chacked>
 								<span class="glyphicon glyphicon-ok"></span>
 							</label> 
@@ -85,13 +90,13 @@
 							<label class="btn btn-danger">
 								마감일 : <input type="radio" name="project_term" id="project_end_date_select" >
 								<span class="glyphicon glyphicon-ok"></span>
-							</label> --> <!-- 						
+							</label> 						
 								<input type="radio" name="project_term" id="project_end_date_input" value="기간">기간
-								<input type="radio" name="project_term" id="project_end_date_select" value="마감일">마감일 -->
+								<input type="radio" name="project_term" id="project_end_date_select" value="마감일">마감일
 							<div id="dateArea"></div>
 						</span>
 					</div>
-				</div>
+				</div> -->
 
 
 

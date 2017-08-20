@@ -193,9 +193,6 @@ $(function() {
 		addItem();
 	}
 </script>
-<header> 
-	<%@include file="../../mainView/header.jsp" %>
-</header>
 <article>
 	<%@include file="projectTabList.jsp" %>
 </article>

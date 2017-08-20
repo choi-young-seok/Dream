@@ -60,6 +60,7 @@
 						<div class="text-center">
 							<div id="profileArea">
 								<div id="imageZone" class="member_profile" title="member_profile"></div>
+								<input type="hidden" id="member_profile"> 
 								<h6>점선영역에 프로필 사진을 드래그하세요</h6>
 							</div>
 							<input id="member_profile_value" type="hidden" value="${member.member_profile }">

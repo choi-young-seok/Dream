@@ -57,23 +57,27 @@ $(function(){
 							// +"</a>"
 							+ "<small data-src=" + data + ">X</small>" + "</div>";
 							if(requestName == 'project_thumbnail'){
-								str += "<input id='project_thumbnail' type='hidden' value="+data+">";
+//								str += "<input id='project_thumbnail' type='hidden' value="+data+">";
+								$("#project_thumbnail").val(data);
 							}else if(requestName == 'member_profile'){
-								str += "<input id='member_profile' type='hidden' value="+data+">";								
+								$("#member_profile").val(data);
+//								str += "<input id='member_profile' type='hidden' value="+data+">";								
 							}else if(requestName == 'register_profile'){
-								str += "<input id='register_profile' type='hidden' name='project_video' value="+data+">";								
+								$("#register_profile").val(data);
+//								str += "<input id='register_profile' type='hidden' name='project_video' value="+data+">";								
 							}else{
 								alert("div태그 title 정보 없음 : "+requestName)
 							}
 						} else {
-							str = "<div>" 
+							str = "<div align ='center'>" 
+									+ "<video width='485' heigth='480' controls>"
+									+'<source src="resources'+data+'" type="video/ogg">'
+									+ "</video><br>"
 									+ "<a href='displayFile?fileName=" + data +"'>" + getOriginalName(data) + "</a>"
 									+ "<small data-src=" + data + ">X</small>"
-									+ "<video width='485' heigth='480' controls>"
-									+'<source src="displayFile?fileName='+data+'" type="video/ogg">'
-									+ "</video>"
-									+ "</div>"
-									+"<input type='hidden' id='project_video' name='project_video' value='"+data+"'>";
+									+ "</div>";
+//									+"<input type='hidden' id='project_video' name='project_video' value='"+data+"'>";
+								$("#project_video").val(data);
 						}
 						/*	+ "<video width='485' heigth='480' controls>"
 						+'<source src="displayFile?fileName='+data+'" type="video/ogg">'
@@ -87,7 +91,7 @@ $(function(){
 		//뿌려진 이미지 데이터에 대한 click이벤트
 		var that = $(this);
 		var requestName = event.target.title;
-//		alert("requestName ??: "+requestName )
+		alert("requestName ??: "+requestName )
 		//해당 파일 삭제 요청
 		$.ajax({
 			url : "/dream/deleteFile",
@@ -101,6 +105,7 @@ $(function(){
 					that.parent("div").remove();
 					//해당 파일 삭제
 					$("#project_thumbnail").remove();
+					$("#project_thumbnail").val("");
 					$("#project_video").remove();
 					
 				}

@@ -27,14 +27,53 @@ $(function(){
 		var project_thumbnail = $('#project_thumbnail').val();
 		var project_title = $('#project_title').val();
 		var project_summary = $('#project_summary').val();
-		var project_category = $('#project_category').val();
+		var project_category = $('#project_category option:selected').val();
 		var project_end_date = $('#project_end_date').val();
 		var project_goal_amount = $('#project_goal_amount').val();
 		var member_mail = $('#session_mail').val();
 		var member_no = $('#session_no').val();
-//		alert("member_mail : "  +member_mail);
-//		alert("member_no : "+member_no);
 		
+		if(project_thumbnail == ""){
+			alert("프로젝트 썸네일 사진을 등록하세요")
+			$("project_thumbnail").focus();
+			return;
+		}
+		
+		if(project_title == ""){
+			alert("프로젝트 타이틀을 입력하세요")
+			$("#project_title").focus();
+			return;
+		}
+		
+		if(project_summary ==""){
+			alert("프로젝트 소개문구를 입력하세요")
+			$("#project_summary").focus();
+			return;
+		}
+		if(project_category=="----"){
+			alert("프로젝트 카테고리를 선택하세요")
+			$("#project_category").focus();
+			return;
+		}
+		if(project_goal_amount==""){
+			alert("프로젝트 목표 금액을 입력하세요")
+			$("#project_goal_amount").focus();
+			return;
+		}
+		if(project_end_date==""){
+			alert("프로젝트 종료 기간을 입력하세요")
+			$("#project_end_date").focus();
+			return;
+		}
+		
+/*		alert("--- 프로젝트 기본 정보 ---" +
+				"\n썸네일  : "+project_thumbnail+
+				"\n타이틀  : " +project_title+
+				"\n소개문구 : " +project_summary+
+				"\n카테고리 : " +project_category+
+				"\n종료일자 : " +project_end_date+
+				"\n목표금액 : " +project_goal_amount);
+		*/
 		$.ajax({ 
 			url : '/dream/basicInfoRegister',
 			type : 'post',
@@ -65,48 +104,6 @@ $(function(){
 		});//ajax
 	});//basicInfoRegister click event
 	
-		//$('#rewardInfoRegister').click(function(){
-			//alert("클릭~!")
-			//location.href="/dream/projectStoryView";
-//		$.ajax({			
-//			url: '/dream/projectStoryView',
-//			type : 'post',
-//			success : function(result){
-//				$('#projectStoryView').html(result)
-//			}//success
-//		})//ajax
-	//});//basicInfoRegister click event
-
-//		$('#savebutton').click(function(){
-//			var project_content = $('#editor').val();
-//			alert("프로젝트 소개 : "+project_content);
-//			location.href="/dream/projectProfileView";
-//		});//basicInfoRegister click event
-
-		/*	$('#storyInfoRegister').click(function(){
-		
-		$.ajax({			
-			url: '/dream/projectProfileView',
-			type : 'get',
-			success : function(result){
-				$('#projectProfileView').html(result)
-			}//success
-		})
-	});//basicInfoRegister click event
-*/	
-	
-	
-//	--------------------------------------------------------------------------------
-	//프로젝트 기본 정보 등록 이벤트
-//	$('#basicInfoRegister').click(function(){
-//		location.href="/dream/projectRewardView";
-//	});//basicInfoRegister click event
-	
-//	$('#projectRewardRegister').click(function(){
-//		location.href="/dream/projectStoryView";
-//	});//basicInfoRegister click event
-	
-	
 	//프로젝트 등록자 프로필 정보 입력 요청
 	$('#profileInfoRegister').click(function(){
 		var project_no = $('#project_no').val();
@@ -116,9 +113,40 @@ $(function(){
 		var register_intro = $('#register_intro').val();
 		var register_sns = $('#register_sns').val();
 
-//		alert("프로젝트 번호 ? : " +project_no)
-//		alert("프로젝트 번호 : "+project_no+"프로필사진 : "+register_profile+"이름 : "+register_name+"소개문구 : "+register_intro+"sns : "+register_sns)
-	
+		
+		if(register_profile==""){
+			alert("프로필 사진을 등록하세요")
+			
+			return;
+		}
+		if(register_name==""){
+			alert("이름을 입력하세요")
+			$('#register_name').focus();
+			return;
+		}
+		if(register_phone==""){
+			alert("연락처를 입력하세요")
+			$('#register_phone').focus();
+			return;
+		}
+		if(register_intro==""){
+			alert("소개문구를 입력하세요")
+			$('#register_intro').focus();
+			return;
+		}
+		if(register_sns==""){
+			alert("SNS를 입력하세요")
+			$('#register_sns').focus();
+			return;
+		}
+		
+/*		alert("--- 프로젝트 프로필 정보 ---" +
+				"\n등록자 프로필  : "+register_profile+
+				"\n등록자 이름 : " +register_name+
+				"\n등록자 연락처 : " +register_phone+
+				"\n등록자 소개 : " +register_intro+
+				"\n등록자 SNS : " +register_sns);*/
+		
 		$.ajax({
 			url : '/dream/projectProfileRegister',
 			type: 'post',
@@ -140,7 +168,7 @@ $(function(){
 //					alert("성공")
 					location.href="/dream/projectAccountView?project_no="+project_no;
 				}else{
-					alert("실패")
+					alert("입력정보를 다시 확인하세요")
 				}
 			}//success
 		});//ajax
@@ -163,7 +191,23 @@ $(function(){
 		}else{
 			access_terms_agree = 'T';
 		}
-//		alert("요기")
+		if(register_address == ""){
+			alert("주소를 입력하세요");
+			$('#register_address').focus();
+			return;
+			
+		}
+		if(account_bank_list == "----"){
+			alert("은행을 선택하세요");
+			return;
+			
+		}
+		if(project_account == ""){
+			alert("계좌번호를 입력하세요");
+			$('#project_account').focus();
+			return;
+			
+		}
 			
 		$.ajax({
 			url : '/dream/projectAccountRegister',
@@ -182,15 +226,13 @@ $(function(){
 			}),//data
 			success : function(result){
 				if(result == "success"){
-//					alert("성공")
 					location.href="/dream/projectInfoView?project_no="+project_no;
 				}else{
 					alert("실패")
 				}
 			}//success
 		});//ajax
-		
-//		location.href="/dream";
+
 	});//basicInfoRegister click event
 	
 	//프로젝트 미리보기 -> 최종등록 요청
@@ -212,27 +254,6 @@ $(function(){
 				}
 			}
 		});//ajax
-	});//project_register click eventp4
-	
-	
-});//ready
+	});// project_register click eventp4
 
-
-//$('#rewardView').click();
-
-//$.ajax({			
-//	url: '/dream/projectRewardView',
-//	type : 'post',
-//	success : function(result){
-//		$('#projectRewardView').html(result)
-//	}//success
-//})//ajax
-
-
-//$.ajax({
-//url : '/dream/projectBasicInfoView',
-//type :'post',
-//success : function(result){
-//	$('#projectBasicInfoView').html(result)
-//}//success
-//});//ajax
+});// ready

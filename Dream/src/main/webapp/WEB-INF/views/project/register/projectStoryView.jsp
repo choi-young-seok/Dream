@@ -34,7 +34,15 @@
 		$("#savebutton").click(function() {
 			//id가 editor인 textarea에 에디터에서 대입
 			var editor = $('#editor').val();
+			if($("#project_video").val() ==""){
+				alert("프로젝트 소개 동영상을 등록하세요")
+				return;
+			}
 			obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
+			if(editor ==""){
+				alert("프로젝트 소개 내용을 등록하세요")
+				return;
+			}
 			//폼 submit
 			$("#frm").submit();
 		})
@@ -62,7 +70,11 @@
 				
 					<form action="/dream/projectProfileView" method="post" id="frm">
 						<input type="hidden" value="${project_no}" name="project_no">
-						<span><div class="thumbnailImage" name="project_video" title="project_video" id="imageZone" style="width: 760px;"></div></span>
+						<span>
+							<div class="thumbnailImage" name="project_video" title="project_video" id="imageZone" style="width: 760px;"></div>
+							<input type="hidden" id="project_video" name="project_video">
+						</span>
+						
 						<div id="youtube_address"></div>
 						<textarea name="project_content" id="editor" rows="10" cols="100"
 							style="width: 766px; height: 412px;"></textarea>

@@ -79,6 +79,7 @@ public class ProjectRegisterViewController {
 		System.out.println("ProjectRegisterViewController \tprojectProfileView() [프로젝트 등록자 프로필 정보 입력 화면 요청]");
 
 		return "project/register/projectProfileView";
+//		return "redirect:/projectProfileView";
 	}
 
 	// 프로젝트 계좌 정보입력 화면 요청

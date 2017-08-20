@@ -22,6 +22,7 @@
 				
 				<div class="boxSpace" align="center">
 					<span><h4>프로필 사진</h4></span> <span><div id="imageZone" title="register_profile" class="thumbnailImage"></div></span>
+					<input type="hidden" id="register_profile">
 				</div>
 				
 				<div class="boxSpace">
