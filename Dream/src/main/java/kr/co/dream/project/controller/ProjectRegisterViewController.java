@@ -33,18 +33,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.co.dream.project.domain.PhotoVo;
 import kr.co.dream.project.domain.ProjectVO;
 import kr.co.dream.project.reward.domain.RewardVO;
 import kr.co.dream.project.reward.service.RewardService;
 import kr.co.dream.project.service.ProjectService;
+import kr.co.dream.upload.util.PhotoVo;
 
 @Controller
 public class ProjectRegisterViewController {
 
 	@Inject
 	private ProjectService service;
-	
+
 	@Inject
 	private RewardService rewardService;
 
@@ -55,14 +55,13 @@ public class ProjectRegisterViewController {
 		return "project/register/projectBasicInfoView";
 	}
 
-
 	// 프로젝트 스토리 정보 입력 화면 요청
 	@RequestMapping(value = "/projectStoryView")
 	public String projectStoryView(@RequestParam int project_no, Model model) {
 		System.out.println("ProjectRegisterViewController \tprojectStoryView() [프로젝트 스토리 정보 입력 화면 요청]");
-		System.out.println("프로젝트 번호 : " +project_no);
-		model.addAttribute("project_no",project_no);
-//		System.out.println(reward.toString());
+		System.out.println("프로젝트 번호 : " + project_no);
+		model.addAttribute("project_no", project_no);
+		// System.out.println(reward.toString());
 		return "project/register/projectStoryView";
 	}
 
@@ -70,43 +69,25 @@ public class ProjectRegisterViewController {
 	@RequestMapping(value = "/projectProfileView", method = RequestMethod.POST)
 	public String projectProfileView(ProjectVO projectStoryInfo, Model model) {
 		System.out.println("ProjectRegisterViewController \tprojectProfileView() [프로젝트 스토리 정보 입력 요청]");
-		
+
 		System.out.println("project_content : " + projectStoryInfo.toStringProjectStoryInfo());
 		service.projectStoryInfo(projectStoryInfo);
-		
-		model.addAttribute("project_no",projectStoryInfo.getProject_no());
+
+		model.addAttribute("project_no", projectStoryInfo.getProject_no());
 
 		System.out.println("ProjectRegisterViewController \tprojectProfileView() [프로젝트 등록자 프로필 정보 입력 화면 요청]");
 
 		return "project/register/projectProfileView";
-//		return "redirect:/projectProfileView";
+		// return "redirect:/projectProfileView";
 	}
 
 	// 프로젝트 계좌 정보입력 화면 요청
 	@RequestMapping(value = "/projectAccountView")
 	public String projectAccountView(@RequestParam int project_no, Model model) {
 		System.out.println("ProjectRegisterViewController \tprojectAccountView() [프로젝트 계좌 정보 입력 화면 요청]");
-		System.out.println("프로젝트 번호 : " +project_no);
-		model.addAttribute("project_no",project_no);
+		System.out.println("프로젝트 번호 : " + project_no);
+		model.addAttribute("project_no", project_no);
 		return "project/register/projectAccountView";
-	}
-
-	//프로젝트 미리보기 화면 요청
-	@RequestMapping(value = "/projectInfoView")
-	public String projectInfoView(Model model, @RequestParam int project_no) {
-		System.out.println("ProjectRegisterViewController \tprojectInfoView() [프로젝트 미리보기 화면 요청] : " + project_no);
-		try {
-			model.addAttribute("project_no",project_no);
-			ProjectVO projectVO = service.projectPreview(project_no);
-			model.addAttribute("project", projectVO);
-			model.addAttribute("project_dto",projectVO.getInfoDto());
-			model.addAttribute("rewards", rewardService.rewardList(project_no));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-//		System.out.println(service.projectPreview(project_no).toString());
-		return "project/projectInfoView";
 	}
 
 	// 단일 파일 업로드
@@ -225,9 +206,7 @@ public class ProjectRegisterViewController {
 			sFileInfo += "&sFileName=" + filename;
 			System.out.println("sFileInfo 2 : " + sFileInfo);
 
-			// 내꺼
 			sFileInfo += "&sFileURL=" + "/dream/resources/project/story/" + realFileNm;
-			// 원래설정
 			// sFileInfo += "&sFileURL=" + "/resources/smarteditor/multiupload/" + realFileNm;
 			System.out.println("sFileInfo 3 : " + sFileInfo);
 

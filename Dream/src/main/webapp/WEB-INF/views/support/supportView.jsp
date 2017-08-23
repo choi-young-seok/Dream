@@ -16,6 +16,7 @@
 <header><%@include file="../mainView/header.jsp"%>
 </header>
 <body>
+<div class="wrap">
 	<div class="container">
 		<div class="col col-md-12">
 			<div class="col col-md-2" style="background-color: orange;"></div>
@@ -29,10 +30,10 @@
 						<input type="hidden" id="project_no" value="${project.project_no }">
 					</div>
 					<div class="center-block">
-						<div class="row">
+<%-- 						<div class="row">
 							<label class="control-label">등록자 : </label> <label
 								class="control-label">${project.register_name }</label>
-						</div>
+						</div> --%>
 						<div class="row">
 							<label class="control-label">목표액 : </label> <label
 								class="control-label">${project.project_goal_amount }원</label>
@@ -47,7 +48,7 @@
 						</div>
 						<div class="row">
 							<label class="control-label">잔여기간 : </label> <label
-								class="control-label">${project_dto.project_d_day}일</label>
+								class="control-label">${project.projectOperDTO.project_d_day}일</label>
 						</div>
 					</div>
 				</div>
@@ -112,6 +113,7 @@
 			</div>
 			<div class="col col-md-2" style="background-color: orange;"></div>
 		</div>
+	</div>
 	</div>
 </body>
 <footer> <%@include file="../mainView/footer.jsp"%>

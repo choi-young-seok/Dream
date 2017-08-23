@@ -8,8 +8,4 @@
 		<package name="kr.co.dream.support.domain"/>
 		<package name="kr.co.dream.address.domain"/>
 	</typeAliases>
-	
-	<typeHandlers>
-	
-	</typeHandlers>
 </configuration>

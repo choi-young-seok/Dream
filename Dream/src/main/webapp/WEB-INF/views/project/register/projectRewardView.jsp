@@ -198,6 +198,7 @@ $(function() {
 </article>
 </head>
 <body>
+<div class="wrap">
 	<div class="container">
 		<div class="col col-md-12 panel panel-default"">
 			<div class="col col-md-2"></div>
@@ -216,6 +217,7 @@ $(function() {
 			</div>
 			<div class="col col-md-2"></div>
 		</div>
+	</div>
 	</div>
 </body>
 <footer> 

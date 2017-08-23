@@ -10,7 +10,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.co.dream.mainView.persistence.MainListDAO;
-import kr.co.dream.project.domain.ProjectInfoDto;
 import kr.co.dream.project.domain.ProjectVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -41,14 +40,14 @@ public class MainListTest {
 //		System.out.println(dto.toString());
 //	}
 //	
-	@Test
-	public void nestedSeleteTest(){
-		List<ProjectVO> mainList = dao.mainList2();
-		for (int i = 0; i < mainList.size(); i++) {
-			ProjectVO project = mainList.get(i);
-			System.out.println(project.getInfoDto().toString());
-		}
-	}
+//	@Test
+//	public void nestedSeleteTest(){
+//		List<ProjectVO> mainList = dao.mainList2();
+//		for (int i = 0; i < mainList.size(); i++) {
+//			ProjectVO project = mainList.get(i);
+//			System.out.println(project.getInfoDto().toString());
+//		}
+//	}
 //	
 ////	@Test
 //	public void nestedSeleteTest2(){

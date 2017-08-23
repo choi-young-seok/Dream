@@ -22,6 +22,7 @@
 </head>
 	<header><%@include file="../../mainView/header.jsp"%></header>
 <body>
+<div class="wrap">
 <div class="container">
 	<div class="row">
 		<section>
@@ -113,6 +114,7 @@
         </div>
     </section>
    </div>
+</div>
 </div>
 </body>
 </html>

@@ -34,8 +34,8 @@ CREATE TABLE Dream_Project (
 	Project_ViewCnt		   	INTEGER		  DEFAULT 0,	-- 현재 조회 수
 	Now_Amount             	INTEGER       DEFAULT 0, -- 현재 후원 총액
 	Supporting_Count       	INTEGER       DEFAULT 0, -- 현재 후원 수
-	Project_Register_State 	VARCHAR2(10)  DEFAULT 'F', -- 프로젝트 등록여부 (T = 등록완료, F = 등록중)
-	Project_Success_State  	VARCHAR2(10)  DEFAULT 'F' -- 프로젝트 성공여부 (T = 후원완료, T = 후원실패)
+	Project_Register_State 	VARCHAR2(2)  DEFAULT '1', -- 프로젝트 등록여부 (T = 등록완료, F = 등록중)
+	Project_Success_State  	VARCHAR2(2)  DEFAULT 'F' -- 프로젝트 성공여부 (T = 후원완료, T = 후원실패)
 	-- 기간 이내 달성 여부 컬럼과 기간 만료후 최종 달성여부 칼람이 독립적으로 존재해야할듯
 );
 -- alter table dream_project add Projcet_ViewCnt INTEGER DEFAULT 0 (추가완료)
@@ -45,7 +45,14 @@ CREATE TABLE Dream_Project (
 -- users
 ALTER TABLE Dream_Project
 	ADD CONSTRAINT Project_Register_State -- 프로젝트 등록여부
-		CHECK (Project_Register_State in ('T' ,'F'));
+		CHECK (Project_Register_State in ('T' ,'1', '2', '3', '4', '5'));
+		-- T : 최종 등록 완료
+		-- 1 : 기본정보 등록 완료
+		-- 2 : 리워드 정보 등록 완료
+		-- 3 : 스토리 정보 등록 완료
+		-- 4 : 프로필 정보 등록 완료
+		-- 5 : 계좌 정보 등록 완료
+		-- F : 최종 등록 미완료
 
 -- user
 ALTER TABLE Dream_Project

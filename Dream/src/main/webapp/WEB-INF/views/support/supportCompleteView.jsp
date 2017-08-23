@@ -9,6 +9,7 @@
 </head>
 <header><%@include file="../mainView/header.jsp"%> </header>
 <body>
+<div class="wrap">
 	<div class="container">
 		<div class="col col-md-12">
 		<%-- <c:if test="${addressVO.shipping_address_no}"> --%>
@@ -117,6 +118,6 @@
 			
 		</div><!-- col col-md-12 -->
 	</div><!-- container -->
-	
+	</div>
 </body>
 </html>

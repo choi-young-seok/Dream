@@ -43,6 +43,12 @@ input[reardonly]{
 	border: dashed;
 	border-color: #87ceeb; 
 }
+.wrap{
+	background-color: #f2f4f7;
+}
+.col{
+	background-color: white;
+}
 
 /*  */
 

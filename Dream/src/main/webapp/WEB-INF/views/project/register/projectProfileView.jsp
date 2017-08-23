@@ -14,6 +14,7 @@
 	<%@include file="projectTabList.jsp" %>
 </article>
 <body>
+<div class="wrap">
 	<div class="container">
 		<div class="col col-md-12">
 			<div class="col col-md-2"></div>
@@ -49,6 +50,7 @@
 
 			<div class="col col-md-2"></div>
 		</div>
+	</div>
 	</div>
 </body>
 <footer> 

@@ -8,6 +8,7 @@
 
 <script src="resources/js/common/jquery.js"></script>
 <script src="resources/js/support/supportView.js"></script>
+<script src="resources/js/project/projectRegister.js"></script>
 
 <title>${project.project_title }</title>
 <!-- jQuery -->
@@ -58,7 +59,7 @@
 						현재 후원액 <br>
 						<br> <font size="5px"><b>${project.project_goal_amount }원</b></font><br>
 						목표액 <br>
-						<br> <font size="5px"><b>${project_dto.project_d_day} 일</b></font><br>
+						<br> <font size="5px"><b>${project.projectOperDTO.project_d_day} 일</b></font><br>
 						잔여기간 <br>	
 						<br> <font size="5px"><b>${project.project_end_date }</b></font><br>
 						마감일 <br>
@@ -111,16 +112,15 @@
 						<br><br>
 						</c:forEach>
 						</div>
-			</div>
-			<c:if test="${project.project_register_state eq 'F'}">
+			</div>11
+			<c:if test="${project.project_register_state eq '5'}">
 				<div class="pull-right row">
 					<a href="#" id="cancel_project_register" value="취소" class="btn btn-danger">취소</a>
-					<a href="#" id="project_register" value="등록" class="btn btn-success">등록</a>
+					<a id="project_register" value="등록" class="btn btn-success">등록</a>
 				</div>
 			</c:if>
 		</div>
 	</div> 
-	
 
 </body>
 </html>

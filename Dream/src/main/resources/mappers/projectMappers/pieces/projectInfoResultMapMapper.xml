@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="projectInfoResultMap">
+
+	<!-- [프로젝트 조회화면] 프로젝트 상세 정보 ResultMap : ProjectVO in projectOperDTO -->
+	<resultMap id="project_detail_info_map" type="ProjectVO">
+		<id column="project_no" property="project_no"/>
+		<association property="projectOperDTO" column="project_no"  javaType="ProjectOperDTO" select="project_operation_info">
+	 		<result property="project_no" column="project_no"/>
+	 		<result property="project_percentage" column="project_percentage"/>
+			<result property="project_d_day" column="project_d_day"/> 
+		</association>
+	</resultMap>
+	
+	<!-- [마이페이지 프로젝트 목록, 메인화면, 검색결과 화면, 프로젝트 결제화면]
+		 프로젝트 간략 정보 ResultMap : ProjectPointDTO in projectOperDTO  -->
+	<resultMap id="project_point_info_map" type="ProjectPointDTO">
+		<id column="project_no" property="project_no"/>
+		<association property="projectOperDTO" column="project_no"  javaType="ProjectOperDTO" select="project_operation_info">
+	 		<result property="project_no" column="project_no"/>
+	 		<result property="project_percentage" column="project_percentage"/>
+			<result property="project_d_day" column="project_d_day"/> 
+		</association>
+	</resultMap>
+	
+	<!-- ResultMap sub select : 프로젝트 후원률 및 마감일 연산 -->
+	<select id="project_operation_info" resultType="ProjectOperDTO">
+		select
+			project_no,
+			floor((project_end_date-sysdate)) as project_d_day,
+			floor((now_amount/project_goal_amount)*100) as project_percentage
+		from 
+			dream_project
+		where 
+			project_no =#{project_no}
+	</select>
+	
+</mapper>

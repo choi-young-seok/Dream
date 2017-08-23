@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.dream.mainView.service.MainListService;
-import kr.co.dream.project.domain.ProjectVO;
+import kr.co.dream.project.domain.ProjectPointDTO;
 
 @RestController
 public class MainListController {
@@ -20,15 +20,9 @@ public class MainListController {
 	private MainListService service;
 
 	@RequestMapping(value = "/mainList", method = RequestMethod.POST)
-	public ResponseEntity<List<ProjectVO>> mainList() {
-		System.err.println("MainListController \tmainList() \t\t[메인화면 요청]");
-		ResponseEntity<List<ProjectVO>> entity = null;
-		entity = new ResponseEntity<List<ProjectVO>>(service.mainList(), HttpStatus.OK);
-
-//		for (int i = 0; i < entity.getBody().size(); i++) {
-//			ProjectVO project = entity.getBody().get(i);
-//			System.out.println(project.toString());
-//		}
+	public ResponseEntity<List<ProjectPointDTO>> mainList() {
+		ResponseEntity<List<ProjectPointDTO>> entity = null;
+		entity = new ResponseEntity<List<ProjectPointDTO>>(service.mainList(), HttpStatus.OK);
 		return entity;
 	}
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mainList">
+	
+	<!-- 메인화면, 분류별 카테고리별 추가할것-->
+
+ 	<select id="projectPointInfoList" resultMap="projectInfoResultMap.project_point_info_map">
+		select
+			<include refid="projectInfoSql.project_point_info_sql"/>, project_summary
+		from 
+			dream_project
+		where 
+			<include refid="projectInfoSql.processing_project_condition_sql"/>
+		order by project_start_date
+	</select>
+	
+</mapper>
+
+

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.dream.project.reward.domain.RewardVO;
 import kr.co.dream.project.reward.persistence.RewardDAO;
@@ -15,6 +16,7 @@ public class RewardServiceImpl implements RewardService {
 	@Inject
 	private RewardDAO rewardDAO;
 
+	@Transactional
 	@Override
 	public void rewardInfoRegister(List<RewardVO> rewards) {
 		System.out.println("리워드 등록 서비스");
@@ -22,6 +24,7 @@ public class RewardServiceImpl implements RewardService {
 			System.out.println(rewards.get(i).toString());
 		}
 		rewardDAO.rewardInfoRegister(rewards);
+		rewardDAO.rewardRegisterState(rewards.get(0).getProject_no());
 	}
 
 	@Override

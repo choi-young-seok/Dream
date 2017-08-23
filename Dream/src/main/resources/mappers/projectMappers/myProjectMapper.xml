@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="myProjectList">
+	
+
+
+
+
+<!-- 	 <select id="ProjectPointInfo" resultMap="project_info.project_point_info_map">
+		select
+			<include refid="mappers.project_info.projectPointInfo"/>
+			<include refid="project_info.project_point_info_sql"/>
+		from 
+			dream_project
+		where 
+			<include refid="mappers.project_info.pointInfoCondition"/> and
+			<include refid="project_info.processing_project_condition_sql"/> and
+			project_no = #{project_no}
+	</select> -->
+	
+		<!-- 마이페이지 진행 중 프로젝트 정보 -->
+ 	<!-- <select id="myProject_processing" resultMap="projectInfoResultMap.project_point_info_map">
+		select
+			<include refid="projectInfoSql.project_point_info_sql"/>
+		from 
+			dream_project
+		where 
+			<include refid="projectInfoSql.processing_project_condition_sql"/> and
+			member_no = #{member_no}
+	</select> -->
+
+	<!-- 				(floor(project_end_date-sysdate)
+등록상태	성공상태	잔여기간							결과
+T			F			> 0 								= 미달성 진행중
+T			F			> 0 								= 달성 진행중
+
+T			F			< 0									= 미달성 만료
+T			T			< 0									= 달성 만료
+
+T			F OR T		= 0  								= 오늘 마감
+T			F OR T		= 1  								= 마감 1일 전
+
+T			F			> 0		project_register_state != T = 등록중
+
+	 -->
+	 
+	 <select id="processing_project">
+	 	
+	 </select>
+	 
+	 <select id="success_project">
+	 	
+	 </select>
+	 
+	 <select id="expire_project">
+	 	
+	 </select>
+	 
+	 <select id="during_registration_project">
+	 	
+	 </select>
+</mapper>
+
+

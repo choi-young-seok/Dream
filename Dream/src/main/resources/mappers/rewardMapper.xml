@@ -10,6 +10,14 @@
 		#{reward_items}, #{reward_delivery_date}, #{reward_limited_count},
 		#{reward_amount})
 	</insert>
+	<update id="rewardRegisterState">
+		update
+			dream_project
+		set 
+			project_register_state = 2
+		where
+			project_no = #{project_no}
+	</update>
 		
 	<select id="getReward" resultType="RewardVO">
 		select * from dream_reward

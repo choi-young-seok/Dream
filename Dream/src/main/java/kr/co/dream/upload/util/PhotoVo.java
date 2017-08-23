@@ -1,4 +1,4 @@
-package kr.co.dream.project.domain;
+package kr.co.dream.upload.util;
 
 import org.springframework.web.multipart.MultipartFile;
 

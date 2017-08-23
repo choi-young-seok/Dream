@@ -19,6 +19,7 @@
 <header>
 <%@include file="../mainView/header.jsp"%> </header>
 <body>
+<div class="wrap">
 	<div class="container">
 		<div class="col col-md-12">
 			<div class="col col-md-3" style="background-color: orange;"></div>
@@ -64,6 +65,7 @@
 	프로젝트 번호 : <input type="text" id="project_no" value="${project.project_no}">
 	리워드 번호 : <input type="text" id="reward_no" value="${reward_no}">
 	후원 금액 : <input type="text" value="${support_amount}원">
+	
 </body>   
 <footer> 
 	<%@include file="../mainView/footer.jsp" %>

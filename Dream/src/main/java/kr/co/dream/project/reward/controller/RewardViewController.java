@@ -14,6 +14,7 @@ public class RewardViewController {
 	public String projectRewardView(@RequestParam int project_no, Model model) {
 		System.out.println("RewardViewController \tprojectRewardView() [프로젝트 리워드 정보 입력 화면 요청] projcet_no : " + project_no);
 		model.addAttribute("project_no",project_no);
+//		return "project/register/projectRewardView";
 		return "project/register/projectRewardView";
 	}
 	

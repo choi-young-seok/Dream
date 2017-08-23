@@ -226,7 +226,7 @@ $(function(){
 			}),//data
 			success : function(result){
 				if(result == "success"){
-					location.href="/dream/projectInfoView?project_no="+project_no;
+					location.href="/dream/projectPreView?project_no="+project_no;
 				}else{
 					alert("실패")
 				}

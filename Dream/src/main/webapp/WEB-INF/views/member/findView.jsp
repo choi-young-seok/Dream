@@ -28,6 +28,7 @@
 <header> <%@include file="../mainView/header.jsp"%>
 </header>
 <body>
+<div class="wrap">
 	<div class="container">
 		<div class="row">
 			<h2>아이디 찾기 / 비밀번호 찾기</h2>
@@ -120,6 +121,6 @@
 			</div>
 		</div>
 	</div>
-
+</div>
 </body>
 </html>

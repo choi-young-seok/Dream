@@ -40,7 +40,7 @@
 
 </head>
 <header> <%@ include file="../mainView/header.jsp"%></header>
-
+<div class="wrap">
 	<div class="container allSector">
 		<div class="row main">
 			<div class="panel-heading">
@@ -193,6 +193,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<!-- /.container -->
 	<footer> <%@ include file="../mainView/footer.jsp"%>

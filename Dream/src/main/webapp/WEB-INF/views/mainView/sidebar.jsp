@@ -8,6 +8,7 @@
 <script type="text/javascript" src="resources/js/mainBody/sidebarEffect.js"></script>
 </head>
 <body>
+<div class="wrap">
 	<div class="col-md-3 sidebar">
 	<div class="container col-md-12 categoryList">
 		<p class="lead">마이 페이지</p>
@@ -63,6 +64,7 @@
       <br>
     </ul>
 		</div>
+	</div>
 	</div>
 	</div>
 </body>

@@ -29,6 +29,11 @@ public class RewardDAOImpl implements RewardDAO {
 	}
 
 	@Override
+	public void rewardRegisterState(int project_no) {
+		sqlsession.update("reward.rewardRegisterState",project_no);
+	}
+
+	@Override
 	public RewardVO getReward(int reward_no) {
 		return sqlsession.selectOne("reward.getReward",reward_no);
 	}
@@ -39,5 +44,6 @@ public class RewardDAOImpl implements RewardDAO {
 		return sqlsession.selectList("reward.rewardList", project_no);
 
 	}
+
 
 }

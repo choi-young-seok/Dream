@@ -14,24 +14,23 @@ public class ProjectVO {
 	private int project_goal_amount;
 	// 프로젝트 기본 정보
 
-	private ProjectInfoDto infoDto;
+	private ProjectOperDTO projectOperDTO;
 	// 연산 결과 DTO
-
-
-	public ProjectInfoDto getInfoDto() {
-		return infoDto;
-	}
 
 	public int getProject_no() {
 		return project_no;
 	}
 
-	public void setProject_no(int project_no) {
-		this.project_no = project_no;
+	public ProjectOperDTO getProjectOperDTO() {
+		return projectOperDTO;
 	}
 
-	public void setInfoDto(ProjectInfoDto infoDto) {
-		this.infoDto = infoDto;
+	public void setProjectOperDTO(ProjectOperDTO projectOperDTO) {
+		this.projectOperDTO = projectOperDTO;
+	}
+
+	public void setProject_no(int project_no) {
+		this.project_no = project_no;
 	}
 
 	public String toStringProjectBasicInfo() {
@@ -94,8 +93,6 @@ public class ProjectVO {
 	public void setMember_no(int member_no) {
 		this.member_no = member_no;
 	}
-	
-	
 
 	public String getProject_thumbnail() {
 		return project_thumbnail;
@@ -279,13 +276,17 @@ public class ProjectVO {
 				+ project_thumbnail + ", project_title=" + project_title + ", project_summary=" + project_summary
 				+ ", project_category=" + project_category + ", project_end_date=" + project_end_date
 				+ ", project_start_date=" + project_start_date + ", project_goal_amount=" + project_goal_amount
-				+ ", project_video=" + project_video + ", project_content=" + project_content + ", register_profile="
-				+ register_profile + ", register_name=" + register_name + ", register_phone=" + register_phone
-				+ ", register_intro=" + register_intro + ", register_sns=" + register_sns + ", register_address="
-				+ register_address + ", project_account=" + project_account + ", access_terms_agree="
-				+ access_terms_agree + ", project_viewcnt=" + project_viewcnt + ", now_amount=" + now_amount
-				+ ", supporting_count=" + supporting_count + ", project_register_state=" + project_register_state
-				+ ", project_success_state=" + project_success_state + "]";
+				+ ", projectOperDTO=" + projectOperDTO + ", project_video=" + project_video + ", project_content="
+				+ project_content + ", register_profile=" + register_profile + ", register_name=" + register_name
+				+ ", register_phone=" + register_phone + ", register_intro=" + register_intro + ", register_sns="
+				+ register_sns + ", register_address=" + register_address + ", project_account=" + project_account
+				+ ", access_terms_agree=" + access_terms_agree + ", project_viewcnt=" + project_viewcnt
+				+ ", now_amount=" + now_amount + ", supporting_count=" + supporting_count + ", project_register_state="
+				+ project_register_state + ", project_success_state=" + project_success_state + "]";
 	}
+	
+	
+
+
 
 }

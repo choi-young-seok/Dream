@@ -25,13 +25,17 @@
 	<update id="reward_limited_count_update">
 		update dream_reward set
 			reward_limited_count = reward_limited_count-1
-			where total_reward_no = #{reward_no}
+		where 
+			total_reward_no = #{reward_no}
 	</update>
 	
 	<select id="get_projectUser_profile" resultType="ProjectVO">
-		select register_name, register_address, register_phone
-		from dream_project
-		where project_no = #{project_no}
+		select 
+			register_name, register_address, register_phone
+		from 
+			dream_project
+		where 
+			project_no = #{project_no}
 	</select>
 	
 	<insert id="shipping_address_register" parameterType="ShippingAddressVO">
@@ -61,27 +65,39 @@
 	</insert>
 	
 	<select id="get_support_info" resultType="SupportVO">
-		select *
-		from dream_support
-		where support_no = #{support_no}
+		select 
+			*
+		from 
+			dream_support
+		where 
+			support_no = #{support_no}
 	</select>
 	
 	<select id="get_support_shipping_info" resultType="ShippingAddressVO">
-		select *
-		from dream_shipping_address
-		where shipping_address_no = #{shipping_address_no}
+		select 
+			*
+		from 
+			dream_shipping_address
+		where 
+			shipping_address_no = #{shipping_address_no}
 		
 	</select>
 	
 	<select id="get_support_shipping_items_info" resultType="ShippingItemsVO">
-		select *
-		from Dream_Shipping_Items
-		where shipping_address_no = #{shipping_address_no}
+		select 
+			*
+		from 
+			Dream_Shipping_Items
+		where 
+			shipping_address_no = #{shipping_address_no}
 	</select>
 	
 	<select id="get_support_items" resultType="RewardVO">
-		select *
-		from dream_reward
-		where total_reward_no = #{total_reward_no}
+		select 
+			*
+		from 
+			dream_reward
+		where 
+			total_reward_no = #{total_reward_no}
 	</select>
 </mapper>

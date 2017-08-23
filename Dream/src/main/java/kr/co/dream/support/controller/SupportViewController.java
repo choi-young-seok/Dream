@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.co.dream.project.domain.ProjectPointDTO;
 import kr.co.dream.project.domain.ProjectVO;
 import kr.co.dream.project.reward.service.RewardService;
 import kr.co.dream.project.service.ProjectService;
@@ -37,9 +38,8 @@ public class SupportViewController {
 		System.out.println("SupportViewController \t프로젝트 번호 : " + project_no);
 
 		// System.out.println(projectService.projectPreview(project_no));
-		ProjectVO projectVO = projectService.projectPreview(project_no);
+		ProjectPointDTO projectVO = projectService.support_project_point_info(project_no);
 		model.addAttribute("project", projectVO);
-		model.addAttribute("project_dto",projectVO.getInfoDto());
 		model.addAttribute("rewards", rewardService.rewardList(project_no));
 
 		return "/support/supportView";
@@ -78,9 +78,6 @@ public class SupportViewController {
 			model.addAttribute("itemsVO", supportVO.getRewardVO());
 			System.out.println(supportVO.getAddressVO().toString());
 			System.out.println(supportVO.getRewardVO().toString());
-		// logger.info(supportVO.toString());
-		// logger.info(supportVO.getAddressVO().toString());
-		// logger.info(supportVO.getRewardVO().toString());
 
 		return "/support/supportCompleteView";
 	}

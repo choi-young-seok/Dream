@@ -34,8 +34,9 @@
 </header>
 
 <body>
-<div class="col-md-12">
+<div class="wrap">
     <div class="container">
+<div class="col-md-12">
         <div class="row">
 			<aside> 
 				<%@include file="../../mainView/sidebar.jsp"%>
@@ -174,6 +175,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 </body>
 </html>

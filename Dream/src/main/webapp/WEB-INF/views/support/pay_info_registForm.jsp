@@ -32,6 +32,7 @@
 <header> <%@include file="../mainView/header.jsp"%>
 </header>
 <body>
+<div class="wrap">
 	<div class="container">
 		<div class="col col-md-12" id="inputTest">
 			<c:if test="${reward_no != 0}">
@@ -475,6 +476,7 @@
 	<input type="hidden" id="support_amount_noReward" value="${support_amount}">
 
 	<input type="hidden" id="나중에이거지워라" value="${session.member_name}">
+	</div>
 </body>
 <footer> <%@include file="../mainView/footer.jsp"%>
 </footer>

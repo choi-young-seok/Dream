@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="project_info">
+
+	<!-- 프로젝트 조회 화면 -->
+	<select id="projectInfoView" resultMap="projectInfoResultMap.project_detail_info_map">
+		select 
+			* 
+		from 
+			dream_project 
+		where project_no = #{project_no}
+	</select>
+
+	<!-- 프로젝트 조회 수 -->
+	<update id="project_view_count">
+		update
+			dream_project
+		set
+			project_viewcnt = project_viewcnt + 1
+		where
+			project_no = #{project_no}
+	</update>
+
+	<!-- 결제화면 프로젝트 정보, 마이페이지 현재 진행 중 프로젝트 정보 : 단일정보 -->
+ 	<select id="ProjectPointInfo" resultMap="projectInfoResultMap.project_point_info_map">
+		select
+			<include refid="projectInfoSql.project_point_info_sql"/>
+		from 
+			dream_project
+		where 
+			<include refid="projectInfoSql.processing_project_condition_sql"/> and
+			project_no = #{project_no}
+	</select>
+
+	
+</mapper>
