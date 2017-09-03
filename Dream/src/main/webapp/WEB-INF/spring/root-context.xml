@@ -15,12 +15,13 @@
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		id="dataSource">
 		<property name="driverClassName">
-			<value>oracle.jdbc.driver.OracleDriver</value>
+			<!-- <value>oracle.jdbc.driver.OracleDriver</value> -->
+			<value>net.sf.log4jdbc.sql.jdbcapi.DriverSpy</value>
 		</property>
 		<!-- localhost DataBase -->
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<property name="username" value="scott" />
-		<property name="password" value="tiger" />
+		<property name="url" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="dream" />
+		<property name="password" value="dream" />
 	</bean>
 
 	<!-- MyBatis를 DataSource에 연결(마이바티스 환경, sqlMapper등록) -->
@@ -32,6 +33,8 @@
 			<value>classpath:mappers/*Mapper.xml</value>
 			<value>classpath:mappers/projectMappers/*Mapper.xml</value>
 			<value>classpath:mappers/projectMappers/pieces/*Mapper.xml</value>
+			<value>classpath:mappers/supportMappers/*Mapper.xml</value>
+			<value>classpath:mappers/supportMappers/pieces/*Mapper.xml</value>
 		</array>
 		</property>
 		
@@ -42,6 +45,7 @@
 		destroy-method="clearCache">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	
 	
 	<!-- transactionManager 등록 -->
 	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
