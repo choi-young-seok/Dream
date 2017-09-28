@@ -1,3 +1,4 @@
+DROP TABLE Dream_support;
 -- 후원(결제)
 CREATE TABLE Dream_Support (
 	Member_No          INTEGER       NOT NULL, -- 후원 회원 번호
@@ -24,11 +25,9 @@ ALTER TABLE Dream_Support
 ALTER TABLE Dream_Support
 	ADD CONSTRAINT FK_Project_TO_Support -- 프로젝트 -> 후원(결제)
 		FOREIGN KEY (
-			Member_No,  -- 후원 회원 번호
 			Project_No  -- 프로젝트 번호
 		)
 		REFERENCES Dream_Project ( -- 프로젝트
-			Member_No,  -- 등록 회원 번호
 			Project_No  -- 프로젝트 번호
 		)
 		ON DELETE CASCADE;

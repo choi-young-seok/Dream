@@ -1,3 +1,4 @@
+Drop table dream_reward;
 -- 리워드
 CREATE TABLE Dream_Reward (
 	Member_No               INTEGER       NOT NULL, -- 회원 번호
@@ -5,7 +6,7 @@ CREATE TABLE Dream_Reward (
 	Total_Reward_No         INTEGER       NOT NULL, -- 전체 리워드 번호
 	Reward_No               INTEGER       NOT NULL, -- 프로젝트 리워드 번호(상품 번호)
 	Reward_Items            VARCHAR2(300) NOT NULL, -- 리워드 품목
-	Reward_Explain          VARCHAR2(300) NOT NULL, -- 리워드 상품설명
+	Reward_Title            VARCHAR2(300) NOT NULL, -- 리워드 상품설명
 	Reward_Delivery_Date    TIMESTAMP     NOT NULL, -- 배송 예정일
 	Reward_Limited_Count    INTEGER       NOT NULL, -- 리워드 한정수량
 	Reward_Amount           INTEGER       NOT NULL  -- 리워드 금액

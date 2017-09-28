@@ -7,7 +7,8 @@ CREATE TABLE Dream_Member_Address (
 	Member_Address_zip_code INTEGER    	  NOT NULL, -- 林家瘤 快祈锅龋
 	Member_Address          VARCHAR2(200) NOT NULL, -- 林家瘤 过沥疙 林家
 	Member_Detail_Address   VARCHAR2(200) NOT NULL, -- 林家瘤 惑技 林家
-	Address_Member_Phone    VARCHAR2(30)  NOT NULL  -- 林家瘤 楷遏贸
+	Address_Member_Phone    VARCHAR2(30)  NOT NULL,  -- 林家瘤 楷遏贸
+	Delivery_Address        VARCHAR2(20) 
 );
 
 -- 雀盔林家

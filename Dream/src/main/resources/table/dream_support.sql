@@ -5,7 +5,6 @@ DROP TABLE Dream_Support;
 CREATE TABLE Dream_Support (
 	Member_No			INTEGER  	 	references dream_member(Member_No), -- 등록자 번호
 	Project_No      	INTEGER  	 	references	dream_project(Project_No), -- 프로젝트 번호
-	Total_Reward_No 	INTEGER     	NOT NULL, -- 전체 리워드 번호
 	Support_No      	INTEGER     	primary key, -- 후원 번호
 	Member_Name     	VARCHAR2(50) 	NOT NULL, -- 후원자 성명
 	Pay_Method			VARCHAR2(200)	NOT NULL, -- 결제방법
