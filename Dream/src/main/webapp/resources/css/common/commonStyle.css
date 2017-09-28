@@ -28,18 +28,25 @@ input[reardonly]{
 .cardSector > input{
 	    width: 19%;
 }
+.printSpace{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: solid; 
+	border-color: #ddd;
+	padding: 3%; 
+}
 
 .boxSpace{
-	margin-top: 5%;
-	margin-bottom: 5%;
+	margin-top: 20px;
+	margin-bottom: 20px;
 	border: dashed;
 	border-color: #ddd;
 	padding: 3%; 
 }
 
-.dataSpace{
-	margin-top: 5%;
-	margin-bottom: 5%;
+.dragSpace{
+	margin-top: 20px;
+	margin-bottom: 20px;
 	border: dashed;
 	border-color: #87ceeb; 
 }
@@ -48,6 +55,11 @@ input[reardonly]{
 }
 .col{
 	background-color: white;
+}
+.modal_img{
+	border : solid;
+	width : 570px;
+	margin-bottom: 20px;
 }
 
 /*  */
