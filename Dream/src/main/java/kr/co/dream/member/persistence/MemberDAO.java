@@ -33,4 +33,5 @@ public interface MemberDAO {
 	public List<MemberVO> findMail(MemberVO member);
 
 	public int findPass(MemberVO member);
+	
 }

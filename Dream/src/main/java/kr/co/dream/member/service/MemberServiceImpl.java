@@ -55,12 +55,6 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberVO checkLoginBefore(String value) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public MemberVO memberInfo(int member_no) {
 		System.err.println("MemberServiceImpl \tmemberInfo() \t\t[input value] : " + member_no);
 		return dao.memberInfo(member_no);
@@ -75,13 +69,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<MemberVO> findMail(MemberVO member) {
 		System.err.println("MemberServiceImpl \tfindMail() \t\t[input value] : " + member.toStringLogin());
-//		List<MemberVO> memberList = 
 		return dao.findMail(member);
-//		for (int i = 0; i < memberList.size(); i++) {
-//			MemberVO editMemberInfo = memberList.get(i);
-////			member.setMember_mail(member.getMember_mail().);
-//		}
-//		return memberList;
 	}
 
 	@Override
@@ -90,9 +78,4 @@ public class MemberServiceImpl implements MemberService {
 		member.setMember_pass(encryptionPwd.bCryptPwd(encryptionPwd.shaPwd(member.getMember_pass())));
 		return dao.findPass(member);
 	}
-	
-	public void aoptest22(){
-		System.out.println("서비스진입");
-	}
-
 }

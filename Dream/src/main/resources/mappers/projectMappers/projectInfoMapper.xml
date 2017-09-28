@@ -10,13 +10,19 @@
 			dream_project 
 		where project_no = #{project_no}
 	</select>
-
+	
+	<!-- 프로젝트 조회시 등록자 프로필 사진 -->
+	<select id="get_memberProfile" resultType="String">
+		select member_profile from dream_member
+		where member_no = #{member_no}
+	</select>
+	
 	<!-- 프로젝트 조회 수 -->
 	<update id="project_view_count">
 		update
 			dream_project
 		set
-			project_viewcnt = project_viewcnt + 1
+			Project_View_Count = Project_View_Count + 1
 		where
 			project_no = #{project_no}
 	</update>

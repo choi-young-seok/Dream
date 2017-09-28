@@ -31,7 +31,7 @@ $(function() {
 						//location.href = "/dream"
 						$('#loginModal').modal('hide');
 					}else{
-						alert("로그인에 실패하였습니다. \n 로그인 정보를 확인하세요")
+						alert("로그인에 실패하였습니다. \n로그인 정보를 확인하세요")
 						$('#login_mail').val('');
 						$('#login_pass').val('');
 						return;

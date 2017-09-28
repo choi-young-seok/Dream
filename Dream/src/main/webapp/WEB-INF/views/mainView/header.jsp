@@ -28,6 +28,8 @@
 <!-- Naver Login API -->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
 
+<!-- handlebars libray  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 <!-- --------------------------- Custom javascript --------------------------- -->
 <!-- header.js -->
@@ -36,15 +38,15 @@
 <script type="text/javascript" src="resources/js/login/login.js"></script>
 
 <!-- mypage.js -->
-<script type="text/javascript" src="resources/js/mypage/delivery.js"></script>
 <script type="text/javascript" src="resources/js/mypage/member.js"></script>
-<script type="text/javascript" src="resources/js/mypage/pay.js"></script>
 <script type="text/javascript" src="resources/js/mypage/project.js"></script>
 <script type="text/javascript" src="resources/js/mypage/support.js"></script>
 
 <script type="text/javascript">
 // 세션검사 함수부
 $(function(){ 
+	//$('#loginModal').modal({backdrop : "static"});		
+	
 	// 해당 요청이 세션을 필요로 하는 요청일 경우 
 	//1. interCepter에서 세션 검사 후 세션이 널인 경우(비로그인 요청일 경우)
 	//2. preHandle에서 임시 세션 needLoginSession 발급
@@ -65,7 +67,6 @@ $(function(){
 });//ready
 </script>
 </head>
-<body>
 <!-- Navigation --> 
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
@@ -89,9 +90,7 @@ $(function(){
 					<li><a id="projectRegiterView" href="/dream/projectRegiterView">프로젝트 등록</a></li>
 	
 				<%-- <c:if test="${session.member_mail ne null || session.member_mail ==''}"> --%>
-				<c:if test="${session.member_ongoing_project_count > 0}">
 					<li><a href="#">마이 프로젝트</a></li>
-				</c:if>
 				
 				<input type="hidden" id="needLoginSession" value="${needLoginSession}">
 				<%-- </c:if> --%>
@@ -116,7 +115,14 @@ $(function(){
 				<c:if test="${session.member_name != '' || session.member_name ne null}">
 					<li class="dropdown">
 					<c:if test="${session.member_name ne null}">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">${session.member_name }<span class="caret"></span></a>
+					<c:choose>
+						<c:when test="${session.member_profile eq 'NO PROFILE'}">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">${session.member_name }<span class="caret"></span></a>				
+						</c:when>
+						<c:otherwise>
+							<a class="dropdown-toggle"  data-toggle="dropdown"><img height="35px" src="resources${session.member_profile }"><span class="caret"></span></a>										
+						</c:otherwise>
+					</c:choose>
 					<input id="session_mail" type="hidden" value="${session.member_mail }">
 					<input id="session_no" type="hidden" value="${session.member_no }">
 					<input id="session_name" type="hidden" value="${session.member_name }">
@@ -220,4 +226,3 @@ $(function(){
 			</div>
 		</div><!-- /.container --> 
 	</div>
-	</body>

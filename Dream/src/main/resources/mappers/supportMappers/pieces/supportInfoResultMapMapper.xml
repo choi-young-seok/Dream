@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="support_resultMap">
+
+	<!-- 리워드 후원 상세 정보 resultMap  -->
+	<resultMap type="SupportDetailDTO" id="support_detail_info_resultMap">
+		<id column="support_no" property="support_no" />
+		<result column="project_no" property="project_no"/>
+
+		<association property="payInfoDTO" column="support_no" javaType="supportPayInfoDTO" select="support_pay_info"></association>
+
+		<association property="projectPointDTO" column="project_no"  javaType="ProjectPointDTO" select="support_project_info">
+			<result property="project_no" column="project_no"/>
+		</association>
+		
+		<association property="supportDeliveryDTO" column="support_no"  javaType="SupportDeliveryDTO" select="support_delivery_info">
+		</association>
+		
+	</resultMap>
+	
+	<!-- 리워드 후원완료 프로젝트 정보 --> 
+	<select id="support_project_info" resultMap="projectInfoResultMap.project_point_info_map">
+		select
+			<include refid="projectInfoSql.project_point_info_sql"></include>
+		from 
+			dream_project
+		where 
+			project_no = #{project_no}
+	</select> 
+	
+	<resultMap type="SupportDeliveryDTO" id="support_delivery_info_map">
+		<id column="delivery_address_no" property="delivery_address_no" />
+		<result column="support_no" property="support_no"/>
+	
+		<association property="supportRewardDTO" column="total_reward_no" javaType="SupportRewardDTO" select="support_reward_info">
+		</association>
+		
+		<association property="senderAddressVO" column="delivery_address_no" javaType="MemberAddressVO" select="sender_sender_address_info">
+		</association>
+	</resultMap>
+	
+	<select id="support_delivery_info" resultMap="support_delivery_info_map">
+		select 
+			total_reward_no, delivery_address_no, support_no
+		from
+			dream_delivery
+		where
+			support_no =#{support_no}
+	</select>
+	
+	<select id="support_pay_info" resultType="supportPayInfoDTO">
+		select payback_bank, payback_account
+		from
+			dream_support
+		where 
+			support_no =#{support_no}
+	</select>
+	
+	<!-- 리워드 후원 리워드 정보 resultMap  -->
+	<select id="support_reward_info" resultType="SupportRewardDTO">
+		select 
+			reward_title, reward_items, reward_amount, reward_delivery_date
+		from 
+			dream_reward
+		where 
+			total_reward_no = #{total_reward_no}
+	</select>
+	
+	<select id="sender_sender_address_info" resultType="MemberAddressVO">
+		select
+			sender_name as address_member_name,
+			sender_zip_code as member_address_zip_code,
+			sender_address as member_address,
+			sender_detail_address as member_detail_address,
+			sender_phone as address_member_phone
+		from
+			dream_delivery
+		where
+			delivery_address_no = #{delivery_address_no}
+	</select>
+	
+</mapper>

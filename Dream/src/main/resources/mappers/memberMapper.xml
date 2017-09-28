@@ -3,27 +3,36 @@
 <mapper namespace="member">
 	<insert id="memberJoin" parameterType="MemberVO">
 		insert into dream_member
-		(member_no, member_mail, member_pass, member_name, member_birth,member_gender) 
+			(member_no, member_mail, member_pass, member_name, member_birth,member_gender) 
 		values
-		(dream_member_seq.nextval, #{member_mail}, #{member_pass}, #{member_name}, #{member_birth}, #{member_gender})
+			(dream_member_seq.nextval, #{member_mail}, #{member_pass}, #{member_name}, #{member_birth}, #{member_gender})
 	</insert>
 	
 	<select id="idDuplicationCheck" parameterType="String" resultType="Integer">
-		select count(*) 
-		from dream_member
-		where member_mail=#{member_authMail}
+		select 
+			count(*) 
+		from 
+			dream_member
+		where 
+			member_mail=#{member_authMail}
 	</select>
 	
 	<select id="login" resultType="MemberVO">
-		select member_no, member_mail, member_name, member_ongoing_project_count
-		from dream_member
-		where member_mail=#{login_mail}
+		select 
+			member_no, member_mail, member_name, member_profile
+		from 
+			dream_member
+		where 
+			member_mail=#{login_mail}
 	</select>
 	
 	<select id="selectPwd" resultType="String">
-		select member_pass
-		from dream_member
-		where member_mail=#{login_mail}
+		select 
+			member_pass
+		from 
+			dream_member
+		where 
+			member_mail=#{login_mail}
 	</select>
 	
 	<select id="memberInfo" parameterType="Int" resultType="MemberVO">
@@ -49,5 +58,6 @@
 		where member_name = #{member_name} and member_birth = #{member_birth} 
 		order by member_regdate desc
 	</select>
+	
 	
 </mapper>

@@ -1,41 +1,25 @@
 package kr.co.dream.project.controller;
 
-import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.UUID;
 
-import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.dream.address.service.AddressService;
 import kr.co.dream.project.domain.ProjectVO;
-import kr.co.dream.project.reward.domain.RewardVO;
-import kr.co.dream.project.reward.service.RewardService;
 import kr.co.dream.project.service.ProjectService;
 import kr.co.dream.upload.util.PhotoVo;
 
@@ -44,9 +28,9 @@ public class ProjectRegisterViewController {
 
 	@Inject
 	private ProjectService service;
-
+	
 	@Inject
-	private RewardService rewardService;
+	private AddressService addressService;
 
 	// 프로젝트 기본 정보 입력 화면 요청
 	@RequestMapping(value = "/projectRegiterView")
@@ -63,6 +47,7 @@ public class ProjectRegisterViewController {
 		model.addAttribute("project_no", project_no);
 		// System.out.println(reward.toString());
 		return "project/register/projectStoryView";
+		// return "redirect:project/register/projectStoryView";
 	}
 
 	// 프로젝트 프로필 정보 입력 화면 요청
@@ -70,15 +55,22 @@ public class ProjectRegisterViewController {
 	public String projectProfileView(ProjectVO projectStoryInfo, Model model) {
 		System.out.println("ProjectRegisterViewController \tprojectProfileView() [프로젝트 스토리 정보 입력 요청]");
 
-		System.out.println("project_content : " + projectStoryInfo.toStringProjectStoryInfo());
+		System.out.println("project_content : " + projectStoryInfo.toString());
 		service.projectStoryInfo(projectStoryInfo);
 
 		model.addAttribute("project_no", projectStoryInfo.getProject_no());
-
+		int member_addressCount = addressService.get_memberAddress_count(projectStoryInfo.getMember_no());
+		
+		if(member_addressCount == 0){
+			model.addAttribute("addressInfo","noMemberAddress");
+		}else {
+			//회원 기본 배송지
+			model.addAttribute("addressInfo", addressService.get_laterMemberAddress(projectStoryInfo.getMember_no()));
+		}
 		System.out.println("ProjectRegisterViewController \tprojectProfileView() [프로젝트 등록자 프로필 정보 입력 화면 요청]");
 
 		return "project/register/projectProfileView";
-		// return "redirect:/projectProfileView";
+		// return "redirect:project/register/projectProfileView";
 	}
 
 	// 프로젝트 계좌 정보입력 화면 요청

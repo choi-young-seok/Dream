@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.dream.project.domain.ProjectVO;
-import kr.co.dream.project.reward.service.RewardService;
 import kr.co.dream.project.service.ProjectService;
+import kr.co.dream.reward.service.RewardService;
 
 @Controller
 public class ProjectViewController {
@@ -37,6 +37,7 @@ public class ProjectViewController {
 		return "project/projectInfoView";
 	}
 	
+	//프로젝트 조회 화면
 	@RequestMapping(value = "/projectInfoView")
 	public String projectInfoView(Model model, @RequestParam int project_no) {
 		System.out.println("ProjectRegisterViewController \tprojectInfoView() [프로젝트 조회 화면 요청] : " + project_no);

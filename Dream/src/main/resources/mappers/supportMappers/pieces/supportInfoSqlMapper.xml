@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="support_sql">
+
+	<sql id="point_info">
+		project_no, support_no, pay_method, support_amount, support_date, payback_check
+	</sql>
+	
+	<sql id="point_condition">
+		payback_check = #{payback_check} and
+		member_no = #{member_no}
+	</sql>
+	
+	<sql id="detail_info">
+		project_no, support_no, member_name,
+		pay_method, support_amount, support_date
+	</sql>
+	
+	<sql id="detail_condition">
+		support_no = #{support_no}
+	</sql>
+</mapper>

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 import kr.co.dream.member.service.MemberService;
 
 @Controller
@@ -26,4 +27,17 @@ public class MypageMemeberViewController {
 	public String password_Info_Edit_Tab(int member_no){
 		return "mypage/member/password_Edit";
 	}
+	
+	@RequestMapping(value = "address_Info_View")
+	public String address_info_view(int member_no, Model model){
+//		model.addAttribute("memberAddressInfo",service.get_memberAddress(member_no));
+		return "mypage/member/address_Info";
+	}
+	
+	@RequestMapping(value = "address_Info_Insert_View")
+	public String address_info_insert_view(int member_no, Model model){
+		return "mypage/member/address_Info_Insert_View";
+	}
+	
+	
 }

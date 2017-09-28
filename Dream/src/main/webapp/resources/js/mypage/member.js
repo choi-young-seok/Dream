@@ -6,7 +6,6 @@ $(function() {
 	$(".edit_form").hide();
 	$("#pass_edit_btn").hide();
 	
-	
 	//ㅡㅡㅡㅡㅡ mypage memberBtn click event ㅡㅡㅡㅡㅡ
 	//헤더 내 정보 보기 버튼 클릭 이벤트
 	$('#member_Info').click(function() {
@@ -26,7 +25,11 @@ $(function() {
 	//사이드바 비밀번호 수정 버튼 클릭 이벤트
 	$("#password_Info_Edit_View").click(function(){
 		location.href = "/dream/password_Info_Edit_View?member_no="+member_no;	
-
+	});//password_Info_Edit_View click event
+	
+	//사이드바, 탭리스트 배송정보 조회 버튼 클릭 이벤트
+	$("#address_Info_View , #address_Info_View_Tab").click(function(){
+		location.href = "/dream/address_Info_View?member_no="+member_no;
 	});//password_Info_Edit_View click event
 
 	//ㅡㅡㅡㅡㅡ 탭리스트 로직 ajax전송으로 수정할것ㅡㅡㅡㅡㅡ
@@ -150,5 +153,9 @@ $(function() {
 		$('#profileArea').show();
 		$('#proFileZone').hide();		
 	});//profileEdit click event
+	
+	
+	
+	
  
 });// ready

@@ -7,15 +7,20 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.co.dream.address.persistence.AddressDAO;
 import kr.co.dream.project.domain.ProjectPointDTO;
+import kr.co.dream.project.domain.ProjectProfileDTO;
 import kr.co.dream.project.domain.ProjectVO;
-import kr.co.dream.project.persitence.ProjectDAO;
+import kr.co.dream.project.persistence.ProjectDAO;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
 	@Inject
 	private ProjectDAO dao;
+	
+	@Inject
+	private AddressDAO addressDAO;
 
 	// ----- 프로젝트 등록 -----
 	// 프로젝트 기본정보 등록
@@ -31,23 +36,38 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	// 프로젝트 프로필 정보 등록
+	@Transactional
 	@Override
-	public void projectProfileInfo(ProjectVO projectProfileInfo) {
-		dao.projectProfileInfo(projectProfileInfo);
+	public void projectProfileInfo(ProjectProfileDTO projectProfileDTO) {
+		dao.projectMemberProfile_update(projectProfileDTO);
+		if(projectProfileDTO.getAddress_member_no() == 0){
+			//0일경우 새로운 배송지 정보 입력
+			int address_member_no = addressDAO.insert_memberAddress(projectProfileDTO.getMemberAddressVO());
+			System.out.println("프로필 서비스 어드레스 맴버 번호 : " +address_member_no);
+			addressDAO.update_project_delivery_address(address_member_no);
+//			projectProfileDTO.setAddress_member_no(address_member_no);
+			
+		}else{
+			//0이 아닐경우 기존 배송지 정보 입력
+			dao.projectRegisterProfile_update(projectProfileDTO);	
+			addressDAO.update_project_delivery_address(projectProfileDTO.getAddress_member_no());
+		}
 	}
 
 	// 프로젝트 계좌 정보 등록
 	@Override
 	public void projectAccountInfo(ProjectVO projectAccountInfo) {
-		System.out.println("ProjectServiceImpl \tprojectAccountInfo \t" + projectAccountInfo.toStringAccountInfo());
+		System.out.println("ProjectServiceImpl \tprojectAccountInfo \t" + projectAccountInfo.toString());
 		dao.projectAccountInfo(projectAccountInfo);
 	}
 
 	// 프로젝트 미리보기 화면 : 1 ~ 5단계의 프로젝트 입력 정보 조회
+	@Transactional
 	@Override
 	public ProjectVO projectPreview(int project_no) {
 		System.out.println("ProjectServiceImpl \tprojectPreview \t" + project_no);
 		ProjectVO projectVO = dao.projectInfoView(project_no);
+		projectVO.setRegister_profile(dao.get_projectRegisterProfile(projectVO.getMember_no()));
 		return projectVO;
 	}
 
@@ -63,6 +83,7 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public ProjectVO projectInfoView(int project_no) {
 		ProjectVO projectVO = dao.projectInfoView(project_no);
+		projectVO.setRegister_profile(dao.get_projectRegisterProfile(projectVO.getMember_no()));
 		dao.projectViewCnt(project_no);
 		return projectVO;
 
@@ -90,5 +111,8 @@ public class ProjectServiceImpl implements ProjectService {
 		}
 		return null;
 	}
+
+
+
 
 }

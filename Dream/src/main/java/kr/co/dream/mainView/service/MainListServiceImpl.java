@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import kr.co.dream.mainView.persistence.MainListDAO;
 import kr.co.dream.project.domain.ProjectPointDTO;
-import kr.co.dream.project.persitence.ProjectDAO;
 
 @Service
 public class MainListServiceImpl implements MainListService{

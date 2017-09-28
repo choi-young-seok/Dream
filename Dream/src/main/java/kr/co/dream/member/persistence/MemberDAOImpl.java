@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -100,6 +99,5 @@ public class MemberDAOImpl implements MemberDAO {
 		System.err.println("MemberDAOImpl \t\tmemberInfo() \t\t[input value] : " + member.toStringFindInfo());
 		return sqlSession.update("member.findPass", member);
 	}
-
 
 }

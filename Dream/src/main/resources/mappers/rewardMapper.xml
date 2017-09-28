@@ -3,13 +3,19 @@
 <mapper namespace="reward">
 	<insert id="rewardRegister">
 		insert into dream_reward
-		(total_reward_no,member_no, project_no, reward_no, reward_title,
-		reward_items, reward_delivery_date,reward_limited_count,reward_amount)
+		(
+			total_reward_no, member_no, project_no, reward_no, 
+			reward_title, reward_items, reward_delivery_date, 
+			reward_limited_count, reward_amount
+		)
 		values
-		(dream_reward_seq.nextval, #{member_no}, #{project_no}, #{reward_no}, #{reward_title},
-		#{reward_items}, #{reward_delivery_date}, #{reward_limited_count},
-		#{reward_amount})
+		(
+			dream_reward_seq.nextval, #{member_no}, #{project_no}, #{reward_no}, 
+			#{reward_title}, #{reward_items}, #{reward_delivery_date}, 
+			#{reward_limited_count}, #{reward_amount}
+		)
 	</insert>
+	
 	<update id="rewardRegisterState">
 		update
 			dream_project
@@ -20,13 +26,28 @@
 	</update>
 		
 	<select id="getReward" resultType="RewardVO">
-		select * from dream_reward
-		where total_reward_no = #{reward_no}
+		select 
+			<include refid="rewardInfo"></include>
+		from 
+			dream_reward
+		where 
+			total_reward_no = #{reward_no}
 	</select>
 	
 	<select id="rewardList" resultType="RewardVO">
-		select * from dream_reward 
-		where project_no = #{project_no}
-		order by total_reward_no
+		select 
+			<include refid="rewardInfo"></include>
+		from 
+			dream_reward 
+		where 
+			project_no = #{project_no} and reward_limited_count != 0
+		order by 
+			total_reward_no
 	</select>
+	
+	<sql id="rewardInfo">
+			project_no, total_reward_no, reward_no,
+			reward_items, reward_title, reward_delivery_date,
+			reward_limited_count, reward_amount
+	</sql>
 </mapper>

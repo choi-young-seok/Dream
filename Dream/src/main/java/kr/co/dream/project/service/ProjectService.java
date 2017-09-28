@@ -3,18 +3,26 @@ package kr.co.dream.project.service;
 import java.util.List;
 
 import kr.co.dream.project.domain.ProjectPointDTO;
+import kr.co.dream.project.domain.ProjectProfileDTO;
 import kr.co.dream.project.domain.ProjectVO;
 
 public interface ProjectService {
+	//프로젝트 등록------------
 	
+	//프로젝트 기본정보 등록
 	public int projectBasicInfo(ProjectVO projectBasicInfo);
-	public void projectStoryInfo(ProjectVO projectStoryInfo);
-	public void projectProfileInfo(ProjectVO projectProfileInfo);
-	public void projectAccountInfo(ProjectVO projectAccountInfo);
-	//프로젝트 등록
 	
-	public ProjectVO projectPreview(int project_no);
+	//프로젝트 스토리 정보 등록
+	public void projectStoryInfo(ProjectVO projectStoryInfo);
+	
+	//프로젝트 프로필 정보 등록
+	public void projectProfileInfo(ProjectProfileDTO projectProfileDTO);
+	
+	//프로젝트 계좌정보 등록
+	public void projectAccountInfo(ProjectVO projectAccountInfo);
+	
 	//프로젝트 미리보기
+	public ProjectVO projectPreview(int project_no);
 //	public void projectRegister(ProjectVO project);
 	public void projectRegister(int project_no);
 	//프로젝트 등록

@@ -33,9 +33,12 @@
 			<div class="row" style="margin-bottom: 200px;">
 				<div class="col col-md-6" style="background-color: white">
 				
-				<!-- <embed width="640" height="360" src="http://www.youtube.com/v/_0VZc_GwXrE" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true"></embed> -->
+				<c:if test="${project.project_video_type eq 'youtube_video' }">
+				<embed width="640" height="360" src="http://www.youtube.com/v/${project.project_video }" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true"></embed>
+				</c:if>
 				<%-- <embed src="resources/member/thumbnail${project.project_video }" clickto autoplay="false"></embed> --%>
 				<%-- <object [width="485" height="480"] data="resources/member/thumbnail${project.project_video }" showstatusbar="1"> --%>
+				<c:if test="${project.project_video_type eq 'member_video' }">
 				<video width="485" height="480" controls>
 				<!-- poster속성을 이용하여 동영상 썸네일 이미지 설정 가능-->
 				<!-- <video width="320" height="240" poster="/images/w3html5.gif" controls> -->
@@ -46,6 +49,7 @@
 					<%-- <source src="resources/member/thumbnail${project.project_video }" type="video/mp4">
 					<source src="resources/member/thumbnail${project.project_video }" type="video/ogg"> --%>
  				</video>
+				</c:if>
 					<!-- showstatusbar="1" autoplay="false" hidden="false" -->
 					</div>
 					
@@ -84,11 +88,11 @@
 <%-- 					<img src="resources/member/thumbnail/${project.register_profile }" width="150" height="200"> --%>
 				</figure></div>
 				<div class="col-md-4">
-					${project.register_name }<br>
-					${project.register_sns}<br>
+					등록자 : ${project.register_name }<br>
+					등록자 소개 :${project.register_intro}<br>
 					</div>
 				<div class="col-md-4">
-					${project.project_summary}</div>
+					프로젝트 소개 : ${project.project_summary}</div>
 			</div>
 			
 			<div class="row">
@@ -112,7 +116,7 @@
 						<br><br>
 						</c:forEach>
 						</div>
-			</div>11
+			</div>
 			<c:if test="${project.project_register_state eq '5'}">
 				<div class="pull-right row">
 					<a href="#" id="cancel_project_register" value="취소" class="btn btn-danger">취소</a>

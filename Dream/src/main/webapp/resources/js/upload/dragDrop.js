@@ -69,7 +69,7 @@ $(function(){
 								alert("div태그 title 정보 없음 : "+requestName)
 							}
 						} else {
-							str = "<div align ='center'>" 
+							str = "<div id='member_video_area' align ='center'>" 
 									+ "<video width='485' heigth='480' controls>"
 									+'<source src="resources'+data+'" type="video/ogg">'
 									+ "</video><br>"

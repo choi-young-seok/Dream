@@ -14,9 +14,7 @@ $(function() {
 
 	});// click event
 
-	//
 	$('#mailAuthNumBtn').click(function() {
-		
 		var member_authMail = $('#member_authMail').val();
 		var member_name = $('#member_name').val();
 		

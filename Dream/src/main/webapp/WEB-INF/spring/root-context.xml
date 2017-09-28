@@ -57,11 +57,9 @@
 	<context:component-scan base-package="kr.co.dream"/>
 	
 	<!-- AOP -->
-	<context:component-scan base-package="kr.co.dream.log.aop"/>
-	<aop:aspectj-autoproxy />
+<!-- 	<context:component-scan base-package="kr.co.dream.log.aop"/>
+	<aop:aspectj-autoproxy /> -->
 	
-	
-
 	<!-- mailSender -->
 	<bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl" >

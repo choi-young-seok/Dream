@@ -4,74 +4,79 @@
 
 	<!-- 프로젝트 간략정보 조회항목 -->
 	<sql id="project_point_info_sql">
-		project_no, 
-		project_thumbnail, project_title, 
-		project_start_date, project_end_date,
+		project_no,
+		project_thumbnail, project_title,
+		project_start_date,
+		project_end_date,
 		project_goal_amount, now_amount,
-		project_viewcnt, supporting_count
-		<!-- 등록 중 프로젝트 단계 -->
-<!-- 		<if test="request == 'during_registration'">
-			, project_register_state
-		</if> -->
+		project_view_count,
+		supporting_count
 	</sql>
 	
-	<!-- 프로젝트 간략정보 조회조건 : 진행중 (등록o, 완료x, 잔여기간 > 0) -->
+	<!-- 프로젝트 간략정보 조회조건 : 진행중 (등록o, 잔여기간 > 0) -->
 	<sql id="processing_project_condition_sql">
-		project_register_state = 'T' and 
-		project_success_state = 'F' and 
+		project_register_state = 'T' and
 		(floor(project_end_date-sysdate) > 0)
 	</sql>
 	
-	<!-- 마이 페이지 프로젝트 목록 조건 -->
-	<!-- <sql id="">
-
-		진행중/만료 프로젝트 공통 조건
-		<if test="request != during_registration">
-		project_register_state = 'T' and 
-				미달성, 진행중
-				<if test="request == during_registration">
-					project_success_state = 'F' and 
-					(floor(project_end_date-sysdate) > 0)		
-				</if>
-				
-				달성 , 진행중
-				<if test="request == ">
-					project_success_state = 'T' and
+	<sql id="during_registration_project_sql">
+				project_register_state != 'T' and
+				member_no = #{member_no}
+	</sql>
+	
+	<sql id="myProject_condition_sql">
+		project_register_state = 'T' and
+		project_success_state =#{success_state} and
+		<choose>
+				<when test="request == 'processing_project' ">
 					(floor(project_end_date-sysdate) > 0)
-				</if>
-			
-				미달성, 기간만료
-				<if test="">
-				<![CDATA[ 
-					project_success_state = 'F' and
+				</when>
+				<when test="request == 'last_project' ">
+					<![CDATA[
 					(floor(project_end_date-sysdate) < 0)
-				]]>
-				</if>
-				
-				달성 , 기간만료
-				<if test="">
-				<![CDATA[ 
-					project_success_state = 'F' and
-					(floor(project_end_date-sysdate) < 0)
-				]]>		
-				</if>
-		</if>
-		
-		
-		project_success_state = 'F' and 
-		(floor(project_end_date-sysdate) > 0)
+					]]>
+				</when>
+			</choose>
+		and member_no =#{member_no}
+	</sql>
 
+	<sql id="project_condition_sql">
+		project_register_state = 'T'	
+	
+		<if test="state == 'success'">
+			and project_success_state = 'T' 
+			<choose>
+				<when test="request == 'processing_project' ">
+					and (floor(project_end_date-sysdate) > 0)
+				</when>
+				<when test="request == 'last_project' ">
+					<![CDATA[
+					and (floor(project_end_date-sysdate) < 0)
+					]]>
+				</when>
+			</choose>
+		</if>
+		<if test="state == 'fail'">
+			and project_success_state = 'F'
+			<choose>
+				<when test="request == 'processing_project' ">
+					and  (floor(project_end_date-sysdate) > 0)
+				</when>
+				<when test="request == 'last_project' ">
+					<![CDATA[
+					and  (floor(project_end_date-sysdate) < 0)
+					]]>
+				</when>
+			</choose>
+		</if>
 	</sql>
-	
-	<sql id="">
-	
-	</sql> -->
-	
-	
+
+
 	<!-- 프로젝트 기보 정보 등록 -->
-	<sql id="project_basic_info_sql">
-		project_no, member_no, project_thumbnail, project_title, 
-		project_summary, project_category, project_end_date, project_goal_amount
+ 	<sql id="project_basic_info_sql">
+		project_no, member_no, project_thumbnail, project_title,
+		project_summary, project_category, project_end_date,
+		project_goal_amount
 	</sql>
-	
+
 </mapper>

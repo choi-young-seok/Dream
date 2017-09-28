@@ -23,11 +23,9 @@ public class LoginController {
 	private MemberService service;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ResponseEntity<String> login(@RequestBody LoginDTO loginDto, Model model, HttpSession session,
-			HttpServletRequest request) {
+	public ResponseEntity<String> login(@RequestBody LoginDTO loginDto, Model model, HttpSession session) {
 		System.err.println("LoginController \tlogout() \t\t[로그인 요청]");
 		System.out.println("LoginController \tlogin() \t\t[사용자 정보] : " + loginDto.toString());
-		System.out.println("LoginController \tlogin() \t\t[사용자 요청 URI] : " + request.getRequestURI());
 
 		MemberVO member = service.login(loginDto);
 		ResponseEntity<String> entity = null;

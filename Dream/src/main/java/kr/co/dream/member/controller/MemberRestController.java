@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import kr.co.dream.member.domain.MemberVO;
 import kr.co.dream.member.service.MemberService;
 
@@ -117,8 +116,7 @@ public class MemberRestController {
 	// 회원 프로필 사진 등록
 	@RequestMapping("/memberProfileUpload")
 	public ResponseEntity<String> memberProfileUpload(MemberVO memberProfileInfo) {
-		System.out.println(
-				"MemberRestController \tmemberProfileUpload \t[input value] : " + memberProfileInfo.toStringProfile());
+		System.out.println("MemberRestController \tmemberProfileUpload \t[input value] : " + memberProfileInfo.toStringProfile());
 		ResponseEntity<String> entity = null;
 
 		return entity;

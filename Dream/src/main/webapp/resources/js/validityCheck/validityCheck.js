@@ -27,23 +27,24 @@ function pass_Check() {
 }// function pass_Check
 
 
-//메일 형식 검사 함수부
-function mailFormCheck(member_authMail) {
-	if(member_authMail == ''){
-		$('#idDuplicationCheck').html('');
-		$('#mailAuthNumBtn').hide();
-		return false;
-	}else{
-		var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-		if (regex.test(member_authMail) == false) {
-			$('#idDuplicationCheck').html("<span class='fail'>메일 형식을 다시 확인해주세요</span>");
-			$("#mailAuthNumBtn").hide();
+	//mail from check function
+	function mailFormCheck(member_authMail) {
+		if(member_authMail == ''){
+			$('#idDuplicationCheck').html('');
+			$('#mailAuthNumBtn').hide();
 			return false;
 		}else{
-			return true;
+			var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+			if (regex.test(member_authMail) == false) {
+				$('#idDuplicationCheck').html("<span class='fail'>메일 형식을 다시 확인해주세요</span>");
+				$("#mailAuthNumBtn").hide();
+				return false;
+			}else{
+				return true;
+			}
 		}
 	}
-}
+
 
 ///var reg_ppass = ^.*(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*+=-]).*$/;
 //소문자+대문자+숫자+특수문자

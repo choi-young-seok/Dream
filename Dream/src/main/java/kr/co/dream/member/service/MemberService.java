@@ -16,7 +16,6 @@ public interface MemberService {
 	public MemberVO login(LoginDTO loginDTO);
 	//확인후 네이밍 재정의할것
 	public void keepLogin(String member_email, String sessionId, Date next) throws Exception;
-	public MemberVO checkLoginBefore(String value) throws Exception;
 	
 	//회원정보 관련부
 	//dto형태로 변경 가능한지 확인 할것 
@@ -24,5 +23,4 @@ public interface MemberService {
 	public int memberInfoEdit(MemberVO member); //회원정보 수정 + 비밀번호 변경
 	public List<MemberVO> findMail(MemberVO member);
 	public int findPass(MemberVO member);
-	public void aoptest22();
 }

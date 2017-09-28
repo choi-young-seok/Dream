@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="support_info">
+<!-- 	<select id="support_point_info" resultMap="support_resultMap.support_point_info_resultMap">
+ 		select<include refid="support_sql.point_info"></include>
+		from dream_support
+		where<include refid="support_sql.point_condition"></include>
+	</select> -->
+	
+	<select id="support_detail_info" resultMap="support_resultMap.support_detail_info_resultMap">
+ 		<!-- select<include refid="support_sql.detail_info"></include> -->
+		select
+			project_no, support_no, member_name,
+			pay_bank, pay_method, support_amount, support_date
+		from 
+			dream_support
+		
+		where
+			support_no = #{support_no} and member_no = #{member_no}
+	</select>
+	
+	<update id="update_paybackInfo">
+		update 
+			dream_support
+		set
+			payback_bank = #{payback_bank},
+			payback_account =#{payback_account}
+		where
+			support_no = #{support_no}
+	</update>
+	
+	<!-- 마이페이지 리워드 후원 간략정보 -->
+	<select id="get_mySupport_reward_info_list" resultMap="reward_point_info_map">
+		select
+			member_no, project_no, support_no,
+			member_name, pay_method, support_amount, support_date, payback_check
+		from
+			dream_support
+		where
+			member_no = #{member_no} and support_category = 'o'
+<!-- 			<if test="payback_check == 'Y'">
+				and payback_check = 'Y'
+			</if> -->
+	</select>
+	
+
+	
+	<resultMap type="SupportPointDTO" id="reward_point_info_map">
+		<id property="support_no" column="support_no"/>
+		<result property="project_no" column="project_no" />
+		
+		<association property="projectPointDTO" column="project_no"  javaType="ProjectPointDTO" select="get_support_project_point_info">
+			<result property="project_no" column="project_no"/>
+		</association>
+
+		<association property="supportDeliveryDTO" column="support_no"  javaType="SupportDeliveryDTO" select="support_delivery_info">
+		</association>
+	</resultMap>
+	
+	<resultMap type="SupportDeliveryDTO" id="support_delivery_info_map">
+		<id column="delivery_address_no" property="delivery_address_no" />
+		<result column="support_no" property="support_no"/>
+	
+		<association property="supportRewardDTO" column="total_reward_no" javaType="SupportRewardDTO" select="get_support_reward_point_info">
+		</association>
+	</resultMap>
+	
+	<select id="get_support_project_point_info" resultType="ProjectPointDTO">
+		select
+			project_thumbnail, project_title
+		from
+			dream_project
+		where
+			project_no = #{project_no}
+	</select>
+	
+	<select id="support_delivery_info" resultMap="support_delivery_info_map">
+		select 
+			total_reward_no, delivery_address_no, support_no
+		from
+			dream_delivery
+		where
+			support_no =#{support_no}
+	</select>
+	
+	<select id="get_support_reward_point_info" resultType="supportRewardDTO">
+		select
+			reward_title, reward_items, reward_delivery_date
+		from
+			dream_reward
+		where total_reward_no = #{total_reward_no}
+	</select>
+	
+		<!-- 마이페이지 리워드 후원 간략정보 -->
+	<select id="get_mySupport_noReward_info_list" resultMap="noReward_point_info_map">
+		select
+			member_no, project_no, support_no,
+			member_name, pay_method, support_amount, support_date, payback_check
+		from
+			dream_support
+		where
+			member_no = #{member_no} and support_category = 'x'
+
+	</select>
+	
+		<resultMap type="SupportPointDTO" id="noReward_point_info_map">
+		<id property="support_no" column="support_no"/>
+		<result property="project_no" column="project_no" />
+		
+		<association property="projectPointDTO" column="project_no"  javaType="ProjectPointDTO" select="get_support_project_point_info">
+			<result property="project_no" column="project_no"/>
+		</association>
+
+	</resultMap>
+</mapper>

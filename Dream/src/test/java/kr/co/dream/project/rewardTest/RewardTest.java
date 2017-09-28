@@ -5,14 +5,12 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import kr.co.dream.project.reward.domain.RewardVO;
-import kr.co.dream.project.reward.persistence.RewardDAO;
-import kr.co.dream.project.reward.service.RewardService;
+import kr.co.dream.reward.domain.RewardVO;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/root-context.xml" })

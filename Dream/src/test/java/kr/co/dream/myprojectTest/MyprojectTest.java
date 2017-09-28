@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.co.dream.project.domain.ProjectPointDTO;
 import kr.co.dream.project.domain.ProjectVO;
-import kr.co.dream.project.persitence.ProjectDAO;
+import kr.co.dream.project.persistence.ProjectDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/root-context.xml" })

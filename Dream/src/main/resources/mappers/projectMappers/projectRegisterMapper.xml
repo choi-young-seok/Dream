@@ -18,7 +18,7 @@
 		(
 			#{project_no}, #{member_no}, #{project_thumbnail}, #{project_title}, #{project_summary}, 
 			#{project_category}, #{project_end_date}, #{project_goal_amount}
-		)
+		)	
 </insert>
 
 <!-- 기본 정보 등록 후 project_no 조회 : 스토리,프로필,계좌,미리보기에 해당하는 update를 처리 하기 위해 필요한 project_no를 조회 하기 위함 -->
@@ -32,6 +32,7 @@
 	update 
 		dream_project 
 	set 
+		project_video_type = #{project_video_type},
 		project_video = #{project_video}, 
 		project_content = #{project_content}, 
 		Project_Register_State = '3'
@@ -39,28 +40,52 @@
 		project_no = #{project_no} 
 </update>
 
-<!-- 프로젝트 프로필 정보 등록  -->
-<update id="projectProfileInfo">
-	update 
-		dream_project 
-	set 
-		register_profile = #{register_profile}, 
-		register_name = #{register_name}, 
-		register_intro = #{register_intro}, 
-		register_sns = #{register_sns}, 
-		Project_Register_State = '4'
-	where 
-		project_no = #{project_no} 
+<!-- 프로젝트 프로필 정보 등록  :여기 멤버테이블로 수정-->
+<update id="projectMemberProfile_update">
+	update
+		dream_member
+	set
+		member_profile = #{member_profile}
+	where
+		member_no = #{member_no}
 </update>
 
-<!-- 프로젝트 계좌 정보 등록 -->
+<update id="projectRegisterProfile_update">
+	update
+		dream_project
+	set
+		register_name = #{register_name},
+		register_intro = #{register_intro},
+		address_member_no = #{address_member_no}
+	where
+		project_no = #{project_no}
+</update>
+
+<!-- <insert id="memberAddress_insert">
+	insert into
+		dream_member_address
+		(
+			member_no, address_member_no, address_member_name,
+			address_alias, member_address_zip_code, member_address, 
+			member_detail_address, address_member_phone	
+		)
+		values
+		(
+			#{member_no}, dream_address_seq.nextval, #{address_member_name},
+			#{address_alias}, #{member_address_zip_code}, #{member_address}, 
+			#{member_detail_address}, #{address_member_phone}
+		)
+		
+</insert> -->
+
+<!-- 프로젝트 계좌 정보 등록 : 여기 멤버 어드레스 테이블로 수정 -->
 <update id="projectAccountInfo">
 	update 
 		dream_project
 	set 
-		register_address = #{register_address}, 
-		project_account = #{project_account}, 
 		access_terms_agree = #{access_terms_agree}, 
+		project_account = #{project_account}, 
+		project_account_bank = #{project_account_bank},
 		Project_Register_State = '5'
 	where 
 		project_no = #{project_no} 

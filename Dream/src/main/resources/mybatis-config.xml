@@ -4,7 +4,7 @@
 	<typeAliases>
 		<package name="kr.co.dream.member.domain"/>
 		<package name="kr.co.dream.project.domain"/>
-		<package name="kr.co.dream.project.reward.domain"/>
+		<package name="kr.co.dream.reward.domain"/>
 		<package name="kr.co.dream.support.domain"/>
 		<package name="kr.co.dream.address.domain"/>
 	</typeAliases>

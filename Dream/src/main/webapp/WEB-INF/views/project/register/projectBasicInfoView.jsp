@@ -23,29 +23,31 @@
 <div class="wrap">
 	<div class="container">
 		<div class="col col-md-12 panel panel-default">
-			<div class="col col-md-1"></div>
-			<div class="col col-md-10">
-				<h1>프로젝트 기본 정보 등록</h1>
+			<div class="col col-md-2"></div>
+			<div class="col col-md-8">
+				<legend>
+								<h2>프로젝트 기본정보 등록</h2>
+							</legend>
 
 				<div>
 					<span><h4>썸네일 사진</h4></span> 
 					<span>
-						<div align="center" id="imageZone" class="thumbnailImage" title="project_thumbnail"></div>
+						<div align="center" id="imageZone" class="dragSpace thumbnailImage" title="project_thumbnail"></div>
 						<input type="hidden" id="project_thumbnail">
 					</span>
 				</div>
 
-				<div>
+				<div class="boxSpace">
 					<span><h4>프로젝트 타이틀</h4></span> <span><input
 						class="form-control" type="text" id="project_title"></span>
 				</div>
 
-				<div>
+				<div class="boxSpace">
 					<span><h4>프로젝트 소개문구</h4></span> <span><textarea rows="10"
 							cols="" id="project_summary"></textarea></span>
 				</div>
 
-				<div>
+				<div class="boxSpace">
 					<span><h4>프로젝트 카테고리</h4></span> <span><select
 						id="project_category">
 							<option>----</option>
@@ -57,11 +59,11 @@
 							<option>음식</option>
 					</select></span>
 				</div>
-				<div>
-					<span><h4>목표 금액</h4></span> <span><input
-						class="form-control" type="text" id="project_goal_amount"></span>
+				<div class="boxSpace">
+					<span><h4>목표 금액</h4></span>
+					<span><input class="form-control" type="text" id="project_goal_amount" placeholder="숫자만 입력하세요"></span>
 				</div>
-				<div>
+				<div class="boxSpace">
 					<span><h4>후원 기간</h4></span> <span><input
 						class="form-control" type="date" id="project_end_date"></span>
 				</div>
@@ -108,7 +110,7 @@
 				</div>
 			</div>
 
-			<div class="col col-md-1"></div>
+			<div class="col col-md-2"></div>
 		</div>
 	</div>
 	</div>

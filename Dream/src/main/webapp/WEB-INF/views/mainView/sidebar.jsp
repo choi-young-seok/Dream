@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/common/category.css">
 
 <script type="text/javascript" src="resources/js/mainBody/sidebarEffect.js"></script>
+
 </head>
 <body>
 <div class="wrap">
@@ -20,7 +21,7 @@
     <ul class="nav nav-pills nav-stacked" id="member_info_toggle_item">
       <li><a class="list-group-item" id="member_Info_View"> - 회원정보 수정</a></li>
       <li><a class="list-group-item" id="password_Info_Edit_View"> - 비밀번호 수정</a></li>
-      <li><a class="list-group-item" > - 배송정보 수정</a></li>
+      <li><a class="list-group-item" id="address_Info_View"> - 배송정보</a></li>
       <li><a class="list-group-item" > - 회원 탈퇴</a></li>
       <br>
     </ul>
@@ -29,19 +30,18 @@
   	  <li class="list-group-item"><b><font size="3" color="gray">마이 프로젝트</font></b><span class="caret"></span></li>
 	</ul>
     <ul class="nav nav-pills nav-stacked" id="project_info_toggle_item">
-      <li><a class="list-group-item" > - 등록 중 프로젝트</a></li>
-      <li><a class="list-group-item"  id="processing_project_list"> - 진행 중 프로젝트</a></li>
-      <li><a class="list-group-item" > - 만료 프로젝트</a></li>
-      <li><a class="list-group-item" > - 완료 프로젝트</a></li>
+      <li><a class="list-group-item" id="processing_project_list"> - 진행 프로젝트</a></li>
+      <li><a class="list-group-item" id="last_project"> - 지난 프로젝트</a></li>
+      <li><a class="list-group-item" id="during_registration"> - 등록 중 프로젝트</a></li>
       <br>
     </ul>
 
     <ul id="support_info_toggle_title" class="nav nav-pills nav-stacked">
-  	  <li class="list-group-item"><b><font size="3" color="gray">후원 프로젝트</font></b><span class="caret"></span></li>
+  	  <li class="list-group-item"><b><font size="3" color="gray">후원 내역</font></b><span class="caret"></span></li>
 	</ul>
     <ul class="nav nav-pills nav-stacked" id="support_info_toggle_item">
-      <li><a class="list-group-item" > - 후원 완료 프로젝트</a></li>
-      <li><a class="list-group-item" > - 환불 프로젝트</a></li>
+      <li><a class="list-group-item" > - 후원 내역 </a></li>
+      <li><a class="list-group-item" > - 환불 내역</a></li>
       <br> 
     </ul>
 
@@ -55,14 +55,14 @@
       <br>
     </ul>
 
-    <ul id="pay_info_toggle_title" class="nav nav-pills nav-stacked">
+    <!-- <ul id="pay_info_toggle_title" class="nav nav-pills nav-stacked">
   	  <li class="list-group-item"><b><font size="3" color="gray">결제 내역</font></b><span class="caret"></span></li>
 	</ul>
     <ul class="nav nav-pills nav-stacked" id="pay_info_toggle_item">
       <li><a class="list-group-item" > - 결제 내역</a></li>
       <li><a class="list-group-item" > - 환불 내역</a></li>
       <br>
-    </ul>
+    </ul> -->
 		</div>
 	</div>
 	</div>

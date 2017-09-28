@@ -58,11 +58,10 @@
 						<label for="email" class="cols-sm-2 control-label">이메일</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
-									type="text" class="form-control" name="member_mail"
-									id="member_mail" placeholder="이메일을 입력하세요">
-	
+								<span class="input-group-addon">
+									<i class="fa fa-envelope fa" aria-hidden="true"></i>
+								</span> 
+								<input type="text" class="form-control" id="member_mail" placeholder="이메일을 입력하세요">
 							</div>
 						</div>
 					</div>

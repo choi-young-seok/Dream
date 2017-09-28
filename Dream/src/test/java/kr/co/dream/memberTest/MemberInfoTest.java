@@ -1,6 +1,5 @@
 package kr.co.dream.memberTest;
 
-import java.util.Date;
 
 import javax.inject.Inject;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import kr.co.dream.member.domain.MemberVO;
 import kr.co.dream.member.persistence.MemberDAO;
 import kr.co.dream.member.service.MemberService;
 

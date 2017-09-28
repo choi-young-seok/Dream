@@ -203,7 +203,9 @@ $(function() {
 		<div class="col col-md-12 panel panel-default"">
 			<div class="col col-md-2"></div>
 			<div class="col col-md-8">
-				<h1>프로젝트 리워드 정보 등록</h1>
+			<legend>
+				<h2>프로젝트 리워드 정보 등록</h2>
+							</legend>
 				
 				<form name="reward" method="post">
 					<div id="itemList"></div>
