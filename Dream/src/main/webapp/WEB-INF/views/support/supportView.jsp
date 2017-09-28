@@ -54,9 +54,9 @@
 				</div>
 
 				<div class="boxSpace" align="center">
-					후원 금액 : <input type="text" id="support_input_amount">원 <input
-						type="button" id="support_project_input" title="input"
-						value="후원하기" class="btn btn-warning pull-right">
+					후원 금액 : <input type="text" id="support_input_amount">원 
+					<input type="button" id="support_project_input" title="input"
+						   value="후원하기" class="btn btn-warning pull-right">
 				</div>
 				<c:forEach items="${rewards}" var="rewards">
 					<div id="reward_List" class="boxSpace">

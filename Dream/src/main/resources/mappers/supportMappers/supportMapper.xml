@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="support">
+	<insert id="support_register" parameterType="SupportVO">
+	<selectKey keyProperty="support_no" resultType="int" order="BEFORE">
+		select dream_support_seq.nextval from dual
+	</selectKey>
+		insert into dream_support (
+			support_no, member_no, project_no, payback_bank, payback_account, pay_bank,
+			member_name, pay_method, pay_account_number, support_amount, support_category
+		)
+		values (
+			#{support_no}, #{member_no}, #{project_no}, #{payback_bank}, #{payback_account}, #{pay_bank},
+			#{member_name}, #{pay_method}, #{pay_account_number}, #{support_amount} ,#{support_category}
+		)
+	</insert>
+	
+	<update id="project_nowAmount_update">
+		update 
+			dream_project 
+		set 
+			now_amount = now_amount + #{support_amount}, Supporting_Count = Supporting_Count+1
+		where 
+			project_no = #{project_no}
+	</update>
+	
+	<!-- 이거 위에거하고 못합치나  -->
+	<update id="project_successState_update">
+    	update
+			(select 
+				floor((now_amount/project_goal_amount)*100) as project_percentage, project_success_state 
+			from 
+				dream_project 
+			where 
+				project_no = #{project_no})
+		set 
+			project_success_state = case when 
+											project_percentage >= 100 
+										then 
+											'T' 
+										else 
+											'F' end
+	</update>
+	
+	<update id="reward_limited_count_update">
+		update dream_reward set
+			reward_limited_count = reward_limited_count-1
+		where 
+			total_reward_no = #{reward_no}
+	</update>
+	
+	<insert id="delivery_address_register">
+		<selectKey keyProperty="delivery_address_no" resultType="int" order="BEFORE">
+			select dream_delivery_seq.nextval from dual
+		</selectKey>
+		insert into Dream_Delivery(
+			member_no, project_no, support_no, delivery_address_no, total_reward_no, 
+			sender_name, sender_zip_code, sender_address, sender_detail_address, sender_phone, 
+			receiver_name, receiver_address_alias, receiver_phone, receiver_zip_code, receiver_address, receiver_detail_address
+		)
+		values(
+			#{member_no}, #{project_no}, #{support_no}, #{delivery_address_no}, #{total_reward_no},  
+			#{senderAddressVO.address_member_name}, #{senderAddressVO.member_address_zip_code}, #{senderAddressVO.member_address}, #{senderAddressVO.member_detail_address}, #{senderAddressVO.address_member_phone}, 
+			#{receiver_name}, #{receiver_address_alias},  #{receiver_phone}, #{receiver_zip_code}, #{receiver_address}, #{receiver_detail_address} 
+		)
+		
+	</insert>
+
+</mapper>
