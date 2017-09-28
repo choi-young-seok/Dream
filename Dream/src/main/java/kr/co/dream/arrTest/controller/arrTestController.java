@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class arrTestController {
 
 	@RequestMapping("/arrTest")
-	public String arrTest(){
+	public String arrTest() {
 		return "z_nonUsing/test";
 	}
-	
+
 }

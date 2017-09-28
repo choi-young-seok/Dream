@@ -9,11 +9,10 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import kr.co.dream.address.domain.FindResultAddressVO;
+import kr.co.dream.address.domain.AddressVO;
 import kr.co.dream.address.persistence.AddressDAO;
 import kr.co.dream.address.service.AddressService;
 import kr.co.dream.paging.domain.SearchCriteria;
-import kr.co.dream.project.domain.ProjectVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/root-context.xml" })
@@ -38,9 +37,9 @@ public class AddressTest {
 //		System.out.println(criteria.getPerPageNum());
 //		System.out.println(criteria.getPageStart());
 		
-		List<FindResultAddressVO> findList = addressService.findResultAddress(criteria);
+		List<AddressVO> findList = addressService.findResultAddress(criteria);
 		for (int i = 0; i < findList.size(); i++) {
-			FindResultAddressVO a = findList.get(i);
+			AddressVO a = findList.get(i);
 			System.out.println(a.toString());
 		}
 		System.out.println(addressDAO.listSearchCount(criteria));

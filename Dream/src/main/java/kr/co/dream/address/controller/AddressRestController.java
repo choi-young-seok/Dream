@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.co.dream.address.domain.FindResultAddressVO;
+import kr.co.dream.address.domain.AddressVO;
 import kr.co.dream.address.service.AddressService;
 import kr.co.dream.paging.domain.PageMaker;
 import kr.co.dream.paging.domain.SearchCriteria;
@@ -32,7 +32,7 @@ public class AddressRestController {
 		pageMaker.setCri(criteria);
 		pageMaker.setTotalCount(addressService.listSearchCount(criteria));
 
-		List<FindResultAddressVO> addressList = addressService.findResultAddress(criteria);
+		List<AddressVO> addressList = addressService.findResultAddress(criteria);
 
 		Map<String, Object> listResultMap = new HashMap<>();
 

@@ -6,28 +6,42 @@ $(function(){
 	});//findAddress click event
 	
 	$("#address_search_btn").click(function(){
+		aa();
+	});//address_search_btn click event
+	
+	$("#search_address").keydown(function(event){
+		if(event.keyCode == 13){
+			aa();
+			event.preventDefault();
+			return;
+		}
+	})
+	
+	function aa(){
+		var search_address = $("#search_address").val()
+		if(search_address == ""){
+			alert("거주지의 동 또는 건물명을 입력하세요")
+			return;
+		}
 		$.ajax({
 			url : '/dream/serachAddressList',
 			type : 'GET',
 			data : {
-				keyword : $("#search_address").val()
+				keyword : search_address
 			},
 			success : function(result){
 				$.each(result, function(key, value){
 					if(key == "noData"){
-						$("#search_result2").text("결과없음")
 						alert("결과없음")
 						return;
 					}else if(key == "success"){
-						alert("success key : " + key)
+//						alert("success key : " + key)
 						var addressList = '<div class="dataSpace"><ul>';
 
-						
 						var idx=0;
 						$(value).each(function(){
 							idx++;
 							var dataList = "6t6";
-//							addressList += '<label for="authNum"><span class="glyphicon glyphicon-eye-open"></span>검색 결과</label>'
 							
 //							addressList +='<a id="addressData'+idx+'" onclick="getAddressData('+idx+')">'
 							addressList +='<a id="addressData'+idx+'" onclick="getAddressData(\''+this.zip_code+'\',\''+this.address+'\')">'
@@ -42,7 +56,7 @@ $(function(){
 						
 					}//else if
 						if(key == "pageMaker"){
-							alert("success key : " + key)
+//							alert("success key : " + key)
 							var pageMaker ='';
 							
 							// print to '<<' when prev is true
@@ -70,7 +84,7 @@ $(function(){
 				});//outer each end			
 			}//success end
 		});//ajax
-	});//address_search_btn click event
+	}
 	
 
 });//ready
