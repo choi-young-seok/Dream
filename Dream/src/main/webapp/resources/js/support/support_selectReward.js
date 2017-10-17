@@ -39,7 +39,7 @@ $(function(){
 		
 		//카드결제시
 		if(pay_method == "card"){
-			var sector_children = $("#pay_card_area  *:text").length;
+			var sector_children = $("#numSector_card  *:text").length;
 			var pay_bank = $("#pay_card_area select option:selected").val();
 			var pay_account_number = "";
 			//카드번호
@@ -59,6 +59,7 @@ $(function(){
 					}
 					
 				}
+				
 			}
 		//무통장 입금시
 		}else{
@@ -80,6 +81,7 @@ $(function(){
 			}
 			
 			member_name = pay_user_name;
+			pay_bank = "무통장 입금";
 
 		}//결제정보입력
 
@@ -146,7 +148,7 @@ $(function(){
 				"\npay_back_bank : " +payback_bank+
 				"\npay_back_account : "+payback_account+
 				"\n----- 배송정보 -----" +
-				"nreceiver_name : "+ addressInfo.address_member_name +
+				"\n받는사람  : "+ addressInfo.address_member_name +
 				"\n주소 별칭 : " +addressInfo.address_alias+
 	            "\n우편번호 : " +addressInfo.member_address_zip_code+
 	            "\n주소 : " +addressInfo.member_address+
@@ -187,13 +189,8 @@ $(function(){
 				}),// data
 				success : function(result){
 					location.href="/dream/supportDetailView_reward?member_no="+member_no+"&support_no="+result;
-					//후원이 완료되었습니다
-//					btn : 메인화면가기 location.href="/mainList"
-//			  	    btn : 후원목록가기(마이페이지) loaction.href="mypage/supportproject"
 				}//success
 			});//ajax
-		//reward 후원 구분 if end
-		//데이터 전송
 	});//patBtn click event
     
 });

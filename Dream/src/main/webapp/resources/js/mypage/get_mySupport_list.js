@@ -15,25 +15,22 @@ $(function(){
 	});//support_detail_info click event
 	
 	$("#reward_support_list").click(function(){
-		$("#mySupport_list_tab > li").removeAttr("class")
-		$(this).attr("class","active");
 		get_mySupport_reward_info_list(member_no, payback_check);
-		
 	})
-	
+
 	$("#noReward_support_list").click(function(){
-		$("#mySupport_list_tab > li").removeAttr("class")
-		$(this).attr("class","active");
 		get_mySupport_noReward_info_list(member_no, payback_check);
 	});//
 });//
 function get_mySupport_reward_info_list(member_no, payback_check){
 //		payback_check : N (결제목록)
 //		payback_check : Y (환불목록)
-	$.getJSON('/dream/get_mySupport_reward_info_list/'+member_no+"/"+payback_check, function(result){
-		var source = $("#support_point_info").html();
-		var template = Handlebars.compile(source);
-		$("#mySupportList").html(template(result))
+	$.getJSON('/dream/get_mySupport_reward_info_list/'+member_no+"/"+payback_check, 
+			
+			function(result){
+				var source = $("#support_point_info").html();
+				var template = Handlebars.compile(source);
+				$("#mySupportList").html(template(result))
 	});//getJSON
 }
 

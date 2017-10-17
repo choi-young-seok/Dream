@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.dream.address.service.AddressService;
+import kr.co.dream.member.service.MemberService;
 import kr.co.dream.project.domain.ProjectVO;
 import kr.co.dream.project.service.ProjectService;
 import kr.co.dream.upload.util.PhotoVo;
@@ -28,6 +29,9 @@ public class ProjectRegisterViewController {
 
 	@Inject
 	private ProjectService service;
+	
+	@Inject
+	private MemberService memberService;
 	
 	@Inject
 	private AddressService addressService;
@@ -60,7 +64,10 @@ public class ProjectRegisterViewController {
 
 		model.addAttribute("project_no", projectStoryInfo.getProject_no());
 		int member_addressCount = addressService.get_memberAddress_count(projectStoryInfo.getMember_no());
-		
+		String member_profile = service.get_projectRegisterProfile(projectStoryInfo.getMember_no());
+		if(member_profile != "NO PROFILE"){
+			model.addAttribute("member_profile",member_profile);
+		}
 		if(member_addressCount == 0){
 			model.addAttribute("addressInfo","noMemberAddress");
 		}else {
@@ -72,6 +79,7 @@ public class ProjectRegisterViewController {
 		return "project/register/projectProfileView";
 		// return "redirect:project/register/projectProfileView";
 	}
+	
 
 	// 프로젝트 계좌 정보입력 화면 요청
 	@RequestMapping(value = "/projectAccountView")

@@ -19,21 +19,32 @@
 <script type="text/javascript" src="resources/js/mainBody/mainList.js"></script>
 
 <title>Dream Up</title>
+<link rel="icon" href="resources/img/title.png" type="image/x-icon">
+<style type="text/css">
+.mainTest {
+	background-color: orange;
+}
 
+.mainTest_data {
+	background-color: blue;
+}
+
+.row {
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+</style>
 </head>
-<header> 
-<%-- 	<%@include file="../views/mainView/header.jsp" %> --%>
-	<%@include file="../mainView/header.jsp" %>
-</header>
+<header> <%-- 	<%@include file="../views/mainView/header.jsp" %> --%>
+<%@include file="../mainView/header.jsp"%> </header>
 <body>
-<div class="wrap">
-	<!-- Page Content -->
-	<div class="container">
-		<div class="row">
-		<div class="row">
-			<div class="col-md-12">
-				<!-- Main carousel -->
-		<!-- 		<div class="row carousel-holder">
+	<div class="wrap">
+		<!-- Page Content -->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Main carousel -->
+					<!-- 		<div class="row carousel-holder">
 
 					<div class="col-md-12">
 						<div id="carousel-example-generic" class="carousel slide"
@@ -66,20 +77,50 @@
 					</div>
 
 				</div> -->
+					<div class="row">
+						<div class="col-md-11">
+							<legend style="font-size: xx-large;">최다 후원 프로젝트</legend>
+						</div>
+						<div id="max_support_project_list"></div>
+					</div>
+					
+					<div class="row">
+						<div class="col-sm-12" align="left">
+							<div class="col-md-10" >
+								<legend style="font-size: xx-large;">실시간 핫이슈</legend>
+							</div>
+							<div class="pull-right" style="font-size: xx-large;">더보기 >></div>
+						</div>
+						<div id="hot_project_list"></div>
+					</div>
 
-				<div class="row">
-				<div id="mainResultView">등록된 프로젝트가 없습니다.</div>
+					<div class="row">
+						<div class="col-sm-12" align="left">
+							<div class="col-md-10" >
+								<legend style="font-size: xx-large;">신규 등록 프로젝트</legend>
+							</div>
+							<div class="pull-right" style="font-size: xx-large;">더보기 >></div>
+						</div>
+						<div id="new_project_list"></div>
+					</div>
+
+					<div class="row">
+						<div id="loading-mask">
+							<img src='resources/img/loading.gif'>
+						</div>
+
+					</div>
 
 				</div>
 
 			</div>
 
 		</div>
-
+		<!-- /.container -->
 	</div>
-	<!-- /.container -->
-	</div>
-<footer><%@include file="../mainView/footer.jsp" %></footer>
+	<footer><%@include file="../mainView/footer.jsp"%></footer>
 </body>
 
 </html>
+<%@include file="../jsp_piece/main/project_point_info.jsp"%>
+<%@include file="../jsp_piece/main/max_support_project.jsp"%>

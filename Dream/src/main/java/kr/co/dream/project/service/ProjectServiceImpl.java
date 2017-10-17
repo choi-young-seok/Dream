@@ -40,10 +40,13 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public void projectProfileInfo(ProjectProfileDTO projectProfileDTO) {
 		dao.projectMemberProfile_update(projectProfileDTO);
+		System.out.println("프로젝트 프로필 서비스 : " + projectProfileDTO);
 		if(projectProfileDTO.getAddress_member_no() == 0){
 			//0일경우 새로운 배송지 정보 입력
 			int address_member_no = addressDAO.insert_memberAddress(projectProfileDTO.getMemberAddressVO());
 			System.out.println("프로필 서비스 어드레스 맴버 번호 : " +address_member_no);
+			projectProfileDTO.setAddress_member_no(address_member_no);
+			dao.projectRegisterProfile_update(projectProfileDTO);	
 			addressDAO.update_project_delivery_address(address_member_no);
 //			projectProfileDTO.setAddress_member_no(address_member_no);
 			
@@ -110,6 +113,11 @@ public class ProjectServiceImpl implements ProjectService {
 
 		}
 		return null;
+	}
+
+	@Override
+	public String get_projectRegisterProfile(int member_no) {
+		return dao.get_projectRegisterProfile(member_no);
 	}
 
 

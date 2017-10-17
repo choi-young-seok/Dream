@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <script id="support_point_info_noReward" type="text/x-handlebars-template">
 			{{#each .}}
-			<div class="row">
+			<div class="row boxSpace">
 
 				<table class="table">
 					<tbody>

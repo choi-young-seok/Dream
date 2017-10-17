@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="project_search">
+ 	<select id="search_project_title" resultMap="projectInfoResultMap.project_point_info_map">
+			select
+			<include refid="projectInfoSql.project_point_info_sql"/>, project_summary, project_category 
+		from 
+			dream_project 
+		where 
+			project_title like '%'||#{search_keyword}||'%' and
+			<include refid="projectInfoSql.processing_project_condition_sql"/> and
+			rownum between 1 and 8
+		order by 
+			supporting_count desc, now_amount desc, project_view_count desc	
+	</select>
+	
+	<select id="search_project_category" resultMap="projectInfoResultMap.project_point_info_map">
+		select
+			<include refid="projectInfoSql.project_point_info_sql"/>, project_summary, project_category 
+		from 
+			dream_project 
+		where 
+			project_category like '%'||#{search_keyword}||'%' and
+			<include refid="projectInfoSql.processing_project_condition_sql"/> and
+			rownum between 1 and 8
+		order by 
+			supporting_count desc, now_amount desc, project_view_count desc	
+	</select>
+</mapper>

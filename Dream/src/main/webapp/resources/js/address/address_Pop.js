@@ -48,7 +48,7 @@ $(function(){
 //							addressList +='<a id="addressData'+idx+'" onclick="getAddressData2('+this.address+')">'
 //										+ '<span id="zip_code" style="padding-right : 20px;">'+this.zip_code+'</span>'
 //										+ '<span id="address">'+this.address+'</span>'
-										+ this.zip_code + this.address
+										+ this.zip_code+"&nbsp;&nbsp;&nbsp;&nbsp;" + this.address
 										+ '</a><br>';
 						});//inner each end
 						addressList += '</ul></div>';

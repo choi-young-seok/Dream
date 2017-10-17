@@ -40,7 +40,7 @@ public class ProjectVO {
 	private String project_account;
 	// 프로젝트 계좌정보
 
-	private int project_viewcnt;
+	private int project_view_count;
 	private int now_amount;
 	private int supporting_count;
 	private String project_register_state;

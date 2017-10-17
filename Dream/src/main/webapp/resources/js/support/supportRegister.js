@@ -1,16 +1,14 @@
 $(function() {
-	//cardNumSector태그의 자식태그들에 keyup이벤트가 발생할때마다 요소를 검사
+	
 	$("#textArea  *:text").keyup(function(event){
 		var inputVal = $(this).val();
+		
 		var getTitle = event.target.title;
 		if(getTitle == "textInput"){
 			return;
 		}
 		$(this).val(inputVal.replace(/[^0-9]$/gi,''));
-		// g옵션 : 문자열 내 모든 패턴 중
-		// i옵션 : 대소문자를 구별하지않고
-		// [^0-9] : 0~9를 제외한
-		// replace(/[^0-9]/gi,'') : 0~9를 제외한 모든 문자열 패턴을 ''(공백)으로 대체 처리
+
 		if(getTitle != ""){
 			if($(this).val().length == event.target.title){
 				$(this).parent().next().children("div > :text").focus();

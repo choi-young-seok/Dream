@@ -6,6 +6,7 @@
 	<sql id="project_point_info_sql">
 		project_no,
 		project_thumbnail, project_title,
+		project_summary, project_category,
 		project_start_date,
 		project_end_date,
 		project_goal_amount, now_amount,

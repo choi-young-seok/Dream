@@ -39,28 +39,6 @@ public class SupportServiceImpl implements SupportService {
 		// 반영된 후원금액이 100%이상일 경우 프로젝트 성공상태값 변경 (project_success_stat ='T')
 			System.out.println("리워드 없는 후원");
 			return support_no;
-		
-//			System.out.println("리워드 후원 배송정보, 리워드정보 처리");
-//			supportDAO.reward_limited_count_update(supportVO.getDeliveryDTO().getTotal_reward_no());
-//			// 리워드 테이블에 결제 리워드 수량 1 감소
-//			
-//			supportVO.getDeliveryDTO().setSenderAddressVO(addressDAO.get_project_delivery_address(supportVO.getProject_no()));
-//			//프로젝트 등록자 주소지 정보 셋팅
-//			System.out.println("등록자 주소지 : " + supportVO.getDeliveryDTO().getSenderAddressVO());
-//			
-//			supportDAO.delivery_address_register(supportVO.getDeliveryDTO());
-			
-			//리워드 배송정보 등록 : dream_delivery
-			
-//			supportVO.getDeliveryDTO().setSupport_no(support_no);
-//			if(supportVO.getSupporterAddressVO().getAddress_member_no() == 0){
-			
-			
-			// // 배송정보 테이블에 데이터 등록 :
-			// // 후원번호, 발송자 (이름,주소,연락처), 수령자(이름, 연락처, 우편번호, 주소, 상세주소)
-			// 배송 정보 등록 : 결제 완료 화면의 배송정보를 보여주기 위한 파라미터 배송 번호를 반환
-			
-			// supportDAO.
 	}
 
 	//
@@ -77,6 +55,7 @@ public class SupportServiceImpl implements SupportService {
 		// 리워드 테이블에 결제 리워드 수량 1 감소
 		
 		supportVO.getDeliveryDTO().setSenderAddressVO(addressDAO.get_project_delivery_address(supportVO.getProject_no()));
+		System.out.println("리워드 후원 발송자 주소 정보!! : " + supportVO.getDeliveryDTO());
 		//프로젝트 등록자 주소지 정보 셋팅
 		System.out.println("등록자 주소지 : " + supportVO.getDeliveryDTO().getSenderAddressVO());
 		

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<title>Insert title here</title>
+<title>결제하기</title>
+<link rel="icon" href="resources/img/title.png" type="image/x-icon">
 <header> <%@include file="../mainView/header.jsp"%>
 </header>
 <html>

@@ -32,7 +32,7 @@ $(function() {
 		
 		//카드결제시
 		if(pay_method == "card"){
-			var sector_children = $("#pay_card_area  *:text").length;
+			var sector_children = $("#numSector_card  *:text").length;
 			var pay_bank = $("#pay_card_area select option:selected").val();
 			var pay_account_number = "";
 			//카드번호
@@ -74,6 +74,7 @@ $(function() {
 			}
 			
 			member_name = pay_user_name;
+			pay_bank = "무통장 입금";
 
 		}//결제정보입력
 

@@ -1,9 +1,7 @@
-//주소정보
 function get_address_value(){
 	var addressInfo =[];
-	//주소지 회원 이름
+	
 	var address_member_name = $("#address_member_name").val();
-		
 	if(address_member_name == ""){
 		alert("받으시는분 이름을 입력하세요")
 		$("#address_member_name").focus();
@@ -30,7 +28,7 @@ function get_address_value(){
 	}//member_address_zip_code if end
 	
 	var member_address = $("#address_area :text:eq(4)").val();
-
+	
 	var member_detail_address = $("#address_area :text:eq(5)").val();
 	if(member_detail_address ==""){
 		alert("상세 주소를 입력하세요")

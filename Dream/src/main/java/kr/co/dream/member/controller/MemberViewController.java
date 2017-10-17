@@ -18,7 +18,6 @@ public class MemberViewController {
 	@RequestMapping("/memberJoinForm")
 	public String memberJoinForm(){
 		System.err.println("MemberViewController \tmemberJoinForm() \t[회원가입 화면 요청] ");
-		System.out.println("들어오나?");
 		return "member/joinForm";
 	}
 

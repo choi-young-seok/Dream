@@ -13,29 +13,17 @@ public class EmailForm {
 	public static int createAuthNum() {
 
 		Random random = new Random();
-		// 6자리 난수 생성 로직
 		authNum = random.nextInt(1000000) + 100000;
-		//1000000(7자리)+100000(6자리) = 100001(6자리 : 최소값) ~ 1100000(7자리 : 최대값)
 		
 		if (authNum > 1000000) {
-			//7자리가 넘을경우
 			authNum = authNum - 100000;
-			//6자리로 조정
 		}
-
+		System.err.println("EmailForm \tcreateAuthNum 인증번호 : ["+authNum+"]");
 		return authNum;
 	}
 
 	public static String mailContent(String member_name) {
-		
-		// 회원가입시 + 아이디 찾기 + 비밀번호 재설정(비밀번호 찾기)
-		if (member_name == "" || member_name.equals("") || member_name == null) {
-			return "회원가입 인증번호는[" + createAuthNum() + "]입니다";
-		} 
-		// 개인정보 변경 + 비밀번호 변경 
-		else {
-			return member_name + "님의 회원가입 인증번호는[" + createAuthNum() + "]입니다";
-		}
+			return "인증번호는[" + createAuthNum() + "]입니다";
 	}
 
 	public String getMember_authMail() {

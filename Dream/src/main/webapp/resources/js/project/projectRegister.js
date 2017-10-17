@@ -64,7 +64,6 @@ $(function(){
 		}
 		
 		var project_end_date = $('#project_end_date').val();
-		alert("project_end_date : " +project_end_date)
 		if(project_end_date==""){
 			alert("프로젝트 종료 기간을 입력하세요")
 			$("#project_end_date").focus();
@@ -97,7 +96,6 @@ $(function(){
 				member_no : member_no
 			}),//data
 			success : function(result){
-//				alert("result : "+result)
 				if(result == "fail"){
 					alert("입력 정보를 다시 확인하세요")
 				}else{

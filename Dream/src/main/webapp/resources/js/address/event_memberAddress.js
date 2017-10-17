@@ -7,7 +7,7 @@ $(function() {
 //     alert("상태적용 "+edit_mode_status) 
      
   	$("#address_info_insert").click(function(){
-        location.href ="/dream/address_Info_Insert_View?member_no="+member_no
+        location.href ="/dream/mypage_address_insert";
   	});//address_info_insert click event;
   	
   	$("#choice_address_insert").click(function(){

@@ -20,6 +20,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/common/dividerStyle.css">
 
 <title>아이디 / 비밀번호 찾기</title>
+<link rel="icon" href="resources/img/title.png" type="image/x-icon">
 <style type="text/css">
 
 </style>

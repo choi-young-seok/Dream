@@ -1,35 +1,30 @@
-//package kr.co.dream.supportTest;
-//
-//import javax.inject.Inject;
-//
-//import org.apache.ibatis.session.SqlSession;
-//import org.junit.Test;
-//import org.junit.runner.RunWith;
-//import org.springframework.test.context.ContextConfiguration;
-//import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-//
-//import kr.co.dream.address.domain.ShippingAddressVO;
-//import kr.co.dream.address.persistence.AddressDAO;
-//import kr.co.dream.project.domain.ProjectVO;
-//import kr.co.dream.support.domain.ShippingItemsVO;
-//import kr.co.dream.support.domain.SupportDeliveryDTO;
-//import kr.co.dream.support.domain.SupportVO;
-//import kr.co.dream.support.persistence.SupportDAO;
-//
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/root-context.xml" })
-//public class SupportTest {
-//
-//	@Inject
-//	private SupportDAO supportDAO;
-//
-//	@Inject
-//	private AddressDAO addressDAO;
-//
-//	@Inject
-//	private SqlSession sqlSession;
-//
-//	
+package kr.co.dream.supportTest;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import kr.co.dream.address.persistence.AddressDAO;
+import kr.co.dream.support.persistence.SupportDAO;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/root-context.xml" })
+public class SupportTest {
+
+	@Inject
+	private SupportDAO supportDAO;
+
+	@Inject
+	private AddressDAO addressDAO;
+
+	@Inject
+	private SqlSession sqlSession;
+
+	
 //	@Test
 //	public void setSupportVO(){
 //		SupportVO supportVO = new SupportVO();
@@ -67,4 +62,9 @@
 //
 //		
 //	}
-//}
+	
+	@Test
+	public void senderAddressTest(){
+		addressDAO.get_project_delivery_address(109);
+	}
+}

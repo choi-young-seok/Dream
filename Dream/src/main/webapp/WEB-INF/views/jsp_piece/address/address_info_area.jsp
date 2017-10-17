@@ -7,7 +7,7 @@
 					<div id="address_area{{address_member_no }}">
 						
 							<div class="col-sm-12" align="left">
-								<div class="col-sm-10">
+								<div class="col-sm-8 col-sm-offset-2">
 									<legend id="old_address_alias{{address_member_no }}">{{address_alias}}</legend>
 								</div>
 

@@ -9,7 +9,6 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
-	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven>
 		<!-- @ResponseBody 한글처리 -->
 		<message-converters>
@@ -43,11 +42,17 @@
 	
 	<!-- interceptor : tor이맞음 ter아님 class -->
 	<beans:bean id="loginIntercepter" class="kr.co.dream.common.intercepter.LoginIntercepter"/>
-	<beans:bean id="AuthIntercepter" class="kr.co.dream.common.intercepter.SessionAuthIntercepter"/>
+	
+	
+	<beans:bean id="AuthInterceptor" class="kr.co.dream.common.interceptor.SessionAuthInterceptor"/>
+	
+	
+	
 	<beans:bean id="memberAuth" class="kr.co.dream.common.intercepter.MemberAutInterceptor"/>
 	
 	<!-- intercepter -->	
 	<interceptors>
+	
 		<interceptor>
 			<mapping path="/login"/>
 			<mapping path="/logout"/>
@@ -56,43 +61,47 @@
 		
 		<interceptor>
 			<mapping path="/supportDetailView_reward"/>
-			<!-- notice's session check -->		
-			<mapping path="/qnaRegisterView"/>
 			
-			<!-- projectRegister session check -->
+			<!-- project register page session check -->
 			<mapping path="/projectRegiterView"/>
+			<mapping path="/projectRewardView"/>
+			<mapping path="/projectStoryView"/>
+			<mapping path="/projectProfileView"/>
+			<mapping path="/projectAccountView"/>
+			<mapping path="/projectPreView"/>
 			
-			<!-- mypage session check -->
-			<mapping path="/mypageMain"/>
-			<mapping path="/myProject"/>
-			<mapping path="/myProjectMain"/>
-			
-			<!-- mypage : member session check  -->
-			<mapping path="/memberInfoView"/>
-			<mapping path="/password_Info_Edit_View"/>
-			<mapping path="/address_Info_View"/>
-			<mapping path="/address_Info_Insert_View"/>
-			
-			<!-- mypage : project session check -->
-			<mapping path="/processing_project_View"/>
-			
-			<!-- supportRegister session check -->
-			<mapping path="/supportForm"/>
-			<mapping path="/pay_info_registForm"/>
+			<!-- support register page session check -->
 			<mapping path="/support_choice_View"/>
 			<mapping path="/support_NoReward_View"/>
-			<mapping path="/support_ChoiceReward_View"/>
 			<mapping path="/support_selectReward_view"/>
 			
+			<!-- support complete page session check -->
+			<mapping path="/supportDetailView_reward"/>
+			<mapping path="/supportDetailView_noReward"/>
 			
-			<beans:ref bean="AuthIntercepter"/>
+			<!-- mypage session check -->
+			<mapping path="/mypage"/>
+			<mapping path="/mypage_member_info"/>
+			<mapping path="/mypage_member_password_update"/>
+			<mapping path="/mypage_member_withdraw"/>
+			<mapping path="/mypage_project"/>
+			<mapping path="/mypage_support"/>
+			<mapping path="/mypage_address"/>
+			<mapping path="/mypage_address_insert"/>
+			
+			<!-- address edit page session check -->
+			<mapping path="/findAddressPop"/>
+			<mapping path="/get_changeAdress_list"/>
+			<mapping path="/choice_address_insert"/>
+			
+			<beans:ref bean="AuthInterceptor"/>
 		</interceptor>
 		
-		
 		<interceptor>
-			<mapping path="/supportDetailView_reward"/>
-			<mapping path="/mypage_support_info_view"/>
-			<mapping path="/memberInfoView"/>
+			<!-- mypage memberAuth check -->
+			<mapping path="/mypage_member_info"/>
+			<mapping path="/mypage_member_password_update"/>
+			<mapping path="/mypage_member_withdraw"/>
 			<beans:ref bean="memberAuth"/>
 		</interceptor>
 	</interceptors>

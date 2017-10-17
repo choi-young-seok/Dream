@@ -7,11 +7,11 @@
 }
 
 label.btn.btn-default.active {
-    background-color: blue;
+    background-color: lightblue;
 }
 
 label.btn.btn-default{
-	border-radius : 10px;
+	border-radius : 0px;
 }
 
 .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {

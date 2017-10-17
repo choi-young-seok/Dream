@@ -6,7 +6,7 @@
 	<div class="col col-md-10">
 		<div class="printSpace">
 			<legend><h1 align="center">결제완료 화면</h1></legend>
-			<input type="text" value="${support_no }" id="support_no">
+			<input type="hidden" value="${support_no }" id="support_no">
 		</div>
 	</div>
 	<div class="col col-md-1"></div>
@@ -17,17 +17,17 @@
 
 	<div class="col col-md-10">
 		<div id="support_project_info" class="printSpace">
-			    <legend align="center">프로젝트 정보</legend>
+<!-- 			    <legend align="center">프로젝트 정보123</legend> -->
+			    <h3>프로젝트 정보</h3>
 			    
 				<table class="table">
 					<tbody>
 						<tr>
-							<td rowspan="5">
+							<td rowspan="5" align="center">
 								<a href='/dream/projectInfoView?project_no=${supportDetail.projectPointDTO.project_no}'>
-									<img height="155" src="resources${supportDetail.projectPointDTO.project_thumbnail}"> 
-									${supportDetail.projectPointDTO.project_title } <br>
+									<img height="155" src="resources${supportDetail.projectPointDTO.project_thumbnail}"> <br>
 								</a>
-								등록일 : ${supportDetail.projectPointDTO.project_start_date }
+									<B>${supportDetail.projectPointDTO.project_title }</B>
 							</td>
 						</tr>
 						<tr>
@@ -35,7 +35,7 @@
 								목표금액 : ${supportDetail.projectPointDTO.project_goal_amount }원<br>
 							</th>
 							<td>
-								조회수 : ${supportDetail.projectPointDTO.project_viewcnt }<br>
+								조회수 : ${supportDetail.projectPointDTO.project_view_count }<br>
 							</td>
 						</tr>
 						
@@ -50,13 +50,10 @@
 						
 						<tr>
 							<td>
-								마감일 : ${supportDetail.projectPointDTO.project_end_date }<br>
-							</td>
-						</tr>
-						
-						<tr>
-							<td>
 								잔여기간 : ${supportDetail.projectPointDTO.projectOperDTO.project_d_day}일
+							</td>
+							<td>
+								마감일 : ${supportDetail.projectPointDTO.project_end_date }<br>
 							</td>
 						</tr>
 						
@@ -65,10 +62,10 @@
 								<div class='progress'>
 									<c:choose>
 										<c:when test="${supportDetail.projectPointDTO.projectOperDTO.project_percentage > 100}">
-											<div class='progress-bar' role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' align='center' style='width: 100%'>${supportDetail.projectPointDTO.projectOperDTO.project_percentage}%</div>
+											<div class='progress-bar' role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' align='center' style='width: 100%'></div>
 										</c:when>
 										<c:otherwise>
-											<div class='progress-bar' role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' align='center' style='width: ${supportDetail.projectPointDTO.projectOperDTO.project_percentage}%'>${supportDetail.projectPointDTO.projectOperDTO.project_percentage}%</div>
+											<div class='progress-bar' role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' align='center' style='width: ${supportDetail.projectPointDTO.projectOperDTO.project_percentage}%'></div>
 										</c:otherwise>
 									</c:choose>
 								</div>								
@@ -127,7 +124,7 @@
 				<form class="form-horizontal" role="form">
 				    <!-- Form Name -->
 				    <div class="col-sm-10">
-				    	<legend align="center">환불정보11</legend>
+				    	<legend align="center">환불정보</legend>
 				    </div>
 				    <div class="pull-right">
 				    	<input type="button" class="btn btn-success" value="수정" id="payback_info_update_btn">

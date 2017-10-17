@@ -35,7 +35,7 @@ public class UploadFileUtils {
 		String savedName = uid.toString() + "_" + originalName;
 		// 실제 파일명에 생성된 랜덤값을 이어붙여 저장파일명 생성
 
-		String savedPath = calcPath(uploadPath, makeDirPaths);
+		String savedPath = makePath(uploadPath, makeDirPaths);
 		// calcPath(uploadPath)
 		// 업로드 경로에 날짜계산을 통해 파일이 업로드된 날짜를 계산 후 저장경로 생성
 		// savePath에는 오늘 날짜가 저장됨
@@ -126,7 +126,7 @@ public class UploadFileUtils {
 		// 생성한 썸네일 파일명 리턴(반환)
 	}
 
-	private static String calcPath(String uploadPath, String[] makeDirPaths) {
+	private static String makePath(String uploadPath, String[] makeDirPaths) {
 
 		String uploadFilePath = File.separator + makeDirPaths[0];
 		String uploadMemberPath = uploadFilePath + File.separator + makeDirPaths[1];

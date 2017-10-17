@@ -32,8 +32,8 @@ body {
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus
 	{
-	color: #fff;
-	background-color: #d14d42;
+	color: black;
+	background-color: white;
 	border: none !important;
 	border-bottom-color: transparent;
 	border-radius: none !important;
@@ -97,7 +97,7 @@ body {
 	border: 1px solid #ccc;
 	outline: none;
 	width: 100%;
-	margin: 8px 0;
+	margin: 0px 0;
 }
 
 .sa-innate-form input[type=submit] {

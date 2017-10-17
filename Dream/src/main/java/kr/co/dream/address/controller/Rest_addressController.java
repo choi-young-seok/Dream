@@ -26,7 +26,7 @@ public class Rest_addressController {
 	// 사용자 등록 주소목록 조회
 	@RequestMapping(value = "/get_memberAddress_list/{member_no}", method = RequestMethod.GET)
 	public ResponseEntity<List<MemberAddressVO>> get_memberAddress_list(@PathVariable("member_no") int member_no) {
-
+		System.out.println("요긴가");
 		ResponseEntity<List<MemberAddressVO>> entity = null;
 		entity = new ResponseEntity<List<MemberAddressVO>>(service.get_memberAddress_list(member_no), HttpStatus.OK);
 		return entity;
@@ -38,21 +38,21 @@ public class Rest_addressController {
 		return service.get_laterMemberAddress(member_no);
 
 	}
-	
-	//선택 배송지 조회
+
+	// 선택 배송지 조회
 	@RequestMapping(value = "/get_memberAddress/{address_member_no}", method = RequestMethod.GET)
 	public MemberAddressVO get_memberAddress(@PathVariable("address_member_no") int address_member_no) {
 		return service.get_memberAddress(address_member_no);
-		
+
 	}
-	
-	//후원완료 화면 배송지 조회
+
+	// 후원완료 화면 배송지 조회
 	@RequestMapping(value = "/get_receiverAddress/{support_no}", method = RequestMethod.GET)
 	public SupportDeliveryDTO get_receiverAddress(@PathVariable("support_no") int support_no) {
-		SupportDeliveryDTO deliveryDTO =  service.get_receiverAddress(support_no);
+		SupportDeliveryDTO deliveryDTO = service.get_receiverAddress(support_no);
 		System.out.println(deliveryDTO);
 		return deliveryDTO;
-		
+
 	}
 
 	// 주소입력(추가)
@@ -87,7 +87,7 @@ public class Rest_addressController {
 		entity = new ResponseEntity<String>("success", HttpStatus.OK);
 		return entity;
 	}
-	
+
 	// 후원 주소수정
 	@RequestMapping(value = "/update_receiverAddress", method = { RequestMethod.PUT, RequestMethod.PATCH })
 	public ResponseEntity<String> update_receiverAddress(@RequestBody SupportDeliveryDTO SupportDeliveryDTO) {
@@ -96,5 +96,5 @@ public class Rest_addressController {
 		entity = new ResponseEntity<String>("success", HttpStatus.OK);
 		return entity;
 	}
-	
+
 }

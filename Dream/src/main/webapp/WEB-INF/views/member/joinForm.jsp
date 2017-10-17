@@ -37,6 +37,7 @@
 <script type="text/javascript" src="resources/js/validityCheck/validityCheck.js"></script>
 
 <title>회원가입</title>
+<link rel="icon" href="resources/img/title.png" type="image/x-icon">
 
 </head>
 <header> <%@ include file="../mainView/header.jsp"%></header>
@@ -51,7 +52,7 @@
 						<hr />
 				</div>
 			</div>
-			<div class="main-login main-center">
+			<div class="main-login main-center panel">
 				<form class="form-horizontal" method="post" action="#">
 	
 					<div class="form-group">
@@ -116,8 +117,7 @@
 	
 					<div class="well well-sm text-center">
 	
-						<label for="password" class="cols-sm-2 control-label">성별 : </label>
-						<div class="btn-group" data-toggle="buttons">
+     						<div class="btn-group" data-toggle="buttons">
 						
 							<label class="btn btn-default">남 
 								<input type="radio" name="member_gender" id="member_gender" value="M" > 

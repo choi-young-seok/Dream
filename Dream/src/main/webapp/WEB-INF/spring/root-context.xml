@@ -37,18 +37,17 @@
 			<value>classpath:mappers/supportMappers/pieces/*Mapper.xml</value>
 		</array>
 		</property>
-		
 	</bean>
 
 	<!-- sqlSession등록 -->
-	<bean id='sqlSession' class="org.mybatis.spring.SqlSessionTemplate"
-		destroy-method="clearCache">
+	<bean id='sqlSession' class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	
 	
 	<!-- transactionManager 등록 -->
-	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
+	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" 
+			id="transactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	<tx:annotation-driven />

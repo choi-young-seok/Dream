@@ -1,19 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="mainList">
-	
-	<!-- 메인화면, 분류별 카테고리별 추가할것-->
 
- 	<select id="projectPointInfoList" resultMap="projectInfoResultMap.project_point_info_map">
+	<!-- 최다 후원 프로젝트 -->
+	<select id="max_support_project" resultMap="projectInfoResultMap.project_point_info_map">
+	select 
+		<include refid="projectInfoSql.project_point_info_sql"/>, 
+		project_summary, project_category
+	from 
+		(select 
+			<include refid="projectInfoSql.project_point_info_sql"/>, 
+			floor((now_amount/project_goal_amount)*100) as project_percentage
+		from 
+			dream_project
+		where
+			<include refid="projectInfoSql.processing_project_condition_sql"/>
+		order by project_percentage desc)
+	where 
+		rownum between 1 and 2 
+	</select>
+	
+	<!-- 실시간 핫이슈 -->
+	<select id="hot_project_list" resultMap="projectInfoResultMap.project_point_info_map">
 		select
-			<include refid="projectInfoSql.project_point_info_sql"/>, project_summary
+			<include refid="projectInfoSql.project_point_info_sql"/> 
 		from 
 			dream_project
 		where 
 			<include refid="projectInfoSql.processing_project_condition_sql"/>
-		order by project_start_date
+		order by supporting_count desc, project_view_count desc, now_amount desc
 	</select>
 	
+	<!-- 신규등록 프로젝트 -->
+ 	<select id="new_project_list" resultMap="projectInfoResultMap.project_point_info_map">
+		select
+			<include refid="projectInfoSql.project_point_info_sql"/>
+		from 
+			dream_project
+		where 
+			<include refid="projectInfoSql.processing_project_condition_sql"/>
+		order by project_start_date desc
+	</select>
+	
+	
+	
+	<select id="project_category_count" resultType="ProjectCategoryDTO">
+		select 
+			project_category, count(project_category) as category_count
+		from 
+			dream_project
+		group by project_category
+	</select>
+	
+	<select id="project_category_list" resultMap="main_category_projects_map">
+		select
+			distinct project_category
+		from
+			dream_project
+	</select>
+	
+	<resultMap type="CategoryProjectListDTO" id="main_category_projects_map">
+		<result property="project_category" column="project_category"/>
+		<collection property="projectPointDTOs" column="project_category" 
+					javaType="ArrayList" ofType="ProjectPointDTO" select="category_project_list">
+		</collection>
+	</resultMap>
+	
+	<select id="category_project_list" resultMap="projectInfoResultMap.project_point_info_map">
+		select 
+			<include refid="projectInfoSql.project_point_info_sql"/>
+		from 
+			dream_project
+		where 
+			project_category=#{project_category} and 
+			<include refid="projectInfoSql.processing_project_condition_sql"/>and
+			rownum between 1 and 4
+		order by 
+			now_amount desc, project_view_count desc
+	</select>
+	
+	<select id="category_project_list_detail" resultMap="projectInfoResultMap.project_point_info_map">
+		select 
+			<include refid="projectInfoSql.project_point_info_sql"/>
+		from 
+			dream_project
+		where 
+			project_category=#{project_category} and 
+			<include refid="projectInfoSql.processing_project_condition_sql"/>
+		order by 
+			supporting_count desc, now_amount desc, project_view_count desc
+	</select>
 </mapper>
 
 

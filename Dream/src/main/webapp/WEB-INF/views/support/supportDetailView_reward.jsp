@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>결제 정보</title>
+<link rel="icon" href="resources/img/title.png" type="image/x-icon">
 </head>
 <header><%@include file="../mainView/header.jsp"%> </header>
 <body>
@@ -93,8 +94,8 @@
 				
 				<div class="col col-md-10" title="supportBtn">
 					<div class="pull-right">
-						<input type="text" class="btn btn-warning" value="후원하기">
-						<input type="text" class="btn btn-warning" value="첫 화면으로">
+						<input type="text" class="btn btn-warning" value="결제목록">
+						<input type="text" class="btn btn-warning" value="메인화면">
 					</div><!-- pull-right -->
 				</div><!-- col col-md-10 -->
 				

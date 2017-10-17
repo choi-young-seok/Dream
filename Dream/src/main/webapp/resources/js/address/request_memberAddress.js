@@ -23,10 +23,11 @@ function insert_memberAddress(member_no, addressInfo, address_member_phone, requ
          success : function(result){
          	if(result == "success"){
          		alert("입력되었습니다.")          
-//         		location.href="/dream/address_Info_View?member_no="+member_no
+         		if(request == "mypage_address"){
+         			location.href = "/dream/mypage_address";
+         		}
          		location.href="/dream/"+request+"?member_no="+member_no
          	}
-//               get_request(primary_key_no);
          }//success
   });//insert ajax
 }
@@ -85,10 +86,9 @@ function delete_memberAddress(address_member_no, member_no) {
 	});//delete ajax
 }
 
-//주소지 조회 : 최근배송지(max(address_member_no), 선택배송지 (address_member_no)
 function get_memberAddress(member_no, request, address_member_no) {
-	//request : get_laterMemberAddress
-	//reqeust : get_memberAddress
+	//request : get_laterMemberAddress : 최근 배송지
+	//reqeust : get_memberAddress : 선택 배송지
 	var url = '';
 	if(request == "get_laterMemberAddress"){
 		url = '/dream/'+request+'/'+member_no
@@ -153,11 +153,10 @@ function get_memberAddress_list(member_no) {
 	    	 var template = Handlebars.compile(source);
 	    	 
 	    	 for(var address_count = 0; address_count < data.length; address_count++){
-//			alert(JSON.parse(data[address_count].address_member_no));
 	    		 var address_member_no = JSON.parse(data[address_count].address_member_no);
 	    		 $("#select_btn_area"+address_member_no).html(template({address_member_no : address_member_no}))
 	    	 }
 	     }
 	});//getJSON
-
 }
+

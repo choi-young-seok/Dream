@@ -38,9 +38,6 @@
 <script type="text/javascript" src="resources/js/login/login.js"></script>
 
 <!-- mypage.js -->
-<script type="text/javascript" src="resources/js/mypage/member.js"></script>
-<script type="text/javascript" src="resources/js/mypage/project.js"></script>
-<script type="text/javascript" src="resources/js/mypage/support.js"></script>
 
 <script type="text/javascript">
 // 세션검사 함수부
@@ -54,7 +51,7 @@ $(function(){
 	var needLoginSession = '${needLoginSession}';
 
 	if(needLoginSession =='needLoginSession'){
-		var loginConfirm = confirm("로그인이 필요한 서비스 입니다. 로그인하시겠습까용??");
+		var loginConfirm = confirm("로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?");
 		if(loginConfirm){
 			$('#loginModal').modal({backdrop : "static"});	
 			$('#loginCancelBtn').click(function(){
@@ -69,30 +66,40 @@ $(function(){
 </head>
 <!-- Navigation --> 
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	<div class="container">
+	<!-- <div class=""> -->
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+<!-- 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
-			</button>
-			<!-- <a class="navbar-brand" href="/dream">DreamUp</a> -->
-				<a class="navbar-brand" href="/dream"><img src="resources/img/logo.png" width="100"></a> 
+			</button> -->
+				<a class="navbar-brand" href="/dream">
+				<img src="resources/img/logo_renew.png" width="65"></a> 
 		</div>
 	
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="#">카테고리별 프로젝트</a></li>
+				<li><a id="main_category" href="#">카테고리별 프로젝트</a></li>
 	
 					<li><a id="projectRegiterView" href="/dream/projectRegiterView">프로젝트 등록</a></li>
 	
 				<%-- <c:if test="${session.member_mail ne null || session.member_mail ==''}"> --%>
-					<li><a href="#">마이 프로젝트</a></li>
+					<!-- <li><a href="#">마이 프로젝트</a></li> -->
 				
 				<input type="hidden" id="needLoginSession" value="${needLoginSession}">
+				<div class="navbar-form navbar-left">
+					<div class="input-group">
+						<input type="text" class="form-control" id="project_search_keyword" placeholder="검색어를 입력하세요">
+						<div class="input-group-btn">
+							<button class="btn btn-default" id="project_search_btn">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</div>
+					</div>
+				</div> 
 				<%-- </c:if> --%>
 			</ul>
 	
@@ -100,20 +107,12 @@ $(function(){
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href=" /dream/qna">고객 센터</a></li>
 				<!-- search bar  -->
-				<!-- <form class="navbar-form navbar-left">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search">
-							<div class="input-group-btn">
-								<button class="btn btn-default" type="submit">
-									<i class="glyphicon glyphicon-search"></i>
-								</button>
-							</div>
-						</div>
-					</form>  -->
+				
+		
 	
 				<!-- 로그인 버튼 및 로그인 완료시 사용자 드롭다운 메뉴 -->
 				<c:if test="${session.member_name != '' || session.member_name ne null}">
-					<li class="dropdown">
+					<li class="dropdown" style="margin-right: 20px">
 					<c:if test="${session.member_name ne null}">
 					<c:choose>
 						<c:when test="${session.member_profile eq 'NO PROFILE'}">
@@ -150,8 +149,6 @@ $(function(){
 				<c:if test="${session.member_mail =='' || session.member_mail eq null}">
  					<li id="loginBtn"><a href="#"><span
 							class="glyphicon glyphicon-log-in"></span>로그인</a></li>
-<!-- 				<li><button id="loginBtn"><span
-							class="glyphicon glyphicon-log-in"></span>로그인</button></li> -->
 				</c:if> 
 			</ul>
 		
@@ -163,7 +160,7 @@ $(function(){
 	</nav> 
 	
 	<div class="container">
-		<div class="row">
+		<!-- <div class="row"> -->
 			<!-- Login Modal -->
 			<div class="modal fade" id="loginModal" role="dialog">
 				<div class="modal-dialog">
@@ -191,25 +188,25 @@ $(function(){
 						
 								<a id="login" class="btn btn-info btn-block" role="button">로그인</a>
 								<br>
-								<div class="social-login">
+						<!-- 		<div class="social-login">
 									<ul>
 										<li><a href=""><i class="fa fa-facebook"></i> Facebook</a></li>
 										<li><a href=""><i class="fa fa-google-plus"></i>Google+</a></li>
 										<li><a href=""><i class="fa fa-twitter"></i> Twitter</a></li>
 									</ul>
-								</div>
+								</div> -->
 
 								<br>
 								<hr>
 								<!-- <div class="text-muted center-block" style="text-align: center;"><h2>or</h2></div> -->
 						
 								<a href="memberJoinForm" class="btn btn-success btn-block" role="button">회원가입</a>
-								<a href="companyJoinForm" class="btn btn-success btn-block" role="button">기업 회원가입</a>
+								<!-- <a href="companyJoinForm" class="btn btn-success btn-block" role="button">기업 회원가입</a> -->
 		 						
 		 				
 							
 								<div class="checkbox">
-									<label class="pull-left"><input type="checkbox" value="" checked>자동 로그인</label>
+									<!-- <label class="pull-left"><input type="checkbox" value="" checked>자동 로그인</label> -->
 									<label class="pull-right"><a href="/dream/findLoginInfo">아이디 / 비밀번호 찾기</a></label>
 								</div>
 							</form>
@@ -226,3 +223,6 @@ $(function(){
 			</div>
 		</div><!-- /.container --> 
 	</div>
+	
+	
+<script type="text/javascript" src="resources/js/header/project_search.js"></script>

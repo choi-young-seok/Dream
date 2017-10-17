@@ -1,49 +1,33 @@
 $(function(){
-	
-	$("#project_Info, #processing_project_list").click(function(){
-		var member_no = $("#session_no").val();
-		location.replace("/dream/myProject?member_no="+member_no+"&request=processing_project&success_state=T")
-	});//project_Info click event
-	
-	$("#last_project").click(function(){
-		var member_no = $("#session_no").val();
-		location.replace("/dream/myProject?member_no="+member_no+"&request=last_project&success_state=T")
-	});//project_Info click event
-	
-	$("#during_registration").click(function(){
-		var member_no = $("#session_no").val();
-		location.replace("/dream/myProject?member_no="+member_no+"&request=during_registration")
-	});//project_Info click event
-	
 
-	$("#projects > li").click(function(event){
-		$("#projects > li").removeAttr("class");
-		$(this).attr("class","active");		
-		$("#project_state > li:eq(0)").attr("class","active");
-	});//projects click event
-
+	get_project_reqeust_state("processing_project","T");
+	
 	$("#project_state > li").click(function(event){
 		$("#project_state > li").removeAttr("class");
 		$(this).attr("class","active");		
 	});//statec click event
 	
-	function get_project_reqeust_state(){
+	$("#projects > li").click(function(){
+		$("#projects > li").removeAttr("class")
+		$(this).attr("class","active")
+	});//
+	
+	function get_project_reqeust_state(request, success_state){
 		var member_no = $("#session_no").val();
 		
+		$.getJSON('/dream/get_myProject_list/'+member_no+"/"+request+"/"+success_state,
+			function(result){
+				var source = $("#project_point_info").html();
+				var template = Handlebars.compile(source);
+				$("#project_list").html(template(result))        
+		});//getJSON
+	}
+	
+	$("#projects > li,  #project_state > li").click(function(){
 		var request = $("#projects > li.active").attr("title"); 
 		var success_state = $("#project_state > li.active").attr("title");
 		
-		if(request == "during_registration"){
-			location.replace("/dream/myProject?member_no="+member_no+"&request="+request)
-			return;
-		}
-		
-		location.replace("/dream/myProject?member_no="+member_no+"&request="+request+"&success_state="+success_state)
-	}
-	
-	$("#project_condition > #projects >li , #project_state > li").click(function(event){
-		get_project_reqeust_state()
-
-	});//click event;
+		get_project_reqeust_state(request, success_state)
+	})
 
 });//ready 

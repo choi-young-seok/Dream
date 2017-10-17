@@ -7,12 +7,15 @@
 <!-- <script type="text/javascript"
 	src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
 <script type="text/javascript" src="resources/js/common/jquery.js"></script>
-<script type="text/javascript" src="/dream/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
-<script type="text/javascript" src="resources/js/project/projectRegister.js"></script>
-	
+<script type="text/javascript"
+	src="/dream/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript"
+	src="resources/js/project/projectRegister.js"></script>
+
 <script type="text/javascript" src="resources/js/upload/dragDrop.js"></script>
 <script type="text/javascript" src="resources/js/upload/upload.js"></script>
-<script type="text/javascript" src="resources/js/project/event_projectStoryView.js"></script>
+<script type="text/javascript"
+	src="resources/js/project/event_projectStoryView.js"></script>
 
 <script type="text/javascript">
 	$(function() {
@@ -47,63 +50,73 @@
 	})
 </script>
 <title>스토리 정보 등록</title>
-</head>
-
+<link rel="icon" href="resources/img/title.png" type="image/x-icon">
 <article> <%@include file="projectTabList.jsp"%>
 </article>
+</head>
+
 <body>
 	<div class="wrap">
-		<div class="col-md-12">
-			<div class="container">
+		<div class="container">
+			<div class="col col-md-12">
 				<div class="row">
 					<div class="col col-md-2"></div>
 					<div class="col col-md-10">
 						<div style="width: 766px;">
 							<legend>
-								<h2>프로젝트 소개영상</h2>
+								<h2>프로젝트 스토리 정보</h2>
 							</legend>
-							
-							<ul id="video_tabs" class="nav nav-pills nav-justified" role="tablist">
+
+							<ul id="video_tabs" class="nav nav-pills nav-justified"
+								role="tablist">
 								<li class="active" id="member_video_tab"><a>직접 업로드</a></li>
 								<li id="youtube_vedio_tab"><a>유튜브 URL</a></li>
 							</ul>
 						</div>
 
-						<div id="youtube_url_area" style="margin-top: 20px; margin-bottom: 20px">
-							<input type="text" id="youtube_url" style="width: 766px" placeholder="youtube 동영상 URL을 입력하세요">
+						<div id="youtube_url_area"
+							style="margin-top: 20px; margin-bottom: 20px">
+							<input type="text" id="youtube_url" style="width: 766px"
+								placeholder="youtube 동영상 URL을 입력하세요">
 						</div>
-						
+
 						<form action="/dream/projectProfileView" method="post" id="frm">
-						
-						
+
+
 							<!-- 					<form method="post" id="frm"> -->
 							<input type="hidden" value="${project_no}" name="project_no">
 							<span>
-								<div class="dragSpace thumbnailImage" name="project_video"
-									title="project_video" id="imageZone" style="width: 766px; margin-top: 20px; margin-bottom: 20px"></div>
-								<input type="type" id="project_video" name="project_video">
-								<input type="type" id="project_video_type" name="project_video_type">
-								<input type="type" name="member_no" value="${session.member_no }">
-								
+								<div align="center" class="dragSpace thumbnailImage"
+									name="project_video" title="project_video" id="imageZone"
+									style="width: 766px; margin-top: 20px; margin-bottom: 20px">
+									<h6>점선영역에 프로젝트 동영상을 드래그하세요</h6>
+								</div> <input type="hidden" id="project_video" name="project_video">
+								<input type="hidden" id="project_video_type"
+								name="project_video_type"> <input type="hidden"
+								name="member_no" value="${session.member_no }">
+								<div id="uploaded_file" align="center"
+									style="width: 766px; margin-top: 20px; margin-bottom: 20px">
+								</div>
 							</span>
 							<div id="youtube_address"></div>
 							<textarea name="project_content" id="editor" rows="10" cols="100"
 								style="width: 766px; height: 412px;"></textarea>
 							<div class="row" style="width: 783px;">
-								<input class="pull-right btn-primary" type="button" id="savebutton" value="다음" />
+								<input class="pull-right btn-primary" type="button"
+									id="savebutton" value="다음" />
 							</div>
 						</form>
-						
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Modal -->
 	<div id="youtubeVideo_manualModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
-		
+
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
@@ -111,20 +124,19 @@
 					<h4 class="modal-title">유튜브 URL로 동영상 첨부</h4>
 				</div>
 				<div class="modal-body" align="center">
-					1.참조하려는 yoube영상 상단의 <b>공유</b>버튼을 클릭하세요.
-					<img class="modal_img" src="resources/img/youtube_modal_1.png">
-					2.youtube URL주소를 <b>복사</b>하세요.
+					1.참조하려는 yoube영상 상단의 <b>공유</b>버튼을 클릭하세요. <img class="modal_img"
+						src="resources/img/youtube_modal_1.png"> 2.youtube URL주소를 <b>복사</b>하세요.
 					<img class="modal_img" src="resources/img/youtube_modal_2.png">
-					3.youtube URL입력란에 복사한 주소를 <B>붙여넣기</B>하세요.
-					<img class="modal_img" src="resources/img/youtube_modal_3.png">
-					4.복사한 URL의 youtube 영상이 다음과 같이 로드됩니다.
-					<img class="modal_img" src="resources/img/youtube_modal_4.png">
+					3.youtube URL입력란에 복사한 주소를 <B>붙여넣기</B>하세요. <img class="modal_img"
+						src="resources/img/youtube_modal_3.png"> 4.복사한 URL의 youtube
+					영상이 다음과 같이 로드됩니다. <img class="modal_img"
+						src="resources/img/youtube_modal_4.png">
 				</div>
 				<div class="modal-footer">
-				  	<button type="button" class="btn btn-success" data-dismiss="modal">닫기</button>
+					<button type="button" class="btn btn-success" data-dismiss="modal">닫기</button>
 				</div>
 			</div>
-		
+
 		</div>
 	</div>
 </body>

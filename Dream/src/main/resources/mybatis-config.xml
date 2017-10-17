@@ -7,5 +7,6 @@
 		<package name="kr.co.dream.reward.domain"/>
 		<package name="kr.co.dream.support.domain"/>
 		<package name="kr.co.dream.address.domain"/>
+		<package name="kr.co.dream.mainView.domain"/>
 	</typeAliases>
 </configuration>

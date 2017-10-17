@@ -25,23 +25,23 @@ public class MemberAutInterceptor extends HandlerInterceptorAdapter{
 //		System.out.println("getContextPath : "+request.getContextPath());
 //		System.out.println("getParameterMap : "+request.getParameterMap());
 		
-		Enumeration<String> aa = request.getParameterNames();
-		System.out.println("이너머레이션 : "+aa);
-		List<Map> parameters = new ArrayList<>();
-		Map map = new HashMap<>();
+//		Enumeration<String> aa = request.getParameterNames();
+//		System.out.println("이너머레이션 : "+aa);
+//		List<Map> parameters = new ArrayList<>();
+//		Map map = new HashMap<>();
 //		while(aa.hasMoreElements()){
-		for (int i = 0; aa.hasMoreElements(); i++) {
-			String parameter = aa.nextElement();
-			map.put(parameter, request.getParameter(parameter));
-			System.out.println("맵 : "+map);
-			parameters.add(map);			
-		}
+//		for (int i = 0; aa.hasMoreElements(); i++) {
+//			String parameter = aa.nextElement();
+//			map.put(parameter, request.getParameter(parameter));
+//			System.out.println("맵 : "+map);
+//			parameters.add(map);			
 //		}
-		System.out.println("List parameters : "+parameters);
-		System.out.println("List size : "+parameters.size());
-		for (int i = 0; i < parameters.size(); i++) {
-			System.out.println("이건뭐지 : "+parameters.get(i));
-		}
+//		}
+//		System.out.println("List parameters : "+parameters);
+//		System.out.println("List size : "+parameters.size());
+//		for (int i = 0; i < parameters.size(); i++) {
+//			System.out.println("이건뭐지 : "+parameters.get(i));
+//		}
 		
 //		System.out.println("getParameterNames : "+request.getParameterNames().toString());
 //		System.out.println("getParameter(member_no) : "+request.getParameter("member_no"));
@@ -57,9 +57,9 @@ public class MemberAutInterceptor extends HandlerInterceptorAdapter{
 		if(member_no != memberVO.getMember_no()){
 			System.out.println("잘못된 접근");
 			System.out.println("세션번호 : " + memberVO.getMember_no());
-			request.setAttribute("member_no", memberVO.getMember_no());
+//			request.setAttribute("member_no", memberVO.getMember_no());
 			//세션번호로 다시 리다이렉트
-//			response.sendRedirect(request.getRequestURI()+map.);
+			response.sendRedirect(request.getRequestURI()+"?member_no="+memberVO.getMember_no());
 			return false;
 		}else{
 			System.out.println("올바른 접근");

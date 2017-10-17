@@ -7,10 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class View_MypageSupportController {
 
-	
-	@RequestMapping("/mypage_support_info_view")
-	public String mypage_support_info_view(int member_no){
-		System.out.println(member_no);
-		return "mypage/support/mySupport";
+	@RequestMapping("/mypage_support")
+	public String mypage_support(){
+		System.out.println("View_MypageSupportController \tsupport");
+		return "mypage/support/support_info";
 	}
 }

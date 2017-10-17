@@ -44,41 +44,59 @@ public class UploadController {
 	public ResponseEntity<String> uploadAjax(MultipartFile file, HttpServletRequest request,
 			@PathVariable("requestName") String requestPath) throws Exception {
 
-		System.err.println("UploadController \tuploadAjax() \t\t[input value List]");
-		// 뷰에서 전송된 formData객체 내의 파일데이터를 수신하기 위한 데이터타입 : MultipartFile
-		System.out.println("\t\t▶요청 : uploadAjax    --------------------------------");
-
 		MemberVO uploadMemberVO = (MemberVO) request.getSession().getAttribute("session");
 		String uploadMember = uploadMemberVO.getMember_mail();
 		String makeDirPaths[] = { "uploadFile", uploadMember, requestPath };
 
-		System.out.println("\t\t요청 사용자 아이디 : " + uploadMember);
-		System.out.println("\t\t요청 분류 : " + requestPath);
-		System.out.println("\t\t사용자 요청 URL : " + request.getServletPath());
-		System.out.println("\t\t사용자 요청 URL : " + request.getRequestURL());
-
-		System.out.println("\t\t원본 파일 이름 : " + file.getOriginalFilename());
 		// 파일이 저장되는 실제경로
-		// E:\Kosta Project_neon\.metadata\.plugins\org.eclipse.wst.server.core\tmp2\wtpwebapps\SpringBoard\resources\img\thumnail
 		String uploadPath = request.getSession().getServletContext().getRealPath("resources");
-		System.out.println("\t\t파일 저장 경로 : " + uploadPath);
-		// request객체로 부터 파일이 저장되는 경로 추출
-		// request.getSession().getServletContext().getRealPath("") = E:\Kosta
-		// Project_neon\.metadata\.plugins\org.eclipse.wst.server.core\tmp2\wtpwebapps\SpringBoard(Project명)
-		// request.getSession().getServletContext().getRealPath("상세 폴더명")
-		System.out.println("\t\t파일 크기 : " + file.getSize());
-		System.out.println("\t\t파일 형식 : " + file.getContentType());
-		// 이걸로 확장자 검사 가능할듯
-		System.out.println("-------------------------------------------------------");
-
+		
 		return new ResponseEntity<>(
 				UploadFileUtils.uploadFile(uploadPath, makeDirPaths, file.getOriginalFilename(), file.getBytes()),
 				HttpStatus.CREATED);
-		// UpLoadFileUtils.uploadFile(uploadPath,file.getOriginalFilename(), file.getBytes()) : 분석해서 주석달것
-		// uploadFile()에 전달되는 인자 uploadPath : 저장경로, file.getOriginalFilename() : 실제 파일명, 파일데이터
-		//
-		// HttpStatus.CREATED : 201 : Created (수정으로 인해서 새로운 리소스가 생성되었을 때)
 	}
+	
+	
+//	@ResponseBody
+//	@RequestMapping(value = "/uploadAjax/{requestName}", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+//	public ResponseEntity<String> uploadAjax(MultipartFile file, HttpServletRequest request,
+//			@PathVariable("requestName") String requestPath) throws Exception {
+//		
+//		System.err.println("UploadController \tuploadAjax() \t\t[input value List]");
+//		// 뷰에서 전송된 formData객체 내의 파일데이터를 수신하기 위한 데이터타입 : MultipartFile
+//		System.out.println("\t\t▶요청 : uploadAjax    --------------------------------");
+//		
+//		MemberVO uploadMemberVO = (MemberVO) request.getSession().getAttribute("session");
+//		String uploadMember = uploadMemberVO.getMember_mail();
+//		String makeDirPaths[] = { "uploadFile", uploadMember, requestPath };
+//		
+//		System.out.println("\t\t요청 사용자 아이디 : " + uploadMember);
+//		System.out.println("\t\t요청 분류 : " + requestPath);
+//		System.out.println("\t\t사용자 요청 URL : " + request.getServletPath());
+//		System.out.println("\t\t사용자 요청 URL : " + request.getRequestURL());
+//		
+//		System.out.println("\t\t원본 파일 이름 : " + file.getOriginalFilename());
+//		// 파일이 저장되는 실제경로
+//		// E:\Kosta Project_neon\.metadata\.plugins\org.eclipse.wst.server.core\tmp2\wtpwebapps\SpringBoard\resources\img\thumnail
+//		String uploadPath = request.getSession().getServletContext().getRealPath("resources");
+//		System.out.println("\t\t파일 저장 경로 : " + uploadPath);
+//		// request객체로 부터 파일이 저장되는 경로 추출
+//		// request.getSession().getServletContext().getRealPath("") = E:\Kosta
+//		// Project_neon\.metadata\.plugins\org.eclipse.wst.server.core\tmp2\wtpwebapps\SpringBoard(Project명)
+//		// request.getSession().getServletContext().getRealPath("상세 폴더명")
+//		System.out.println("\t\t파일 크기 : " + file.getSize());
+//		System.out.println("\t\t파일 형식 : " + file.getContentType());
+//		// 이걸로 확장자 검사 가능할듯
+//		System.out.println("-------------------------------------------------------");
+//		
+//		return new ResponseEntity<>(
+//				UploadFileUtils.uploadFile(uploadPath, makeDirPaths, file.getOriginalFilename(), file.getBytes()),
+//				HttpStatus.CREATED);
+//		// UpLoadFileUtils.uploadFile(uploadPath,file.getOriginalFilename(), file.getBytes()) : 분석해서 주석달것
+//		// uploadFile()에 전달되는 인자 uploadPath : 저장경로, file.getOriginalFilename() : 실제 파일명, 파일데이터
+//		//
+//		// HttpStatus.CREATED : 201 : Created (수정으로 인해서 새로운 리소스가 생성되었을 때)
+//	}
 
 	@ResponseBody
 	@RequestMapping("/displayFile")
@@ -131,17 +149,20 @@ public class UploadController {
 		String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
 
 		MediaType mType = MediaUtils.getMediaType(formatName);
-		String uploadPath = request.getSession().getServletContext().getRealPath("resources/member/thumbnail");
+		String uploadPath = request.getSession().getServletContext().getRealPath("resources");
 
 		if (mType != null) {
-
-			String front = fileName.substring(0, 12);
-			String end = fileName.substring(14);
-			new File(uploadPath + (front + end).replace('/', File.separatorChar)).delete();
+			String front = fileName.substring(0, fileName.lastIndexOf('/')+1);
+			String originFileName = fileName.substring(fileName.lastIndexOf('/')+3);
+//			new File(uploadPath + (front + end).replace('/', File.separatorChar)).delete();
+			System.out.println("원본파일 : "+uploadPath + front + originFileName.replace('/', File.separatorChar));
+			new File(uploadPath + front +originFileName.replace('/', File.separatorChar)).delete();
 		}
 
+		System.out.println("썸네일파일 : "+uploadPath + fileName.replace('/', File.separatorChar));
+		new File(uploadPath + fileName).delete();
+		System.out.println("fileName : " +fileName);
 		new File(uploadPath + fileName.replace('/', File.separatorChar)).delete();
-
 		return new ResponseEntity<String>("deleted", HttpStatus.OK);
 	}
 
@@ -154,16 +175,17 @@ public class UploadController {
 		if (files == null || files.length == 0) {
 			return new ResponseEntity<String>("deleted", HttpStatus.OK);
 		}
-
+		System.out.println("11");
 		for (String fileName : files) {
 			String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
 
 			MediaType mType = MediaUtils.getMediaType(formatName);
-			String uploadPath = request.getSession().getServletContext().getRealPath("resources/member/thumbnail");
+			String uploadPath = request.getSession().getServletContext().getRealPath("resources");
 			if (mType != null) {
-
+				System.out.println("22");
 				String front = fileName.substring(0, 12);
 				String end = fileName.substring(14);
+				System.out.println("frond+end : "+front+end);
 				new File(uploadPath + (front + end).replace('/', File.separatorChar)).delete();
 			}
 

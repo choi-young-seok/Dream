@@ -33,10 +33,12 @@ public interface ProjectService {
 	//프로젝트 간략정보
 	public ProjectPointDTO support_project_point_info(int project_no);
 	
+	//등록자 프로필 정보 화면 등록자 프로필 사진
+	public String get_projectRegisterProfile(int member_no);
 	
 	// --- 마이페이지 ---
 	//현재 진행 중인 프로젝트 리스트
 	public List<ProjectPointDTO> myProjectList(int member_no, String request);
-
+	
 	
 }

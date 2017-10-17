@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,6 +28,7 @@
 	}
 </script>
 <title>프로젝트 프로필 정보 등록1</title>
+<link rel="icon" href="resources/img/title.png" type="image/x-icon">
 </head>
 
 <article> <%@include file="projectTabList.jsp"%>
@@ -34,18 +36,33 @@
 <body>
 	<div class="wrap">
 		<div class="container">
-			<div class="col col-md-12 panel panel-default">
+			<div class="col col-md-12">
 				<div class="col col-md-2"></div>
 				<div class="col col-md-8">
 						<legend>
-								<h2 id="request" param="project_profileView">프로젝트 프로필 정보</h2>
+								<h2 id="request" param="project_profileView">등록자 프로필 정보</h2>
 							</legend>
 
 					<span><h4>프로필 사진</h4></span>
-					<div id="imageZone"title="register_profile" class="dragSpace thumbnailImage" align="center">
-					</div>
-					<input type="hidden" id="register_profile">
-
+					<c:choose>
+						<c:when test="${member_profile eq 'NO PROFILE'}">					
+						
+							<div id="imageZone"title="register_profile" class="dragSpace thumbnailImage" align="center">
+								<h6>점선영역에 프로젝트 프로필 사진을 드래그하세요</h6>
+							</div>
+							
+							<div id="uploaded_file" align="center">
+								<input type="hidden" id="register_profile">
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div id="uploaded_file" align="center">
+								<img src="resources${member_profile }">
+								<input type="hidden" id="register_profile" value="${member_profile }">
+							</div>				
+						</c:otherwise>
+					</c:choose>	
+						
 					<div class="boxSpace">
 						<span><h4>이름</h4></span> <span><input class="form-control"
 							type="text" id="register_name" readonly="readonly"value="${session.member_name }"></span>
@@ -77,107 +94,6 @@
 						<%@include file="../../jsp_piece/address/address_info_area.jsp"%>
 					</c:if>
 						
-					<%-- <di v class="boxSpace">
-						<div class="row">
-							<div class="col-md-9 col-md-offset-1">
-								<div class="form-horizontal" role="form">
-
-									<!-- Form Name -->
-									<legend>발송지 입력</legend>
-
-									<!-- Text input-->
-
-									<div id="address_area">
-										<div class="form-group">
-											<label class="col-sm-3 control-label" for="textinput">보내시는분
-												:</label>
-											<div class="col-sm-9">
-												<input type="text" id="address_member_name"
-													value="${session.member_name }" class="form-control"
-													title="textInput">
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-sm-3 control-label" for="textinput">주소지 별칭
-												:</label>
-											<div class="col-sm-9">
-												<input type="text" id="address_alias" class="form-control"
-												placeholder="예) 집, 직장, 학교"	title="textInput">
-											</div>
-										</div>
-										<!-- Text input-->
-										<div class="form-group">
-											<label class="col-sm-3 control-label" for="textinput">우편
-												번호 :</label>
-											<div class="col-sm-3">
-												<input type="text" class="form-control" id="post_num1"
-													readonly="readonly">
-											</div>
-
-											<label class="col-sm-1 control-label" for="textinput"
-												style="padding-left: 5px; padding-right: 5px; text-align: center; width: 30px;">
-												ㅡ </label>
-											<div class="col-sm-3">
-												<input type="text" class="form-control" id="post_num2"
-													readonly="readonly">
-											</div>
-
-											<div class="col-sm-2">
-												<input id='findAddress' type='button' type='button'
-													value='주소찾기'>
-											</div>
-										</div>
-
-										<!-- Text input-->
-										<div class="form-group">
-											<label class="col-sm-3 control-label" for="textinput">발송지
-												주소 :</label>
-											<div class="col-sm-9">
-												<input type="text" placeholder="발송지 주소를 검색하세요"
-													class="form-control" id="choiceAddress" readonly="readonly">
-											</div>
-										</div>
-
-										<!-- Text input-->
-										<div class="form-group">
-											<label class="col-sm-3 control-label" for="textinput">상세
-												주소 :</label>
-											<div class="col-sm-9">
-												<input type="text" placeholder="상세주소를 입력하세요"
-													class="form-control" title="textInput">
-											</div>
-										</div>
-
-										<div id="numSector_phone">
-											<!-- Text input-->
-											<div class="form-group numSector_phone">
-												<label class="col-sm-3 control-label" for="textinput">연락처:</label>
-												<div class="col-sm-3">
-													<input type="text" class="form-control" maxlength="3"
-														title="3">
-												</div>
-												<!-- <label class="col-sm-1 control-label" for="textinput" style="padding-left: 5px; padding-right: 5px; text-align: center; width: 24px;"> ㅡ </label> -->
-
-												<div class="col-sm-3">
-													<input type="text" class="form-control" maxlength="4"
-														title="4">
-												</div>
-												<!-- <label class="col-sm-1 control-label" for="textinput" style="padding-left: 5px; padding-right: 5px; text-align: center; width: 24px;"> ㅡ </label> -->
-
-												<div class="col-sm-3">
-													<input type="text" class="form-control" maxlength="4"
-														title="4">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- col-md-8 col-md-offset-2 -->
-						</div>
-						<!-- /.row -->
-					</div> --%>
-
 					<input type="button" id="profileInfoRegister"
 						class="btn btn-primary pull-right" value="저장하고 다음으로">
 				</div>

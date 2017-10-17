@@ -39,7 +39,8 @@ input[reardonly]{
 .boxSpace{
 	margin-top: 20px;
 	margin-bottom: 20px;
-	border: dashed;
+	/* border: dashed; */
+	border: solid;
 	border-color: #ddd;
 	padding: 3%; 
 }
@@ -51,7 +52,7 @@ input[reardonly]{
 	border-color: #87ceeb; 
 }
 .wrap{
-	background-color: #f2f4f7;
+	background-color: #f8f8f8;
 }
 .col{
 	background-color: white;
@@ -60,6 +61,74 @@ input[reardonly]{
 	border : solid;
 	width : 570px;
 	margin-bottom: 20px;
+}
+
+.data_area{
+	padding-top: 50px;
+}
+
+#imageZone {
+	width: 100%;
+	border: dashed;
+}
+
+ul.nav.navbar-nav > li:hover {
+    background-color: lightgray;
+}
+
+button#project_search_btn {
+    height: 34px;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus
+	{
+	color: black;
+	background-color: white;
+	border: none !important;
+	border-bottom-color: transparent;
+	border-radius: none !important;
+}
+.progress{
+	margin-bottom: 0px;
+	border-radius: 0px;
+}
+
+.progress-bar {
+    background-color: lightgreen;
+}
+
+.caption {
+    height: 10%;
+    overflow: auto;
+}
+
+.point{
+	color : gray;
+}
+
+.member_profile{
+	height: 210ox;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: lightgray;
+}
+
+ul#project_state {
+    background-color: #eee;
+}
+
+.progress {
+    height: 10px;
+}
+
+.caption {
+    background-color: ghostwhite;
+}
+
+button#support_project_view {
+    width: -webkit-fill-available;
 }
 
 /*  */

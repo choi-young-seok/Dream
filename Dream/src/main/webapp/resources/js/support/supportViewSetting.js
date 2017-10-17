@@ -15,6 +15,7 @@ $(function(){
 	
 	function pay_method_card(){
 		$("#pay_card_area").show();
+		$("#numSector_card").show();
 		$("#pay_cash_area").hide();
 		$("#radio5").attr("checked","checked");
 		$("#radio6").removeAttr("checked")
@@ -23,6 +24,7 @@ $(function(){
 	function pay_method_cash(){
 		$("#pay_cash_area").show();
 		$("#pay_card_area").hide();
+		$("#numSector_card").hide();
 		$("#radio6").attr("checked","checked");
 		$("#radio5").removeAttr("checked")
 	}	

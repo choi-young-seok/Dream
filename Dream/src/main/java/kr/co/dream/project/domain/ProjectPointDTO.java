@@ -18,9 +18,10 @@ public class ProjectPointDTO {
 	private Date project_end_date;
 	private int project_goal_amount;
 	private int now_amount;
-	private int project_viewcnt;
+	private int project_view_count;
 	private int supporting_count;
 	private String project_summary;
+	private String project_category;
 
 	private ProjectOperDTO projectOperDTO;
 

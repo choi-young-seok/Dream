@@ -18,6 +18,7 @@
 
 
 <title>리워드 정보 등록</title>
+<link rel="icon" href="resources/img/title.png" type="image/x-icon">
 <script type="text/javascript">
 $(function() {
 	$('#rewardOk').click(function() {
@@ -200,18 +201,19 @@ $(function() {
 <body>
 <div class="wrap">
 	<div class="container">
-		<div class="col col-md-12 panel panel-default"">
+		<div class="col col-md-12"">
 			<div class="col col-md-2"></div>
 			<div class="col col-md-8">
 			<legend>
-				<h2>프로젝트 리워드 정보 등록</h2>
+				<h2>프로젝트 리워드 정보</h2>
 							</legend>
 				
 				<form name="reward" method="post">
 					<div id="itemList"></div>
 					<br><br>
 					<input type="button" class="btn btn-success"  value="추가" onclick="addItem()"> 
-					<br>생성된 리워드 총 갯수 : <input type="text" id="reward_count" name="reward_count">  
+					<!-- <br>생성된 리워드 총 갯수 : --> 
+					<input type="hidden" id="reward_count" name="reward_count">  
 				</form>
 				<div id="rewardArea"></div>
 			<!-- 	<a id="addRewardBox">추가</button> -->
