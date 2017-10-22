@@ -10,6 +10,15 @@
 		</layout>
 	</appender>
 	
+	<appender name="filelog" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="c:/spring.log"/>
+		<param name="Append" value="true"/>
+		<param name="DatePattern" value="'.'yyyy-mm-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d % -5p [%t] %-17c{2} (%13F:%L) %3x - %m%n"/>
+		</layout>
+	</appender>
+	
 	<!-- Application Loggers -->
 	<logger name="kr.co.dream">
 		<level value="info" />

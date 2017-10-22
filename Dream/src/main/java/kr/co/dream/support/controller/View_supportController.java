@@ -17,7 +17,7 @@ import kr.co.dream.support.domain.SupportVO;
 import kr.co.dream.support.service.SupportService;
 
 @Controller
-public class SupportViewController {
+public class View_supportController {
 
 	@Inject
 	private ProjectService projectService;

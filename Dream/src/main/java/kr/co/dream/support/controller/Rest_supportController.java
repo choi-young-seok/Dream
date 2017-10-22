@@ -20,7 +20,7 @@ import kr.co.dream.support.domain.supportPayInfoDTO;
 import kr.co.dream.support.service.SupportService;
 
 @RestController
-public class SupportRestController {
+public class Rest_supportController {
 
 	@Inject
 	private SupportService service;

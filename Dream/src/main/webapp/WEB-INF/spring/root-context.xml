@@ -44,21 +44,6 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	
-	
-	<!-- transactionManager 등록 -->
-	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" 
-			id="transactionManager">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-	<tx:annotation-driven />
-	
-	<!-- DataBase access class -->
-	<context:component-scan base-package="kr.co.dream"/>
-	
-	<!-- AOP -->
-<!-- 	<context:component-scan base-package="kr.co.dream.log.aop"/>
-	<aop:aspectj-autoproxy /> -->
-	
 	<!-- mailSender -->
 	<bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl" >
@@ -80,6 +65,21 @@
 	<bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
 		<property name="subject" value="DreamUp 회원가입 인증 메일입니다." />
 	</bean>
+	
+		<!-- transactionManager 등록 -->
+	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" 
+			id="transactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<tx:annotation-driven />
+	
+	<!-- DataBase access class -->
+	<context:component-scan base-package="kr.co.dream"/>
+	
+	<!-- AOP -->
+	<context:component-scan base-package="kr.co.dream.log.aop"/>
+		
+	<aop:aspectj-autoproxy />
 
 
 

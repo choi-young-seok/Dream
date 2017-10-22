@@ -18,16 +18,16 @@ import kr.co.dream.mainView.service.MainListService;
 import kr.co.dream.project.domain.ProjectPointDTO;
 
 @RestController
-public class MainListController {
+public class Rest_mainListController {
 
 	@Inject
-	private MainListService service;
+	private MainListService mainListService;
 
 	@RequestMapping(value = "/mainList", method = RequestMethod.POST)
 	public ResponseEntity<Map<String, List<ProjectPointDTO>>> mainList() {
 		ResponseEntity<Map<String, List<ProjectPointDTO>>> entity = null;
 
-		entity = new ResponseEntity<Map<String, List<ProjectPointDTO>>>(service.main_project_list(), HttpStatus.OK);
+		entity = new ResponseEntity<Map<String, List<ProjectPointDTO>>>(mainListService.main_project_list(), HttpStatus.OK);
 		return entity;
 	}
 
@@ -35,7 +35,7 @@ public class MainListController {
 	public ResponseEntity<List<ProjectPointDTO>> main_category_list(@PathVariable("category") String category) {
 		System.out.println("MainListController \tmain_category_list input value : " + category);
 		ResponseEntity<List<ProjectPointDTO>> entity = null;
-		entity = new ResponseEntity<List<ProjectPointDTO>>(service.category_project_list_detail(category),
+		entity = new ResponseEntity<List<ProjectPointDTO>>(mainListService.category_project_list_detail(category),
 				HttpStatus.OK);
 		return entity;
 	}
@@ -43,7 +43,7 @@ public class MainListController {
 	@RequestMapping(value = "main_category_project", method = RequestMethod.GET)
 	public ResponseEntity<List<CategoryProjectListDTO>> main_category_project() {
 		ResponseEntity<List<CategoryProjectListDTO>> entity = null;
-		entity = new ResponseEntity<List<CategoryProjectListDTO>>(service.main_project_category_list(), HttpStatus.OK);
+		entity = new ResponseEntity<List<CategoryProjectListDTO>>(mainListService.main_project_category_list(), HttpStatus.OK);
 		return entity;
 	}
 
@@ -52,7 +52,7 @@ public class MainListController {
 			@PathVariable("search_keyword") String search_keyword) {
 		System.out.println(" 검색어 요청 : " + search_keyword);
 		ResponseEntity<Map<String, List<ProjectPointDTO>>> entity = null;
-		entity = new ResponseEntity<Map<String, List<ProjectPointDTO>>>(service.project_search_result(search_keyword),
+		entity = new ResponseEntity<Map<String, List<ProjectPointDTO>>>(mainListService.project_search_result(search_keyword),
 				HttpStatus.OK);
 		return entity;
 	}

@@ -15,7 +15,7 @@ $(function(){
 	});//video_upload click event
 	
 	$('#youtube').click(function(){
-		alert("youtube")
+		alert("Youtube URL을 입력하세요")
 		$('#imageZone').hide();
 		$('#youtube_address').html('<input type="text" name="project_video">');
 	});//youtube_address click event
@@ -118,7 +118,6 @@ $(function(){
 		
 		if(member_profile==""){
 			alert("프로필 사진을 등록하세요")
-			
 			return;
 		}
 
@@ -161,7 +160,7 @@ $(function(){
 			}
 		}
 		
-		alert("--- 프로젝트 프로필 정보 ---" +
+/*		alert("--- 프로젝트 프로필 정보 ---" +
 				"\n프로젝트 번호 : " +project_no+
 				"\n등록자 번호 : " +member_no+
 				"\n등록자 프로필 사진  : "+member_profile+
@@ -172,7 +171,7 @@ $(function(){
 				"\n우편번호 : " +addressInfo.member_address_zip_code+
 				"\n주소 : " +addressInfo.member_address+
 				"\n상세주소 : " +addressInfo.member_detail_address+
-				"\n등록자 연락처 : "+address_member_phone);
+				"\n등록자 연락처 : "+address_member_phone);*/
 		
 		$.ajax({
 			url : '/dream/projectProfileRegister',

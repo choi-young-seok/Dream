@@ -79,25 +79,6 @@ $(function() {
 				// 인증성공여부가 어떤 로직을 동반해야 하거나, 어떤 처리를 동반해야하거나,
 				// 혹은 DB에 그 결과가 반영되야하는 것이 아니므로
 				// 직접 프론트에서 객체(DOM) 조작을 통해 처리 하겠음
-				// $.ajax({
-				// url : '/dream/',
-				// type : 'post',
-				// headers : {
-				// "Content-Type" : "application/json",
-				// "X-HTTP-Method-Override" : "POST"
-				// },// headers
-				// data : JSON.stringify({
-				// authOk : 'OK'
-				// }),
-				// dataType : 'text',
-				// success : function(result) {
-				// if (result == 'success') {
-				// var resultTag = "<input type='text' value='success'>";
-				// } else {
-				// var resultTag = "<input type='text' value='fail'>";
-				// }
-				// }// success
-				// });// ajax
 			}// inner esle
 		}// outer else
 	});// authNum click event

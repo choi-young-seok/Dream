@@ -4,6 +4,9 @@ import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.Data;
+
+@Data
 public class MemberVO {
 
 	private int member_no; // 회원 번호
@@ -25,130 +28,6 @@ public class MemberVO {
 
 	private MultipartFile member_profile_image;
 	private String member_profile;
-
-	public MemberVO() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public int getMember_no() {
-		return member_no;
-	}
-
-	public void setMember_no(int member_no) {
-		this.member_no = member_no;
-	}
-
-	public String getMember_mail() {
-		return member_mail;
-	}
-
-	public void setMember_mail(String member_mail) {
-		this.member_mail = member_mail;
-	}
-
-	public String getMember_pass() {
-		return member_pass;
-	}
-
-	public void setMember_pass(String member_pass) {
-		this.member_pass = member_pass;
-	}
-
-	public String getMember_name() {
-		return member_name;
-	}
-
-	public void setMember_name(String member_name) {
-		this.member_name = member_name;
-	}
-
-	public String getMember_birth() {
-		return member_birth;
-	}
-
-	public void setMember_birth(String member_birth) {
-		this.member_birth = member_birth;
-	}
-
-	public String getMember_gender() {
-		return member_gender;
-	}
-
-	public void setMember_gender(String member_gender) {
-		this.member_gender = member_gender;
-	}
-
-	public Date getMember_regdate() {
-		return member_regdate;
-	}
-
-	public void setMember_regdate(Date member_regdate) {
-		this.member_regdate = member_regdate;
-	}
-
-	public int getMember_total_project_count() {
-		return member_total_project_count;
-	}
-
-	public void setMember_total_project_count(int member_total_project_count) {
-		this.member_total_project_count = member_total_project_count;
-	}
-
-	public int getMember_ongoing_project_count() {
-		return member_ongoing_project_count;
-	}
-
-	public void setMember_ongoing_project_count(int member_ongoing_project_count) {
-		this.member_ongoing_project_count = member_ongoing_project_count;
-	}
-
-	public int getMember_supporting_count() {
-		return member_supporting_count;
-	}
-
-	public void setMember_supporting_count(int member_supporting_count) {
-		this.member_supporting_count = member_supporting_count;
-	}
-
-	public int getMember_total_supported_count() {
-		return member_total_supported_count;
-	}
-
-	public void setMember_total_supported_count(int member_total_supported_count) {
-		this.member_total_supported_count = member_total_supported_count;
-	}
-
-	public String getMember_stop_state() {
-		return member_stop_state;
-	}
-
-	public void setMember_stop_state(String member_stop_state) {
-		this.member_stop_state = member_stop_state;
-	}
-
-	public String getMember_withdraw_state() {
-		return member_withdraw_state;
-	}
-
-	public void setMember_withdraw_state(String member_withdraw_state) {
-		this.member_withdraw_state = member_withdraw_state;
-	}
-
-	public MultipartFile getMember_profile_image() {
-		return member_profile_image;
-	}
-
-	public void setMember_profile_image(MultipartFile member_profile_image) {
-		this.member_profile_image = member_profile_image;
-	}
-
-	public String getMember_profile() {
-		return member_profile;
-	}
-
-	public void setMember_profile(String member_profile) {
-		this.member_profile = member_profile;
-	}
 
 	// 회원가입 정보
 	public String toStringJoinMember() {

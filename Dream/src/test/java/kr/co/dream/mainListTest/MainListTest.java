@@ -16,6 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.co.dream.mainView.domain.ProjectCategoryDTO;
 import kr.co.dream.mainView.persistence.MainListDAO;
+import kr.co.dream.mainView.service.MainListService;
 import kr.co.dream.project.domain.ProjectPointDTO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -26,12 +27,19 @@ public class MainListTest {
 	private MainListDAO dao;
 	
 	@Inject
+	private MainListService service;
+	
+	@Inject
 	private SqlSession session;
 	
 	
 //	@Test
 	public void mainListTest(){
-//		dao.mainList();
+//		dao.max_support_project();
+//		dao.hot_project_list();
+//		dao.new_project_list();
+		
+		service.main_project_list();
 	}
 	
 //	@Test

@@ -22,19 +22,20 @@ import kr.co.dream.address.service.AddressService;
 import kr.co.dream.member.service.MemberService;
 import kr.co.dream.project.domain.ProjectVO;
 import kr.co.dream.project.service.ProjectService;
+import kr.co.dream.reward.service.RewardService;
 import kr.co.dream.upload.util.PhotoVo;
 
 @Controller
-public class ProjectRegisterViewController {
+public class View_projectController {
 
 	@Inject
-	private ProjectService service;
-	
-	@Inject
-	private MemberService memberService;
+	private ProjectService projectService;
 	
 	@Inject
 	private AddressService addressService;
+	
+	@Inject
+	private RewardService rewardService;
 
 	// 프로젝트 기본 정보 입력 화면 요청
 	@RequestMapping(value = "/projectRegiterView")
@@ -60,11 +61,11 @@ public class ProjectRegisterViewController {
 		System.out.println("ProjectRegisterViewController \tprojectProfileView() [프로젝트 스토리 정보 입력 요청]");
 
 		System.out.println("project_content : " + projectStoryInfo.toString());
-		service.projectStoryInfo(projectStoryInfo);
+		projectService.projectStoryInfo(projectStoryInfo);
 
 		model.addAttribute("project_no", projectStoryInfo.getProject_no());
 		int member_addressCount = addressService.get_memberAddress_count(projectStoryInfo.getMember_no());
-		String member_profile = service.get_projectRegisterProfile(projectStoryInfo.getMember_no());
+		String member_profile = projectService.get_projectRegisterProfile(projectStoryInfo.getMember_no());
 		if(member_profile != "NO PROFILE"){
 			model.addAttribute("member_profile",member_profile);
 		}
@@ -88,6 +89,40 @@ public class ProjectRegisterViewController {
 		System.out.println("프로젝트 번호 : " + project_no);
 		model.addAttribute("project_no", project_no);
 		return "project/register/projectAccountView";
+	}
+	
+	//프로젝트 미리보기 화면 요청
+	@RequestMapping(value = "/projectPreView")
+	public String projectPreView(Model model, @RequestParam int project_no) {
+		System.out.println("ProjectRegisterViewController \tprojectInfoView() [프로젝트 미리보기 화면 요청] : " + project_no);
+		try {
+			model.addAttribute("project_no",project_no);
+			ProjectVO projectVO = projectService.projectPreview(project_no);
+			model.addAttribute("project", projectVO);
+			model.addAttribute("rewards", rewardService.rewardList(project_no));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		System.out.println(service.projectPreview(project_no).toString());
+		return "project/projectInfoView";
+	}
+	
+	//프로젝트 조회 화면
+	@RequestMapping(value = "/projectInfoView")
+	public String projectInfoView(Model model, @RequestParam int project_no) {
+		System.out.println("ProjectRegisterViewController \tprojectInfoView() [프로젝트 조회 화면 요청] : " + project_no);
+		try {
+			model.addAttribute("project_no",project_no);
+			ProjectVO projectVO = projectService.projectInfoView(project_no);
+			model.addAttribute("project", projectVO);
+			model.addAttribute("rewards", rewardService.rewardList(project_no));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		System.out.println(service.projectPreview(project_no).toString());
+		return "project/projectInfoView";
 	}
 
 	// 단일 파일 업로드

@@ -18,7 +18,7 @@ import kr.co.dream.paging.domain.PageMaker;
 import kr.co.dream.paging.domain.SearchCriteria;
 
 @RestController
-public class AddressRestController {
+public class Rest_searchAddressController {
 
 	@Inject
 	private AddressService addressService;

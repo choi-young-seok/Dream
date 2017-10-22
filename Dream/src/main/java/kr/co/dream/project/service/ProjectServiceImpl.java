@@ -48,7 +48,6 @@ public class ProjectServiceImpl implements ProjectService {
 			projectProfileDTO.setAddress_member_no(address_member_no);
 			dao.projectRegisterProfile_update(projectProfileDTO);	
 			addressDAO.update_project_delivery_address(address_member_no);
-//			projectProfileDTO.setAddress_member_no(address_member_no);
 			
 		}else{
 			//0이 아닐경우 기존 배송지 정보 입력

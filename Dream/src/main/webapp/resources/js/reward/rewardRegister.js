@@ -13,7 +13,6 @@ $(function(){
 			   var reward_amount = $("#reward_amount"+nRow).val();
 			   var reward_no  = $("#reward_no"+nRow).val();
 			   var project_no = $("#project_no").val();
-//			   var member_no = $('#session_no').val();
 			   
 			   	if(reward_title==""){
 			   		alert("리워드 타이틀을 입력하세요");

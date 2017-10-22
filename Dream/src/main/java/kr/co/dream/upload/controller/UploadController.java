@@ -24,7 +24,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.dream.member.domain.MemberVO;
 import kr.co.dream.member.service.MemberService;
-import kr.co.dream.upload.service.uploadService;
 import kr.co.dream.upload.util.MediaUtils;
 import kr.co.dream.upload.util.UploadFileUtils;
 
@@ -33,9 +32,6 @@ public class UploadController {
 
 	@Inject
 	private MemberService service;
-
-	@Inject
-	private uploadService uploadService;
 
 	private static final Logger logger = LoggerFactory.getLogger(UploadController.class);
 

@@ -36,14 +36,14 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberVO login(LoginDTO loginDTO) {
-		System.err.println("MemberServiceImpl \tlogin() \t\t[input value] : " + loginDTO.toString());
-		if (encryptionPwd.checkPwd(loginDTO.getLogin_pass(), dao.selectPwd(loginDTO))) {
-			MemberVO member = dao.login(loginDTO);
-			// return sqlSession.selectOne("member.login", loginDTO);
-			System.out.println("MemberServiceImpl \tlogin() \t\t[output value] : " + member.toStringLogin());
-			// return dao.login(loginDTO);
-			return member;
-		} else {
+		try {
+			if (encryptionPwd.checkPwd(loginDTO.getLogin_pass(), dao.selectPwd(loginDTO))) {
+				return dao.login(loginDTO);
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}

@@ -15,7 +15,7 @@ import kr.co.dream.project.domain.ProjectVO;
 import kr.co.dream.project.service.ProjectService;
 
 @RestController
-public class ProjectRestController {
+public class Rest_projectController {
 
 	@Inject
 	private ProjectService service;

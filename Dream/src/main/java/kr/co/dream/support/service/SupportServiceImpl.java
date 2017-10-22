@@ -2,8 +2,6 @@ package kr.co.dream.support.service;
 
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,9 +20,8 @@ public class SupportServiceImpl implements SupportService {
 	@Inject
 	private AddressDAO addressDAO;
 
-	private static final Logger logger = LoggerFactory.getLogger(SupportServiceImpl.class);
-
 	@Transactional
+	@Override
 	public int supportRegister_noReward(SupportVO supportVO) {
 
 		int support_no = supportDAO.support_Register(supportVO);
@@ -41,7 +38,7 @@ public class SupportServiceImpl implements SupportService {
 			return support_no;
 	}
 
-	//
+	@Transactional
 	@Override
 	public int supportRegister_reward(SupportVO supportVO) {
 		System.out.println("리워드 후원 배송정보, 리워드정보 처리");
@@ -81,7 +78,6 @@ public class SupportServiceImpl implements SupportService {
 	@Override
 	public void update_paybackInfo(supportPayInfoDTO payInfoDTO) {
 		supportDAO.update_paybackInfo(payInfoDTO);
-		
 	}
 
 }

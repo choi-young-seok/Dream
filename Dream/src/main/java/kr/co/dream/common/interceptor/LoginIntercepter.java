@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -13,7 +14,7 @@ public class LoginIntercepter extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 
-		System.err.println("LoginIntercepter \tpreHandle() \t\t[사용자 세션검사]");
+		System.out.println("LoginIntercepter \tpreHandle() \t\t[사용자 세션검사]");
 		System.out.println("LoginIntercepter \tpreHandle() \t\t[사용자 요청 url ] : " +request.getContextPath());
 		HttpSession session = request.getSession();
 		
@@ -27,7 +28,11 @@ public class LoginIntercepter extends HandlerInterceptorAdapter {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		System.err.println("LoginIntercepter \tpostHandle() \t\t[이것은 무엇을 위한 handler인가..]");
+		System.out.println("LoginIntercepter \tpostHandle() \t\t[로그인 성공 세션 발급]");
+		HttpSession session = request.getSession();
+		ModelMap modelMap = modelAndView.getModelMap();
+		Object member = modelMap.get("member");
+		session.setAttribute("session", member);
 		super.postHandle(request, response, handler, modelAndView);
 	}
 

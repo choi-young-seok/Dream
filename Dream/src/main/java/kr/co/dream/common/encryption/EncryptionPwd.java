@@ -35,21 +35,24 @@ public class EncryptionPwd {
 	}
 
 	public boolean checkPwd(String inputPwd, String dbPwd) {
-		System.out.println("EncryptionPwd \t\tcheckPwd()  \t\t[사용자 입력 비밀번호] : " + inputPwd);
-		System.out.println("EncryptionPwd \t\tcheckPwd()  \t\t[DB 비밀번호] : " + dbPwd);
-		if(dbPwd == null || dbPwd.equals("")){
-			System.out.println("EncryptionPwd \t\tcheckPwd()  \t\t[일치하는 비밀번호 정보 없음] : 아이디 없음");
-		 return false;
-		}
-		else{
-			if (BCrypt.checkpw(shaPwd(inputPwd), dbPwd)) {
-				System.out.println("EncryptionPwd \t\tcheckPwd()  \t\t[비밀번호 일치]");
-				return true;
-			} else {
-				System.out.println("EncryptionPwd \t\tcheckPwd()  \t\t[비밀번호 불일치]");
-				return false;
+		try {
+			if(dbPwd == null || dbPwd.equals("")){
+				System.out.println("EncryptionPwd \t\tcheckPwd()  \t\t[일치하는 비밀번호 정보 없음] : 아이디 없음");
+			 return false;
 			}
+			else{
+				if (BCrypt.checkpw(shaPwd(inputPwd), dbPwd)) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
 		}
-		
 	}
+	
+	
+	
 }

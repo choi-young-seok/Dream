@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class RewardViewController {
+public class View_rewardController {
 
 	// 프로젝트 리워즈 입력 화면 요청
 	@RequestMapping(value = "/projectRewardView")

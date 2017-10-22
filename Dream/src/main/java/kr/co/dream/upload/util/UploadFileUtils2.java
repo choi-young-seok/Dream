@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 import org.imgscalr.Scalr;
 import org.springframework.util.FileCopyUtils;
 
-public class UploadFileUtils {
+public class UploadFileUtils2 {
 
 
 	// public static String uploadFile(String uploadPath,

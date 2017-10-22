@@ -26,66 +26,6 @@ $(function(){
 					$("#max_support_project_list").html(template(value))
 				}
 			})
-			
-			
-			
-			
-			
-//			var mainList = "";
-//			var i=0;
-//			if(resultList.length == '0'){
-//				return;
-//			}
-//			$(resultList).each(function(){
-//				var percentage = this.projectOperDTO.project_percentage;
-//				if(this.projectOperDTO.project_percentage > 100){
-//					percentage = 100;
-//				}
-//				mainList += "<div class='col-sm-3 col-lg-3 col-md-3'>"+
-//								"<div class='thumbnail'>"+
-//									"<input type='hidden' value='"+this.project_no+"'>"+
-//									"<a href='/dream/projectInfoView?project_no="+this.project_no+"'><img src='resources"+this.project_thumbnail+"'></a>"+
-//									"<div class='progress'>"+
-//										"<div class='progress-bar' role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' align='center' style='width: "+percentage+"%'>"+this.projectOperDTO.project_percentage+"%</div>"+
-//									"</div>"+
-//									"<div class='caption'>"+
-//										"<!-- <h4 class='pull-right'>$24.99</h4> -->"+
-//										"<h4>"+
-//											"<a href='/dream/projectInfoView?project_no="+this.project_no+"'>"+this.project_title+"</a>"+
-//										"</h4>"+
-//										"<p>"+this.project_summary+
-//										"</p>"+
-//										"<p style='color: gray;'>"+this.project_category+
-//										"</p>"+
-//									"<div class='point'>"+  
-//										"</p>"+
-////										"<div class='col-md-4'><b>"+this.project_goal_amount+"원</b><br/><small>목표금액</small></div>"+
-//										 "<div class='col-md-4' align='center'><b>"+this.projectOperDTO.project_percentage+"%</b><br/><small>달성도</small></div>"+
-//										 "<div class='col-md-4' align='center'><b>"+this.supporting_count+"</b><br/><small>후원수</small></div>"+
-//							             "</p>"+
-//							             "<p>"+
-////							             "<div class='col-md-4'><b>"+this.project_end_date+"</b><br/><small>마감일</small></div>"+
-//							             "<div class='col-md-4' align='center'><b>"+this.projectOperDTO.project_d_day+"일</b><br/><small>잔여기간</small></div>"+
-////							             "<div class='col-md-4'><b>"+this.project_viewcnt+"</b><br/><small>조회수</small></div>"+
-//							             "</p>"+
-//									"</div>"+
-//									"</div>"+
-////									"<div class='ratings'>"+
-////										"<p class='pull-right'>15 reviews</p>"+
-////										"<p>"+
-////											"<span class='glyphicon glyphicon-star'></span>"+
-////											"<span class='glyphicon glyphicon-star'></span>"+									 
-////											"<span class='glyphicon glyphicon-star'></span>"+										
-////											"<span class='glyphicon glyphicon-star'></span>"+			
-////											"<span class='glyphicon glyphicon-star'></span>"+
-////										"</p>"+
-////									"</div>"+
-//								"</div>"+
-//							"</div>";
-//				$('#mainResultView').html(mainList);
-//			});// each
-
-//			$('#mainResultView').html(mainList);
 		}// success
 	});// ajax
 });// ready

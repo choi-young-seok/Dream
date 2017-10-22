@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -13,8 +14,7 @@ public class LoginIntercepter extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 
-		System.err.println("LoginIntercepter \tpreHandle() \t\t[사용자 세션검사]");
-		System.out.println("LoginIntercepter \tpreHandle() \t\t[사용자 요청 url ] : " +request.getContextPath());
+		System.out.println("LoginIntercepter \tpreHandle() \t\t[사용자 세션검사]");
 		HttpSession session = request.getSession();
 		
 		if (session.getAttribute("session") != null) {
@@ -24,12 +24,24 @@ public class LoginIntercepter extends HandlerInterceptorAdapter {
 		return super.preHandle(request, response, handler);
 	}
 
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-		System.err.println("LoginIntercepter \tpostHandle() \t\t[이것은 무엇을 위한 handler인가..]");
-		super.postHandle(request, response, handler, modelAndView);
-	}
+//	@Override
+//	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+//			ModelAndView modelAndView) throws Exception {
+//		System.out.println("LoginIntercepter \tpostHandle()");
+//		Object member = modelAndView.getModel();
+//		System.out.println("modelandView.getModel"+member);
+//		
+//		System.out.println(request.getAttribute("member"));
+//		
+//		ModelMap map = modelAndView.getModelMap();
+////		Object member = map.get("member");
+//		
+//		HttpSession session = request.getSession();
+//		session.setAttribute("session", member);
+//
+//		System.out.println("LoginIntercepter \tpostHandle() \t\t[로그인 성공 세션 발급]");
+//		super.postHandle(request, response, handler, modelAndView);
+//	}
 
 	
 	//ajax요청시 모델엔뷰객체에서 널포인트 발생?

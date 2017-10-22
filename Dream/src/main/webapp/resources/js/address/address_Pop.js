@@ -35,19 +35,12 @@ $(function(){
 						alert("결과없음")
 						return;
 					}else if(key == "success"){
-//						alert("success key : " + key)
 						var addressList = '<div class="dataSpace"><ul>';
-
 						var idx=0;
 						$(value).each(function(){
 							idx++;
-							var dataList = "6t6";
-							
-//							addressList +='<a id="addressData'+idx+'" onclick="getAddressData('+idx+')">'
+//							var dataList = "";
 							addressList +='<a id="addressData'+idx+'" onclick="getAddressData(\''+this.zip_code+'\',\''+this.address+'\')">'
-//							addressList +='<a id="addressData'+idx+'" onclick="getAddressData2('+this.address+')">'
-//										+ '<span id="zip_code" style="padding-right : 20px;">'+this.zip_code+'</span>'
-//										+ '<span id="address">'+this.address+'</span>'
 										+ this.zip_code+"&nbsp;&nbsp;&nbsp;&nbsp;" + this.address
 										+ '</a><br>';
 						});//inner each end
@@ -56,7 +49,6 @@ $(function(){
 						
 					}//else if
 						if(key == "pageMaker"){
-//							alert("success key : " + key)
 							var pageMaker ='';
 							
 							// print to '<<' when prev is true
@@ -88,12 +80,3 @@ $(function(){
 	
 
 });//ready
-
-//function popupOpen(){
-//    var popUrl = ""; //팝업 URL
-//    var popOption = "width=370, height=360," +
-//          "resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
-//        window.open(popUrl,"",popOption);
-//    }
-//
-

@@ -40,8 +40,6 @@ $(function() {
 
 	}//end addItem
 
-
-
 //ㅡㅡㅡㅡㅡ 리워드 박스 삭제 및 재정렬 함수 ㅡㅡㅡㅡㅡ
 function removeItem(reward_no) {
 	//alert("현재 선택된 reward번호 : "+reward_no)
@@ -95,50 +93,3 @@ function removeItem(reward_no) {
 }//end removeItem
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

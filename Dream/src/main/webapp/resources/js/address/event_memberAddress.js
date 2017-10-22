@@ -3,8 +3,6 @@ $(function() {
      var member_no = $("#session_no").val();
      var select_btn_check = $("#request").attr("select_btn_check");
      var edit_mode_status = true;
-//     var edit_mode_status = $("#address_list > #address_edit_mode").attr("state")
-//     alert("상태적용 "+edit_mode_status) 
      
   	$("#address_info_insert").click(function(){
         location.href ="/dream/mypage_address_insert";

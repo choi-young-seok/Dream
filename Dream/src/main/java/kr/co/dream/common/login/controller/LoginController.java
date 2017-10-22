@@ -23,7 +23,7 @@ public class LoginController {
 	private MemberService service;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ResponseEntity<String> login(@RequestBody LoginDTO loginDto, Model model, HttpSession session) {
+	public ResponseEntity<String> login(@RequestBody LoginDTO loginDto, HttpSession session) {
 		System.err.println("LoginController \tlogout() \t\t[로그인 요청]");
 		System.out.println("LoginController \tlogin() \t\t[사용자 정보] : " + loginDto.toString());
 
@@ -35,9 +35,7 @@ public class LoginController {
 			entity = new ResponseEntity<String>("fail", HttpStatus.OK);
 			return entity;
 		} else {
-			System.out.println("LoginController \tlogin() \t\t[로그인 성공]");
-			model.addAttribute(member);
-			System.out.println("LoginController \tlogin() \t\t[발급 세션 정보] : " + member.toStringLogin());
+			System.out.println("LoginController \tlogin() \t\t[로그인 정보 저장]");
 			session.setAttribute("session", member);
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 			return entity;

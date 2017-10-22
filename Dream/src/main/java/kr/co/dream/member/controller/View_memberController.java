@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import kr.co.dream.member.service.MemberService;
 
 @Controller
-public class MemberViewController {
+public class View_memberController {
 
 	@RequestMapping("/")
 	public String main() {

@@ -14,7 +14,7 @@ import kr.co.dream.member.domain.MemberVO;
 import kr.co.dream.member.service.MemberService;
 
 @RestController
-public class MypageMemberRestController {
+public class Rest_MypageMemberController {
 
 	@Inject
 	private MemberService service;
