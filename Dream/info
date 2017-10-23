@@ -20,7 +20,7 @@ Development Environment
  - oracle 11g express edition
 
 6. Library
-  - ojdbc6.jar
+  - ojdbc6.jar 
   - jstl-1.2.jar
   - jstl-1.2.jar
   - mail-1.4.7.jar
