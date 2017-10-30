@@ -57,7 +57,7 @@ public class EmailSenderServiceImpl implements EmailSenderService {
 		try {
 			MimeMessage message = mimeMailSender.createMimeMessage();
 			message.setSubject("DreamUp 인증 메일입니다.");
-			message.setText(emailForm.mailContent(emailForm.getMember_name()),"UTF-8","html");
+			message.setText(emailForm.mailContent(),"UTF-8","html");
 			message.setFrom(new InternetAddress("mailingAuthTest@gmail.com"));
 			message.addRecipient(RecipientType.TO, new InternetAddress(emailForm.getMember_authMail()));
 			this.mimeMailSender.send(message);

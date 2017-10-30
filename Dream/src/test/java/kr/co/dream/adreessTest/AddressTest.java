@@ -24,26 +24,26 @@ public class AddressTest {
 	@Inject
 	private AddressService addressService;
 
-	@Test
-	public void findAddressTest(){
-		
-		SearchCriteria criteria = new SearchCriteria();
-		criteria.setKeyword("가산동");
-		criteria.setPage(1);
-		criteria.setPerPageNum(10);
-//		criteria.getPageStart();
-//		System.out.println(criteria.getKeyword());
-//		System.out.println(criteria.getPage());
-//		System.out.println(criteria.getPerPageNum());
-//		System.out.println(criteria.getPageStart());
-		
-		List<AddressVO> findList = addressService.findResultAddress(criteria);
-		for (int i = 0; i < findList.size(); i++) {
-			AddressVO a = findList.get(i);
-			System.out.println(a.toString());
-		}
-		System.out.println(addressDAO.listSearchCount(criteria));
-	}
+//	@Test
+//	public void findAddressTest(){
+//		
+//		SearchCriteria criteria = new SearchCriteria();
+//		criteria.setKeyword("가산동");
+//		criteria.setPage(1);
+//		criteria.setPerPageNum(10);
+////		criteria.getPageStart();
+////		System.out.println(criteria.getKeyword());
+////		System.out.println(criteria.getPage());
+////		System.out.println(criteria.getPerPageNum());
+////		System.out.println(criteria.getPageStart());
+//		
+//		List<AddressVO> findList = addressService.findResultAddress(criteria);
+//		for (int i = 0; i < findList.size(); i++) {
+//			AddressVO a = findList.get(i);
+//			System.out.println(a.toString());
+//		}
+//		System.out.println(addressDAO.listSearchCount(criteria));
+//	}
 	
 //	@Test
 	public void selectSearchCount(){

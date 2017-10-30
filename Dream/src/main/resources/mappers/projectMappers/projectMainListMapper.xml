@@ -28,7 +28,7 @@
 			dream_project
 		where 
 			<include refid="projectInfoSql.processing_project_condition_sql"/>
-		order by supporting_count desc, project_view_count desc, now_amount desc
+		order by supporting_count desc
 	</select>
 	
 	<!-- 신규등록 프로젝트 -->

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <script id="max_support_project" type="text/x-handlebars-template">
 {{#each .}}
 	<div class='col-sm-6 col-lg-6 col-md-6'>
@@ -8,8 +9,9 @@
 			<img src='resources{{project_thumbnail}}'></a>
 			
 			<div class='progress'>
-				<div class='progress-bar' role='progressbar' aria-valuenow='100' aria-valuemin='0' 
-				aria-valuemax='100' align='center' style='width: {{projectOperDTO.project_percentage}}%'></div>
+				<div class='progress-bar' role='progressbar' aria-valuenow='100' 
+						aria-valuemin='0' aria-valuemax='100' align='center' 
+						style='width: {{projectOperDTO.project_percentage}}%'></div>
 			</div>
 			
 			<div class='caption'>
@@ -38,3 +40,6 @@
 	</div>
 {{/each}}
 </script>
+
+
+

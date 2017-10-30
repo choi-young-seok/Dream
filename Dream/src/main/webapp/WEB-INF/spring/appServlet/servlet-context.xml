@@ -40,15 +40,16 @@
 		<beans:property name="maxUploadSize" value="52428800"></beans:property>
 	</beans:bean>
 	
-	<!-- interceptor : tor이맞음 ter아님 class -->
-	<beans:bean id="loginIntercepter" class="kr.co.dream.common.intercepter.LoginIntercepter"/>
-	
-	
-	<beans:bean id="AuthInterceptor" class="kr.co.dream.common.interceptor.SessionAuthInterceptor"/>
-	
-	
-	
 	<beans:bean id="memberAuth" class="kr.co.dream.common.intercepter.MemberAutInterceptor"/>
+	<!-- interceptor : tor이맞음 ter아님 class -->
+	
+	
+	
+	
+	
+	
+	<beans:bean id="loginIntercepter" class="kr.co.dream.common.intercepter.LoginIntercepter"/>
+	<beans:bean id="AuthInterceptor" class="kr.co.dream.common.interceptor.SessionAuthInterceptor"/>
 	
 	<!-- intercepter -->	
 	<interceptors>
@@ -100,7 +101,7 @@
 		<interceptor>
 			<!-- mypage memberAuth check -->
 			<mapping path="/mypage_member_info"/>
-			<mapping path="/mypage_member_password_update"/>
+			<!-- <mapping path="/mypage_member_password_update"/> -->
 			<mapping path="/mypage_member_withdraw"/>
 			<beans:ref bean="memberAuth"/>
 		</interceptor>

@@ -1,18 +1,17 @@
 package kr.co.dream.address.service;
 
 import java.util.List;
+import java.util.Map;
 
-import kr.co.dream.address.domain.AddressVO;
 import kr.co.dream.address.domain.MemberAddressVO;
 import kr.co.dream.paging.domain.SearchCriteria;
 import kr.co.dream.support.domain.SupportDeliveryDTO;
-import kr.co.dream.support.domain.supportPayInfoDTO;
 
 public interface AddressService {
 	
 	//주소검색 모달 
-	public List<AddressVO> findResultAddress(SearchCriteria criteria);
-	public int listSearchCount(SearchCriteria criteria);
+	public Map<String, Object> findResultAddress(SearchCriteria criteria);
+	/*public int listSearchCount(SearchCriteria criteria);*/
 	
 	//마이페이지 회원 주소관리
 	public void insert_memberAddress(MemberAddressVO memberAddressVO);

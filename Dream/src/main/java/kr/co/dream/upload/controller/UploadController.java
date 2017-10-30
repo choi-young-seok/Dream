@@ -140,25 +140,24 @@ public class UploadController {
 	@RequestMapping(value = "/deleteFile", method = RequestMethod.POST)
 	public ResponseEntity<String> deleteFile(String fileName, HttpServletRequest request) {
 
-		logger.info("delete file: " + fileName);
-
 		String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
-
 		MediaType mType = MediaUtils.getMediaType(formatName);
+		
 		String uploadPath = request.getSession().getServletContext().getRealPath("resources");
 
 		if (mType != null) {
+
 			String front = fileName.substring(0, fileName.lastIndexOf('/')+1);
-			String originFileName = fileName.substring(fileName.lastIndexOf('/')+3);
-//			new File(uploadPath + (front + end).replace('/', File.separatorChar)).delete();
-			System.out.println("원본파일 : "+uploadPath + front + originFileName.replace('/', File.separatorChar));
-			new File(uploadPath + front +originFileName.replace('/', File.separatorChar)).delete();
+			String originalFileName = front+fileName.substring(fileName.lastIndexOf('/')+3);
+
+			new File(uploadPath + fileName).delete();
+			new File(uploadPath + originalFileName.replace('/', File.separatorChar)).delete();
+
+			return new ResponseEntity<String>("deleted", HttpStatus.OK);
 		}
 
-		System.out.println("썸네일파일 : "+uploadPath + fileName.replace('/', File.separatorChar));
-		new File(uploadPath + fileName).delete();
-		System.out.println("fileName : " +fileName);
 		new File(uploadPath + fileName.replace('/', File.separatorChar)).delete();
+		
 		return new ResponseEntity<String>("deleted", HttpStatus.OK);
 	}
 

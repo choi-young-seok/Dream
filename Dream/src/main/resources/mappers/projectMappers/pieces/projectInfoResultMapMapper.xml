@@ -16,7 +16,8 @@
 		 프로젝트 간략 정보 ResultMap : ProjectPointDTO in projectOperDTO  -->
 	<resultMap id="project_point_info_map" type="ProjectPointDTO">
 		<id column="project_no" property="project_no"/>
-		<association property="projectOperDTO" column="project_no" javaType="ProjectOperDTO" select="project_operation_info">
+		<association property="projectOperDTO" column="project_no" 
+					javaType="ProjectOperDTO" select="project_operation_info">
 	 		<result property="project_no" column="project_no"/>
 	 		<result property="project_percentage" column="project_percentage"/>
 			<result property="project_d_day" column="project_d_day"/> 

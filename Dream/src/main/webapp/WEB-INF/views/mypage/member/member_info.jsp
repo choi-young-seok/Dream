@@ -60,6 +60,7 @@
 											value="${member.member_profile }">
 									</div>
 									<a id="profileEdit" class="btn btn-success">수정</a>
+									<a id="profileEdit" class="btn btn-danger">삭제</a>
 								</div>
 							</c:if>
 						</div>

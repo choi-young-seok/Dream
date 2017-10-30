@@ -22,7 +22,7 @@ public class EmailForm {
 		return authNum;
 	}
 
-	public static String mailContent(String member_name) {
+	public static String mailContent() {
 			return "인증번호는[" + createAuthNum() + "]입니다";
 	}
 

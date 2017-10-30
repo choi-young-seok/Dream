@@ -22,7 +22,8 @@ public class AddressDAOImpl implements AddressDAO {
 	
 	@Override
 	public List<AddressVO> findResultAddress(SearchCriteria criteria) {
-		return sqlSession.selectList("address.searchAddress",criteria.getKeyword(), new RowBounds(criteria.getPageStart(), criteria.getPerPageNum()));
+		return sqlSession.selectList("address.searchAddress",
+				criteria.getKeyword(), new RowBounds(criteria.getPageStart(), criteria.getPerPageNum()));
 	}
 
 	@Override

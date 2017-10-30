@@ -24,28 +24,38 @@ public class Rest_searchAddressController {
 	private AddressService addressService;
 
 	@RequestMapping(value = "/serachAddressList")
-	public ResponseEntity<Map<String, Object>> searchAddressList(/* String keyword */ SearchCriteria criteria,
-			Model model) {
-		System.out.println("AddressRestController \tsearchAddressList \tinput value : " + criteria.getKeyword());
-		PageMaker pageMaker = new PageMaker();
-
-		pageMaker.setCri(criteria);
-		pageMaker.setTotalCount(addressService.listSearchCount(criteria));
-
-		List<AddressVO> addressList = addressService.findResultAddress(criteria);
-
-		Map<String, Object> listResultMap = new HashMap<>();
-
-		if (addressList.size() == 0) {
-			listResultMap.put("noData", null);
-		} else {
-			listResultMap.put("success", addressList);
-			listResultMap.put("pageMaker", pageMaker);
-		}
-
+	public ResponseEntity<Map<String, Object>> searchAddressList(SearchCriteria criteria) {
+		System.out.println(criteria);
+		System.out.println(criteria.getPage());
+		System.out.println(criteria.getPageStart());
 		ResponseEntity<Map<String, Object>> entity;
-		entity = new ResponseEntity<Map<String, Object>>(listResultMap, HttpStatus.OK);
+		entity = new ResponseEntity<Map<String, Object>>(addressService.findResultAddress(criteria), HttpStatus.OK);
 
 		return entity;
 	}
+	
+//	@RequestMapping(value = "/serachAddressList")
+//	public ResponseEntity<Map<String, Object>> searchAddressList(SearchCriteria criteria) {
+//		System.out.println("AddressRestController \tsearchAddressList \tinput value : " + criteria.getKeyword());
+//		PageMaker pageMaker = new PageMaker();
+//		
+//		pageMaker.setCri(criteria);
+//		pageMaker.setTotalCount(addressService.listSearchCount(criteria));
+//		
+//		List<AddressVO> addressList = addressService.findResultAddress(criteria);
+//		
+//		Map<String, Object> listResultMap = new HashMap<>();
+//		
+//		if (addressList.size() == 0) {
+//			listResultMap.put("noData", null);
+//		} else {
+//			listResultMap.put("success", addressList);
+//			listResultMap.put("pageMaker", pageMaker);
+//		}
+//		
+//		ResponseEntity<Map<String, Object>> entity;
+//		entity = new ResponseEntity<Map<String, Object>>(listResultMap, HttpStatus.OK);
+//		
+//		return entity;
+//	}
 }
